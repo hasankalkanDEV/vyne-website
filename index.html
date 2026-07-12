@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vyne: your life, beautifully mapped</title>
+<meta name="description" content="Vyne turns your life into a growing vine: branch out into work, habits, health and goals, build habits that actually stick, and track it all with zero ads.">
+<meta property="og:title" content="Vyne: your life, beautifully mapped">
+<meta property="og:description" content="Branch your whole life like a vine, build habits that actually stick, and track it all with zero ads. Coming soon to Google Play.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vyne: your life, beautifully mapped">
+<meta name="twitter:description" content="Branch your whole life like a vine, build habits that actually stick, and track it all with zero ads.">
+<style>
+  :root {
+    --bg: #F8F6F0;
+    --card: #FFFFFF;
+    --cardAlt: #F2EFE8;
+    --border: #E8E4DC;
+    --ink: #2C2A26;
+    --ink-sub: #9C9488;
+    --accent: #6E9468;
+    --accent-deep: #5C8E5C;
+    --accent-soft: #E4F4E0;
+    --shadow: 0 2px 4px rgba(44,42,38,0.05), 0 12px 28px rgba(44,42,38,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17160F; --card: #211F19; --cardAlt: #2A2820; --border: #3A372C;
+      --ink: #F0EDE8; --ink-sub: #9C9488; --accent: #8FB884; --accent-deep: #A6CB9E; --accent-soft: #26331F;
+      --shadow: 0 2px 4px rgba(0,0,0,0.25), 0 12px 28px rgba(0,0,0,0.3);
+    }
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); margin: 0; }
+  .site {
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Century Gothic", "Trebuchet MS", sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: "Century Gothic", "Trebuchet MS", "Segoe UI", sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; max-width: 1040px; margin: 0 auto; padding: 22px 24px; }
+  .brand { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; font-size: 14px; font-weight: 600; }
+  .nav-links a { color: var(--ink-sub); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { max-width: 1040px; margin: 20px auto 0; padding: 20px 24px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .hero-copy .kicker { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent-deep); padding: 5px 14px; border-radius: 999px; margin-bottom: 18px; }
+  .hero-copy h1 { font-size: 42px; line-height: 1.12; margin: 0 0 16px; }
+  .hero-copy p.lede { font-size: 17px; color: var(--ink-sub); max-width: 440px; margin: 0 0 26px; }
+  .cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .cta-primary { background: var(--accent); color: #fff; font-weight: 800; font-size: 14.5px; padding: 14px 26px; border-radius: 16px; text-decoration: none; box-shadow: var(--shadow); }
+  .cta-secondary { color: var(--ink-sub); font-size: 13.5px; font-weight: 600; }
+
+  .hero-art { display: flex; align-items: center; justify-content: center; }
+  .hero-art svg { width: 100%; max-width: 460px; height: auto; }
+
+  .section { max-width: 1040px; margin: 0 auto; padding: 70px 24px; }
+  .section-head { text-align: center; margin-bottom: 44px; }
+  .section-head .eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .section-head h2 { font-size: 30px; margin: 0 0 10px; }
+  .section-head p { color: var(--ink-sub); font-size: 15.5px; max-width: 520px; margin: 0 auto; }
+
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 26px 22px; box-shadow: var(--shadow); }
+  .feature-card .icon { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); }
+  @media (prefers-color-scheme: dark) { .feature-card .icon { box-shadow: 0 0 0 1px rgba(255,255,255,0.08); } }
+  .feature-card h3 { font-size: 16.5px; margin: 0 0 8px; }
+  .feature-card p { font-size: 13.8px; color: var(--ink-sub); margin: 0; }
+
+  .theme-label { text-align: center; font-size: 13.5px; font-weight: 700; color: var(--ink-sub); margin: 44px 0 0; }
+  .theme-strip { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+  .theme-chip { display: flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 700; }
+  .theme-dot { width: 14px; height: 14px; border-radius: 50%; }
+
+  .philosophy { background: var(--cardAlt); border-radius: 28px; padding: 54px 40px; text-align: center; }
+  .philosophy p.big { font-family: "Century Gothic", "Trebuchet MS", serif; font-size: 24px; line-height: 1.4; max-width: 620px; margin: 0 auto 14px; }
+  .philosophy p.small { color: var(--ink-sub); font-size: 14px; }
+
+  .cta-band { background: var(--accent-soft); border-radius: 28px; padding: 54px 40px; text-align: center; }
+  .cta-band h2 { font-size: 26px; margin: 0 0 12px; }
+  .cta-band p { color: var(--ink-sub); font-size: 15px; max-width: 460px; margin: 0 auto 24px; }
+
+  footer { max-width: 1040px; margin: 0 auto; padding: 40px 24px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; border-top: 1px solid var(--border); }
+  footer .brand-small { font-weight: 800; font-size: 14px; }
+  footer .links { display: flex; gap: 20px; font-size: 13px; }
+  footer a { color: var(--ink-sub); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 10px; }
+    .hero-copy p.lede { margin-left: auto; margin-right: auto; }
+    .cta-row { justify-content: center; }
+    .hero-art { order: -1; }
+    .hero-copy h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="site">
+  <nav>
+    <div class="brand">vyne<span>.</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/">Privacy</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="kicker">🌱 Coming soon to Google Play</span>
+      <h1>Your life, beautifully mapped.</h1>
+      <p class="lede">Start from one bubble (you) and branch out into whatever matters: work, health, habits, goals. Habits get real psychological backup, like never-miss-twice warnings and identity prompts, so they actually stick instead of fading out in a week like every other checklist.</p>
+      <div class="cta-row">
+        <a class="cta-primary" href="#features">See how it works ↓</a>
+        <span class="cta-secondary">Free · No ads today · Works fully offline</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 148 200 C 90 190 70 150 60 110" stroke="#C9B8F0" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 152 190 C 110 160 120 120 110 70" stroke="#F0CDB8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 160 215 C 120 250 90 260 55 280" stroke="#B8F0D8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 165 230 C 140 280 150 310 130 350" stroke="#F0B8D4" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+
+        <g>
+          <rect x="10" y="88" width="118" height="46" rx="14" fill="#EDE8FB"/>
+          <text x="26" y="116" font-size="16" font-family="sans-serif">🎯 Goals</text>
+        </g>
+        <g>
+          <rect x="30" y="46" width="130" height="46" rx="14" fill="#FBF0E8"/>
+          <text x="46" y="74" font-size="16" font-family="sans-serif">💼 Work</text>
+        </g>
+        <g>
+          <rect x="0" y="256" width="120" height="46" rx="14" fill="#E0F8EC"/>
+          <text x="16" y="284" font-size="16" font-family="sans-serif">🔁 Habits</text>
+        </g>
+        <g>
+          <rect x="78" y="326" width="130" height="46" rx="14" fill="#FBE4F0"/>
+          <text x="94" y="354" font-size="16" font-family="sans-serif">❤️ Health</text>
+        </g>
+
+        <circle cx="230" cy="205" r="62" fill="none" stroke="#6E9468" stroke-width="3"/>
+        <circle cx="230" cy="205" r="52" fill="#6E9468"/>
+        <text x="230" y="215" font-size="34" font-family="sans-serif" font-weight="800" fill="#fff" text-anchor="middle">V</text>
+
+        <path d="M 300 195 C 340 180 360 150 385 115" stroke="#96CEEE" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 305 175 C 350 140 355 100 340 55" stroke="#F0D8A8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 300 225 C 345 245 365 265 405 285" stroke="#96EEC8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 290 240 C 320 285 310 315 330 355" stroke="#EEE096" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+
+        <g>
+          <rect x="330" y="90" width="120" height="46" rx="14" fill="#E4F6FB"/>
+          <text x="346" y="118" font-size="16" font-family="sans-serif">📊 Stats</text>
+        </g>
+        <g>
+          <rect x="300" y="30" width="130" height="46" rx="14" fill="#FBF4E0"/>
+          <text x="316" y="58" font-size="16" font-family="sans-serif">🏠 Home</text>
+        </g>
+        <g>
+          <rect x="360" y="260" width="100" height="46" rx="14" fill="#E4FBF0"/>
+          <text x="376" y="288" font-size="16" font-family="sans-serif">🎨 Hobby</text>
+        </g>
+        <g>
+          <rect x="280" y="330" width="130" height="46" rx="14" fill="#FBFAE4"/>
+          <text x="296" y="358" font-size="16" font-family="sans-serif">⚽ Sports</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="section-head">
+      <div class="eyebrow">What's inside</div>
+      <h2>Everything your life needs, nothing it doesn't</h2>
+      <p>No feeds, no likes, no ads to scroll past. Just your own structure, growing the way you do.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon" style="background:#E0F8EC;">🔁</div>
+        <h3>Habits that actually stick</h3>
+        <p>Never-miss-twice warnings, identity-based prompts, habit stacking, and a spin-the-wheel picker for when you can't decide where to start.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon" style="background:#EDE8FB;">🌿</div>
+        <h3>A living structure</h3>
+        <p>Branch anything as deep as you need: categories, projects, notes, due dates. Nothing gets flattened into one giant list.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon" style="background:#E4F6FB;">📊</div>
+        <h3>See your progress</h3>
+        <p>Category breakdowns, 30-day habit consistency, streaks, and a due-date calendar, so you always know what's overdue, today, or coming up.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon" style="background:#FBF0E8;">🔔</div>
+        <h3>Reminders that respect you</h3>
+        <p>At most one gentle check-in a day, at a time you pick. Due-date alerts and one-tap calendar export, per branch.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon" style="background:#FBE4F0;">☁️</div>
+        <h3>Your data, your choice</h3>
+        <p>Vyne works fully offline. Turn on cloud backup if you want it; otherwise we never touch your data, and you can delete it any time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon" style="background:#FBFAE4;">🎨</div>
+        <h3>Make it yours</h3>
+        <p>Four themes, multiple profiles for different people or areas of life, and a personal avatar that's actually you.</p>
+      </div>
+    </div>
+    <p class="theme-label">4 built-in themes, switch any time:</p>
+    <div class="theme-strip">
+      <div class="theme-chip"><span class="theme-dot" style="background:#F8F6F0; border:1px solid #ddd;"></span>Light</div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#F5EFE0;"></span>Warm</div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#1E1C18;"></span>Dark</div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#0F0F0F;"></span>Midnight</div>
+    </div>
+  </section>
+
+  <section class="section" id="philosophy">
+    <div class="philosophy">
+      <p class="big">"I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job."</p>
+      <p class="small">Hasan, Vyne's developer</p>
+    </div>
+  </section>
+
+  <section class="section" id="early-access">
+    <div class="cta-band">
+      <h2>Want in before it's public?</h2>
+      <p>Vyne is Android-first, currently in closed testing ahead of a full launch. Email us and we'll add you to the list, or invite you to try it early.</p>
+      <a class="cta-primary" href="mailto:vyneapp.help@gmail.com?subject=Early access to Vyne">Email vyneapp.help@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-small">vyne 🌿</div>
+    <div class="links">
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/">Privacy Policy</a>
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html">Terms of Service</a>
+      <a href="mailto:vyneapp.help@gmail.com">Contact</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
