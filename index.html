@@ -1,3 +1,5 @@
+$ cat "C:\Users\hasan\AppData\Local\Temp\claude\C--Users-hasan-OneDrive-Masa-st--vyne-expo\c13627a6-c2cb-4a4b-aa54-da072668be2e\scratchpad\website-v2-for-github.html"
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +46,7 @@
   nav { display: flex; align-items: center; justify-content: space-between; max-width: 1040px; margin: 0 auto; padding: 22px 24px; }
   .brand { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
   .brand span { color: var(--accent); }
-  .nav-links { display: flex; gap: 26px; font-size: 14px; font-weight: 600; }
+  .nav-links { display: flex; gap: 22px; font-size: 14px; font-weight: 600; }
   .nav-links a { color: var(--ink-sub); text-decoration: none; }
   .nav-links a:hover { color: var(--accent); }
 
@@ -77,9 +79,25 @@
   .theme-chip { display: flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 700; }
   .theme-dot { width: 14px; height: 14px; border-radius: 50%; }
 
+  .screens { display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+  .phone-frame { width: 210px; border-radius: 30px; border: 7px solid var(--ink); padding: 7px; background: var(--ink); box-shadow: var(--shadow); }
+  .phone-frame img { width: 100%; display: block; border-radius: 22px; }
+  @media (prefers-color-scheme: dark) { .phone-frame { border-color: #454138; background: #454138; } }
+
   .philosophy { background: var(--cardAlt); border-radius: 28px; padding: 54px 40px; text-align: center; }
   .philosophy p.big { font-family: "Century Gothic", "Trebuchet MS", serif; font-size: 24px; line-height: 1.4; max-width: 620px; margin: 0 auto 14px; }
   .philosophy p.small { color: var(--ink-sub); font-size: 14px; }
+  .about-bio { max-width: 560px; margin: 26px auto 0; text-align: center; }
+  .about-bio p { color: var(--ink-sub); font-size: 14px; margin: 0; }
+  .about-bio a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+  .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2px 22px; box-shadow: var(--shadow); }
+  .faq-item summary { cursor: pointer; font-weight: 700; font-size: 15px; padding: 17px 0; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 20px; color: var(--accent); font-weight: 400; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: "\2013"; }
+  .faq-item p { color: var(--ink-sub); font-size: 14px; margin: 0 0 18px; }
 
   .cta-band { background: var(--accent-soft); border-radius: 28px; padding: 54px 40px; text-align: center; }
   .cta-band h2 { font-size: 26px; margin: 0 0 12px; }
@@ -106,7 +124,8 @@
     <div class="brand">vyne<span>.</span></div>
     <div class="nav-links">
       <a href="#features">Features</a>
-      <a href="#philosophy">Philosophy</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#faq">FAQ</a>
       <a href="https://hasankalkanDEV.github.io/vyne-legal/">Privacy</a>
     </div>
   </nav>
@@ -221,10 +240,59 @@
     </div>
   </section>
 
+  <section class="section" id="screenshots">
+    <div class="section-head">
+      <div class="eyebrow">See it in action</div>
+      <h2>What using Vyne actually looks like</h2>
+      <p>No mockups here, these are real screens from the app.</p>
+    </div>
+    <div class="screens">
+      <div class="phone-frame"><img src="screenshot-home.jpg" alt="Vyne home screen showing branching categories, progress bars, and today's habits"></div>
+      <div class="phone-frame"><img src="screenshot-wheel.jpg" alt="Vyne's spin-the-wheel picker choosing a habit to start"></div>
+      <div class="phone-frame"><img src="screenshot-stats.jpg" alt="Vyne stats screen showing streaks and progress broken down by category"></div>
+    </div>
+  </section>
+
   <section class="section" id="philosophy">
     <div class="philosophy">
       <p class="big">"I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job."</p>
       <p class="small">Hasan, Vyne's developer</p>
+    </div>
+    <div class="about-bio">
+      <p>Vyne is built and maintained by one person, no team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list. Questions, bug reports, or just want to say hi? <a href="mailto:vyneapp.help@gmail.com">vyneapp.help@gmail.com</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Frequently asked</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Is Vyne free?</summary>
+        <p>Yes. Vyne is free to use, with no ads right now. If that ever changes down the line, we'll be upfront about it, existing features won't quietly get paywalled.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to create an account?</summary>
+        <p>No. Vyne works fully offline with zero sign-up. An account is only needed for the optional Cloud Backup, so you can restore your data on another device.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to my data if I don't sign in?</summary>
+        <p>It stays on your device, only. We never see it, and nothing is uploaded anywhere unless you turn on Cloud Backup yourself.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I delete my data later?</summary>
+        <p>Yes, any time, right from inside the app, both your local data and any cloud backup. No waiting, no support ticket required.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there an iOS version?</summary>
+        <p>Vyne is Android-first for now, with iOS on the way. Email us and we'll let you know the moment it's available.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from a regular to-do list app?</summary>
+        <p>Flat lists flatten your life too: a work deadline sits right next to "buy milk" with no sense of scale. Vyne lets related things branch off each other, so each part of your life stays exactly as detailed, or as simple, as you want it.</p>
+      </details>
     </div>
   </section>
 
