@@ -44,9 +44,13 @@
   nav { display: flex; align-items: center; justify-content: space-between; max-width: 1040px; margin: 0 auto; padding: 22px 24px; }
   .brand { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
   .brand span { color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
   .nav-links { display: flex; gap: 22px; font-size: 14px; font-weight: 600; }
   .nav-links a { color: var(--ink-sub); text-decoration: none; }
   .nav-links a:hover { color: var(--accent); }
+  .lang-switch { display: flex; gap: 3px; background: var(--cardAlt); border: 1px solid var(--border); border-radius: 999px; padding: 3px; }
+  .lang-switch button { border: none; background: transparent; font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; cursor: pointer; color: var(--ink-sub); font-family: inherit; }
+  .lang-switch button.active { background: var(--accent); color: #fff; }
 
   .hero { max-width: 1040px; margin: 20px auto 0; padding: 20px 24px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
   .hero-copy .kicker { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent-deep); padding: 5px 14px; border-radius: 999px; margin-bottom: 18px; }
@@ -113,6 +117,8 @@
     .cta-row { justify-content: center; }
     .hero-art { order: -1; }
     .hero-copy h1 { font-size: 32px; }
+    nav { flex-wrap: wrap; gap: 12px; }
+    .nav-links { gap: 14px; }
   }
 </style>
 </head>
@@ -120,22 +126,28 @@
 <div class="site">
   <nav>
     <div class="brand">vyne<span>.</span></div>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://hasankalkanDEV.github.io/vyne-legal/">Privacy</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="https://hasankalkanDEV.github.io/vyne-legal/" data-i18n="nav_privacy">Privacy</a>
+      </div>
+      <div class="lang-switch">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="tr">TR</button>
+      </div>
     </div>
   </nav>
 
   <section class="hero">
     <div class="hero-copy">
-      <span class="kicker">🌱 Coming soon to Google Play</span>
-      <h1>Your life, beautifully mapped.</h1>
-      <p class="lede">Start from one bubble (you) and branch out into whatever matters: work, health, habits, goals. Habits get real psychological backup, like never-miss-twice warnings and identity prompts, so they actually stick instead of fading out in a week like every other checklist.</p>
+      <span class="kicker" data-i18n="kicker">🌱 Coming soon to Google Play</span>
+      <h1 data-i18n="hero_h1">Your life, beautifully mapped.</h1>
+      <p class="lede" data-i18n="hero_lede">Start from one bubble (you) and branch out into whatever matters: work, health, habits, goals. Habits get real psychological backup, like never-miss-twice warnings and identity prompts, so they actually stick instead of fading out in a week like every other checklist.</p>
       <div class="cta-row">
-        <a class="cta-primary" href="#features">See how it works ↓</a>
-        <span class="cta-secondary">Free · No ads today · Works fully offline</span>
+        <a class="cta-primary" href="#features" data-i18n="cta_see_how">See how it works ↓</a>
+        <span class="cta-secondary" data-i18n="cta_secondary">Free · No ads today · Works fully offline</span>
       </div>
     </div>
     <div class="hero-art">
@@ -147,19 +159,19 @@
 
         <g>
           <rect x="10" y="88" width="118" height="46" rx="14" fill="#EDE8FB"/>
-          <text x="26" y="116" font-size="16" font-family="sans-serif">🎯 Goals</text>
+          <text x="26" y="116" font-size="16" font-family="sans-serif" data-i18n="svg_goals">🎯 Goals</text>
         </g>
         <g>
           <rect x="30" y="46" width="130" height="46" rx="14" fill="#FBF0E8"/>
-          <text x="46" y="74" font-size="16" font-family="sans-serif">💼 Work</text>
+          <text x="46" y="74" font-size="16" font-family="sans-serif" data-i18n="svg_work">💼 Work</text>
         </g>
         <g>
           <rect x="0" y="256" width="120" height="46" rx="14" fill="#E0F8EC"/>
-          <text x="16" y="284" font-size="16" font-family="sans-serif">🔁 Habits</text>
+          <text x="16" y="284" font-size="16" font-family="sans-serif" data-i18n="svg_habits">🔁 Habits</text>
         </g>
         <g>
           <rect x="78" y="326" width="130" height="46" rx="14" fill="#FBE4F0"/>
-          <text x="94" y="354" font-size="16" font-family="sans-serif">❤️ Health</text>
+          <text x="94" y="354" font-size="16" font-family="sans-serif" data-i18n="svg_health">❤️ Health</text>
         </g>
 
         <circle cx="230" cy="205" r="62" fill="none" stroke="#6E9468" stroke-width="3"/>
@@ -173,19 +185,19 @@
 
         <g>
           <rect x="330" y="90" width="120" height="46" rx="14" fill="#E4F6FB"/>
-          <text x="346" y="118" font-size="16" font-family="sans-serif">📊 Stats</text>
+          <text x="346" y="118" font-size="16" font-family="sans-serif" data-i18n="svg_stats">📊 Stats</text>
         </g>
         <g>
           <rect x="300" y="30" width="130" height="46" rx="14" fill="#FBF4E0"/>
-          <text x="316" y="58" font-size="16" font-family="sans-serif">🏠 Home</text>
+          <text x="316" y="58" font-size="16" font-family="sans-serif" data-i18n="svg_home">🏠 Home</text>
         </g>
         <g>
           <rect x="360" y="260" width="100" height="46" rx="14" fill="#E4FBF0"/>
-          <text x="376" y="288" font-size="16" font-family="sans-serif">🎨 Hobby</text>
+          <text x="376" y="288" font-size="16" font-family="sans-serif" data-i18n="svg_hobby">🎨 Hobby</text>
         </g>
         <g>
           <rect x="280" y="330" width="130" height="46" rx="14" fill="#FBFAE4"/>
-          <text x="296" y="358" font-size="16" font-family="sans-serif">⚽ Sports</text>
+          <text x="296" y="358" font-size="16" font-family="sans-serif" data-i18n="svg_sports">⚽ Sports</text>
         </g>
       </svg>
     </div>
@@ -193,128 +205,275 @@
 
   <section class="section" id="features">
     <div class="section-head">
-      <div class="eyebrow">What's inside</div>
-      <h2>Everything your life needs, nothing it doesn't</h2>
-      <p>No feeds, no likes, no ads to scroll past. Just your own structure, growing the way you do.</p>
+      <div class="eyebrow" data-i18n="features_eyebrow">What's inside</div>
+      <h2 data-i18n="features_h2">Everything your life needs, nothing it doesn't</h2>
+      <p data-i18n="features_p">No feeds, no likes, no ads to scroll past. Just your own structure, growing the way you do.</p>
     </div>
     <div class="feature-grid">
       <div class="feature-card">
         <div class="icon" style="background:#E0F8EC;">🔁</div>
-        <h3>Habits that actually stick</h3>
-        <p>Never-miss-twice warnings, identity-based prompts, habit stacking, and a spin-the-wheel picker for when you can't decide where to start.</p>
+        <h3 data-i18n="f1_h3">Habits that actually stick</h3>
+        <p data-i18n="f1_p">Never-miss-twice warnings, identity-based prompts, habit stacking, and a spin-the-wheel picker for when you can't decide where to start.</p>
       </div>
       <div class="feature-card">
         <div class="icon" style="background:#EDE8FB;">🌿</div>
-        <h3>A living structure</h3>
-        <p>Branch anything as deep as you need: categories, projects, notes, due dates. Nothing gets flattened into one giant list.</p>
+        <h3 data-i18n="f2_h3">A living structure</h3>
+        <p data-i18n="f2_p">Branch anything as deep as you need: categories, projects, notes, due dates. Nothing gets flattened into one giant list.</p>
       </div>
       <div class="feature-card">
         <div class="icon" style="background:#E4F6FB;">📊</div>
-        <h3>See your progress</h3>
-        <p>Category breakdowns, 30-day habit consistency, streaks, and a due-date calendar, so you always know what's overdue, today, or coming up.</p>
+        <h3 data-i18n="f3_h3">See your progress</h3>
+        <p data-i18n="f3_p">Category breakdowns, 30-day habit consistency, streaks, and a due-date calendar, so you always know what's overdue, today, or coming up.</p>
       </div>
       <div class="feature-card">
         <div class="icon" style="background:#FBF0E8;">🔔</div>
-        <h3>Reminders that respect you</h3>
-        <p>At most one gentle check-in a day, at a time you pick. Due-date alerts and one-tap calendar export, per branch.</p>
+        <h3 data-i18n="f4_h3">Reminders that respect you</h3>
+        <p data-i18n="f4_p">At most one gentle check-in a day, at a time you pick. Due-date alerts and one-tap calendar export, per branch.</p>
       </div>
       <div class="feature-card">
         <div class="icon" style="background:#FBE4F0;">☁️</div>
-        <h3>Your data, your choice</h3>
-        <p>Vyne works fully offline. Turn on cloud backup if you want it, or export a local backup file any time; otherwise we never touch your data, and you can delete it whenever you like.</p>
+        <h3 data-i18n="f5_h3">Your data, your choice</h3>
+        <p data-i18n="f5_p">Vyne works fully offline. Turn on cloud backup if you want it, or export a local backup file any time; otherwise we never touch your data, and you can delete it whenever you like.</p>
       </div>
       <div class="feature-card">
         <div class="icon" style="background:#FBFAE4;">🎨</div>
-        <h3>Make it yours</h3>
-        <p>Four themes, multiple profiles for different people or areas of life, and a personal avatar that's actually you.</p>
+        <h3 data-i18n="f6_h3">Make it yours</h3>
+        <p data-i18n="f6_p">Four themes, multiple profiles for different people or areas of life, and a personal avatar that's actually you.</p>
       </div>
       <div class="feature-card">
         <div class="icon" style="background:#E4EAF8;">🌐</div>
-        <h3>Now in Turkish</h3>
-        <p>Vyne speaks English and Turkish, switching automatically to match your phone — or pick either one yourself from Settings, any time.</p>
+        <h3 data-i18n="f7_h3">Now in Turkish</h3>
+        <p data-i18n="f7_p">Vyne speaks English and Turkish, switching automatically to match your phone — or pick either one yourself from Settings, any time.</p>
       </div>
     </div>
-    <p class="theme-label">4 built-in themes, switch any time:</p>
+    <p class="theme-label" data-i18n="theme_label">4 built-in themes, switch any time:</p>
     <div class="theme-strip">
-      <div class="theme-chip"><span class="theme-dot" style="background:#F8F6F0; border:1px solid #ddd;"></span>Light</div>
-      <div class="theme-chip"><span class="theme-dot" style="background:#F5EFE0;"></span>Warm</div>
-      <div class="theme-chip"><span class="theme-dot" style="background:#1E1C18;"></span>Dark</div>
-      <div class="theme-chip"><span class="theme-dot" style="background:#0F0F0F;"></span>Midnight</div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#F8F6F0; border:1px solid #ddd;"></span><span data-i18n="theme_light">Light</span></div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#F5EFE0;"></span><span data-i18n="theme_warm">Warm</span></div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#1E1C18;"></span><span data-i18n="theme_dark">Dark</span></div>
+      <div class="theme-chip"><span class="theme-dot" style="background:#0F0F0F;"></span><span data-i18n="theme_midnight">Midnight</span></div>
     </div>
   </section>
 
   <section class="section" id="screenshots">
     <div class="section-head">
-      <div class="eyebrow">See it in action</div>
-      <h2>What using Vyne actually looks like</h2>
-      <p>No mockups here, these are real screens from the app.</p>
+      <div class="eyebrow" data-i18n="screenshots_eyebrow">See it in action</div>
+      <h2 data-i18n="screenshots_h2">What using Vyne actually looks like</h2>
+      <p data-i18n="screenshots_p">No mockups here, these are real screens from the app.</p>
     </div>
     <div class="screens">
-      <div class="phone-frame"><img src="screenshot-home.jpg" alt="Vyne home screen showing branching categories, progress bars, and today's habits"></div>
-      <div class="phone-frame"><img src="screenshot-wheel.jpg" alt="Vyne's spin-the-wheel picker choosing a habit to start"></div>
-      <div class="phone-frame"><img src="screenshot-stats.jpg" alt="Vyne stats screen showing streaks and progress broken down by category"></div>
+      <div class="phone-frame"><img src="screenshot-home.jpg" data-i18n-alt="alt_home" alt="Vyne home screen showing branching categories, progress bars, and today's habits"></div>
+      <div class="phone-frame"><img src="screenshot-wheel.jpg" data-i18n-alt="alt_wheel" alt="Vyne's spin-the-wheel picker choosing a habit to start"></div>
+      <div class="phone-frame"><img src="screenshot-stats.jpg" data-i18n-alt="alt_stats" alt="Vyne stats screen showing streaks and progress broken down by category"></div>
     </div>
   </section>
 
   <section class="section" id="philosophy">
     <div class="philosophy">
-      <p class="big">"I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job."</p>
-      <p class="small">Hasan, Vyne's developer</p>
+      <p class="big" data-i18n="philosophy_quote">"I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job."</p>
+      <p class="small" data-i18n="philosophy_author">Hasan, Vyne's developer</p>
     </div>
     <div class="about-bio">
-      <p>Vyne is built and maintained by one person, no team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list. Questions, bug reports, or just want to say hi? <a href="mailto:vyneapp.help@gmail.com">vyneapp.help@gmail.com</a></p>
+      <p><span data-i18n="about_bio_1">Vyne is built and maintained by one person, no team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list. Questions, bug reports, or just want to say hi?</span> <a href="mailto:vyneapp.help@gmail.com">vyneapp.help@gmail.com</a></p>
     </div>
   </section>
 
   <section class="section" id="faq">
     <div class="section-head">
-      <div class="eyebrow">Questions</div>
-      <h2>Frequently asked</h2>
+      <div class="eyebrow" data-i18n="faq_eyebrow">Questions</div>
+      <h2 data-i18n="faq_h2">Frequently asked</h2>
     </div>
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Is Vyne free?</summary>
-        <p>Yes. Vyne is free to use, with no ads right now. If that ever changes down the line, we'll be upfront about it, existing features won't quietly get paywalled.</p>
+        <summary data-i18n="faq1_q">Is Vyne free?</summary>
+        <p data-i18n="faq1_a">Yes. Vyne is free to use, with no ads right now. If that ever changes down the line, we'll be upfront about it, existing features won't quietly get paywalled.</p>
       </details>
       <details class="faq-item">
-        <summary>Do I need to create an account?</summary>
-        <p>No. Vyne works fully offline with zero sign-up. An account is only needed for the optional Cloud Backup, so you can restore your data on another device.</p>
+        <summary data-i18n="faq2_q">Do I need to create an account?</summary>
+        <p data-i18n="faq2_a">No. Vyne works fully offline with zero sign-up. An account is only needed for the optional Cloud Backup, so you can restore your data on another device.</p>
       </details>
       <details class="faq-item">
-        <summary>What happens to my data if I don't sign in?</summary>
-        <p>It stays on your device, only. We never see it, and nothing is uploaded anywhere unless you turn on Cloud Backup yourself.</p>
+        <summary data-i18n="faq3_q">What happens to my data if I don't sign in?</summary>
+        <p data-i18n="faq3_a">It stays on your device, only. We never see it, and nothing is uploaded anywhere unless you turn on Cloud Backup yourself.</p>
       </details>
       <details class="faq-item">
-        <summary>Can I delete my data later?</summary>
-        <p>Yes, any time, right from inside the app, both your local data and any cloud backup. No waiting, no support ticket required.</p>
+        <summary data-i18n="faq4_q">Can I delete my data later?</summary>
+        <p data-i18n="faq4_a">Yes, any time, right from inside the app, both your local data and any cloud backup. No waiting, no support ticket required.</p>
       </details>
       <details class="faq-item">
-        <summary>Is there an iOS version?</summary>
-        <p>Vyne is Android-first for now, with iOS on the way. Email us and we'll let you know the moment it's available.</p>
+        <summary data-i18n="faq5_q">Is there an iOS version?</summary>
+        <p data-i18n="faq5_a">Vyne is Android-first for now, with iOS on the way. Email us and we'll let you know the moment it's available.</p>
       </details>
       <details class="faq-item">
-        <summary>How is this different from a regular to-do list app?</summary>
-        <p>Flat lists flatten your life too: a work deadline sits right next to "buy milk" with no sense of scale. Vyne lets related things branch off each other, so each part of your life stays exactly as detailed, or as simple, as you want it.</p>
+        <summary data-i18n="faq6_q">How is this different from a regular to-do list app?</summary>
+        <p data-i18n="faq6_a">Flat lists flatten your life too: a work deadline sits right next to "buy milk" with no sense of scale. Vyne lets related things branch off each other, so each part of your life stays exactly as detailed, or as simple, as you want it.</p>
       </details>
     </div>
   </section>
 
   <section class="section" id="early-access">
     <div class="cta-band">
-      <h2>Want in before it's public?</h2>
-      <p>Vyne is Android-first, currently in closed testing ahead of a full launch. Email us and we'll add you to the list, or invite you to try it early.</p>
-      <a class="cta-primary" href="mailto:vyneapp.help@gmail.com?subject=Early access to Vyne">Email vyneapp.help@gmail.com</a>
+      <h2 data-i18n="early_h2">Want in before it's public?</h2>
+      <p data-i18n="early_p">Vyne is Android-first, currently in closed testing ahead of a full launch. Email us and we'll add you to the list, or invite you to try it early.</p>
+      <a class="cta-primary" href="mailto:vyneapp.help@gmail.com?subject=Early access to Vyne"><span data-i18n="email_label">Email</span> vyneapp.help@gmail.com</a>
     </div>
   </section>
 
   <footer>
     <div class="brand-small">vyne 🌿</div>
     <div class="links">
-      <a href="https://hasankalkanDEV.github.io/vyne-legal/">Privacy Policy</a>
-      <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html">Terms of Service</a>
-      <a href="mailto:vyneapp.help@gmail.com">Contact</a>
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html" data-i18n="footer_terms">Terms of Service</a>
+      <a href="mailto:vyneapp.help@gmail.com" data-i18n="footer_contact">Contact</a>
     </div>
   </footer>
 </div>
+<script>
+(function () {
+  var translations = {
+    en: {
+      title: "Vyne: your life, beautifully mapped",
+      nav_features: "Features", nav_screenshots: "Screenshots", nav_faq: "FAQ", nav_privacy: "Privacy",
+      kicker: "🌱 Coming soon to Google Play",
+      hero_h1: "Your life, beautifully mapped.",
+      hero_lede: "Start from one bubble (you) and branch out into whatever matters: work, health, habits, goals. Habits get real psychological backup, like never-miss-twice warnings and identity prompts, so they actually stick instead of fading out in a week like every other checklist.",
+      cta_see_how: "See how it works ↓",
+      cta_secondary: "Free · No ads today · Works fully offline",
+      svg_goals: "🎯 Goals", svg_work: "💼 Work", svg_habits: "🔁 Habits", svg_health: "❤️ Health",
+      svg_stats: "📊 Stats", svg_home: "🏠 Home", svg_hobby: "🎨 Hobby", svg_sports: "⚽ Sports",
+      features_eyebrow: "What's inside",
+      features_h2: "Everything your life needs, nothing it doesn't",
+      features_p: "No feeds, no likes, no ads to scroll past. Just your own structure, growing the way you do.",
+      f1_h3: "Habits that actually stick",
+      f1_p: "Never-miss-twice warnings, identity-based prompts, habit stacking, and a spin-the-wheel picker for when you can't decide where to start.",
+      f2_h3: "A living structure",
+      f2_p: "Branch anything as deep as you need: categories, projects, notes, due dates. Nothing gets flattened into one giant list.",
+      f3_h3: "See your progress",
+      f3_p: "Category breakdowns, 30-day habit consistency, streaks, and a due-date calendar, so you always know what's overdue, today, or coming up.",
+      f4_h3: "Reminders that respect you",
+      f4_p: "At most one gentle check-in a day, at a time you pick. Due-date alerts and one-tap calendar export, per branch.",
+      f5_h3: "Your data, your choice",
+      f5_p: "Vyne works fully offline. Turn on cloud backup if you want it, or export a local backup file any time; otherwise we never touch your data, and you can delete it whenever you like.",
+      f6_h3: "Make it yours",
+      f6_p: "Four themes, multiple profiles for different people or areas of life, and a personal avatar that's actually you.",
+      f7_h3: "Now in Turkish",
+      f7_p: "Vyne speaks English and Turkish, switching automatically to match your phone — or pick either one yourself from Settings, any time.",
+      theme_label: "4 built-in themes, switch any time:",
+      theme_light: "Light", theme_warm: "Warm", theme_dark: "Dark", theme_midnight: "Midnight",
+      screenshots_eyebrow: "See it in action",
+      screenshots_h2: "What using Vyne actually looks like",
+      screenshots_p: "No mockups here, these are real screens from the app.",
+      alt_home: "Vyne home screen showing branching categories, progress bars, and today's habits",
+      alt_wheel: "Vyne's spin-the-wheel picker choosing a habit to start",
+      alt_stats: "Vyne stats screen showing streaks and progress broken down by category",
+      philosophy_quote: "“I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job.”",
+      philosophy_author: "Hasan, Vyne's developer",
+      about_bio_1: "Vyne is built and maintained by one person, no team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list. Questions, bug reports, or just want to say hi?",
+      faq_eyebrow: "Questions", faq_h2: "Frequently asked",
+      faq1_q: "Is Vyne free?",
+      faq1_a: "Yes. Vyne is free to use, with no ads right now. If that ever changes down the line, we'll be upfront about it, existing features won't quietly get paywalled.",
+      faq2_q: "Do I need to create an account?",
+      faq2_a: "No. Vyne works fully offline with zero sign-up. An account is only needed for the optional Cloud Backup, so you can restore your data on another device.",
+      faq3_q: "What happens to my data if I don't sign in?",
+      faq3_a: "It stays on your device, only. We never see it, and nothing is uploaded anywhere unless you turn on Cloud Backup yourself.",
+      faq4_q: "Can I delete my data later?",
+      faq4_a: "Yes, any time, right from inside the app, both your local data and any cloud backup. No waiting, no support ticket required.",
+      faq5_q: "Is there an iOS version?",
+      faq5_a: "Vyne is Android-first for now, with iOS on the way. Email us and we'll let you know the moment it's available.",
+      faq6_q: "How is this different from a regular to-do list app?",
+      faq6_a: "Flat lists flatten your life too: a work deadline sits right next to “buy milk” with no sense of scale. Vyne lets related things branch off each other, so each part of your life stays exactly as detailed, or as simple, as you want it.",
+      early_h2: "Want in before it's public?",
+      early_p: "Vyne is Android-first, currently in closed testing ahead of a full launch. Email us and we'll add you to the list, or invite you to try it early.",
+      email_label: "Email",
+      footer_privacy: "Privacy Policy", footer_terms: "Terms of Service", footer_contact: "Contact"
+    },
+    tr: {
+      title: "Vyne: hayatın, güzelce haritalanıyor",
+      nav_features: "Özellikler", nav_screenshots: "Ekran Görüntüleri", nav_faq: "SSS", nav_privacy: "Gizlilik",
+      kicker: "🌱 Yakında Google Play'de",
+      hero_h1: "Hayatın, güzelce haritalanıyor.",
+      hero_lede: "Tek bir baloncuktan (sen) başla, önemli olan her şeye dallan: iş, sağlık, alışkanlıklar, hedefler. Alışkanlıklar gerçek bir psikolojik destekle geliyor — iki kez üst üste kaçırma uyarıları ve kimlik temelli hatırlatmalar gibi — böylece diğer yapılacaklar listeleri gibi bir hafta içinde sönmek yerine gerçekten kalıcı oluyorlar.",
+      cta_see_how: "Nasıl çalıştığını gör ↓",
+      cta_secondary: "Ücretsiz · Şu an reklamsız · Tamamen çevrimdışı çalışır",
+      svg_goals: "🎯 Hedefler", svg_work: "💼 İş", svg_habits: "🔁 Alışkanlıklar", svg_health: "❤️ Sağlık",
+      svg_stats: "📊 İstatistik", svg_home: "🏠 Ev", svg_hobby: "🎨 Hobi", svg_sports: "⚽ Spor",
+      features_eyebrow: "İçinde ne var",
+      features_h2: "Hayatının ihtiyaç duyduğu her şey, gereksiz hiçbir şey",
+      features_p: "Akış yok, beğeni yok, kaydırıp geçeceğin reklam yok. Sadece kendi yapın, senin büyüdüğün gibi büyüyor.",
+      f1_h3: "Gerçekten kalıcı olan alışkanlıklar",
+      f1_p: "İki kez üst üste kaçırma uyarıları, kimlik temelli hatırlatmalar, alışkanlık zincirleme ve nereden başlayacağına karar veremediğinde çark çevirme özelliği.",
+      f2_h3: "Yaşayan bir yapı",
+      f2_p: "İstediğin kadar derinlemesine dallandır: kategoriler, projeler, notlar, son tarihler. Hiçbir şey tek bir dev listeye sıkıştırılmıyor.",
+      f3_h3: "İlerlemeni gör",
+      f3_p: "Kategori bazlı dökümler, 30 günlük alışkanlık tutarlılığı, seriler ve son tarih takvimi — neyin geciktiğini, bugün ne olduğunu ve önümüzdekileri her zaman bilirsin.",
+      f4_h3: "Sana saygılı hatırlatmalar",
+      f4_p: "Günde en fazla bir nazik hatırlatma, seçtiğin saatte. Her dal için son tarih uyarıları ve tek dokunuşla takvime ekleme.",
+      f5_h3: "Verilerin, senin seçimin",
+      f5_p: "Vyne tamamen çevrimdışı çalışır. İstersen bulut yedeklemeyi aç, ya da istediğin zaman yerel bir yedek dosyası dışa aktar; aksi halde verine asla dokunmayız, dilediğin zaman silebilirsin.",
+      f6_h3: "Kendine göre yap",
+      f6_p: "Dört tema, farklı kişiler ya da hayat alanların için birden fazla profil ve gerçekten sana benzeyen kişisel bir avatar.",
+      f7_h3: "Artık Türkçe de var",
+      f7_p: "Vyne İngilizce ve Türkçe konuşuyor, telefonuna göre otomatik geçiş yapıyor — istersen Ayarlar'dan istediğin zaman kendin de seçebilirsin.",
+      theme_label: "4 hazır tema, istediğin zaman değiştir:",
+      theme_light: "Açık", theme_warm: "Sıcak", theme_dark: "Koyu", theme_midnight: "Gece Yarısı",
+      screenshots_eyebrow: "Kullanırken gör",
+      screenshots_h2: "Vyne'i kullanmak gerçekte nasıl görünüyor",
+      screenshots_p: "Burada mockup yok, bunlar uygulamadan gerçek ekranlar.",
+      alt_home: "Dallanan kategorileri, ilerleme çubuklarını ve bugünün alışkanlıklarını gösteren Vyne ana ekranı",
+      alt_wheel: "Başlanacak bir alışkanlığı seçen Vyne çark çevirme özelliği",
+      alt_stats: "Serileri ve kategoriye göre ilerlemeyi gösteren Vyne istatistik ekranı",
+      philosophy_quote: "“Vyne'i, tüm hayatımı bir arada görebilmek için yaptım — düz bir yapılacaklar listesinde hiçbir şeyi kaybetmeden. Sana da fark etmeyeceğin bir şeyi fark ettiriyorsa, işini yapmış demektir.”",
+      philosophy_author: "Hasan, Vyne'in geliştiricisi",
+      about_bio_1: "Vyne tek bir kişi tarafından yapılıyor ve sürdürülüyor — arkasında ekip ya da şirket yok, sadece düz bir yapılacaklar listesine sığmayan bir hayatı tutmanın daha iyi bir yolunu arayan biri var. Sorularınız, hata bildirimleriniz ya da sadece merhaba demek isterseniz:",
+      faq_eyebrow: "Sorular", faq_h2: "Sıkça sorulanlar",
+      faq1_q: "Vyne ücretsiz mi?",
+      faq1_a: "Evet. Vyne şu an reklamsız ve ücretsiz. Bu ileride değişirse açıkça söyleriz, var olan özellikler sessizce ücretli hale getirilmez.",
+      faq2_q: "Hesap oluşturmam gerekiyor mu?",
+      faq2_a: "Hayır. Vyne kayıt olmadan tamamen çevrimdışı çalışır. Hesap sadece opsiyonel Bulut Yedekleme için gerekli, böylece verini başka bir cihazda geri yükleyebilirsin.",
+      faq3_q: "Giriş yapmazsam verilerime ne olur?",
+      faq3_a: "Sadece cihazında kalır. Biz asla göremeyiz, sen kendin Bulut Yedeklemeyi açmadıkça hiçbir şey hiçbir yere yüklenmez.",
+      faq4_q: "Verilerimi daha sonra silebilir miyim?",
+      faq4_a: "Evet, istediğin zaman, doğrudan uygulama içinden — hem yerel verini hem de varsa bulut yedeğini. Beklemeye ya da destek talebine gerek yok.",
+      faq5_q: "iOS sürümü var mı?",
+      faq5_a: "Vyne şu an öncelikle Android'de, iOS yolda. Bize e-posta at, hazır olduğu an haber verelim.",
+      faq6_q: "Bu normal bir yapılacaklar listesi uygulamasından nasıl farklı?",
+      faq6_a: "Düz listeler hayatını da düzleştirir: bir iş teslim tarihi, hiçbir ölçek hissi olmadan tam “süt al” maddesinin yanına oturur. Vyne'de birbiriyle ilgili şeyler birbirinden dallanır, böylece hayatının her parçası istediğin kadar detaylı ya da basit kalır.",
+      early_h2: "Herkese açılmadan önce katılmak ister misin?",
+      early_p: "Vyne şu an öncelikle Android'de, tam lansmandan önce kapalı test aşamasında. Bize e-posta at, seni listeye ekleyelim ya da erken denemen için davet edelim.",
+      email_label: "E-posta:",
+      footer_privacy: "Gizlilik Politikası", footer_terms: "Kullanım Şartları", footer_contact: "İletişim"
+    }
+  };
+
+  var LANG_KEY = "vyne-site-lang";
+
+  function applyLang(lang) {
+    var dict = translations[lang] || translations.en;
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] != null) el.textContent = dict[key];
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-alt");
+      if (dict[key] != null) el.alt = dict[key];
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  }
+
+  document.querySelectorAll(".lang-switch button").forEach(function (btn) {
+    btn.addEventListener("click", function () { applyLang(btn.getAttribute("data-lang")); });
+  });
+
+  var saved;
+  try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+  var initial = saved || (navigator.language && navigator.language.toLowerCase().indexOf("tr") === 0 ? "tr" : "en");
+  applyLang(initial);
+})();
+</script>
 </body>
 </html>
