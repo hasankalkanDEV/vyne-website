@@ -1,478 +1,669 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vyne: your life, beautifully mapped</title>
-<meta name="description" content="Vyne turns your life into a growing vine: branch out into work, habits, health and goals, build habits that actually stick, and track it all with zero ads.">
-<meta property="og:title" content="Vyne: your life, beautifully mapped">
-<meta property="og:description" content="Branch your whole life like a vine, build habits that actually stick, and track it all with zero ads. Coming soon to Google Play.">
+<title>Vyne — hayatın, tek bir yerden</title>
+<meta name="description" content="Tek bir noktadan başla, hayatının her alanı bir dala dönüşsün. Alışkanlıklar gerçekten kalıcı olsun. Reklamsız, hesapsız, tamamen çevrimdışı.">
+<link rel="canonical" href="https://hasankalkanDEV.github.io/vyne-website/">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F8F6F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1C18" media="(prefers-color-scheme: dark)">
+
+<meta property="og:title" content="Vyne — hayatın, tek bir yerden">
+<meta property="og:description" content="Tek bir noktadan başla, hayatının her alanı bir dala dönüşsün. Reklamsız, hesapsız, tamamen çevrimdışı.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vyne: your life, beautifully mapped">
-<meta name="twitter:description" content="Branch your whole life like a vine, build habits that actually stick, and track it all with zero ads.">
+<meta property="og:url" content="https://hasankalkanDEV.github.io/vyne-website/">
+<meta property="og:image" content="https://hasankalkanDEV.github.io/vyne-website/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vyne: merkezdeki bir baloncuktan hayatın alanlarına dallanan sarmaşık">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vyne — hayatın, tek bir yerden">
+<meta name="twitter:description" content="Tek bir noktadan başla, hayatının her alanı bir dala dönüşsün.">
+<meta name="twitter:image" content="https://hasankalkanDEV.github.io/vyne-website/og-image.png">
+
+<link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root {
-    --bg: #F8F6F0;
-    --card: #FFFFFF;
-    --cardAlt: #F2EFE8;
-    --border: #E8E4DC;
-    --ink: #2C2A26;
-    --ink-sub: #9C9488;
-    --accent: #6E9468;
-    --accent-deep: #5C8E5C;
-    --accent-soft: #E4F4E0;
-    --shadow: 0 2px 4px rgba(44,42,38,0.05), 0 12px 28px rgba(44,42,38,0.06);
+/* ===========================================================================
+   Nunito — yerel dosyalar, dış CDN yok. Değişken font: tek dosya tüm ağırlıkları
+   taşıyor. latin-ext, Türkçe karakterler (ş ğ ı ç ö ü) için gerekli.
+   =========================================================================== */
+@font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;
+  src:url(fonts/nunito-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;
+  src:url(fonts/nunito-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+/* ===========================================================================
+   TASARIM TOKEN'LARI — vyne/src/tokens.js ile birebir aynı değerler.
+   Uygulama ile site aynı dili konuşsun diye buradaki hiçbir renk uydurma değil.
+   Kontrast: slate #6C6860 / bg #F8F6F0 = 5.1:1, greenText #4A6E45 / bg = 5.4:1.
+   Hepsi WCAG AA (4.5:1) üstünde.
+   =========================================================================== */
+:root{
+  --bg:#F8F6F0; --card:#FFFFFF; --card-alt:#F2EFE8; --border:#E8E4DC;
+  --ink:#2C2A26; --slate:#6C6860;
+  --green:#6E9468;        /* dolgu/kenarlık */
+  --green-text:#4A6E45;   /* metin/bağlantı */
+  --green-soft:#E4F4E0;
+  /* Düğme ZEMİNİ, kenarlık yeşilinden farklı: üstünde beyaz metin duruyor ve
+     #6E9468 üzerinde beyaz yalnızca 3.44:1 veriyor (gereken 4.5). Metin taşıyan
+     dolgular bu yüzden --green-text tonunu kullanır: beyaz üzerinde 5.8:1. */
+  --btn-bg:var(--green-text);
+  --btn-ink:#FFFFFF;
+  --shadow:0 2px 4px rgba(44,42,38,.04), 0 12px 28px rgba(44,42,38,.06);
+  --shadow-lg:0 8px 20px rgba(44,42,38,.06), 0 24px 60px rgba(44,42,38,.10);
+  /* Dal renkleri — uygulamanın gerçek CAT paleti (constants.js) */
+  --c1:#BEA8EE; --c2:#96BEE8; --c3:#EE96BA; --c4:#EEE096; --c5:#96EEC8; --c6:#F0D8A8;
+  --r-md:12px; --r-lg:16px; --r-xl:22px; --r-pill:999px;
+  --enter:260ms; --ease:cubic-bezier(.22,.61,.36,1);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1E1C18; --card:#2C2A26; --card-alt:#363430; --border:#3C3A36;
+    --ink:#F0EDE8; --slate:#A19E9A;
+    --green:#A6CB9E; --green-text:#A6CB9E; --green-soft:#2C3A2C;
+    --btn-bg:#A6CB9E; --btn-ink:#16200F;
+    --shadow:0 2px 4px rgba(0,0,0,.24), 0 12px 28px rgba(0,0,0,.3);
+    --shadow-lg:0 8px 20px rgba(0,0,0,.3), 0 24px 60px rgba(0,0,0,.4);
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #17160F; --card: #211F19; --cardAlt: #2A2820; --border: #3A372C;
-      --ink: #F0EDE8; --ink-sub: #9C9488; --accent: #8FB884; --accent-deep: #A6CB9E; --accent-soft: #26331F;
-      --shadow: 0 2px 4px rgba(0,0,0,0.25), 0 12px 28px rgba(0,0,0,0.3);
-    }
-  }
-  * { box-sizing: border-box; }
-  body { background: var(--bg); margin: 0; }
-  .site {
-    color: var(--ink);
-    font-family: -apple-system, "Segoe UI", "Century Gothic", "Trebuchet MS", sans-serif;
-    line-height: 1.55;
-    overflow-x: hidden;
-  }
-  h1, h2, h3 { font-family: "Century Gothic", "Trebuchet MS", "Segoe UI", sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+}
 
-  nav { display: flex; align-items: center; justify-content: space-between; max-width: 1040px; margin: 0 auto; padding: 22px 24px; }
-  .brand { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
-  .brand span { color: var(--accent); }
-  .nav-right { display: flex; align-items: center; gap: 20px; }
-  .nav-links { display: flex; gap: 22px; font-size: 14px; font-weight: 600; }
-  .nav-links a { color: var(--ink-sub); text-decoration: none; }
-  .nav-links a:hover { color: var(--accent); }
-  .lang-switch { display: flex; gap: 3px; background: var(--cardAlt); border: 1px solid var(--border); border-radius: 999px; padding: 3px; }
-  .lang-switch button { border: none; background: transparent; font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; cursor: pointer; color: var(--ink-sub); font-family: inherit; }
-  .lang-switch button.active { background: var(--accent); color: #fff; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:600; line-height:1.6; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-weight:900; letter-spacing:-.02em; line-height:1.14; margin:0}
+p{margin:0}
+a{color:var(--green-text)}
+img{max-width:100%; height:auto; display:block}
+:focus-visible{outline:3px solid var(--green); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-  .hero { max-width: 1040px; margin: 20px auto 0; padding: 20px 24px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-  .hero-copy .kicker { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--accent-soft); color: var(--accent-deep); padding: 5px 14px; border-radius: 999px; margin-bottom: 18px; }
-  .hero-copy h1 { font-size: 42px; line-height: 1.12; margin: 0 0 16px; }
-  .hero-copy p.lede { font-size: 17px; color: var(--ink-sub); max-width: 440px; margin: 0 0 26px; }
-  .cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .cta-primary { background: var(--accent); color: #fff; font-weight: 800; font-size: 14.5px; padding: 14px 26px; border-radius: 16px; text-decoration: none; box-shadow: var(--shadow); }
-  .cta-secondary { color: var(--ink-sub); font-size: 13.5px; font-weight: 600; }
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--card);
+  padding:10px 18px;border-radius:var(--r-md);box-shadow:var(--shadow);font-weight:800;text-decoration:none}
+.skip:focus{left:16px}
 
-  .hero-art { display: flex; align-items: center; justify-content: center; }
-  .hero-art svg { width: 100%; max-width: 460px; height: auto; }
+/* ===================== NAV ===================== */
+nav{position:sticky; top:0; z-index:50; background:var(--bg);
+  border-bottom:1px solid transparent; transition:border-color 200ms}
+@supports (backdrop-filter:blur(1px)){
+  nav{background:color-mix(in srgb, var(--bg) 84%, transparent); backdrop-filter:blur(12px)}
+}
+nav.stuck{border-bottom-color:var(--border)}
+.nav-in{display:flex; align-items:center; justify-content:space-between; gap:16px;
+  max-width:1080px; margin:0 auto; padding:14px 24px}
+.brand{font-weight:900; font-size:21px; letter-spacing:-.03em; text-decoration:none; color:var(--ink)}
+.brand i{color:var(--green-text); font-style:normal}
+.nav-right{display:flex; align-items:center; gap:18px}
+.nav-links{display:flex; gap:20px; font-size:14px; font-weight:700}
+.nav-links a{color:var(--slate); text-decoration:none}
+.nav-links a:hover{color:var(--green-text)}
+.lang{display:flex; gap:2px; background:var(--card-alt); border:1px solid var(--border);
+  border-radius:var(--r-pill); padding:3px}
+.lang button{border:0; background:transparent; font:inherit; font-size:12px; font-weight:800;
+  padding:5px 11px; border-radius:var(--r-pill); cursor:pointer; color:var(--slate)}
+.lang button[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-ink)}
 
-  .section { max-width: 1040px; margin: 0 auto; padding: 70px 24px; }
-  .section-head { text-align: center; margin-bottom: 44px; }
-  .section-head .eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-  .section-head h2 { font-size: 30px; margin: 0 0 10px; }
-  .section-head p { color: var(--ink-sub); font-size: 15.5px; max-width: 520px; margin: 0 auto; }
+/* ===================== HERO ===================== */
+.hero{min-height:calc(100svh - 62px); display:grid; place-items:center; text-align:center; padding:40px 24px 60px}
+.kicker{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:800;
+  letter-spacing:.04em; text-transform:uppercase; background:var(--green-soft);
+  color:var(--green-text); padding:6px 15px; border-radius:var(--r-pill); margin-bottom:22px}
+.hero h1{font-size:clamp(38px,7.4vw,72px); margin-bottom:20px}
+.hero .lede{font-size:clamp(16px,2.1vw,19px); color:var(--slate); max-width:44ch; margin:0 auto 30px}
+.btn{display:inline-block; background:var(--btn-bg); color:var(--btn-ink); font-weight:800; font-size:15px;
+  padding:15px 30px; border-radius:var(--r-lg); text-decoration:none; box-shadow:var(--shadow);
+  transition:transform var(--enter) var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.hero-meta{margin-top:16px; font-size:13.5px; color:var(--slate)}
+.cue{margin-top:52px; color:var(--slate); font-size:12px; font-weight:800; letter-spacing:.12em;
+  text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:10px}
+.cue span{display:block; width:1px; height:34px;
+  background:linear-gradient(var(--border), var(--green)); animation:cue 1.9s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(.2);transform-origin:top}49%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
 
-  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
-  .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 26px 22px; box-shadow: var(--shadow); }
-  .feature-card .icon { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); }
-  @media (prefers-color-scheme: dark) { .feature-card .icon { box-shadow: 0 0 0 1px rgba(255,255,255,0.08); } }
-  .feature-card h3 { font-size: 16.5px; margin: 0 0 8px; }
-  .feature-card p { font-size: 13.8px; color: var(--ink-sub); margin: 0; }
+/* ===========================================================================
+   SAHNE — "Uzaklaş". Tek bir ilerleme değeri (--p, 0→1) her şeyi sürüyor.
+   İKİ SÜRÜCÜ, TEK KEYFRAME SETİ:
+     1) CSS scroll-driven animations (Chrome/Edge 115+, Safari 26+, ~%84 destek):
+        animation-timeline compositor'da akar, ana iş parçacığını meşgul etmez.
+     2) Desteklenmiyorsa (bugün esasen Firefox stabil): JS `--p` yazar, animasyonlar
+        `animation-play-state:paused` + negatif `animation-delay` ile o ana sarılır.
+   Aynı @keyframes iki durumda da kullanılır — iki ayrı animasyon kodu YOK.
+   =========================================================================== */
+/* --- TEMEL DURUM: hareket YOK. Harita tam çizilmiş, dört altyazı alt alta
+   okunur. JS kapalı, tarayıcı eski, kullanıcı hareketi kısmış ya da animasyon
+   motoru çalışmıyorsa görülen budur: eksiksiz, asla boş değil. Hareket sadece
+   <html class="motion"> varken ÜSTÜNE eklenir. --- */
+.track{position:relative; padding:40px 0}
+.stage{display:block}
+.map-wrap{width:min(94vw,1000px); margin:0 auto; transform-origin:50% 50%}
+.map{width:100%; height:auto; overflow:visible}
+.branch,.twig{stroke-dashoffset:0}
+.node,.leafdot{opacity:1}
+.caps{margin-top:36px; display:flex; flex-direction:column; gap:22px; text-align:center}
+.cap{opacity:1; font-size:clamp(19px,3.2vw,30px); font-weight:900; letter-spacing:-.02em}
+.cap small{display:block; font-size:15px; font-weight:600; color:var(--slate);
+  letter-spacing:0; margin-top:8px}
 
-  .theme-label { text-align: center; font-size: 13.5px; font-weight: 700; color: var(--ink-sub); margin: 44px 0 0; }
-  .theme-strip { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
-  .theme-chip { display: flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 700; }
-  .theme-dot { width: 14px; height: 14px; border-radius: 50%; }
+.motion .track{height:460vh; padding:0}
+.motion .stage{position:sticky; top:0; height:100svh; display:grid; place-items:center; overflow:hidden}
+.motion .branch,.motion .twig{stroke-dashoffset:1}
+.motion .node,.motion .leafdot{opacity:0}
+.motion .caps{position:absolute; left:0; right:0; bottom:clamp(24px,6vh,64px); margin:0;
+  display:block; padding:0 24px; pointer-events:none}
+.motion .cap{position:absolute; left:0; right:0; padding:0 24px; opacity:0}
 
-  .screens { display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
-  .phone-frame { width: 210px; border-radius: 30px; border: 7px solid var(--ink); padding: 7px; background: var(--ink); box-shadow: var(--shadow); }
-  .phone-frame img { width: 100%; display: block; border-radius: 22px; }
-  @media (prefers-color-scheme: dark) { .phone-frame { border-color: #454138; background: #454138; } }
+.motion .anim{animation-duration:1s; animation-timing-function:linear; animation-fill-mode:both;
+  animation-play-state:paused; animation-delay:calc(var(--p,0) * -1s)}
+/* NOT: `scroll-timeline` DEĞİL `view-timeline`. scroll-timeline, üzerine konduğu
+   elemanın KENDİSİNİN kayan bir kapsayıcı olmasını ister; .track kaymıyor
+   (sayfa kayıyor). `contain` aralığı = .track'in viewport'u tam kapladığı süre
+   = sticky sahnenin ekranda kaldığı süre, JS yedeğiyle birebir aynı değer. */
+@supports (animation-timeline:view()){
+  .motion .track{view-timeline-name:--zoom; view-timeline-axis:block}
+  .motion .anim{animation-timeline:--zoom; animation-duration:auto; animation-delay:0s;
+    animation-play-state:running; animation-range:contain 0% contain 100%}
+}
 
-  .philosophy { background: var(--cardAlt); border-radius: 28px; padding: 54px 40px; text-align: center; }
-  .philosophy p.big { font-family: "Century Gothic", "Trebuchet MS", serif; font-size: 24px; line-height: 1.4; max-width: 620px; margin: 0 auto 14px; }
-  .philosophy p.small { color: var(--ink-sub); font-size: 14px; }
-  .about-bio { max-width: 560px; margin: 26px auto 0; text-align: center; }
-  .about-bio p { color: var(--ink-sub); font-size: 14px; margin: 0; }
-  .about-bio a { color: var(--accent); font-weight: 700; text-decoration: none; }
+/* Kamera: yakından başlar, tam haritaya kadar geri çekilir */
+@keyframes camera{
+  0%{transform:scale(2.45) translateY(2%)}
+  62%{transform:scale(1.18) translateY(0)}
+  100%{transform:scale(1) translateY(0)}
+}
+.motion .map-wrap.anim{animation-name:camera}
 
-  .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-  .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2px 22px; box-shadow: var(--shadow); }
-  .faq-item summary { cursor: pointer; font-weight: 700; font-size: 15px; padding: 17px 0; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after { content: "+"; font-size: 20px; color: var(--accent); font-weight: 400; flex-shrink: 0; }
-  .faq-item[open] summary::after { content: "\2013"; }
-  .faq-item p { color: var(--ink-sub); font-size: 14px; margin: 0 0 18px; }
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0; transform:scale(.72)} to{opacity:1; transform:scale(1)}}
+@keyframes capFade{0%{opacity:0;transform:translateY(10px)}18%{opacity:1;transform:none}
+  82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
+.motion .branch.anim,.motion .twig.anim{animation-name:draw}
+.motion .node.anim,.motion .leafdot.anim{animation-name:pop}
+.motion .cap.anim{animation-name:capFade}
 
-  .cta-band { background: var(--accent-soft); border-radius: 28px; padding: 54px 40px; text-align: center; }
-  .cta-band h2 { font-size: 26px; margin: 0 0 12px; }
-  .cta-band p { color: var(--ink-sub); font-size: 15px; max-width: 460px; margin: 0 auto 24px; }
+/* Aralıklar scripts/build-scene.mjs tarafından üretilir, elle düzenleme */
+<!--SCENE-CSS-->
+.motion .b1{animation-range:contain 0% contain 34%}
+.motion .b2{animation-range:contain 4% contain 38%}
+.motion .b3{animation-range:contain 8% contain 42%}
+.motion .b4{animation-range:contain 12% contain 46%}
+.motion .b5{animation-range:contain 16% contain 50%}
+.motion .b6{animation-range:contain 20% contain 54%}
+.motion .n1{animation-range:contain 26% contain 38%}
+.motion .n2{animation-range:contain 30% contain 42%}
+.motion .n3{animation-range:contain 34% contain 46%}
+.motion .n4{animation-range:contain 38% contain 50%}
+.motion .n5{animation-range:contain 42% contain 54%}
+.motion .n6{animation-range:contain 46% contain 58%}
+.motion .twig{animation-range:contain 58% contain 84%}
+.motion .leafdot{animation-range:contain 66% contain 90%}
+.motion .k1{animation-range:contain 0% contain 24%}
+.motion .k2{animation-range:contain 24% contain 50%}
+.motion .k3{animation-range:contain 52% contain 76%}
+.motion .k4{animation-range:contain 78% contain 100%}
+<!--/SCENE-CSS-->
 
-  footer { max-width: 1040px; margin: 0 auto; padding: 40px 24px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; border-top: 1px solid var(--border); }
-  footer .brand-small { font-weight: 800; font-size: 14px; }
-  footer .links { display: flex; gap: 20px; font-size: 13px; }
-  footer a { color: var(--ink-sub); text-decoration: none; }
-  footer a:hover { color: var(--accent); }
+/* --- Sahnenin görünümü: sade pastel etiket + ince kıvrım --- */
+.branch{fill:none; stroke-width:3.4; stroke-linecap:round; stroke-dasharray:1}
+.b1{stroke:#BEA8EE} .b2{stroke:#96BEE8} .b3{stroke:#EE96BA}
+.b4{stroke:#EEE096} .b5{stroke:#96EEC8} .b6{stroke:#F0D8A8}
+.twig{fill:none; stroke-width:2; stroke-linecap:round; stroke-dasharray:1; opacity:.8}
+.node{transform-box:fill-box; transform-origin:center}
+.node-box{fill:var(--card); stroke:var(--border); stroke-width:1.5}
+.node-label{font-size:19px; font-weight:800; fill:var(--ink)}
+.hub-ring{fill:none; stroke:var(--green); stroke-width:2.5; opacity:.4}
+.hub{fill:var(--green)}
+.hub-label{font-size:16px; font-weight:800; fill:var(--slate); text-anchor:middle}
 
-  @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 10px; }
-    .hero-copy p.lede { margin-left: auto; margin-right: auto; }
-    .cta-row { justify-content: center; }
-    .hero-art { order: -1; }
-    .hero-copy h1 { font-size: 32px; }
-    nav { flex-wrap: wrap; gap: 12px; }
-    .nav-links { gap: 14px; }
-  }
+/* ===================== BÖLÜMLER ===================== */
+section{padding:clamp(64px,10vw,120px) 0}
+.head{text-align:center; max-width:620px; margin:0 auto clamp(36px,5vw,56px)}
+.eyebrow{font-size:12.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--green-text); margin-bottom:10px}
+.head h2{font-size:clamp(26px,4vw,38px); margin-bottom:12px}
+.head p{color:var(--slate); font-size:16.5px}
+
+/* Yakınlaş — gerçek ekranlar */
+.closeup{display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,6vw,72px); align-items:center}
+.phone{width:min(280px,72vw); margin:0 auto; border-radius:38px; padding:9px;
+  background:var(--ink); box-shadow:var(--shadow-lg)}
+.phone img{border-radius:30px; aspect-ratio:640/1328; background:var(--card-alt)}
+.steps{display:flex; flex-direction:column; gap:22px}
+.step{display:flex; gap:14px; align-items:flex-start}
+.step b{flex:none; width:28px; height:28px; border-radius:var(--r-pill); background:var(--green-soft);
+  color:var(--green-text); display:grid; place-items:center; font-size:13px; font-weight:900}
+.step p{font-size:15.5px; color:var(--slate)}
+.step p strong{color:var(--ink); font-weight:800}
+
+/* Sözlerimiz */
+.promises{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+.promise{background:var(--card); border:1px solid var(--border); border-radius:var(--r-xl);
+  padding:26px 22px; box-shadow:var(--shadow)}
+.promise h3{font-size:16.5px; margin-bottom:7px}
+.promise p{font-size:14px; color:var(--slate)}
+.promise .ic{width:40px; height:40px; border-radius:var(--r-md); display:grid; place-items:center;
+  font-size:20px; margin-bottom:14px; background:var(--green-soft)}
+
+/* Temalar */
+.themes{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px}
+.chip{display:flex; align-items:center; gap:8px; padding:9px 16px; border-radius:var(--r-pill);
+  border:1.5px solid var(--border); font-size:13.5px; font-weight:800}
+.dot{width:15px; height:15px; border-radius:50%; border:1px solid rgba(128,128,128,.28)}
+
+/* SSS */
+.faq{max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:10px}
+details{background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg);
+  padding:2px 22px; box-shadow:var(--shadow)}
+summary{cursor:pointer; font-weight:800; font-size:15.5px; padding:17px 0; list-style:none;
+  display:flex; justify-content:space-between; align-items:center; gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-size:22px; font-weight:400; color:var(--green-text); flex:none}
+details[open] summary::after{content:"\2013"}
+details p{color:var(--slate); font-size:14.5px; margin-bottom:19px}
+
+/* Kapanış */
+.band{background:var(--green-soft); border-radius:28px; padding:clamp(40px,6vw,60px) 32px; text-align:center}
+.band h2{font-size:clamp(24px,3.4vw,32px); margin-bottom:12px}
+.band p{color:var(--slate); font-size:15.5px; max-width:46ch; margin:0 auto 26px}
+
+footer{border-top:1px solid var(--border); padding:36px 0 64px}
+.foot{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px}
+.foot .links{display:flex; gap:20px; font-size:13.5px; flex-wrap:wrap}
+.foot a{color:var(--slate); text-decoration:none; padding:4px 0; display:inline-block}
+.foot a:hover{color:var(--green-text)}
+
+@media (max-width:820px){
+  .closeup{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .track{height:420vh}
+  .cap{font-size:20px}
+}
+
+/* ===========================================================================
+   HAREKET AZALTMA — sistem ayarı "azalt" diyorsa sayfa tamamen statik ve TAM
+   OKUNUR olur: sahne normal akışa döner, harita son hâlinde durur, dört
+   altyazı üst üste değil alt alta görünür. Hiçbir bilgi kaybolmaz.
+   =========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cue span{animation:none}
+  .btn{transition:none}
+}
 </style>
+<script>
+/* Hareketi ERKEN aç: <html class="motion">. Sayfa boyanmadan önce çalışır ki
+   uzun sahne (460vh) bir an statik hâlde görünüp sonra zıplamasın. Kullanıcı
+   sistem ayarında hareketi kısmışsa sınıf hiç eklenmez ve sayfa statik kalır. */
+try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
+  document.documentElement.classList.add('motion'); }catch(e){}
+</script>
 </head>
 <body>
-<div class="site">
-  <nav>
-    <div class="brand">vyne<span>.</span></div>
+<a class="skip" href="#main" data-i18n="skip">İçeriğe geç</a>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">vyne<i>.</i></a>
     <div class="nav-right">
       <div class="nav-links">
-        <a href="#features" data-i18n="nav_features">Features</a>
-        <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
-        <a href="#faq" data-i18n="nav_faq">FAQ</a>
-        <a href="https://hasankalkanDEV.github.io/vyne-legal/" data-i18n="nav_privacy">Privacy</a>
+        <a href="#how" data-i18n="nav_how">Nasıl çalışır</a>
+        <a href="#promises" data-i18n="nav_promises">Sözlerimiz</a>
+        <a href="#faq" data-i18n="nav_faq">SSS</a>
+        <a href="https://hasankalkanDEV.github.io/vyne-legal/" data-i18n="nav_privacy">Gizlilik</a>
       </div>
-      <div class="lang-switch">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="tr">TR</button>
-      </div>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-copy">
-      <span class="kicker" data-i18n="kicker">🌱 Coming soon to Google Play</span>
-      <h1 data-i18n="hero_h1">Your life, beautifully mapped.</h1>
-      <p class="lede" data-i18n="hero_lede">Start from one bubble (you) and branch out into whatever matters: work, health, habits, goals. Habits get real psychological backup, like never-miss-twice warnings and identity prompts, so they actually stick instead of fading out in a week like every other checklist.</p>
-      <div class="cta-row">
-        <a class="cta-primary" href="#features" data-i18n="cta_see_how">See how it works ↓</a>
-        <span class="cta-secondary" data-i18n="cta_secondary">Free · No ads today · Works fully offline</span>
+      <div class="lang" role="group" aria-label="Dil / Language">
+        <button type="button" data-lang="tr" aria-pressed="true">TR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
     </div>
-    <div class="hero-art">
-      <svg viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 148 200 C 90 190 70 150 60 110" stroke="#C9B8F0" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path d="M 152 190 C 110 160 120 120 110 70" stroke="#F0CDB8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path d="M 160 215 C 120 250 90 260 55 280" stroke="#B8F0D8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path d="M 165 230 C 140 280 150 310 130 350" stroke="#F0B8D4" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+  </div>
+</nav>
 
-        <g>
-          <rect x="10" y="88" width="118" height="46" rx="14" fill="#EDE8FB"/>
-          <text x="26" y="116" font-size="16" font-family="sans-serif" data-i18n="svg_goals">🎯 Goals</text>
-        </g>
-        <g>
-          <rect x="30" y="46" width="130" height="46" rx="14" fill="#FBF0E8"/>
-          <text x="46" y="74" font-size="16" font-family="sans-serif" data-i18n="svg_work">💼 Work</text>
-        </g>
-        <g>
-          <rect x="0" y="256" width="120" height="46" rx="14" fill="#E0F8EC"/>
-          <text x="16" y="284" font-size="16" font-family="sans-serif" data-i18n="svg_habits">🔁 Habits</text>
-        </g>
-        <g>
-          <rect x="78" y="326" width="130" height="46" rx="14" fill="#FBE4F0"/>
-          <text x="94" y="354" font-size="16" font-family="sans-serif" data-i18n="svg_health">❤️ Health</text>
-        </g>
+<main id="main">
+<header class="hero" id="top">
+  <div>
+    <span class="kicker" data-i18n="kicker">🌱 Kapalı testte</span>
+    <h1 data-i18n="h1">Hayatın,<br>tek bir yerden.</h1>
+    <p class="lede" data-i18n="lede">Tek bir noktadan başlıyor: sen. Önemli olan her şey oradan bir dala dönüşüyor. Kaydır, hepsini bir arada gör.</p>
+    <a class="btn" href="#early" data-i18n="cta1">Erken erişim iste</a>
+    <p class="hero-meta" data-i18n="meta">Ücretsiz · Reklamsız · Hesap gerekmez</p>
+    <p class="cue"><span></span><em style="font-style:normal" data-i18n="cue">Kaydır</em></p>
+  </div>
+</header>
 
-        <circle cx="230" cy="205" r="62" fill="none" stroke="#6E9468" stroke-width="3"/>
-        <circle cx="230" cy="205" r="52" fill="#6E9468"/>
-        <text x="230" y="215" font-size="34" font-family="sans-serif" font-weight="800" fill="#fff" text-anchor="middle">V</text>
+<!-- =================== UZAKLAŞ =================== -->
+<section class="track" id="how" aria-labelledby="how-h">
+  <h2 id="how-h" class="sr" data-i18n="how_sr">Vyne nasıl çalışır: merkezden dallanan bir hayat haritası</h2>
+  <div class="stage">
+    <div class="map-wrap anim">
+      <!--SCENE-->
+<svg class="map" viewBox="0 0 900 620" role="img" aria-labelledby="mapdesc">
+<desc id="mapdesc" data-i18n="map_desc">Ortada seni temsil eden yeşil bir baloncuk; ondan iş, sağlık, alışkanlıklar, çalışma, bütçe ve spor dallarına uzanan renkli eğriler, uçlarında etiketler ve daha küçük alt dallar.</desc>
 
-        <path d="M 300 195 C 340 180 360 150 385 115" stroke="#96CEEE" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path d="M 305 175 C 350 140 355 100 340 55" stroke="#F0D8A8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path d="M 300 225 C 345 245 365 265 405 285" stroke="#96EEC8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path d="M 290 240 C 320 285 310 315 330 355" stroke="#EEE096" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+<g>
+  <path class="twig anim" stroke="#BEA8EE" pathLength="1" d="M 250 118 C 214 92, 196 84, 168 66"/>
+  <path class="twig anim" stroke="#BEA8EE" pathLength="1" d="M 250 130 C 212 138, 196 148, 166 160"/>
+  <path class="twig anim" stroke="#EE96BA" pathLength="1" d="M 244 440 C 208 456, 190 470, 160 490"/>
+  <path class="twig anim" stroke="#EE96BA" pathLength="1" d="M 244 428 C 206 412, 188 400, 158 384"/>
+  <path class="twig anim" stroke="#EEE096" pathLength="1" d="M 656 122 C 692 96, 710 86, 740 68"/>
+  <path class="twig anim" stroke="#96EEC8" pathLength="1" d="M 660 300 C 700 300, 716 300, 748 300"/>
+  <path class="twig anim" stroke="#F0D8A8" pathLength="1" d="M 652 468 C 690 486, 706 496, 736 514"/>
+  <circle class="leafdot anim" cx="160" cy="62" r="9" fill="#BEA8EE"/>
+  <circle class="leafdot anim" cx="158" cy="164" r="9" fill="#BEA8EE"/>
+  <circle class="leafdot anim" cx="152" cy="494" r="9" fill="#EE96BA"/>
+  <circle class="leafdot anim" cx="150" cy="380" r="9" fill="#EE96BA"/>
+  <circle class="leafdot anim" cx="748" cy="64" r="9" fill="#EEE096"/>
+  <circle class="leafdot anim" cx="756" cy="300" r="9" fill="#96EEC8"/>
+  <circle class="leafdot anim" cx="744" cy="518" r="9" fill="#F0D8A8"/>
+</g>
 
-        <g>
-          <rect x="330" y="90" width="120" height="46" rx="14" fill="#E4F6FB"/>
-          <text x="346" y="118" font-size="16" font-family="sans-serif" data-i18n="svg_stats">📊 Stats</text>
-        </g>
-        <g>
-          <rect x="300" y="30" width="130" height="46" rx="14" fill="#FBF4E0"/>
-          <text x="316" y="58" font-size="16" font-family="sans-serif" data-i18n="svg_home">🏠 Home</text>
-        </g>
-        <g>
-          <rect x="360" y="260" width="100" height="46" rx="14" fill="#E4FBF0"/>
-          <text x="376" y="288" font-size="16" font-family="sans-serif" data-i18n="svg_hobby">🎨 Hobby</text>
-        </g>
-        <g>
-          <rect x="280" y="330" width="130" height="46" rx="14" fill="#FBFAE4"/>
-          <text x="296" y="358" font-size="16" font-family="sans-serif" data-i18n="svg_sports">⚽ Sports</text>
-        </g>
-      </svg>
+<path class="branch b1 anim" pathLength="1" d="M 412 288 C 356 250, 330 150, 258 124"/>
+<path class="branch b2 anim" pathLength="1" d="M 408 306 C 340 306, 320 306, 258 306"/>
+<path class="branch b3 anim" pathLength="1" d="M 412 324 C 356 366, 330 406, 252 434"/>
+<path class="branch b4 anim" pathLength="1" d="M 488 288 C 544 250, 578 150, 642 126"/>
+<path class="branch b5 anim" pathLength="1" d="M 492 306 C 560 306, 590 306, 642 306"/>
+<path class="branch b6 anim" pathLength="1" d="M 488 324 C 544 366, 578 434, 638 462"/>
+
+<g class="node n1 anim">
+  <rect class="node-box" x="98" y="98" width="162" height="52" rx="15"/>
+  <text class="node-label" x="120" y="131">💼 <tspan data-i18n="m_work">İş</tspan></text>
+</g>
+<g class="node n2 anim">
+  <rect class="node-box" x="96" y="280" width="162" height="52" rx="15"/>
+  <text class="node-label" x="118" y="313">❤️ <tspan data-i18n="m_health">Sağlık</tspan></text>
+</g>
+<g class="node n3 anim">
+  <rect class="node-box" x="92" y="408" width="162" height="52" rx="15"/>
+  <text class="node-label" x="114" y="441">🔁 <tspan data-i18n="m_habits">Alışkanlık</tspan></text>
+</g>
+<g class="node n4 anim">
+  <rect class="node-box" x="640" y="100" width="162" height="52" rx="15"/>
+  <text class="node-label" x="662" y="133">📚 <tspan data-i18n="m_study">Çalışma</tspan></text>
+</g>
+<g class="node n5 anim">
+  <rect class="node-box" x="640" y="280" width="162" height="52" rx="15"/>
+  <text class="node-label" x="662" y="313">💰 <tspan data-i18n="m_budget">Bütçe</tspan></text>
+</g>
+<g class="node n6 anim">
+  <rect class="node-box" x="636" y="436" width="162" height="52" rx="15"/>
+  <text class="node-label" x="658" y="469">⚽ <tspan data-i18n="m_sports">Spor</tspan></text>
+</g>
+
+<circle class="hub-ring" cx="450" cy="306" r="52"/>
+<circle class="hub" cx="450" cy="306" r="42"/>
+<text class="hub-label" x="450" y="382" data-i18n="m_you">sen</text>
+</svg>
+<!--/SCENE-->
     </div>
-  </section>
-
-  <section class="section" id="features">
-    <div class="section-head">
-      <div class="eyebrow" data-i18n="features_eyebrow">What's inside</div>
-      <h2 data-i18n="features_h2">Everything your life needs, nothing it doesn't</h2>
-      <p data-i18n="features_p">No feeds, no likes, no ads to scroll past. Just your own structure, growing the way you do.</p>
+    <div class="caps">
+      <p class="cap k1 anim" data-i18n="cap1">Merkezde sen varsın.<small>Bir liste değil, bir başlangıç noktası.</small></p>
+      <p class="cap k2 anim" data-i18n="cap2">Önemli olan her şey bir dala dönüşür.<small>İş, sağlık, alışkanlıklar, para. Hepsi kendi yerinde.</small></p>
+      <p class="cap k3 anim" data-i18n="cap3">Dallar da dallanır.<small>İstediğin kadar derin, gerektiği kadar sade.</small></p>
+      <p class="cap k4 anim" data-i18n="cap4">Ve hepsi tek bir bakışta.<small>Düz bir listede kaybolan şey, burada yerini bulur.</small></p>
     </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="icon" style="background:#E0F8EC;">🔁</div>
-        <h3 data-i18n="f1_h3">Habits that actually stick</h3>
-        <p data-i18n="f1_p">Never-miss-twice warnings, identity-based prompts, habit stacking, and a spin-the-wheel picker for when you can't decide where to start.</p>
+  </div>
+</section>
+
+<!-- =================== YAKINLAŞ =================== -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow" data-i18n="cu_eyebrow">Yakından</p>
+      <h2 data-i18n="cu_h2">Tek bir alışkanlık, gerçekten kalıcı</h2>
+      <p data-i18n="cu_p">Aşağıdaki uygulamadan gerçek bir ekran, tasarım maketi değil.</p>
+    </div>
+    <div class="closeup">
+      <div class="phone">
+        <img src="shot-home.jpg" width="640" height="1328" loading="lazy" decoding="async"
+             alt="Vyne ana ekranı: merkezdeki profilden dallanan kategoriler ve bugünün alışkanlıkları" data-i18n-alt="alt_home">
       </div>
-      <div class="feature-card">
-        <div class="icon" style="background:#EDE8FB;">🌿</div>
-        <h3 data-i18n="f2_h3">A living structure</h3>
-        <p data-i18n="f2_p">Branch anything as deep as you need: categories, projects, notes, due dates. Nothing gets flattened into one giant list.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon" style="background:#E4F6FB;">📊</div>
-        <h3 data-i18n="f3_h3">See your progress</h3>
-        <p data-i18n="f3_p">Category breakdowns, 30-day habit consistency, streaks, and a due-date calendar, so you always know what's overdue, today, or coming up.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon" style="background:#FBF0E8;">🔔</div>
-        <h3 data-i18n="f4_h3">Reminders that respect you</h3>
-        <p data-i18n="f4_p">At most one gentle check-in a day, at a time you pick. Due-date alerts and one-tap calendar export, per branch.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon" style="background:#FBE4F0;">☁️</div>
-        <h3 data-i18n="f5_h3">Your data, your choice</h3>
-        <p data-i18n="f5_p">Vyne works fully offline. Turn on cloud backup if you want it, or export a local backup file any time; otherwise we never touch your data, and you can delete it whenever you like.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon" style="background:#FBFAE4;">🎨</div>
-        <h3 data-i18n="f6_h3">Make it yours</h3>
-        <p data-i18n="f6_p">Four themes, multiple profiles for different people or areas of life, and a personal avatar that's actually you.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon" style="background:#E4EAF8;">🌐</div>
-        <h3 data-i18n="f7_h3">Now in Turkish</h3>
-        <p data-i18n="f7_p">Vyne speaks English and Turkish, switching automatically to match your phone — or pick either one yourself from Settings, any time.</p>
+      <div class="steps">
+        <div class="step"><b>1</b><p data-i18n="s1"><strong>Bir dokunuşla işaretle.</strong> Form yok, akış yok. Bugünün alışkanlıkları ekranın en üstünde durur.</p></div>
+        <div class="step"><b>2</b><p data-i18n="s2"><strong>Seri büyür.</strong> 7, 30, 66 ve 100. günde küçük kutlamalar bekler. 66 gerçek bir eşik, uydurma bir sayı değil.</p></div>
+        <div class="step"><b>3</b><p data-i18n="s3"><strong>Bir gün kaçırırsan yaprak devreye girer.</strong> Haftalarca biriktirdiğin şey tek bir kötü günde silinmez. Sadece asla üst üste iki kez.</p></div>
+        <div class="step"><b>4</b><p data-i18n="s4"><strong>Karar veremiyorsan çarkı çevir.</strong> Nereden başlayacağını ona bırak, sonra sadece iki dakika başla.</p></div>
       </div>
     </div>
-    <p class="theme-label" data-i18n="theme_label">4 built-in themes, switch any time:</p>
-    <div class="theme-strip">
-      <div class="theme-chip"><span class="theme-dot" style="background:#F8F6F0; border:1px solid #ddd;"></span><span data-i18n="theme_light">Light</span></div>
-      <div class="theme-chip"><span class="theme-dot" style="background:#F5EFE0;"></span><span data-i18n="theme_warm">Warm</span></div>
-      <div class="theme-chip"><span class="theme-dot" style="background:#1E1C18;"></span><span data-i18n="theme_dark">Dark</span></div>
-      <div class="theme-chip"><span class="theme-dot" style="background:#0F0F0F;"></span><span data-i18n="theme_midnight">Midnight</span></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="screenshots">
-    <div class="section-head">
-      <div class="eyebrow" data-i18n="screenshots_eyebrow">See it in action</div>
-      <h2 data-i18n="screenshots_h2">What using Vyne actually looks like</h2>
-      <p data-i18n="screenshots_p">No mockups here, these are real screens from the app.</p>
+<!-- =================== SÖZLERİMİZ =================== -->
+<section id="promises">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow" data-i18n="pr_eyebrow">Sözlerimiz</p>
+      <h2 data-i18n="pr_h2">Seni geri çağırmaya çalışmıyoruz</h2>
+      <p data-i18n="pr_p">Akış yok, beğeni yok, kaydırıp geçeceğin reklam yok. Vyne'e ihtiyacın kadar bakarsın, fazlası değil.</p>
     </div>
-    <div class="screens">
-      <div class="phone-frame"><img src="screenshot-home.jpg" data-i18n-alt="alt_home" alt="Vyne home screen showing branching categories, progress bars, and today's habits"></div>
-      <div class="phone-frame"><img src="screenshot-wheel.jpg" data-i18n-alt="alt_wheel" alt="Vyne's spin-the-wheel picker choosing a habit to start"></div>
-      <div class="phone-frame"><img src="screenshot-stats.jpg" data-i18n-alt="alt_stats" alt="Vyne stats screen showing streaks and progress broken down by category"></div>
+    <div class="promises">
+      <div class="promise"><div class="ic">📴</div><h3 data-i18n="p1h">Tamamen çevrimdışı</h3><p data-i18n="p1p">İnternet olmadan da her şey çalışır. Verin cihazında kalır; bulut yedeklemeyi sen açmadıkça hiçbir yere gitmez.</p></div>
+      <div class="promise"><div class="ic">🔓</div><h3 data-i18n="p2h">Hesap gerekmez</h3><p data-i18n="p2p">Kayıt yok, e-posta yok. Aç ve başla. Hesap sadece istersen, cihazlar arası yedekleme için.</p></div>
+      <div class="promise"><div class="ic">🔔</div><h3 data-i18n="p3h">Günde en fazla bir bildirim</h3><p data-i18n="p3p">Tek, nazik bir hatırlatma, seçtiğin saatte. İstemezsen o da yok.</p></div>
+      <div class="promise"><div class="ic">🚫</div><h3 data-i18n="p4h">Reklam yok</h3><p data-i18n="p4p">Dikkatin satılık değil. Bu değişirse açıkça söyleriz, var olan özellikler sessizce ücretli hale gelmez.</p></div>
     </div>
-  </section>
+    <p style="text-align:center;color:var(--slate);font-size:13.5px;font-weight:800;margin:42px 0 14px" data-i18n="th_label">Dört tema, istediğin zaman değiştir:</p>
+    <div class="themes">
+      <span class="chip"><span class="dot" style="background:#F8F6F0"></span><span data-i18n="th1">Açık</span></span>
+      <span class="chip"><span class="dot" style="background:#F5EFE0"></span><span data-i18n="th2">Sıcak</span></span>
+      <span class="chip"><span class="dot" style="background:#1E1C18"></span><span data-i18n="th3">Koyu</span></span>
+      <span class="chip"><span class="dot" style="background:#0F0F0F"></span><span data-i18n="th4">Gece Yarısı</span></span>
+    </div>
+  </div>
+</section>
 
-  <section class="section" id="philosophy">
-    <div class="philosophy">
-      <p class="big" data-i18n="philosophy_quote">"I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job."</p>
-      <p class="small" data-i18n="philosophy_author">Hasan, Vyne's developer</p>
+<!-- =================== SSS =================== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="head"><p class="eyebrow" data-i18n="fq_eyebrow">Sorular</p><h2 data-i18n="fq_h2">Sıkça sorulanlar</h2></div>
+    <div class="faq">
+      <details><summary data-i18n="q1">Vyne'i şimdi indirebilir miyim?</summary><p data-i18n="a1">Henüz mağazalarda değil. Tam lansmandan önce kapalı test aşamasında. Bize e-posta at, hazır olduğunda ilk sen bil ya da şimdiden denemeye katıl.</p></details>
+      <details><summary data-i18n="q2">Ücretsiz mi?</summary><p data-i18n="a2">Evet, ve şu an reklamsız. İleride değişirse açıkça söyleriz; var olan özellikler sessizce ücretli hale getirilmez.</p></details>
+      <details><summary data-i18n="q3">Hesap oluşturmam gerekiyor mu?</summary><p data-i18n="a3">Hayır. Vyne kayıt olmadan tamamen çevrimdışı çalışır. Hesap sadece opsiyonel bulut yedekleme için, verini başka bir cihazda geri yükleyebilesin diye.</p></details>
+      <details><summary data-i18n="q4">Verilerimi silebilir miyim?</summary><p data-i18n="a4">Evet, istediğin zaman, doğrudan uygulama içinden. Hem cihazındaki veri hem de varsa bulut yedeği. Beklemeye ya da destek talebine gerek yok.</p></details>
+      <details><summary data-i18n="q5">Bu normal bir yapılacaklar listesinden nasıl farklı?</summary><p data-i18n="a5">Düz listeler hayatını da düzleştirir: bir iş teslim tarihi, hiçbir ölçek hissi olmadan "süt al" maddesinin yanına oturur. Vyne'de birbiriyle ilgili şeyler birbirinden dallanır, böylece her parça istediğin kadar detaylı ya da sade kalır.</p></details>
+      <details><summary data-i18n="q6">Hangi platformlarda olacak?</summary><p data-i18n="a6">Android ve iPhone. İkisi de şu an test aşamasında; ilk çıkış Android tarafında olacak.</p></details>
+      <details><summary data-i18n="q7">Bunu kim yapıyor?</summary><p data-i18n="a7">Tek kişi. Arkasında ekip ya da şirket yok, sadece düz bir yapılacaklar listesine sığmayan bir hayatı tutmanın daha iyi bir yolunu arayan biri.</p></details>
     </div>
-    <div class="about-bio">
-      <p><span data-i18n="about_bio_1">Vyne is built and maintained by one person, no team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list. Questions, bug reports, or just want to say hi?</span> <a href="mailto:vyneapp.help@gmail.com">vyneapp.help@gmail.com</a></p>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="faq">
-    <div class="section-head">
-      <div class="eyebrow" data-i18n="faq_eyebrow">Questions</div>
-      <h2 data-i18n="faq_h2">Frequently asked</h2>
+<!-- =================== KAPANIŞ =================== -->
+<section id="early">
+  <div class="wrap">
+    <div class="band">
+      <h2 data-i18n="e_h2">Herkese açılmadan önce dene</h2>
+      <p data-i18n="e_p">Vyne şu an kapalı testte. Bize bir e-posta at, seni listeye ekleyelim ya da hemen denemen için davet gönderelim.</p>
+      <a class="btn" href="mailto:vyneapp.help@gmail.com?subject=Vyne%20erken%20erisim" data-i18n="e_btn">E-posta gönder</a>
     </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary data-i18n="faq1_q">Is Vyne free?</summary>
-        <p data-i18n="faq1_a">Yes. Vyne is free to use, with no ads right now. If that ever changes down the line, we'll be upfront about it, existing features won't quietly get paywalled.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-i18n="faq2_q">Do I need to create an account?</summary>
-        <p data-i18n="faq2_a">No. Vyne works fully offline with zero sign-up. An account is only needed for the optional Cloud Backup, so you can restore your data on another device.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-i18n="faq3_q">What happens to my data if I don't sign in?</summary>
-        <p data-i18n="faq3_a">It stays on your device, only. We never see it, and nothing is uploaded anywhere unless you turn on Cloud Backup yourself.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-i18n="faq4_q">Can I delete my data later?</summary>
-        <p data-i18n="faq4_a">Yes, any time, right from inside the app, both your local data and any cloud backup. No waiting, no support ticket required.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-i18n="faq5_q">Is there an iOS version?</summary>
-        <p data-i18n="faq5_a">Vyne is Android-first for now, with iOS on the way. Email us and we'll let you know the moment it's available.</p>
-      </details>
-      <details class="faq-item">
-        <summary data-i18n="faq6_q">How is this different from a regular to-do list app?</summary>
-        <p data-i18n="faq6_a">Flat lists flatten your life too: a work deadline sits right next to "buy milk" with no sense of scale. Vyne lets related things branch off each other, so each part of your life stays exactly as detailed, or as simple, as you want it.</p>
-      </details>
-    </div>
-  </section>
+  </div>
+</section>
+</main>
 
-  <section class="section" id="early-access">
-    <div class="cta-band">
-      <h2 data-i18n="early_h2">Want in before it's public?</h2>
-      <p data-i18n="early_p">Vyne is Android-first, currently in closed testing ahead of a full launch. Email us and we'll add you to the list, or invite you to try it early.</p>
-      <a class="cta-primary" href="mailto:vyneapp.help@gmail.com?subject=Early access to Vyne"><span data-i18n="email_label">Email</span> vyneapp.help@gmail.com</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="brand-small">vyne 🌿</div>
+<footer>
+  <div class="wrap foot">
+    <div style="font-weight:900;font-size:15px">vyne 🌿</div>
     <div class="links">
-      <a href="https://hasankalkanDEV.github.io/vyne-legal/" data-i18n="footer_privacy">Privacy Policy</a>
-      <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html" data-i18n="footer_terms">Terms of Service</a>
-      <a href="mailto:vyneapp.help@gmail.com" data-i18n="footer_contact">Contact</a>
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/" data-i18n="f_privacy">Gizlilik Politikası</a>
+      <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html" data-i18n="f_terms">Kullanım Şartları</a>
+      <a href="mailto:vyneapp.help@gmail.com" data-i18n="f_contact">İletişim</a>
     </div>
-  </footer>
-</div>
+  </div>
+</footer>
+
 <script>
-(function () {
-  var translations = {
-    en: {
-      title: "Vyne: your life, beautifully mapped",
-      nav_features: "Features", nav_screenshots: "Screenshots", nav_faq: "FAQ", nav_privacy: "Privacy",
-      kicker: "🌱 Coming soon to Google Play",
-      hero_h1: "Your life, beautifully mapped.",
-      hero_lede: "Start from one bubble (you) and branch out into whatever matters: work, health, habits, goals. Habits get real psychological backup, like never-miss-twice warnings and identity prompts, so they actually stick instead of fading out in a week like every other checklist.",
-      cta_see_how: "See how it works ↓",
-      cta_secondary: "Free · No ads today · Works fully offline",
-      svg_goals: "🎯 Goals", svg_work: "💼 Work", svg_habits: "🔁 Habits", svg_health: "❤️ Health",
-      svg_stats: "📊 Stats", svg_home: "🏠 Home", svg_hobby: "🎨 Hobby", svg_sports: "⚽ Sports",
-      features_eyebrow: "What's inside",
-      features_h2: "Everything your life needs, nothing it doesn't",
-      features_p: "No feeds, no likes, no ads to scroll past. Just your own structure, growing the way you do.",
-      f1_h3: "Habits that actually stick",
-      f1_p: "Never-miss-twice warnings, identity-based prompts, habit stacking, and a spin-the-wheel picker for when you can't decide where to start.",
-      f2_h3: "A living structure",
-      f2_p: "Branch anything as deep as you need: categories, projects, notes, due dates. Nothing gets flattened into one giant list.",
-      f3_h3: "See your progress",
-      f3_p: "Category breakdowns, 30-day habit consistency, streaks, and a due-date calendar, so you always know what's overdue, today, or coming up.",
-      f4_h3: "Reminders that respect you",
-      f4_p: "At most one gentle check-in a day, at a time you pick. Due-date alerts and one-tap calendar export, per branch.",
-      f5_h3: "Your data, your choice",
-      f5_p: "Vyne works fully offline. Turn on cloud backup if you want it, or export a local backup file any time; otherwise we never touch your data, and you can delete it whenever you like.",
-      f6_h3: "Make it yours",
-      f6_p: "Four themes, multiple profiles for different people or areas of life, and a personal avatar that's actually you.",
-      f7_h3: "Now in Turkish",
-      f7_p: "Vyne speaks English and Turkish, switching automatically to match your phone — or pick either one yourself from Settings, any time.",
-      theme_label: "4 built-in themes, switch any time:",
-      theme_light: "Light", theme_warm: "Warm", theme_dark: "Dark", theme_midnight: "Midnight",
-      screenshots_eyebrow: "See it in action",
-      screenshots_h2: "What using Vyne actually looks like",
-      screenshots_p: "No mockups here, these are real screens from the app.",
-      alt_home: "Vyne home screen showing branching categories, progress bars, and today's habits",
-      alt_wheel: "Vyne's spin-the-wheel picker choosing a habit to start",
-      alt_stats: "Vyne stats screen showing streaks and progress broken down by category",
-      philosophy_quote: "“I built Vyne so I could see my whole life at once, without losing anything to a flat to-do list. If it helps you notice something you'd have missed, it's done its job.”",
-      philosophy_author: "Hasan, Vyne's developer",
-      about_bio_1: "Vyne is built and maintained by one person, no team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list. Questions, bug reports, or just want to say hi?",
-      faq_eyebrow: "Questions", faq_h2: "Frequently asked",
-      faq1_q: "Is Vyne free?",
-      faq1_a: "Yes. Vyne is free to use, with no ads right now. If that ever changes down the line, we'll be upfront about it, existing features won't quietly get paywalled.",
-      faq2_q: "Do I need to create an account?",
-      faq2_a: "No. Vyne works fully offline with zero sign-up. An account is only needed for the optional Cloud Backup, so you can restore your data on another device.",
-      faq3_q: "What happens to my data if I don't sign in?",
-      faq3_a: "It stays on your device, only. We never see it, and nothing is uploaded anywhere unless you turn on Cloud Backup yourself.",
-      faq4_q: "Can I delete my data later?",
-      faq4_a: "Yes, any time, right from inside the app, both your local data and any cloud backup. No waiting, no support ticket required.",
-      faq5_q: "Is there an iOS version?",
-      faq5_a: "Vyne is Android-first for now, with iOS on the way. Email us and we'll let you know the moment it's available.",
-      faq6_q: "How is this different from a regular to-do list app?",
-      faq6_a: "Flat lists flatten your life too: a work deadline sits right next to “buy milk” with no sense of scale. Vyne lets related things branch off each other, so each part of your life stays exactly as detailed, or as simple, as you want it.",
-      early_h2: "Want in before it's public?",
-      early_p: "Vyne is Android-first, currently in closed testing ahead of a full launch. Email us and we'll add you to the list, or invite you to try it early.",
-      email_label: "Email",
-      footer_privacy: "Privacy Policy", footer_terms: "Terms of Service", footer_contact: "Contact"
-    },
-    tr: {
-      title: "Vyne: hayatın, güzelce haritalanıyor",
-      nav_features: "Özellikler", nav_screenshots: "Ekran Görüntüleri", nav_faq: "SSS", nav_privacy: "Gizlilik",
-      kicker: "🌱 Yakında Google Play'de",
-      hero_h1: "Hayatın, güzelce haritalanıyor.",
-      hero_lede: "Tek bir baloncuktan (sen) başla, önemli olan her şeye dallan: iş, sağlık, alışkanlıklar, hedefler. Alışkanlıklar gerçek bir psikolojik destekle geliyor — iki kez üst üste kaçırma uyarıları ve kimlik temelli hatırlatmalar gibi — böylece diğer yapılacaklar listeleri gibi bir hafta içinde sönmek yerine gerçekten kalıcı oluyorlar.",
-      cta_see_how: "Nasıl çalıştığını gör ↓",
-      cta_secondary: "Ücretsiz · Şu an reklamsız · Tamamen çevrimdışı çalışır",
-      svg_goals: "🎯 Hedefler", svg_work: "💼 İş", svg_habits: "🔁 Alışkanlıklar", svg_health: "❤️ Sağlık",
-      svg_stats: "📊 İstatistik", svg_home: "🏠 Ev", svg_hobby: "🎨 Hobi", svg_sports: "⚽ Spor",
-      features_eyebrow: "İçinde ne var",
-      features_h2: "Hayatının ihtiyaç duyduğu her şey, gereksiz hiçbir şey",
-      features_p: "Akış yok, beğeni yok, kaydırıp geçeceğin reklam yok. Sadece kendi yapın, senin büyüdüğün gibi büyüyor.",
-      f1_h3: "Gerçekten kalıcı olan alışkanlıklar",
-      f1_p: "İki kez üst üste kaçırma uyarıları, kimlik temelli hatırlatmalar, alışkanlık zincirleme ve nereden başlayacağına karar veremediğinde çark çevirme özelliği.",
-      f2_h3: "Yaşayan bir yapı",
-      f2_p: "İstediğin kadar derinlemesine dallandır: kategoriler, projeler, notlar, son tarihler. Hiçbir şey tek bir dev listeye sıkıştırılmıyor.",
-      f3_h3: "İlerlemeni gör",
-      f3_p: "Kategori bazlı dökümler, 30 günlük alışkanlık tutarlılığı, seriler ve son tarih takvimi — neyin geciktiğini, bugün ne olduğunu ve önümüzdekileri her zaman bilirsin.",
-      f4_h3: "Sana saygılı hatırlatmalar",
-      f4_p: "Günde en fazla bir nazik hatırlatma, seçtiğin saatte. Her dal için son tarih uyarıları ve tek dokunuşla takvime ekleme.",
-      f5_h3: "Verilerin, senin seçimin",
-      f5_p: "Vyne tamamen çevrimdışı çalışır. İstersen bulut yedeklemeyi aç, ya da istediğin zaman yerel bir yedek dosyası dışa aktar; aksi halde verine asla dokunmayız, dilediğin zaman silebilirsin.",
-      f6_h3: "Kendine göre yap",
-      f6_p: "Dört tema, farklı kişiler ya da hayat alanların için birden fazla profil ve gerçekten sana benzeyen kişisel bir avatar.",
-      f7_h3: "Artık Türkçe de var",
-      f7_p: "Vyne İngilizce ve Türkçe konuşuyor, telefonuna göre otomatik geçiş yapıyor — istersen Ayarlar'dan istediğin zaman kendin de seçebilirsin.",
-      theme_label: "4 hazır tema, istediğin zaman değiştir:",
-      theme_light: "Açık", theme_warm: "Sıcak", theme_dark: "Koyu", theme_midnight: "Gece Yarısı",
-      screenshots_eyebrow: "Kullanırken gör",
-      screenshots_h2: "Vyne'i kullanmak gerçekte nasıl görünüyor",
-      screenshots_p: "Burada mockup yok, bunlar uygulamadan gerçek ekranlar.",
-      alt_home: "Dallanan kategorileri, ilerleme çubuklarını ve bugünün alışkanlıklarını gösteren Vyne ana ekranı",
-      alt_wheel: "Başlanacak bir alışkanlığı seçen Vyne çark çevirme özelliği",
-      alt_stats: "Serileri ve kategoriye göre ilerlemeyi gösteren Vyne istatistik ekranı",
-      philosophy_quote: "“Vyne'i, tüm hayatımı bir arada görebilmek için yaptım — düz bir yapılacaklar listesinde hiçbir şeyi kaybetmeden. Sana da fark etmeyeceğin bir şeyi fark ettiriyorsa, işini yapmış demektir.”",
-      philosophy_author: "Hasan, Vyne'in geliştiricisi",
-      about_bio_1: "Vyne tek bir kişi tarafından yapılıyor ve sürdürülüyor — arkasında ekip ya da şirket yok, sadece düz bir yapılacaklar listesine sığmayan bir hayatı tutmanın daha iyi bir yolunu arayan biri var. Sorularınız, hata bildirimleriniz ya da sadece merhaba demek isterseniz:",
-      faq_eyebrow: "Sorular", faq_h2: "Sıkça sorulanlar",
-      faq1_q: "Vyne ücretsiz mi?",
-      faq1_a: "Evet. Vyne şu an reklamsız ve ücretsiz. Bu ileride değişirse açıkça söyleriz, var olan özellikler sessizce ücretli hale getirilmez.",
-      faq2_q: "Hesap oluşturmam gerekiyor mu?",
-      faq2_a: "Hayır. Vyne kayıt olmadan tamamen çevrimdışı çalışır. Hesap sadece opsiyonel Bulut Yedekleme için gerekli, böylece verini başka bir cihazda geri yükleyebilirsin.",
-      faq3_q: "Giriş yapmazsam verilerime ne olur?",
-      faq3_a: "Sadece cihazında kalır. Biz asla göremeyiz, sen kendin Bulut Yedeklemeyi açmadıkça hiçbir şey hiçbir yere yüklenmez.",
-      faq4_q: "Verilerimi daha sonra silebilir miyim?",
-      faq4_a: "Evet, istediğin zaman, doğrudan uygulama içinden — hem yerel verini hem de varsa bulut yedeğini. Beklemeye ya da destek talebine gerek yok.",
-      faq5_q: "iOS sürümü var mı?",
-      faq5_a: "Vyne şu an öncelikle Android'de, iOS yolda. Bize e-posta at, hazır olduğu an haber verelim.",
-      faq6_q: "Bu normal bir yapılacaklar listesi uygulamasından nasıl farklı?",
-      faq6_a: "Düz listeler hayatını da düzleştirir: bir iş teslim tarihi, hiçbir ölçek hissi olmadan tam “süt al” maddesinin yanına oturur. Vyne'de birbiriyle ilgili şeyler birbirinden dallanır, böylece hayatının her parçası istediğin kadar detaylı ya da basit kalır.",
-      early_h2: "Herkese açılmadan önce katılmak ister misin?",
-      early_p: "Vyne şu an öncelikle Android'de, tam lansmandan önce kapalı test aşamasında. Bize e-posta at, seni listeye ekleyelim ya da erken denemen için davet edelim.",
-      email_label: "E-posta:",
-      footer_privacy: "Gizlilik Politikası", footer_terms: "Kullanım Şartları", footer_contact: "İletişim"
-    }
-  };
+(function(){
+  'use strict';
 
-  var LANG_KEY = "vyne-site-lang";
+  /* ---------------------------------------------------------------------
+     1) SAHNE SÜRÜCÜSÜ
+     Tarayıcı CSS scroll-driven animations destekliyorsa buradaki hiçbir kod
+     çalışmaz — animasyonlar compositor'da kendi kendine akar. Desteklemiyorsa
+     (bugün esasen Firefox stabil) --p yazılır ve AYNI keyframe'ler negatif
+     animation-delay ile o ana sarılır.
+  --------------------------------------------------------------------- */
+  var supportsSDA = !!(window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()'));
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function applyLang(lang) {
-    var dict = translations[lang] || translations.en;
-    document.documentElement.lang = lang;
-    document.title = dict.title;
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (dict[key] != null) el.textContent = dict[key];
-    });
-    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-alt");
-      if (dict[key] != null) el.alt = dict[key];
-    });
-    document.querySelectorAll(".lang-switch button").forEach(function (btn) {
-      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-    });
-    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  if(!supportsSDA && !reduce){
+    var track = document.querySelector('.track');
+
+    /* Yedek sürücüde animation-range yok; her öğenin kendi penceresini
+       hesaplayıp kendi ilerlemesine çeviriyoruz. Bu aralıklar CSS'teki
+       animation-range değerleriyle BİREBİR aynı tutulmalı. */
+<!--SCENE-JS-->
+    var RANGES = {
+      'b1':[0,34],
+      'b2':[4,38],
+      'b3':[8,42],
+      'b4':[12,46],
+      'b5':[16,50],
+      'b6':[20,54],
+      'n1':[26,38],
+      'n2':[30,42],
+      'n3':[34,46],
+      'n4':[38,50],
+      'n5':[42,54],
+      'n6':[46,58],
+      'twig':[58,84],
+      'leafdot':[66,90],
+      'k1':[0,24],
+      'k2':[24,50],
+      'k3':[52,76],
+      'k4':[78,100]
+    };
+
+<!--/SCENE-JS-->
+    var mapWrap = document.querySelector('.map-wrap');
+
+    var ticking = false;
+    var update = function(){
+      ticking = false;
+      var r = track.getBoundingClientRect();
+      var total = r.height - innerHeight;
+      if(total <= 0) return;
+      var p = (-r.top) / total;
+      p = p < 0 ? 0 : (p > 1 ? 1 : p);
+      mapWrap.style.setProperty('--p', p.toFixed(4)); // kamera tüm aralığı kullanır
+      for(var i=0;i<scoped.length;i++){
+        var s = scoped[i], q = (p - s.a) / s.span;
+        s.el.style.setProperty('--p', (q < 0 ? 0 : (q > 1 ? 1 : q)).toFixed(4));
+      }
+    };
+    var onScroll = function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } };
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', onScroll, {passive:true});
+    update();
   }
 
-  document.querySelectorAll(".lang-switch button").forEach(function (btn) {
-    btn.addEventListener("click", function () { applyLang(btn.getAttribute("data-lang")); });
+  /* --------------------------------------------------------------------
+     2) NAV — kaydırınca ince bir alt çizgi kazanır
+  -------------------------------------------------------------------- */
+  var nav = document.getElementById('nav');
+  addEventListener('scroll', function(){
+    nav.classList.toggle('stuck', scrollY > 10);
+  }, {passive:true});
+
+  /* --------------------------------------------------------------------
+     3) DİL — TR/EN. Varsayılan tarayıcı dili, seçim localStorage'da kalır.
+     TR sözlüğü HTML'in kendisinden toplanır, iki yerde tutulmaz.
+  -------------------------------------------------------------------- */
+  var EN = {
+    skip:"Skip to content",
+    nav_how:"How it works", nav_promises:"Our promises", nav_faq:"FAQ", nav_privacy:"Privacy",
+    kicker:"🌱 In closed testing",
+    h1:"Your whole life,<br>from one place.",
+    lede:"It starts with a single point: you. Everything that matters grows outward from there as a branch. Scroll, and see all of it at once.",
+    cta1:"Ask for early access",
+    meta:"Free · No ads · No account needed",
+    cue:"Scroll",
+    how_sr:"How Vyne works: a map of your life branching out from the centre",
+    map_desc:"A green bubble representing you at the centre, with coloured curves reaching out to Work, Health, Habits, Study, Budget and Sports cards, plus smaller sub-branches.",
+    m_work:"Work", m_health:"Health", m_habits:"Habits", m_study:"Study", m_budget:"Budget", m_sports:"Sports", m_you:"you",
+    cap1:"It starts with you.<small>Not a list. A starting point.</small>",
+    cap2:"Everything that matters becomes a branch.<small>Work, health, habits, money. Each in its own place.</small>",
+    cap3:"Branches branch too.<small>As deep as you want, as simple as you need.</small>",
+    cap4:"And all of it, in one look.<small>What a flat list loses, this one holds.</small>",
+    cu_eyebrow:"Up close", cu_h2:"One habit, made to actually last",
+    cu_p:"Below is a real screen from the app, not a design mockup.",
+    alt_home:"Vyne home screen: categories branching from your profile, with today's habits on top",
+    s1:"<strong>Mark it with one tap.</strong> No form, no feed. Today's habits sit right at the top of the screen.",
+    s2:"<strong>The streak grows.</strong> Small celebrations wait at day 7, 30, 66 and 100. Sixty-six is a real threshold, not a made-up number.",
+    s3:"<strong>Miss a day and a leaf steps in.</strong> Weeks of consistency don't vanish over one bad day. Just never twice in a row.",
+    s4:"<strong>Can't decide? Spin the wheel.</strong> Let it pick where you start, then just begin for two minutes.",
+    pr_eyebrow:"Our promises", pr_h2:"We're not trying to pull you back in",
+    pr_p:"No feed, no likes, no ads to scroll past. You look at Vyne as much as you need to, and no more.",
+    p1h:"Fully offline", p1p:"Everything works without a connection. Your data stays on your device and goes nowhere unless you turn on cloud backup yourself.",
+    p2h:"No account needed", p2p:"No sign-up, no email. Open it and start. An account is only for optional backup across devices.",
+    p3h:"One notification a day, at most", p3p:"A single gentle reminder, at a time you choose. Or none at all, if you'd rather.",
+    p4h:"No ads", p4p:"Your attention isn't for sale. If that ever changes we'll say so plainly, and existing features won't quietly get paywalled.",
+    th_label:"Four themes, switch any time:", th1:"Light", th2:"Warm", th3:"Dark", th4:"Midnight",
+    fq_eyebrow:"Questions", fq_h2:"Frequently asked",
+    q1:"Can I download Vyne now?", a1:"Not from the stores yet. It's in closed testing ahead of a full launch. Email us and you'll be the first to know, or join and try it early.",
+    q2:"Is it free?", a2:"Yes, and there are no ads right now. If that ever changes we'll be upfront about it, and existing features won't quietly get paywalled.",
+    q3:"Do I need an account?", a3:"No. Vyne works fully offline with zero sign-up. An account is only needed for optional cloud backup, so you can restore your data on another device.",
+    q4:"Can I delete my data?", a4:"Yes, any time, right from inside the app. Both the data on your device and any cloud backup. No waiting, no support ticket.",
+    q5:"How is this different from a normal to-do list?", a5:"Flat lists flatten your life too: a work deadline sits right next to \"buy milk\" with no sense of scale. In Vyne related things branch off each other, so each part stays exactly as detailed, or as simple, as you want.",
+    q6:"Which platforms?", a6:"Android and iPhone. Both are in testing right now; Android will be first out.",
+    q7:"Who makes this?", a7:"One person. No team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list.",
+    e_h2:"Try it before it opens up", e_p:"Vyne is in closed testing. Send us an email and we'll add you to the list, or invite you to try it right away.",
+    e_btn:"Send an email",
+    f_privacy:"Privacy Policy", f_terms:"Terms of Service", f_contact:"Contact",
+    _title:"Vyne — your whole life, from one place",
+    _desc:"Start from a single point and let every part of your life grow into a branch. Habits that actually last. No ads, no account, fully offline."
+  };
+
+  var TR = {};
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    TR[el.getAttribute('data-i18n')] = el.innerHTML;
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+    TR[el.getAttribute('data-i18n-alt')] = el.alt;
+  });
+  TR._title = document.title;
+  TR._desc = document.querySelector('meta[name=description]').content;
+
+  var DICTS = {tr:TR, en:EN};
+  var KEY = 'vyne-lang';
+
+  function apply(lang){
+    var d = DICTS[lang] || TR;
+    document.documentElement.lang = lang;
+    if(d._title) document.title = d._title;
+    if(d._desc) document.querySelector('meta[name=description]').content = d._desc;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var v = d[el.getAttribute('data-i18n')];
+      if(v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+      var v = d[el.getAttribute('data-i18n-alt')];
+      if(v != null) el.alt = v;
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    try{ localStorage.setItem(KEY, lang); }catch(e){}
+  }
+
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.lang); });
   });
 
-  var saved;
-  try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
-  var initial = saved || (navigator.language && navigator.language.toLowerCase().indexOf("tr") === 0 ? "tr" : "en");
-  applyLang(initial);
+  var saved = null;
+  try{ saved = localStorage.getItem(KEY); }catch(e){}
+  apply(saved || ((navigator.language||'').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en'));
 })();
 </script>
 </body>
