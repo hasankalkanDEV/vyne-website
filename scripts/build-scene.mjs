@@ -10,7 +10,7 @@
 //
 // index.html'e üç şeyi birden yazar (üçü de aynı zamanlama tablosundan türer,
 // böylece CSS ile JS yedeği arasında sessiz kayma imkânsız):
-//   <!--SCENE-->  <!--SCENE-CSS-->  <!--SCENE-JS-->
+//   <!--SCENE--> (HTML govdesi), /*SCENE-CSS*/ (style icinde), /*SCENE-JS*/ (script icinde)
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -76,11 +76,20 @@ const js = '    var RANGES = {\n' + Object.entries(T)
   .map(([k, [a, b]]) => `      '${k}':[${a},${b}]`).join(',\n') + '\n    };\n';
 
 let html = readFileSync(OUT, 'utf8');
-const put = (tag, body) => {
-  const re = new RegExp(`<!--${tag}-->[\\s\\S]*?<!--/${tag}-->`);
+// DİKKAT: <style> ya da <script> içine HTML yorumu (<!-- -->) KOYMA.
+// CSS bunları CDO/CDC belirteci olarak ayırır; aradaki `/SCENE-CSS` metni hatalı
+// bir kural başlatır ve KENDİNDEN SONRAKİ kuralı yutar. Bu bir kez gerçekten
+// oldu: `.branch{fill:none}` yok olunca bütün dallar siyah dolgulu kamalara
+// döndü ve sahne bozuk göründü. CSS/JS içinde gerçek yorum sözdizimi kullan.
+const put = (tag, body, where = 'css') => {
+  const [open, close] = where === 'html'
+    ? [`<!--${tag}-->`, `<!--/${tag}-->`]
+    : [`/*${tag}*/`, `/*${tag}-END*/`];
+  const esc = x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`${esc(open)}[\\s\\S]*?${esc(close)}`);
   if (!re.test(html)) throw new Error(`${tag} isaretcisi bulunamadi`);
-  html = html.replace(re, `<!--${tag}-->\n${body}\n<!--/${tag}-->`);
+  html = html.replace(re, `${open}\n${body}\n${close}`);
 };
-put('SCENE', svg); put('SCENE-CSS', css); put('SCENE-JS', js);
+put('SCENE', svg, 'html'); put('SCENE-CSS', css); put('SCENE-JS', js);
 writeFileSync(OUT, html, 'utf8');
 console.log(`merkezden acilan sahne | ${Object.keys(T).length} zamanlama anahtari`);

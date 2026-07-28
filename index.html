@@ -150,6 +150,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .track{position:relative; padding:40px 0}
 .stage{display:block}
 .map-wrap{width:min(94vw,1000px); margin:0 auto; transform-origin:50% 50%}
+.motion .map-wrap{max-width:min(94vw, 1000px, calc((100svh - 190px) * 1.452))}
 .map{width:100%; height:auto; overflow:visible}
 .branch,.twig{stroke-dashoffset:0}
 .node,.leafdot{opacity:1}
@@ -162,9 +163,9 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .stage{position:sticky; top:0; height:100svh; display:grid; place-items:center; overflow:hidden}
 .motion .branch,.motion .twig{stroke-dashoffset:1}
 .motion .node,.motion .leafdot{opacity:0}
-.motion .caps{position:absolute; left:0; right:0; bottom:clamp(24px,6vh,64px); margin:0;
-  display:block; padding:0 24px; pointer-events:none}
-.motion .cap{position:absolute; left:0; right:0; padding:0 24px; opacity:0}
+.motion .caps{position:absolute; left:0; right:0; bottom:clamp(20px,5vh,56px); margin:0;
+  display:block; padding:0 24px; pointer-events:none; z-index:2}
+.motion .cap{position:absolute; left:0; right:0; bottom:0; padding:0 24px; opacity:0}
 
 .motion .anim{animation-duration:1s; animation-timing-function:linear; animation-fill-mode:both;
   animation-play-state:paused; animation-delay:calc(var(--p,0) * -1s)}
@@ -195,7 +196,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .cap.anim{animation-name:capFade}
 
 /* Aralıklar scripts/build-scene.mjs tarafından üretilir, elle düzenleme */
-<!--SCENE-CSS-->
+/*SCENE-CSS*/
 .motion .b1{animation-range:contain 0% contain 34%}
 .motion .b2{animation-range:contain 4% contain 38%}
 .motion .b3{animation-range:contain 8% contain 42%}
@@ -214,7 +215,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .k2{animation-range:contain 24% contain 50%}
 .motion .k3{animation-range:contain 52% contain 76%}
 .motion .k4{animation-range:contain 78% contain 100%}
-<!--/SCENE-CSS-->
+/*SCENE-CSS-END*/
 
 /* --- Sahnenin görünümü: sade pastel etiket + ince kıvrım --- */
 .branch{fill:none; stroke-width:3.4; stroke-linecap:round; stroke-dasharray:1}
@@ -523,7 +524,7 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     /* Yedek sürücüde animation-range yok; her öğenin kendi penceresini
        hesaplayıp kendi ilerlemesine çeviriyoruz. Bu aralıklar CSS'teki
        animation-range değerleriyle BİREBİR aynı tutulmalı. */
-<!--SCENE-JS-->
+/*SCENE-JS*/
     var RANGES = {
       'b1':[0,34],
       'b2':[4,38],
@@ -545,7 +546,7 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
       'k4':[78,100]
     };
 
-<!--/SCENE-JS-->
+/*SCENE-JS-END*/
     var mapWrap = document.querySelector('.map-wrap');
 
     var ticking = false;
