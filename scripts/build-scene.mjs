@@ -22,6 +22,10 @@ const T = {
   n1: [26, 38], n2: [30, 42], n3: [34, 46], n4: [38, 50], n5: [42, 54], n6: [46, 58],
   twig: [58, 84], leafdot: [66, 90],
   k1: [0, 24], k2: [24, 50], k3: [52, 76], k4: [78, 100],
+  // Katman 2 altyazıları — hücre zamanlamasına göre hizalandı, keyfi değil:
+  // gün 7 → %14.2, kaçırılan gün 23 → %25.4, gün 66 → %55.5, gün 100 → %79.3.
+  // Her altyazı, anlattığı olayın gerçekleştiği ana denk gelmeli.
+  ck1: [0, 14], ck2: [14, 25], ck3: [25, 52], ck4: [52, 100],
 };
 
 const C = { c1: '#BEA8EE', c2: '#96BEE8', c3: '#EE96BA', c4: '#EEE096', c5: '#96EEC8', c6: '#F0D8A8' };
@@ -70,6 +74,37 @@ ${node('n6', 636, 436, '⚽', 'm_sports', 'Spor')}
 <text class="hub-label" x="450" y="382" data-i18n="m_you">sen</text>
 </svg>`;
 
+// ===========================================================================
+// KATMAN 2 — 100 GÜNLÜK TAKVİM
+// Bu katmanın işi tek bir korkuyu yenmek: "nasılsa bırakacağım." Herkesin daha
+// önce bıraktığı yer orası. O yüzden kaçırılan gün GİZLENMİYOR, tam tersine
+// sahnenin merkezine konuyor: 23. gün kaçırılıyor ve yaprak devreye giriyor,
+// seri kırılmıyor. SDT araştırması (ScienceDirect S1071581920300513) seri+ceza
+// mekaniğinin utanç üzerinden "içe atılmış düzenleme" ürettiğini, kalıcı
+// değişimin özerk motivasyondan geldiğini gösteriyor — Vyne'in yaprağı tam
+// olarak bunun karşılığı, o yüzden sitenin en görünür anı bu olmalı.
+const CAL_COLS = 10, CELL = 44, CGAP = 12, MISSED = 22; // 0-tabanlı: 23. gün
+const MILESTONES = [6, 29, 65, 99];                     // 7 / 30 / 66 / 100
+const CAL_W = CAL_COLS * CELL + (CAL_COLS - 1) * CGAP;
+const CAL_ROWS = 10;
+const CAL_H = CAL_ROWS * CELL + (CAL_ROWS - 1) * CGAP;
+
+let cal = '';
+for (let i = 0; i < 100; i++) {
+  const cx = (i % CAL_COLS) * (CELL + CGAP);
+  const cy = Math.floor(i / CAL_COLS) * (CELL + CGAP);
+  const isMissed = i === MISSED;
+  const isMile = MILESTONES.includes(i);
+  T[`d${i}`] = [10 + i * 0.7, 12.5 + i * 0.7];
+  cal += `<g class="dcell d${i}"><rect x="${cx}" y="${cy}" width="${CELL}" height="${CELL}" rx="14"
+    fill="${isMissed ? '#E8C87A' : '#6E9468'}"/>${
+    isMissed ? `<text class="dleaf" x="${cx + CELL / 2}" y="${cy + CELL / 2 + 8}">🍃</text>` : ''}${
+    isMile ? `<circle class="dring" cx="${cx + CELL / 2}" cy="${cy + CELL / 2}" r="${CELL / 2 + 7}"/>` : ''}</g>\n`;
+}
+const calSvg = `<svg class="cal" viewBox="-14 -14 ${CAL_W + 28} ${CAL_H + 28}" role="img" aria-labelledby="caldesc">
+<desc id="caldesc" data-i18n="cal_desc">Yüz günlük bir takvim: her gün küçük bir yeşil kare olarak doluyor. Yirmi üçüncü gün kaçırılmış ama yaprakla korunduğu için altın renginde ve seri kırılmıyor. Yedinci, otuzuncu, altmış altıncı ve yüzüncü günler halkayla işaretli.</desc>
+${cal}</svg>`;
+
 const css = Object.entries(T)
   .map(([k, [a, b]]) => `.motion .${k}{animation-range:contain ${a}% contain ${b}%}`).join('\n');
 const js = '    var RANGES = {\n' + Object.entries(T)
@@ -90,6 +125,15 @@ const put = (tag, body, where = 'css') => {
   if (!re.test(html)) throw new Error(`${tag} isaretcisi bulunamadi`);
   html = html.replace(re, `${open}\n${body}\n${close}`);
 };
-put('SCENE', svg, 'html'); put('SCENE-CSS', css); put('SCENE-JS', js);
+put('SCENE', svg, 'html'); put('CAL', calSvg, 'html');
+put('SCENE-CSS', css); put('SCENE-JS', js);
 writeFileSync(OUT, html, 'utf8');
-console.log(`merkezden acilan sahne | ${Object.keys(T).length} zamanlama anahtari`);
+const inWin = (day, cap) => {
+  const [ds] = T['d' + day], [cs, ce] = T[cap];
+  return ds >= cs && ds <= ce;
+};
+const checks = [[6,'ck2'],[MISSED,'ck3'],[65,'ck4'],[99,'ck4']];
+const bad = checks.filter(([d, c]) => !inWin(d, c));
+if (bad.length) throw new Error('Altyazi hizalamasi bozuk: ' + JSON.stringify(bad));
+console.log(`sahne + 100 gunluk takvim | ${Object.keys(T).length} zamanlama anahtari`);
+console.log(`hizalama OK: gun7->%${T.d6[0]} (ck2), kacirilan gun23->%${T['d' + MISSED][0]} (ck3), gun66->%${T.d65[0]}, gun100->%${T.d99[0]}`);

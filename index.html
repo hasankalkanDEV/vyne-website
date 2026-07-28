@@ -74,6 +74,39 @@
   }
 }
 
+/* Kullanıcı bir tema seçtiğinde sitenin KENDİSİ o temaya döner. Değerler
+   vyne/src/tokens.js'teki THEMES ile birebir aynı — anlatmak yerine göstermek. */
+:root[data-theme="light"]{
+  --bg:#F8F6F0; --card:#FFFFFF; --card-alt:#F2EFE8; --border:#E8E4DC;
+  --ink:#2C2A26; --slate:#6C6860; --green:#6E9468; --green-text:#4A6E45;
+  --green-soft:#E4F4E0; --btn-bg:#4A6E45; --btn-ink:#FFFFFF;
+  --shadow:0 2px 4px rgba(44,42,38,.04), 0 12px 28px rgba(44,42,38,.06);
+  --shadow-lg:0 8px 20px rgba(44,42,38,.06), 0 24px 60px rgba(44,42,38,.10);
+}
+:root[data-theme="warm"]{
+  --bg:#F5EFE0; --card:#FDF8F0; --card-alt:#F2EFE8; --border:#E8D8C0;
+  --ink:#2C2A26; --slate:#6C6860; --green:#6E9468; --green-text:#4A6E45;
+  --green-soft:#E4F4E0; --btn-bg:#4A6E45; --btn-ink:#FFFFFF;
+  --shadow:0 2px 4px rgba(44,42,38,.05), 0 12px 28px rgba(44,42,38,.07);
+  --shadow-lg:0 8px 20px rgba(44,42,38,.07), 0 24px 60px rgba(44,42,38,.11);
+}
+:root[data-theme="dark"]{
+  --bg:#1E1C18; --card:#2C2A26; --card-alt:#363430; --border:#3C3A36;
+  --ink:#F0EDE8; --slate:#A19E9A; --green:#A6CB9E; --green-text:#A6CB9E;
+  --green-soft:#2C3A2C; --btn-bg:#A6CB9E; --btn-ink:#16200F;
+  --shadow:0 2px 4px rgba(0,0,0,.24), 0 12px 28px rgba(0,0,0,.3);
+  --shadow-lg:0 8px 20px rgba(0,0,0,.3), 0 24px 60px rgba(0,0,0,.4);
+}
+:root[data-theme="midnight"]{
+  --bg:#0F0F0F; --card:#1A1A1A; --card-alt:#242220; --border:#2A2A2A;
+  --ink:#F0EDE8; --slate:#A19E9A; --green:#A6CB9E; --green-text:#A6CB9E;
+  --green-soft:#2C3A2C; --btn-bg:#A6CB9E; --btn-ink:#16200F;
+  --shadow:0 2px 4px rgba(0,0,0,.3), 0 12px 28px rgba(0,0,0,.4);
+  --shadow-lg:0 8px 20px rgba(0,0,0,.4), 0 24px 60px rgba(0,0,0,.5);
+}
+body{transition:background-color 420ms var(--ease), color 420ms var(--ease)}
+@media (prefers-reduced-motion:reduce){ body{transition:none} }
+
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -215,6 +248,110 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .k2{animation-range:contain 24% contain 50%}
 .motion .k3{animation-range:contain 52% contain 76%}
 .motion .k4{animation-range:contain 78% contain 100%}
+.motion .ck1{animation-range:contain 0% contain 14%}
+.motion .ck2{animation-range:contain 14% contain 25%}
+.motion .ck3{animation-range:contain 25% contain 52%}
+.motion .ck4{animation-range:contain 52% contain 100%}
+.motion .d0{animation-range:contain 10% contain 12.5%}
+.motion .d1{animation-range:contain 10.7% contain 13.2%}
+.motion .d2{animation-range:contain 11.4% contain 13.9%}
+.motion .d3{animation-range:contain 12.1% contain 14.6%}
+.motion .d4{animation-range:contain 12.8% contain 15.3%}
+.motion .d5{animation-range:contain 13.5% contain 16%}
+.motion .d6{animation-range:contain 14.2% contain 16.7%}
+.motion .d7{animation-range:contain 14.899999999999999% contain 17.4%}
+.motion .d8{animation-range:contain 15.6% contain 18.1%}
+.motion .d9{animation-range:contain 16.3% contain 18.8%}
+.motion .d10{animation-range:contain 17% contain 19.5%}
+.motion .d11{animation-range:contain 17.7% contain 20.2%}
+.motion .d12{animation-range:contain 18.4% contain 20.9%}
+.motion .d13{animation-range:contain 19.1% contain 21.6%}
+.motion .d14{animation-range:contain 19.799999999999997% contain 22.299999999999997%}
+.motion .d15{animation-range:contain 20.5% contain 23%}
+.motion .d16{animation-range:contain 21.2% contain 23.7%}
+.motion .d17{animation-range:contain 21.9% contain 24.4%}
+.motion .d18{animation-range:contain 22.6% contain 25.1%}
+.motion .d19{animation-range:contain 23.299999999999997% contain 25.799999999999997%}
+.motion .d20{animation-range:contain 24% contain 26.5%}
+.motion .d21{animation-range:contain 24.7% contain 27.2%}
+.motion .d22{animation-range:contain 25.4% contain 27.9%}
+.motion .d23{animation-range:contain 26.099999999999998% contain 28.599999999999998%}
+.motion .d24{animation-range:contain 26.799999999999997% contain 29.299999999999997%}
+.motion .d25{animation-range:contain 27.5% contain 30%}
+.motion .d26{animation-range:contain 28.2% contain 30.7%}
+.motion .d27{animation-range:contain 28.9% contain 31.4%}
+.motion .d28{animation-range:contain 29.599999999999998% contain 32.099999999999994%}
+.motion .d29{animation-range:contain 30.299999999999997% contain 32.8%}
+.motion .d30{animation-range:contain 31% contain 33.5%}
+.motion .d31{animation-range:contain 31.7% contain 34.2%}
+.motion .d32{animation-range:contain 32.4% contain 34.9%}
+.motion .d33{animation-range:contain 33.099999999999994% contain 35.599999999999994%}
+.motion .d34{animation-range:contain 33.8% contain 36.3%}
+.motion .d35{animation-range:contain 34.5% contain 37%}
+.motion .d36{animation-range:contain 35.2% contain 37.7%}
+.motion .d37{animation-range:contain 35.9% contain 38.4%}
+.motion .d38{animation-range:contain 36.599999999999994% contain 39.099999999999994%}
+.motion .d39{animation-range:contain 37.3% contain 39.8%}
+.motion .d40{animation-range:contain 38% contain 40.5%}
+.motion .d41{animation-range:contain 38.7% contain 41.2%}
+.motion .d42{animation-range:contain 39.4% contain 41.9%}
+.motion .d43{animation-range:contain 40.099999999999994% contain 42.599999999999994%}
+.motion .d44{animation-range:contain 40.8% contain 43.3%}
+.motion .d45{animation-range:contain 41.5% contain 44%}
+.motion .d46{animation-range:contain 42.199999999999996% contain 44.699999999999996%}
+.motion .d47{animation-range:contain 42.9% contain 45.4%}
+.motion .d48{animation-range:contain 43.599999999999994% contain 46.099999999999994%}
+.motion .d49{animation-range:contain 44.3% contain 46.8%}
+.motion .d50{animation-range:contain 45% contain 47.5%}
+.motion .d51{animation-range:contain 45.699999999999996% contain 48.199999999999996%}
+.motion .d52{animation-range:contain 46.4% contain 48.9%}
+.motion .d53{animation-range:contain 47.099999999999994% contain 49.599999999999994%}
+.motion .d54{animation-range:contain 47.8% contain 50.3%}
+.motion .d55{animation-range:contain 48.5% contain 51%}
+.motion .d56{animation-range:contain 49.199999999999996% contain 51.699999999999996%}
+.motion .d57{animation-range:contain 49.9% contain 52.4%}
+.motion .d58{animation-range:contain 50.599999999999994% contain 53.099999999999994%}
+.motion .d59{animation-range:contain 51.3% contain 53.8%}
+.motion .d60{animation-range:contain 52% contain 54.5%}
+.motion .d61{animation-range:contain 52.699999999999996% contain 55.199999999999996%}
+.motion .d62{animation-range:contain 53.4% contain 55.9%}
+.motion .d63{animation-range:contain 54.099999999999994% contain 56.599999999999994%}
+.motion .d64{animation-range:contain 54.8% contain 57.3%}
+.motion .d65{animation-range:contain 55.5% contain 58%}
+.motion .d66{animation-range:contain 56.199999999999996% contain 58.699999999999996%}
+.motion .d67{animation-range:contain 56.9% contain 59.4%}
+.motion .d68{animation-range:contain 57.599999999999994% contain 60.099999999999994%}
+.motion .d69{animation-range:contain 58.3% contain 60.8%}
+.motion .d70{animation-range:contain 59% contain 61.5%}
+.motion .d71{animation-range:contain 59.699999999999996% contain 62.199999999999996%}
+.motion .d72{animation-range:contain 60.4% contain 62.9%}
+.motion .d73{animation-range:contain 61.099999999999994% contain 63.599999999999994%}
+.motion .d74{animation-range:contain 61.8% contain 64.3%}
+.motion .d75{animation-range:contain 62.5% contain 65%}
+.motion .d76{animation-range:contain 63.199999999999996% contain 65.69999999999999%}
+.motion .d77{animation-range:contain 63.9% contain 66.4%}
+.motion .d78{animation-range:contain 64.6% contain 67.1%}
+.motion .d79{animation-range:contain 65.3% contain 67.8%}
+.motion .d80{animation-range:contain 66% contain 68.5%}
+.motion .d81{animation-range:contain 66.69999999999999% contain 69.19999999999999%}
+.motion .d82{animation-range:contain 67.4% contain 69.9%}
+.motion .d83{animation-range:contain 68.1% contain 70.6%}
+.motion .d84{animation-range:contain 68.8% contain 71.3%}
+.motion .d85{animation-range:contain 69.5% contain 72%}
+.motion .d86{animation-range:contain 70.19999999999999% contain 72.69999999999999%}
+.motion .d87{animation-range:contain 70.9% contain 73.4%}
+.motion .d88{animation-range:contain 71.6% contain 74.1%}
+.motion .d89{animation-range:contain 72.3% contain 74.8%}
+.motion .d90{animation-range:contain 73% contain 75.5%}
+.motion .d91{animation-range:contain 73.69999999999999% contain 76.19999999999999%}
+.motion .d92{animation-range:contain 74.39999999999999% contain 76.89999999999999%}
+.motion .d93{animation-range:contain 75.1% contain 77.6%}
+.motion .d94{animation-range:contain 75.8% contain 78.3%}
+.motion .d95{animation-range:contain 76.5% contain 79%}
+.motion .d96{animation-range:contain 77.19999999999999% contain 79.69999999999999%}
+.motion .d97{animation-range:contain 77.89999999999999% contain 80.39999999999999%}
+.motion .d98{animation-range:contain 78.6% contain 81.1%}
+.motion .d99{animation-range:contain 79.3% contain 81.8%}
 /*SCENE-CSS-END*/
 
 /* --- Sahnenin görünümü: sade pastel etiket + ince kıvrım --- */
@@ -228,6 +365,64 @@ nav.stuck{border-bottom-color:var(--border)}
 .hub-ring{fill:none; stroke:var(--green); stroke-width:2.5; opacity:.4}
 .hub{fill:var(--green)}
 .hub-label{font-size:16px; font-weight:800; fill:var(--slate); text-anchor:middle}
+
+/* ===================== KATMAN 2 · TAKVİM ===================== */
+.cal-wrap{width:min(78vw,470px); margin:0 auto}
+.cal{width:100%; height:auto; display:block}
+.dcell{opacity:1}
+.dring{fill:none; stroke:var(--green-text); stroke-width:2.5; opacity:.55}
+.dleaf{font-size:22px; text-anchor:middle}
+.motion .cal-track{height:420vh; padding:0}
+.motion .dcell{opacity:0}
+.motion .cal-wrap{width:min(66vw, calc((100svh - 210px) * 0.92), 430px)}
+@keyframes cellIn{from{opacity:0; transform:scale(.4)} to{opacity:1; transform:none}}
+.motion .dcell{transform-box:fill-box; transform-origin:center; animation-name:cellIn}
+.motion .track .dcell{animation-duration:1s; animation-timing-function:linear;
+  animation-fill-mode:both; animation-play-state:paused; animation-delay:calc(var(--p,0) * -1s)}
+@supports (animation-timeline:view()){
+  .motion .track .dcell{animation-timeline:--zoom; animation-duration:auto; animation-delay:0s;
+    animation-play-state:running}
+}
+
+/* ===================== KATMAN 3 · SESSİZLİK ===================== */
+.quiet{padding:clamp(90px,16vw,190px) 0; text-align:center}
+.quiet-line{font-size:clamp(22px,3.4vw,34px); font-weight:900; letter-spacing:-.02em}
+.quiet-sub{margin-top:28px; color:var(--slate); font-size:15px}
+.notif{display:flex; align-items:center; gap:14px; text-align:left; margin:34px auto 0;
+  max-width:420px; background:var(--card); border:1px solid var(--border);
+  border-radius:20px; padding:15px 18px; box-shadow:var(--shadow-lg)}
+.notif-ic{width:40px; height:40px; flex:none; border-radius:12px; background:var(--green-soft);
+  display:grid; place-items:center; font-size:20px}
+.notif b{display:block; font-size:14px}
+.notif span{display:block; font-size:13.5px; color:var(--slate)}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .notif{animation:notifIn linear both; animation-timeline:view(); animation-range:entry 20% cover 60%}
+    @keyframes notifIn{
+      0%{opacity:0; transform:translateY(14px) scale(.96)}
+      30%,70%{opacity:1; transform:none}
+      100%{opacity:.25; transform:translateY(-8px) scale(.99)}
+    }
+  }
+}
+
+/* Tema düğmeleri gerçek düğme oldu (span değil) — klavyeyle de çalışsın */
+.chip{font:inherit; cursor:pointer; background:var(--card); color:var(--ink)}
+.chip[aria-pressed="true"]{border-color:var(--green); box-shadow:0 0 0 3px var(--green-soft)}
+
+/* ===================== SARMAŞIK GÖVDESİ ===================== */
+/* Sayfanın "bölümler listesi" gibi durmasının ilacı: sarmaşık hero'da bitmiyor,
+   sol kenardan aşağı devam ediyor ve scroll ile çiziliyor. */
+.spine{position:fixed; left:max(14px, 2.2vw); top:0; bottom:0; width:26px; z-index:1;
+  pointer-events:none; display:none}
+@media (min-width:960px){ .spine{display:block} }
+.spine svg{height:100%; width:100%; display:block}
+.spine .stem{fill:none; stroke:var(--green); stroke-width:2; opacity:.32;
+  stroke-dasharray:1; stroke-dashoffset:1}
+@supports (animation-timeline:scroll()){
+  .spine .stem{animation:draw linear both; animation-timeline:scroll(root block)}
+}
+@media (prefers-reduced-motion:reduce){ .spine .stem{stroke-dashoffset:0} }
 
 /* ===================== BÖLÜMLER ===================== */
 section{padding:clamp(64px,10vw,120px) 0}
@@ -333,6 +528,11 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   </div>
 </nav>
 
+<div class="spine" aria-hidden="true">
+  <svg viewBox="0 0 26 1000" preserveAspectRatio="none">
+    <path class="stem" pathLength="1" d="M 13 0 C 3 120, 23 240, 13 360 C 3 480, 23 600, 13 720 C 3 840, 23 920, 13 1000"/>
+  </svg>
+</div>
 <main id="main">
 <header class="hero" id="top">
   <div>
@@ -418,6 +618,230 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   </div>
 </section>
 
+<!-- =================== KATMAN 2 · ZAMAN =================== -->
+<!-- Bu katmanin isi tek bir korkuyu yenmek: "nasilsa birakacagim." Herkesin
+     daha once biraktigi yer orasi. O yuzden kacirilan gun GIZLENMIYOR, sahnenin
+     merkezine konuyor. SDT arastirmasi seri+ceza mekaniginin utanc uzerinden
+     calistigini, kalici degisimin ozerk motivasyondan geldigini gosteriyor. -->
+<section class="track cal-track" id="time" aria-labelledby="time-h">
+  <h2 id="time-h" class="sr" data-i18n="time_sr">Yüz gün: bir alışkanlık nasıl kalıcı olur</h2>
+  <div class="stage">
+    <div class="cal-wrap">
+      <!--CAL-->
+<svg class="cal" viewBox="-14 -14 576 576" role="img" aria-labelledby="caldesc">
+<desc id="caldesc" data-i18n="cal_desc">Yüz günlük bir takvim: her gün küçük bir yeşil kare olarak doluyor. Yirmi üçüncü gün kaçırılmış ama yaprakla korunduğu için altın renginde ve seri kırılmıyor. Yedinci, otuzuncu, altmış altıncı ve yüzüncü günler halkayla işaretli.</desc>
+<g class="dcell d0"><rect x="0" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d1"><rect x="56" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d2"><rect x="112" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d3"><rect x="168" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d4"><rect x="224" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d5"><rect x="280" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d6"><rect x="336" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/><circle class="dring" cx="358" cy="22" r="29"/></g>
+<g class="dcell d7"><rect x="392" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d8"><rect x="448" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d9"><rect x="504" y="0" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d10"><rect x="0" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d11"><rect x="56" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d12"><rect x="112" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d13"><rect x="168" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d14"><rect x="224" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d15"><rect x="280" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d16"><rect x="336" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d17"><rect x="392" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d18"><rect x="448" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d19"><rect x="504" y="56" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d20"><rect x="0" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d21"><rect x="56" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d22"><rect x="112" y="112" width="44" height="44" rx="14"
+    fill="#E8C87A"/><text class="dleaf" x="134" y="142">🍃</text></g>
+<g class="dcell d23"><rect x="168" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d24"><rect x="224" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d25"><rect x="280" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d26"><rect x="336" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d27"><rect x="392" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d28"><rect x="448" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d29"><rect x="504" y="112" width="44" height="44" rx="14"
+    fill="#6E9468"/><circle class="dring" cx="526" cy="134" r="29"/></g>
+<g class="dcell d30"><rect x="0" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d31"><rect x="56" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d32"><rect x="112" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d33"><rect x="168" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d34"><rect x="224" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d35"><rect x="280" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d36"><rect x="336" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d37"><rect x="392" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d38"><rect x="448" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d39"><rect x="504" y="168" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d40"><rect x="0" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d41"><rect x="56" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d42"><rect x="112" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d43"><rect x="168" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d44"><rect x="224" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d45"><rect x="280" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d46"><rect x="336" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d47"><rect x="392" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d48"><rect x="448" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d49"><rect x="504" y="224" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d50"><rect x="0" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d51"><rect x="56" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d52"><rect x="112" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d53"><rect x="168" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d54"><rect x="224" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d55"><rect x="280" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d56"><rect x="336" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d57"><rect x="392" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d58"><rect x="448" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d59"><rect x="504" y="280" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d60"><rect x="0" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d61"><rect x="56" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d62"><rect x="112" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d63"><rect x="168" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d64"><rect x="224" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d65"><rect x="280" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/><circle class="dring" cx="302" cy="358" r="29"/></g>
+<g class="dcell d66"><rect x="336" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d67"><rect x="392" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d68"><rect x="448" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d69"><rect x="504" y="336" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d70"><rect x="0" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d71"><rect x="56" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d72"><rect x="112" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d73"><rect x="168" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d74"><rect x="224" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d75"><rect x="280" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d76"><rect x="336" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d77"><rect x="392" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d78"><rect x="448" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d79"><rect x="504" y="392" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d80"><rect x="0" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d81"><rect x="56" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d82"><rect x="112" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d83"><rect x="168" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d84"><rect x="224" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d85"><rect x="280" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d86"><rect x="336" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d87"><rect x="392" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d88"><rect x="448" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d89"><rect x="504" y="448" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d90"><rect x="0" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d91"><rect x="56" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d92"><rect x="112" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d93"><rect x="168" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d94"><rect x="224" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d95"><rect x="280" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d96"><rect x="336" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d97"><rect x="392" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d98"><rect x="448" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/></g>
+<g class="dcell d99"><rect x="504" y="504" width="44" height="44" rx="14"
+    fill="#6E9468"/><circle class="dring" cx="526" cy="526" r="29"/></g>
+</svg>
+<!--/CAL-->
+    </div>
+    <div class="caps">
+      <p class="cap ck1 anim" data-i18n="ccap1">Birinci gün kolay.<small>İkincisi de. Otuzuncusu değil.</small></p>
+      <p class="cap ck2 anim" data-i18n="ccap2">Yedinci günde ilk kutlama.<small>Sonra 30, 66 ve 100. Görünce anlarsın.</small></p>
+      <p class="cap ck3 anim" data-i18n="ccap3">Bir gün kaçırdın. Seri kırılmadı.<small>Bir yaprak düştü ve o günü korudu. Sadece asla üst üste iki kez.</small></p>
+      <p class="cap ck4 anim" data-i18n="ccap4">Altmışaltıncı gün gerçek bir eşik.<small>Uydurma bir sayı değil: alışkanlığın otomatikleştiği ölçülmüş ortalama.</small></p>
+    </div>
+  </div>
+</section>
+
 <!-- =================== YAKINLAŞ =================== -->
 <section>
   <div class="wrap">
@@ -441,27 +865,41 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   </div>
 </section>
 
-<!-- =================== SÖZLERİMİZ =================== -->
+<!-- =================== KATMAN 3 · KONTROL =================== -->
+<!-- SDT: ozerklik. "Seni geri cagirmiyoruz" bir SOZ olmaktan cikip GOSTERIYE
+     donusuyor: tema rozetine tiklayinca sitenin kendisi o temaya donuyor. -->
 <section id="promises">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow" data-i18n="pr_eyebrow">Sözlerimiz</p>
-      <h2 data-i18n="pr_h2">Seni geri çağırmaya çalışmıyoruz</h2>
-      <p data-i18n="pr_p">Akış yok, beğeni yok, kaydırıp geçeceğin reklam yok. Vyne'e ihtiyacın kadar bakarsın, fazlası değil.</p>
+      <p class="eyebrow" data-i18n="pr_eyebrow">Kontrol sende</p>
+      <h2 data-i18n="pr_h2">Kuralları sen koyarsın</h2>
+      <p data-i18n="pr_p">Aşağıdaki temalardan birine dokun: bu sayfa da o temaya dönsün. Uygulamada da tam olarak böyle.</p>
     </div>
+    <div class="themes" role="group" aria-label="Tema">
+      <button class="chip" type="button" data-theme="light" aria-pressed="true"><span class="dot" style="background:#F8F6F0"></span><span data-i18n="th1">Açık</span></button>
+      <button class="chip" type="button" data-theme="warm" aria-pressed="false"><span class="dot" style="background:#F5EFE0"></span><span data-i18n="th2">Sıcak</span></button>
+      <button class="chip" type="button" data-theme="dark" aria-pressed="false"><span class="dot" style="background:#1E1C18"></span><span data-i18n="th3">Koyu</span></button>
+      <button class="chip" type="button" data-theme="midnight" aria-pressed="false"><span class="dot" style="background:#0F0F0F"></span><span data-i18n="th4">Gece Yarısı</span></button>
+    </div>
+
     <div class="promises">
-      <div class="promise"><div class="ic">📴</div><h3 data-i18n="p1h">Tamamen çevrimdışı</h3><p data-i18n="p1p">İnternet olmadan da her şey çalışır. Verin cihazında kalır; bulut yedeklemeyi sen açmadıkça hiçbir yere gitmez.</p></div>
-      <div class="promise"><div class="ic">🔓</div><h3 data-i18n="p2h">Hesap gerekmez</h3><p data-i18n="p2p">Kayıt yok, e-posta yok. Aç ve başla. Hesap sadece istersen, cihazlar arası yedekleme için.</p></div>
-      <div class="promise"><div class="ic">🔔</div><h3 data-i18n="p3h">Günde en fazla bir bildirim</h3><p data-i18n="p3p">Tek, nazik bir hatırlatma, seçtiğin saatte. İstemezsen o da yok.</p></div>
+      <div class="promise"><div class="ic">📴</div><h3 data-i18n="p1h">Çevrimdışı çalışır</h3><p data-i18n="p1p">İnternet olmadan da her şey yerinde. Verin cihazında kalır; bulut yedeklemeyi sen açmadıkça hiçbir yere gitmez.</p></div>
+      <div class="promise"><div class="ic">🔓</div><h3 data-i18n="p2h">Hesap istemez</h3><p data-i18n="p2p">Kayıt yok, e-posta yok. Aç ve başla. Hesap sadece istersen, cihazlar arası yedekleme için.</p></div>
+      <div class="promise"><div class="ic">🔔</div><h3 data-i18n="p3h">Günde en fazla bir kez</h3><p data-i18n="p3p">Tek, nazik bir hatırlatma, seçtiğin saatte. İstemezsen o da yok.</p></div>
       <div class="promise"><div class="ic">🚫</div><h3 data-i18n="p4h">Reklam yok</h3><p data-i18n="p4p">Dikkatin satılık değil. Bu değişirse açıkça söyleriz, var olan özellikler sessizce ücretli hale gelmez.</p></div>
     </div>
-    <p style="text-align:center;color:var(--slate);font-size:13.5px;font-weight:800;margin:42px 0 14px" data-i18n="th_label">Dört tema, istediğin zaman değiştir:</p>
-    <div class="themes">
-      <span class="chip"><span class="dot" style="background:#F8F6F0"></span><span data-i18n="th1">Açık</span></span>
-      <span class="chip"><span class="dot" style="background:#F5EFE0"></span><span data-i18n="th2">Sıcak</span></span>
-      <span class="chip"><span class="dot" style="background:#1E1C18"></span><span data-i18n="th3">Koyu</span></span>
-      <span class="chip"><span class="dot" style="background:#0F0F0F"></span><span data-i18n="th4">Gece Yarısı</span></span>
+  </div>
+</section>
+
+<!-- Sessizlik: sayfanin nefes aldigi yer. Vaadi anlatmak yerine YASATIYOR. -->
+<section class="quiet" id="quiet">
+  <div class="wrap">
+    <p class="quiet-line" data-i18n="q_line">Bugün seni bir kez rahatsız edeceğiz.</p>
+    <div class="notif" aria-hidden="true">
+      <div class="notif-ic">🌿</div>
+      <div><b data-i18n="q_ntitle">Vyne</b><span data-i18n="q_nbody">Bugün üç dalın seni bekliyor. Acelesi yok.</span></div>
     </div>
+    <p class="quiet-sub" data-i18n="q_sub">Hepsi bu. Ertesi gün yine bir kez.</p>
   </div>
 </section>
 
@@ -519,11 +957,6 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(!supportsSDA && !reduce){
-    var track = document.querySelector('.track');
-
-    /* Yedek sürücüde animation-range yok; her öğenin kendi penceresini
-       hesaplayıp kendi ilerlemesine çeviriyoruz. Bu aralıklar CSS'teki
-       animation-range değerleriyle BİREBİR aynı tutulmalı. */
 /*SCENE-JS*/
     var RANGES = {
       'b1':[0,34],
@@ -543,24 +976,141 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
       'k1':[0,24],
       'k2':[24,50],
       'k3':[52,76],
-      'k4':[78,100]
+      'k4':[78,100],
+      'ck1':[0,14],
+      'ck2':[14,25],
+      'ck3':[25,52],
+      'ck4':[52,100],
+      'd0':[10,12.5],
+      'd1':[10.7,13.2],
+      'd2':[11.4,13.9],
+      'd3':[12.1,14.6],
+      'd4':[12.8,15.3],
+      'd5':[13.5,16],
+      'd6':[14.2,16.7],
+      'd7':[14.899999999999999,17.4],
+      'd8':[15.6,18.1],
+      'd9':[16.3,18.8],
+      'd10':[17,19.5],
+      'd11':[17.7,20.2],
+      'd12':[18.4,20.9],
+      'd13':[19.1,21.6],
+      'd14':[19.799999999999997,22.299999999999997],
+      'd15':[20.5,23],
+      'd16':[21.2,23.7],
+      'd17':[21.9,24.4],
+      'd18':[22.6,25.1],
+      'd19':[23.299999999999997,25.799999999999997],
+      'd20':[24,26.5],
+      'd21':[24.7,27.2],
+      'd22':[25.4,27.9],
+      'd23':[26.099999999999998,28.599999999999998],
+      'd24':[26.799999999999997,29.299999999999997],
+      'd25':[27.5,30],
+      'd26':[28.2,30.7],
+      'd27':[28.9,31.4],
+      'd28':[29.599999999999998,32.099999999999994],
+      'd29':[30.299999999999997,32.8],
+      'd30':[31,33.5],
+      'd31':[31.7,34.2],
+      'd32':[32.4,34.9],
+      'd33':[33.099999999999994,35.599999999999994],
+      'd34':[33.8,36.3],
+      'd35':[34.5,37],
+      'd36':[35.2,37.7],
+      'd37':[35.9,38.4],
+      'd38':[36.599999999999994,39.099999999999994],
+      'd39':[37.3,39.8],
+      'd40':[38,40.5],
+      'd41':[38.7,41.2],
+      'd42':[39.4,41.9],
+      'd43':[40.099999999999994,42.599999999999994],
+      'd44':[40.8,43.3],
+      'd45':[41.5,44],
+      'd46':[42.199999999999996,44.699999999999996],
+      'd47':[42.9,45.4],
+      'd48':[43.599999999999994,46.099999999999994],
+      'd49':[44.3,46.8],
+      'd50':[45,47.5],
+      'd51':[45.699999999999996,48.199999999999996],
+      'd52':[46.4,48.9],
+      'd53':[47.099999999999994,49.599999999999994],
+      'd54':[47.8,50.3],
+      'd55':[48.5,51],
+      'd56':[49.199999999999996,51.699999999999996],
+      'd57':[49.9,52.4],
+      'd58':[50.599999999999994,53.099999999999994],
+      'd59':[51.3,53.8],
+      'd60':[52,54.5],
+      'd61':[52.699999999999996,55.199999999999996],
+      'd62':[53.4,55.9],
+      'd63':[54.099999999999994,56.599999999999994],
+      'd64':[54.8,57.3],
+      'd65':[55.5,58],
+      'd66':[56.199999999999996,58.699999999999996],
+      'd67':[56.9,59.4],
+      'd68':[57.599999999999994,60.099999999999994],
+      'd69':[58.3,60.8],
+      'd70':[59,61.5],
+      'd71':[59.699999999999996,62.199999999999996],
+      'd72':[60.4,62.9],
+      'd73':[61.099999999999994,63.599999999999994],
+      'd74':[61.8,64.3],
+      'd75':[62.5,65],
+      'd76':[63.199999999999996,65.69999999999999],
+      'd77':[63.9,66.4],
+      'd78':[64.6,67.1],
+      'd79':[65.3,67.8],
+      'd80':[66,68.5],
+      'd81':[66.69999999999999,69.19999999999999],
+      'd82':[67.4,69.9],
+      'd83':[68.1,70.6],
+      'd84':[68.8,71.3],
+      'd85':[69.5,72],
+      'd86':[70.19999999999999,72.69999999999999],
+      'd87':[70.9,73.4],
+      'd88':[71.6,74.1],
+      'd89':[72.3,74.8],
+      'd90':[73,75.5],
+      'd91':[73.69999999999999,76.19999999999999],
+      'd92':[74.39999999999999,76.89999999999999],
+      'd93':[75.1,77.6],
+      'd94':[75.8,78.3],
+      'd95':[76.5,79],
+      'd96':[77.19999999999999,79.69999999999999],
+      'd97':[77.89999999999999,80.39999999999999],
+      'd98':[78.6,81.1],
+      'd99':[79.3,81.8]
     };
 
 /*SCENE-JS-END*/
-    var mapWrap = document.querySelector('.map-wrap');
+    /* Sayfada BİRDEN FAZLA sahne var (harita ve takvim). Her .track kendi
+       ilerlemesini hesaplar ve SADECE kendi içindeki öğeleri sürer — biri
+       diğerinin zamanlamasını ezmesin. */
+    var tracks = [].map.call(document.querySelectorAll('.track'), function(track){
+      var scoped = [];
+      Object.keys(RANGES).forEach(function(cls){
+        [].forEach.call(track.querySelectorAll('.' + cls), function(el){
+          scoped.push({el:el, a:RANGES[cls][0]/100, span:(RANGES[cls][1]-RANGES[cls][0])/100});
+        });
+      });
+      return {track:track, scoped:scoped, camera:track.querySelector('.map-wrap')};
+    });
 
     var ticking = false;
     var update = function(){
       ticking = false;
-      var r = track.getBoundingClientRect();
-      var total = r.height - innerHeight;
-      if(total <= 0) return;
-      var p = (-r.top) / total;
-      p = p < 0 ? 0 : (p > 1 ? 1 : p);
-      mapWrap.style.setProperty('--p', p.toFixed(4)); // kamera tüm aralığı kullanır
-      for(var i=0;i<scoped.length;i++){
-        var s = scoped[i], q = (p - s.a) / s.span;
-        s.el.style.setProperty('--p', (q < 0 ? 0 : (q > 1 ? 1 : q)).toFixed(4));
+      for(var t=0;t<tracks.length;t++){
+        var T = tracks[t], r = T.track.getBoundingClientRect();
+        var total = r.height - innerHeight;
+        if(total <= 0) continue;
+        var p = (-r.top) / total;
+        p = p < 0 ? 0 : (p > 1 ? 1 : p);
+        if(T.camera) T.camera.style.setProperty('--p', p.toFixed(4));
+        for(var i=0;i<T.scoped.length;i++){
+          var s = T.scoped[i], q = (p - s.a) / s.span;
+          s.el.style.setProperty('--p', (q < 0 ? 0 : (q > 1 ? 1 : q)).toFixed(4));
+        }
       }
     };
     var onScroll = function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } };
@@ -568,6 +1118,18 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     addEventListener('resize', onScroll, {passive:true});
     update();
   }
+
+  /* --------------------------------------------------------------------
+     1b) TEMA — kullanıcı seçince SİTE de o temaya döner (Katman 3).
+     Seçim localStorage'da kalmaz: bu bir deneme, kalıcı bir ayar değil.
+  -------------------------------------------------------------------- */
+  var themeBtns = [].slice.call(document.querySelectorAll('.chip[data-theme]'));
+  themeBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      document.documentElement.setAttribute('data-theme', b.dataset.theme);
+      themeBtns.forEach(function(o){ o.setAttribute('aria-pressed', String(o === b)); });
+    });
+  });
 
   /* --------------------------------------------------------------------
      2) NAV — kaydırınca ince bir alt çizgi kazanır
@@ -604,13 +1166,22 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     s2:"<strong>The streak grows.</strong> Small celebrations wait at day 7, 30, 66 and 100. Sixty-six is a real threshold, not a made-up number.",
     s3:"<strong>Miss a day and a leaf steps in.</strong> Weeks of consistency don't vanish over one bad day. Just never twice in a row.",
     s4:"<strong>Can't decide? Spin the wheel.</strong> Let it pick where you start, then just begin for two minutes.",
-    pr_eyebrow:"Our promises", pr_h2:"We're not trying to pull you back in",
-    pr_p:"No feed, no likes, no ads to scroll past. You look at Vyne as much as you need to, and no more.",
-    p1h:"Fully offline", p1p:"Everything works without a connection. Your data stays on your device and goes nowhere unless you turn on cloud backup yourself.",
-    p2h:"No account needed", p2p:"No sign-up, no email. Open it and start. An account is only for optional backup across devices.",
-    p3h:"One notification a day, at most", p3p:"A single gentle reminder, at a time you choose. Or none at all, if you'd rather.",
+    pr_eyebrow:"You're in control", pr_h2:"You set the rules",
+    pr_p:"Tap one of the themes below and watch this page change with it. It works exactly like that in the app, too.",
+    p1h:"Works offline", p1p:"Everything works without a connection. Your data stays on your device and goes nowhere unless you turn on cloud backup yourself.",
+    p2h:"No account", p2p:"No sign-up, no email. Open it and start. An account is only for optional backup across devices.",
+    p3h:"Once a day, at most", p3p:"A single gentle reminder, at a time you choose. Or none at all, if you'd rather.",
     p4h:"No ads", p4p:"Your attention isn't for sale. If that ever changes we'll say so plainly, and existing features won't quietly get paywalled.",
-    th_label:"Four themes, switch any time:", th1:"Light", th2:"Warm", th3:"Dark", th4:"Midnight",
+    time_sr:"A hundred days: how a habit actually lasts",
+    cal_desc:"A hundred-day calendar: each day fills in as a small green square. Day twenty-three was missed but a leaf protected it, so it shows gold and the streak holds. Days seven, thirty, sixty-six and one hundred are ringed.",
+    ccap1:"Day one is easy.<small>So is day two. Day thirty isn't.</small>",
+    ccap2:"The first celebration lands on day seven.<small>Then 30, 66 and 100. You'll know them when you see them.</small>",
+    ccap3:"You missed a day. The streak held.<small>A leaf fell and covered it. Just never twice in a row.</small>",
+    ccap4:"Day sixty-six is a real threshold.<small>Not a made-up number: it's the measured average for a habit turning automatic.</small>",
+    q_line:"We'll interrupt you once today.",
+    q_ntitle:"Vyne", q_nbody:"Three branches are waiting. No rush.",
+    q_sub:"That's all. Tomorrow, once again.",
+    th1:"Light", th2:"Warm", th3:"Dark", th4:"Midnight",
     fq_eyebrow:"Questions", fq_h2:"Frequently asked",
     q1:"Can I download Vyne now?", a1:"Not from the stores yet. It's in closed testing ahead of a full launch. Email us and you'll be the first to know, or join and try it early.",
     q2:"Is it free?", a2:"Yes, and there are no ads right now. If that ever changes we'll be upfront about it, and existing features won't quietly get paywalled.",
