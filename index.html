@@ -149,7 +149,33 @@ nav.stuck{border-bottom-color:var(--border)}
 .lang button[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-ink)}
 
 /* ===================== HERO ===================== */
-.hero{min-height:calc(100svh - 62px); display:grid; place-items:center; text-align:center; padding:40px 24px 60px}
+.hero{min-height:calc(100svh - 62px); display:grid; place-items:center; text-align:center;
+  padding:40px 24px 60px; position:relative; overflow:hidden}
+.hero-stage{position:absolute; inset:0; display:grid; place-items:center; pointer-events:none}
+.hero-seed{width:min(46vw,300px); height:auto; opacity:.34;
+  transition:opacity 900ms var(--ease), transform 900ms var(--ease)}
+.hero-seed-label{position:absolute; margin-top:min(30vw,196px); font-size:15px; font-weight:800;
+  color:var(--slate); opacity:.34; transition:opacity 900ms var(--ease)}
+
+/* FENER: imlecin çevresi dışındaki her şeyi sayfa rengiyle örter. Perde
+   açıldıkça (--reveal 0→1) delik büyüyor ve perde tamamen siliniyor. */
+.veil{position:absolute; inset:-20vh -20vw; pointer-events:none;
+  background:radial-gradient(circle var(--lantern,190px) at var(--mx,50%) var(--my,50%),
+    transparent 0%, transparent 58%, var(--bg) 92%);
+  opacity:calc(1 - var(--reveal,0)); transition:opacity 1100ms var(--ease)}
+
+.hero-copy{position:relative; z-index:2; opacity:var(--reveal,0);
+  transform:translateY(calc((1 - var(--reveal,0)) * 14px));
+  transition:opacity 900ms var(--ease), transform 900ms var(--ease)}
+.hero-hint{position:absolute; bottom:clamp(96px,16vh,150px); font-size:12px; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--slate);
+  opacity:calc(1 - var(--reveal,0)); transition:opacity 600ms var(--ease)}
+.hero .cue{opacity:var(--reveal,0); transition:opacity 900ms var(--ease)}
+:root.revealed .hero-seed{opacity:.1; transform:scale(.52)}
+:root.revealed .hero-seed-label{opacity:0}
+/* Dokunmatik cihazda imleç yok — perde hiç kurulmuyor, sayfa normal açılıyor. */
+@media (hover:none){ .veil{display:none} }
+
 .kicker{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:800;
   letter-spacing:.04em; text-transform:uppercase; background:var(--green-soft);
   color:var(--green-text); padding:6px 15px; border-radius:var(--r-pill); margin-bottom:22px}
@@ -160,22 +186,24 @@ nav.stuck{border-bottom-color:var(--border)}
   transition:transform var(--enter) var(--ease)}
 .btn:hover{transform:translateY(-2px)}
 .hero-meta{margin-top:16px; font-size:13.5px; color:var(--slate)}
-.cue{margin-top:52px; color:var(--slate); font-size:12px; font-weight:800; letter-spacing:.12em;
-  text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:10px}
+.cue{position:absolute; bottom:clamp(24px,5vh,52px); color:var(--slate); font-size:12px;
+  font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:10px}
 .cue span{display:block; width:1px; height:34px;
   background:linear-gradient(var(--border), var(--green)); animation:cue 1.9s var(--ease) infinite}
 @keyframes cue{0%{transform:scaleY(.2);transform-origin:top}49%{transform:scaleY(1);transform-origin:top}
   51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
 
-/* ===========================================================================
-   SAHNE — "Uzaklaş". Tek bir ilerleme değeri (--p, 0→1) her şeyi sürüyor.
-   İKİ SÜRÜCÜ, TEK KEYFRAME SETİ:
-     1) CSS scroll-driven animations (Chrome/Edge 115+, Safari 26+, ~%84 destek):
-        animation-timeline compositor'da akar, ana iş parçacığını meşgul etmez.
-     2) Desteklenmiyorsa (bugün esasen Firefox stabil): JS `--p` yazar, animasyonlar
-        `animation-play-state:paused` + negatif `animation-delay` ile o ana sarılır.
-   Aynı @keyframes iki durumda da kullanılır — iki ayrı animasyon kodu YOK.
-   =========================================================================== */
+/* Hareket kısıtlıysa perde ve gecikme yok: sayfa doğrudan açık hâlde. */
+@media (prefers-reduced-motion:reduce){
+  .veil{display:none}
+  .hero-copy{opacity:1 !important; transform:none !important}
+  .hero-hint{display:none}
+  .hero .cue{opacity:1}
+  .hero-seed{opacity:1}
+  .hero-seed-label{opacity:1}
+}
+
 /* --- TEMEL DURUM: hareket YOK. Harita tam çizilmiş, dört altyazı alt alta
    okunur. JS kapalı, tarayıcı eski, kullanıcı hareketi kısmış ya da animasyon
    motoru çalışmıyorsa görülen budur: eksiksiz, asla boş değil. Hareket sadece
@@ -186,7 +214,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .map-wrap{max-width:min(94vw, 1000px, calc((100svh - 190px) * 1.452))}
 .map{width:100%; height:auto; overflow:visible}
 .branch,.twig{stroke-dashoffset:0}
-.node,.leafdot{opacity:1}
+.node,.leafdot,.sublabel{opacity:1}
 .caps{margin-top:36px; display:flex; flex-direction:column; gap:22px; text-align:center}
 .cap{opacity:1; font-size:clamp(19px,3.2vw,30px); font-weight:900; letter-spacing:-.02em}
 .cap small{display:block; font-size:15px; font-weight:600; color:var(--slate);
@@ -195,7 +223,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .track{height:460vh; padding:0}
 .motion .stage{position:sticky; top:0; height:100svh; display:grid; place-items:center; overflow:hidden}
 .motion .branch,.motion .twig{stroke-dashoffset:1}
-.motion .node,.motion .leafdot{opacity:0}
+.motion .node,.motion .leafdot,.motion .sublabel{opacity:0}
 .motion .caps{position:absolute; left:0; right:0; bottom:clamp(20px,5vh,56px); margin:0;
   display:block; padding:0 24px; pointer-events:none; z-index:2}
 .motion .cap{position:absolute; left:0; right:0; bottom:0; padding:0 24px; opacity:0}
@@ -225,7 +253,7 @@ nav.stuck{border-bottom-color:var(--border)}
 @keyframes capFade{0%{opacity:0;transform:translateY(10px)}18%{opacity:1;transform:none}
   82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
 .motion .branch.anim,.motion .twig.anim{animation-name:draw}
-.motion .node.anim,.motion .leafdot.anim{animation-name:pop}
+.motion .node.anim,.motion .leafdot.anim,.motion .sublabel.anim{animation-name:pop}
 .motion .cap.anim{animation-name:capFade}
 
 /* Aralıklar scripts/build-scene.mjs tarafından üretilir, elle düzenleme */
@@ -244,6 +272,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .motion .n6{animation-range:contain 46% contain 58%}
 .motion .twig{animation-range:contain 58% contain 84%}
 .motion .leafdot{animation-range:contain 66% contain 90%}
+.motion .sublabel{animation-range:contain 70% contain 94%}
 .motion .k1{animation-range:contain 0% contain 24%}
 .motion .k2{animation-range:contain 24% contain 50%}
 .motion .k3{animation-range:contain 52% contain 76%}
@@ -365,6 +394,7 @@ nav.stuck{border-bottom-color:var(--border)}
 .hub-ring{fill:none; stroke:var(--green); stroke-width:2.5; opacity:.4}
 .hub{fill:var(--green)}
 .hub-label{font-size:16px; font-weight:800; fill:var(--slate); text-anchor:middle}
+.sublabel{font-size:15px; font-weight:700; fill:var(--slate)}
 
 /* ===================== KATMAN 2 · TAKVİM ===================== */
 .cal-wrap{width:min(78vw,470px); margin:0 auto}
@@ -535,14 +565,33 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
 </div>
 <main id="main">
 <header class="hero" id="top">
-  <div>
+  <!-- İlk açılışta ekranda sadece ortadaki baloncuk var ve GÖLGEDE. Fareyi
+       oynattıkça imleç bir fener gibi davranıyor: çevresindeki perde açılıyor,
+       dallar ve alt dallar ortaya çıkıyor. İlk hareketten (ya da 1.6 sn'den,
+       ya da kaydırmadan, ya da klavye odağından) sonra başlık ve düğme
+       görünür oluyor.
+       SAFEGUARD, bilerek: başlık/CTA sayfaya HER ZAMAN basılıyor (sadece
+       görünürlüğü geciktiriliyor) — arama motorları ve ekran okuyucular için
+       ilk andan itibaren orada. Ayrıca 1.6 sn'lik otomatik açılma var, yoksa
+       faresi olmayan ya da ne yapacağını bilmeyen biri boş ekranda kalırdı.
+       Bu sayfanın işi etkilemek değil, tester toplamak. -->
+  <div class="hero-stage">
+    <svg class="hero-seed" viewBox="0 0 300 300" aria-hidden="true">
+      <circle class="hub-ring" cx="150" cy="150" r="58"/>
+      <circle class="hub" cx="150" cy="150" r="47"/>
+    </svg>
+    <p class="hero-seed-label" data-i18n="m_you">sen</p>
+    <div class="veil" aria-hidden="true"></div>
+  </div>
+  <div class="hero-copy">
     <span class="kicker" data-i18n="kicker">🌱 Kapalı testte</span>
     <h1 data-i18n="h1">Hayatın,<br>tek bir yerden.</h1>
     <p class="lede" data-i18n="lede">Tek bir noktadan başlıyor: sen. Önemli olan her şey oradan bir dala dönüşüyor. Kaydır, hepsini bir arada gör.</p>
     <a class="btn" href="#early" data-i18n="cta1">Erken erişim iste</a>
     <p class="hero-meta" data-i18n="meta">Ücretsiz · Reklamsız · Hesap gerekmez</p>
-    <p class="cue"><span></span><em style="font-style:normal" data-i18n="cue">Kaydır</em></p>
   </div>
+  <p class="cue"><span></span><em style="font-style:normal" data-i18n="cue">Kaydır</em></p>
+  <p class="hero-hint" data-i18n="hero_hint">fareyi oynat</p>
 </header>
 
 <!-- =================== UZAKLAŞ =================== -->
@@ -557,18 +606,36 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
 <g>
   <path class="twig anim" stroke="#BEA8EE" pathLength="1" d="M 250 118 C 214 92, 196 84, 168 66"/>
   <path class="twig anim" stroke="#BEA8EE" pathLength="1" d="M 250 130 C 212 138, 196 148, 166 160"/>
-  <path class="twig anim" stroke="#EE96BA" pathLength="1" d="M 244 440 C 208 456, 190 470, 160 490"/>
+  <path class="twig anim" stroke="#96BEE8" pathLength="1" d="M 250 292 C 206 288, 186 250, 156 234"/>
   <path class="twig anim" stroke="#EE96BA" pathLength="1" d="M 244 428 C 206 412, 188 400, 158 384"/>
+  <path class="twig anim" stroke="#EE96BA" pathLength="1" d="M 244 440 C 208 456, 190 470, 160 490"/>
   <path class="twig anim" stroke="#EEE096" pathLength="1" d="M 656 122 C 692 96, 710 86, 740 68"/>
-  <path class="twig anim" stroke="#96EEC8" pathLength="1" d="M 660 300 C 700 300, 716 300, 748 300"/>
+  <path class="twig anim" stroke="#96EEC8" pathLength="1" d="M 802 318 C 826 330, 832 356, 836 380"/>
   <path class="twig anim" stroke="#F0D8A8" pathLength="1" d="M 652 468 C 690 486, 706 496, 736 514"/>
   <circle class="leafdot anim" cx="160" cy="62" r="9" fill="#BEA8EE"/>
   <circle class="leafdot anim" cx="158" cy="164" r="9" fill="#BEA8EE"/>
-  <circle class="leafdot anim" cx="152" cy="494" r="9" fill="#EE96BA"/>
+  <circle class="leafdot anim" cx="148" cy="232" r="9" fill="#96BEE8"/>
   <circle class="leafdot anim" cx="150" cy="380" r="9" fill="#EE96BA"/>
+  <circle class="leafdot anim" cx="152" cy="494" r="9" fill="#EE96BA"/>
   <circle class="leafdot anim" cx="748" cy="64" r="9" fill="#EEE096"/>
-  <circle class="leafdot anim" cx="756" cy="300" r="9" fill="#96EEC8"/>
+  <circle class="leafdot anim" cx="840" cy="384" r="9" fill="#96EEC8"/>
   <circle class="leafdot anim" cx="744" cy="518" r="9" fill="#F0D8A8"/>
+  <text class="sublabel anim" x="143" y="68"
+    text-anchor="end" data-i18n="sb_meeting">Toplantı</text>
+  <text class="sublabel anim" x="141" y="170"
+    text-anchor="end" data-i18n="sb_report">Rapor</text>
+  <text class="sublabel anim" x="131" y="238"
+    text-anchor="end" data-i18n="sb_walk">Yürüyüş</text>
+  <text class="sublabel anim" x="133" y="386"
+    text-anchor="end" data-i18n="sb_water">Su içmek</text>
+  <text class="sublabel anim" x="135" y="500"
+    text-anchor="end" data-i18n="sb_sleep">Uyku</text>
+  <text class="sublabel anim" x="765" y="70"
+    text-anchor="start" data-i18n="sb_exam">Sınav</text>
+  <text class="sublabel anim" x="823" y="390"
+    text-anchor="end" data-i18n="sb_rent">Kira</text>
+  <text class="sublabel anim" x="761" y="524"
+    text-anchor="start" data-i18n="sb_train">Antrenman</text>
 </g>
 
 <path class="branch b1 anim" pathLength="1" d="M 412 288 C 356 250, 330 150, 258 124"/>
@@ -973,6 +1040,7 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
       'n6':[46,58],
       'twig':[58,84],
       'leafdot':[66,90],
+      'sublabel':[70,94],
       'k1':[0,24],
       'k2':[24,50],
       'k3':[52,76],
@@ -1132,6 +1200,47 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   });
 
   /* --------------------------------------------------------------------
+     1c) FENER + AÇILMA (Katman 1'in girişi)
+     İmleç bir fener gibi: --mx/--my perdenin deliğini sürüyor. İlk anlamlı
+     etkileşimde (fare hareketi / kaydırma / dokunma / klavye) perde siliniyor
+     ve başlık+CTA görünür oluyor. 1.6 sn sonra kendiliğinden de açılıyor:
+     faresi olmayan ya da ne yapacağını bilmeyen biri boş ekranda kalmasın.
+     Bu sayfanın işi etkilemek değil, tester toplamak.
+  -------------------------------------------------------------------- */
+  var root = document.documentElement;
+  if(reduce){
+    root.style.setProperty('--reveal', 1);
+    root.classList.add('revealed');
+  } else {
+    var revealed = false;
+    var reveal = function(){
+      if(revealed) return; revealed = true;
+      root.style.setProperty('--reveal', 1);
+      root.classList.add('revealed');
+    };
+    var autoReveal = setTimeout(reveal, 1600);
+    ['pointerdown','wheel','touchstart','keydown'].forEach(function(ev){
+      addEventListener(ev, function(){ clearTimeout(autoReveal); reveal(); }, {passive:true, once:true});
+    });
+    addEventListener('scroll', function(){ if(scrollY > 4){ clearTimeout(autoReveal); reveal(); } }, {passive:true});
+
+    var hero = document.querySelector('.hero');
+    var pending = null;
+    addEventListener('pointermove', function(e){
+      if(e.pointerType === 'touch') return;
+      if(pending) return;
+      pending = requestAnimationFrame(function(){
+        pending = null;
+        var r = hero.getBoundingClientRect();
+        root.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(2) + '%');
+        root.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(2) + '%');
+      });
+      /* Fare hareketi tek başına açılmayı TETİKLEMİYOR — önce fenerle
+         keşfetmesine izin veriyoruz; 1.6 sn'lik otomatik açılma zaten var. */
+    }, {passive:true});
+  }
+
+  /* --------------------------------------------------------------------
      2) NAV — kaydırınca ince bir alt çizgi kazanır
   -------------------------------------------------------------------- */
   var nav = document.getElementById('nav');
@@ -1151,9 +1260,11 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     lede:"It starts with a single point: you. Everything that matters grows outward from there as a branch. Scroll, and see all of it at once.",
     cta1:"Ask for early access",
     meta:"Free · No ads · No account needed",
-    cue:"Scroll",
+    cue:"Scroll", hero_hint:"move your mouse",
     how_sr:"How Vyne works: a map of your life branching out from the centre",
     map_desc:"A green bubble representing you at the centre, with coloured curves reaching out to Work, Health, Habits, Study, Budget and Sports cards, plus smaller sub-branches.",
+    sb_meeting:"Meeting", sb_report:"Report", sb_walk:"Walk", sb_water:"Water",
+    sb_sleep:"Sleep", sb_exam:"Exam", sb_rent:"Rent", sb_train:"Training",
     m_work:"Work", m_health:"Health", m_habits:"Habits", m_study:"Study", m_budget:"Budget", m_sports:"Sports", m_you:"you",
     cap1:"It starts with you.<small>Not a list. A starting point.</small>",
     cap2:"Everything that matters becomes a branch.<small>Work, health, habits, money. Each in its own place.</small>",

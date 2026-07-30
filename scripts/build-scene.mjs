@@ -20,7 +20,7 @@ const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'index.html');
 const T = {
   b1: [0, 34], b2: [4, 38], b3: [8, 42], b4: [12, 46], b5: [16, 50], b6: [20, 54],
   n1: [26, 38], n2: [30, 42], n3: [34, 46], n4: [38, 50], n5: [42, 54], n6: [46, 58],
-  twig: [58, 84], leafdot: [66, 90],
+  twig: [58, 84], leafdot: [66, 90], sublabel: [70, 94],
   k1: [0, 24], k2: [24, 50], k3: [52, 76], k4: [78, 100],
   // Katman 2 altyazıları — hücre zamanlamasına göre hizalandı, keyfi değil:
   // gün 7 → %14.2, kaçırılan gün 23 → %25.4, gün 66 → %55.5, gün 100 → %79.3.
@@ -29,6 +29,21 @@ const T = {
 };
 
 const C = { c1: '#BEA8EE', c2: '#96BEE8', c3: '#EE96BA', c4: '#EEE096', c5: '#96EEC8', c6: '#F0D8A8' };
+
+// ALT DALLAR — altı ana dalın HEPSİNE en az bir tane. Dalın kendi rengini
+// taşıyorlar ve dış boşluğa doğru çıkıyorlar (etiket için yer var: sol dallarda
+// x≈150'nin soluna ~130px, sağ dallarda x≈750'nin sağına ~145px).
+// Ana dallardan SONRA çiziliyorlar (aralık %58-94) — "dallar da dallanır".
+const SUBS = [
+  { c: C.c1, d: 'M 250 118 C 214 92, 196 84, 168 66',    x: 160, y: 62,  left: true,  key: 'sb_meeting', label: 'Toplantı' },
+  { c: C.c1, d: 'M 250 130 C 212 138, 196 148, 166 160', x: 158, y: 164, left: true,  key: 'sb_report',  label: 'Rapor' },
+  { c: C.c2, d: 'M 250 292 C 206 288, 186 250, 156 234', x: 148, y: 232, left: true,  key: 'sb_walk',    label: 'Yürüyüş' },
+  { c: C.c3, d: 'M 244 428 C 206 412, 188 400, 158 384', x: 150, y: 380, left: true,  key: 'sb_water',   label: 'Su içmek' },
+  { c: C.c3, d: 'M 244 440 C 208 456, 190 470, 160 490', x: 152, y: 494, left: true,  key: 'sb_sleep',   label: 'Uyku' },
+  { c: C.c4, d: 'M 656 122 C 692 96, 710 86, 740 68',    x: 748, y: 64,  left: false, key: 'sb_exam',    label: 'Sınav' },
+  { c: C.c5, d: 'M 802 318 C 826 330, 832 356, 836 380', x: 840, y: 384, left: true,  key: 'sb_rent',    label: 'Kira' },
+  { c: C.c6, d: 'M 652 468 C 690 486, 706 496, 736 514', x: 744, y: 518, left: false, key: 'sb_train',   label: 'Antrenman' },
+];
 
 const node = (cls, x, y, emoji, key, label) => `<g class="node ${cls} anim">
   <rect class="node-box" x="${x}" y="${y}" width="162" height="52" rx="15"/>
@@ -39,20 +54,10 @@ const svg = `<svg class="map" viewBox="0 0 900 620" role="img" aria-labelledby="
 <desc id="mapdesc" data-i18n="map_desc">Ortada seni temsil eden yeşil bir baloncuk; ondan iş, sağlık, alışkanlıklar, çalışma, bütçe ve spor dallarına uzanan renkli eğriler, uçlarında etiketler ve daha küçük alt dallar.</desc>
 
 <g>
-  <path class="twig anim" stroke="${C.c1}" pathLength="1" d="M 250 118 C 214 92, 196 84, 168 66"/>
-  <path class="twig anim" stroke="${C.c1}" pathLength="1" d="M 250 130 C 212 138, 196 148, 166 160"/>
-  <path class="twig anim" stroke="${C.c3}" pathLength="1" d="M 244 440 C 208 456, 190 470, 160 490"/>
-  <path class="twig anim" stroke="${C.c3}" pathLength="1" d="M 244 428 C 206 412, 188 400, 158 384"/>
-  <path class="twig anim" stroke="${C.c4}" pathLength="1" d="M 656 122 C 692 96, 710 86, 740 68"/>
-  <path class="twig anim" stroke="${C.c5}" pathLength="1" d="M 660 300 C 700 300, 716 300, 748 300"/>
-  <path class="twig anim" stroke="${C.c6}" pathLength="1" d="M 652 468 C 690 486, 706 496, 736 514"/>
-  <circle class="leafdot anim" cx="160" cy="62" r="9" fill="${C.c1}"/>
-  <circle class="leafdot anim" cx="158" cy="164" r="9" fill="${C.c1}"/>
-  <circle class="leafdot anim" cx="152" cy="494" r="9" fill="${C.c3}"/>
-  <circle class="leafdot anim" cx="150" cy="380" r="9" fill="${C.c3}"/>
-  <circle class="leafdot anim" cx="748" cy="64" r="9" fill="${C.c4}"/>
-  <circle class="leafdot anim" cx="756" cy="300" r="9" fill="${C.c5}"/>
-  <circle class="leafdot anim" cx="744" cy="518" r="9" fill="${C.c6}"/>
+${SUBS.map(t => `  <path class="twig anim" stroke="${t.c}" pathLength="1" d="${t.d}"/>`).join('\n')}
+${SUBS.map(t => `  <circle class="leafdot anim" cx="${t.x}" cy="${t.y}" r="9" fill="${t.c}"/>`).join('\n')}
+${SUBS.map(t => `  <text class="sublabel anim" x="${t.left ? t.x - 17 : t.x + 17}" y="${t.y + 6}"
+    text-anchor="${t.left ? 'end' : 'start'}" data-i18n="${t.key}">${t.label}</text>`).join('\n')}
 </g>
 
 <path class="branch b1 anim" pathLength="1" d="M 412 288 C 356 250, 330 150, 258 124"/>
