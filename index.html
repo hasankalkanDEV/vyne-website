@@ -113,7 +113,16 @@ body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
   font-weight:600; line-height:1.6; -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  /* DİKKAT — `overflow-x:hidden` KULLANMA. `hidden`, body'nin overflow-y'sini
+     kullanılan değer olarak `auto`ya çevirir ve body'yi KENDİ kaydırma
+     kapsayıcısına dönüştürür. O anda scroll olayları body'de doğar ve
+     window'a HİÇ ulaşmaz (scroll olayları elemanlardan yukarı köpürmez).
+     Canlı sayfada ölçüldü: sayfa 1500px kaydı, window/document dinleyicileri
+     0 kez tetiklendi. Bu yüzden nav'ın alt çizgisi hiç çalışmadı, köşe künyesi
+     hiç açılmadı ve en kötüsü Firefox için yazılan JS yedeği (sahne
+     animasyonlarını süren --p döngüsü) tamamen ölüydü.
+     `clip` aynı işi yapar ama kaydırma kapsayıcısı OLUŞTURMAZ. */
+  overflow-x:clip;
 }
 h1,h2,h3{font-weight:900; letter-spacing:-.02em; line-height:1.14; margin:0}
 p{margin:0}
@@ -440,6 +449,29 @@ nav.stuck{border-bottom-color:var(--border)}
 .chip{font:inherit; cursor:pointer; background:var(--card); color:var(--ink)}
 .chip[aria-pressed="true"]{border-color:var(--green); box-shadow:0 0 0 3px var(--green-soft)}
 
+/* ===================== KÖŞE KÜNYESİ ===================== */
+.plate{position:fixed; left:20px; bottom:22px; z-index:40; display:flex; align-items:baseline; gap:7px;
+  font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--slate); pointer-events:none;
+  opacity:0; transform:translateY(6px);
+  transition:opacity 420ms var(--ease), transform 420ms var(--ease)}
+.plate.on{opacity:1; transform:none}
+.plate-no{font-size:13px; color:var(--green-text); letter-spacing:.06em}
+.plate-dot{opacity:.5}
+/* Üç isim de DOM'da duruyor, sadece etkin olan görünüyor. Böylece çeviri
+   mevcut apply() ile kendiliğinden çalışıyor; künye JS'i dil sözlüğüne hiç
+   dokunmuyor (dokunduğu sürüm hata atıyordu: sözlük betiğin daha aşağısında
+   tanımlı olduğu için çağrıldığı anda henüz yoktu). */
+.plate-name{display:none}
+.plate[data-layer="1"] .plate-name[data-l="1"],
+.plate[data-layer="2"] .plate-name[data-l="2"],
+.plate[data-layer="3"] .plate-name[data-l="3"]{display:inline}
+/* Sarmaşık gövdesi ≥960px'te sol kenarda duruyor; künye onunla çakışmasın. */
+@media (min-width:960px){ .plate{left:62px} }
+/* Dar ekranda ortadaki altyazılarla çakışma riski var, gösterilmiyor. */
+@media (max-width:719px){ .plate{display:none} }
+@media (prefers-reduced-motion:reduce){ .plate{transition:none; transform:none} }
+
 /* ===================== SARMAŞIK GÖVDESİ ===================== */
 /* Sayfanın "bölümler listesi" gibi durmasının ilacı: sarmaşık hero'da bitmiyor,
    sol kenardan aşağı devam ediyor ve scroll ile çiziliyor. */
@@ -562,6 +594,20 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   <svg viewBox="0 0 26 1000" preserveAspectRatio="none">
     <path class="stem" pathLength="1" d="M 13 0 C 3 120, 23 240, 13 360 C 3 480, 23 600, 13 720 C 3 840, 23 920, 13 1000"/>
   </svg>
+</div>
+<!-- KÖŞE KÜNYESİ — Impression Archive'in müze etiketi mantığı: içerik ortada
+     yüzerken köşede sabit bir künye onu çerçeveliyor. Bizde işlevi var, süs
+     değil: hangi katmanda olduğunu söylüyor. Üç katman ANLATISINI korumak için
+     sadece üç değer alıyor; SSS/CTA gibi bölümlerde tamamen siliniyor, yoksa
+     "01, 02, 03, 04, 05..." diye sayınca üç katman fikri dağılır.
+     aria-hidden: bölümlerin kendi başlıkları zaten ekran okuyucuda var, sürekli
+     değişen bir etiket sadece gürültü olurdu. -->
+<div class="plate" data-layer="0" aria-hidden="true">
+  <span class="plate-no"></span>
+  <span class="plate-dot">·</span>
+  <span class="plate-name" data-l="1" data-i18n="pl_1">Yapı</span>
+  <span class="plate-name" data-l="2" data-i18n="pl_2">Zaman</span>
+  <span class="plate-name" data-l="3" data-i18n="pl_3">Kontrol</span>
 </div>
 <main id="main">
 <header class="hero" id="top">
@@ -910,7 +956,7 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
 </section>
 
 <!-- =================== YAKINLAŞ =================== -->
-<section>
+<section id="closeup">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow" data-i18n="cu_eyebrow">Yakından</p>
@@ -1241,6 +1287,53 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   }
 
   /* --------------------------------------------------------------------
+     1d) KÖŞE KÜNYESİ — hangi katmandayız?
+     IntersectionObserver, rootMargin '-50% 0px -50% 0px' ile: bir bölüm
+     viewport'un TAM ORTASINI geçtiği anda etkin sayılıyor. Scroll dinlemekten
+     ucuz ve "hangi bölümdeyim" için doğru araç.
+     Sadece üç katman değer alıyor (bkz. markup'taki yorum).
+  -------------------------------------------------------------------- */
+  var PLATES = {
+    how: 1, time: 2, closeup: 2, promises: 3, quiet: 3
+  };
+  var plate = document.querySelector('.plate');
+  var plateNo = plate.querySelector('.plate-no');
+  var currentPlate = null;
+  var setPlate = function(id){
+    if(id === currentPlate) return;
+    currentPlate = id;
+    var n = PLATES[id];
+    if(!n){ plate.classList.remove('on'); return; }
+    plateNo.textContent = '0' + n;
+    plate.setAttribute('data-layer', n);
+    plate.classList.add('on');
+  };
+  var watched = Object.keys(PLATES).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+
+  /* IntersectionObserver DENENDİ ve ÇALIŞMADI: yaygın olarak önerilen
+     rootMargin '-50% 0px -50% 0px' kökün yüksekliğini SIFIRA indiriyor ve
+     Chrome sıfır alanlı kesişim için hiçbir kayıt üretmiyor — başlangıç
+     çağrısı bile gelmiyor (canlı sayfada ölçtüm: 0 entry). Bunun yerine tek
+     bir scroll hesabı: viewport'un ortasını hangi bölüm kesiyorsa o etkin.
+     Aynı el ile "hiçbiri ortada değil" durumunu da çözüyor, yani iki mekanizma
+     yerine bir tane var. rAF ile throttle'lı. */
+  var platePending = false;
+  var syncPlate = function(){
+    platePending = false;
+    var mid = innerHeight / 2, found = null;
+    for(var i = 0; i < watched.length; i++){
+      var r = watched[i].getBoundingClientRect();
+      if(r.top <= mid && r.bottom >= mid){ found = watched[i].id; break; }
+    }
+    if(found) setPlate(found);
+    else { currentPlate = null; plate.classList.remove('on'); }
+  };
+  var onPlateScroll = function(){ if(!platePending){ platePending = true; requestAnimationFrame(syncPlate); } };
+  addEventListener('scroll', onPlateScroll, {passive:true});
+  addEventListener('resize', onPlateScroll, {passive:true});
+  syncPlate();
+
+  /* --------------------------------------------------------------------
      2) NAV — kaydırınca ince bir alt çizgi kazanır
   -------------------------------------------------------------------- */
   var nav = document.getElementById('nav');
@@ -1261,6 +1354,7 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     cta1:"Ask for early access",
     meta:"Free · No ads · No account needed",
     cue:"Scroll", hero_hint:"move your mouse",
+    pl_1:"Structure", pl_2:"Time", pl_3:"Control",
     how_sr:"How Vyne works: a map of your life branching out from the centre",
     map_desc:"A green bubble representing you at the centre, with coloured curves reaching out to Work, Health, Habits, Study, Budget and Sports cards, plus smaller sub-branches.",
     sb_meeting:"Meeting", sb_report:"Report", sb_walk:"Walk", sb_water:"Water",
