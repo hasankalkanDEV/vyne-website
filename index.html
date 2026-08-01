@@ -423,6 +423,27 @@ nav.stuck{border-bottom-color:var(--border)}
     animation-play-state:running}
 }
 
+/* ===================== EKRANLAR ===================== */
+.shots{display:grid; gap:clamp(20px,3vw,38px) clamp(16px,2.6vw,30px);
+  grid-template-columns:repeat(3,1fr)}
+@media (max-width:560px){ .shots{grid-template-columns:repeat(2,1fr)} }
+.shot{margin:0; width:100%; max-width:190px; justify-self:center}
+.shot figcaption{margin-top:14px; text-align:center; font-size:13px; font-weight:800;
+  color:var(--slate)}
+.shots .phone{width:100%; border-radius:30px; padding:7px}
+.shots .phone img{border-radius:24px}
+/* Yer tutucu: BİLEREK boş bir cihaz. Uydurma ekran çizmek, sayfanın
+   "bunlar gerçek ekranlar" iddiasını çürütürdü. */
+.shots .phone-soon{aspect-ratio:640/1328; display:grid; place-items:center;
+  background:var(--card-alt); border:2px dashed var(--border); box-shadow:none}
+.phone-soon span{font-size:12.5px; font-weight:800; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate)}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .shot{animation:vowIn linear both; animation-timeline:view(); animation-range:entry 6% entry 52%}
+  }
+}
+
 /* --- Sözler: ızgara değil, teker teker gelen taahhütler --- */
 .vows{margin-top:clamp(56px,9vw,110px); display:flex; flex-direction:column;
   gap:clamp(56px,10vw,130px)}
@@ -993,6 +1014,51 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   </div>
 </section>
 
+<!-- =================== EKRANLAR =================== -->
+<!-- Üç gerçek ekran + henüz görüntüsü olmayan iki ekran için "yakında" yer
+     tutucusu. Yer tutucular BİLEREK boş: uydurma bir ekran çizmek, sayfanın
+     "bunlar gerçek ekranlar" iddiasını çürütür. Hasan güncel build'den
+     görüntüleri gönderince scripts/make-images.mjs yanındaki aynı akışla
+     (640px genişlik, mozjpeg q80) üretilip yerlerine konacak. -->
+<section id="shots">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow" data-i18n="sh_eyebrow">Ekranlar</p>
+      <h2 data-i18n="sh_h2">Uygulamanın kendisi</h2>
+      <p data-i18n="sh_p">Hepsi gerçek ekran görüntüsü. Maket yok.</p>
+    </div>
+    <div class="shots">
+      <figure class="shot">
+        <div class="phone"><img src="shot-home.jpg" width="640" height="1328" loading="lazy" decoding="async"
+          alt="Vyne ana ekranı: profilden dallanan kategoriler" data-i18n-alt="alt_home"></div>
+        <figcaption data-i18n="sh_1">Ana ekran</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="shot-wheel.jpg" width="640" height="1331" loading="lazy" decoding="async"
+          alt="Karar veremeyince alışkanlık seçen çark" data-i18n-alt="alt_wheel"></div>
+        <figcaption data-i18n="sh_2">Çark</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="shot-stats.jpg" width="640" height="1329" loading="lazy" decoding="async"
+          alt="Kategoriye göre ilerleme ve seriler" data-i18n-alt="alt_stats"></div>
+        <figcaption data-i18n="sh_3">İstatistikler</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone phone-soon"><span data-i18n="sh_soon">Yakında</span></div>
+        <figcaption data-i18n="sh_4">Kutlamalar</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone phone-soon"><span data-i18n="sh_soon">Yakında</span></div>
+        <figcaption data-i18n="sh_5">Takvim</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone phone-soon"><span data-i18n="sh_soon">Yakında</span></div>
+        <figcaption data-i18n="sh_6">Temalar</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- =================== KATMAN 3 · KONTROL =================== -->
 <!-- SDT: ozerklik. "Seni geri cagirmiyoruz" bir SOZ olmaktan cikip GOSTERIYE
      donusuyor: tema rozetine tiklayinca sitenin kendisi o temaya donuyor. -->
@@ -1380,6 +1446,11 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     cta1:"Ask for early access",
     meta:"Free · No ads · No account needed",
     cue:"Scroll", hero_hint:"move your mouse",
+    sh_eyebrow:"Screens", sh_h2:"The app itself", sh_p:"All real screenshots. No mockups.",
+    sh_1:"Home", sh_2:"The wheel", sh_3:"Stats", sh_4:"Celebrations", sh_5:"Calendar", sh_6:"Themes",
+    sh_soon:"Coming soon",
+    alt_wheel:"Vyne's spin-the-wheel picking a habit to start",
+    alt_stats:"Vyne stats screen showing streaks and progress by category",
     pl_1:"Structure", pl_2:"Time", pl_3:"Control",
     how_sr:"How Vyne works: a map of your life branching out from the centre",
     map_desc:"A green bubble representing you at the centre, with coloured curves reaching out to Work, Health, Habits, Study, Budget and Sports cards, plus smaller sub-branches.",
