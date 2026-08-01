@@ -423,6 +423,29 @@ nav.stuck{border-bottom-color:var(--border)}
     animation-play-state:running}
 }
 
+/* --- Sözler: ızgara değil, teker teker gelen taahhütler --- */
+.vows{margin-top:clamp(56px,9vw,110px); display:flex; flex-direction:column;
+  gap:clamp(56px,10vw,130px)}
+.vow{max-width:34ch; position:relative; padding-left:60px}
+.vow:nth-child(even){margin-left:auto; text-align:right; padding-left:0; padding-right:60px}
+.vow-ic{position:absolute; left:0; top:-4px; font-size:34px; opacity:.85}
+.vow:nth-child(even) .vow-ic{left:auto; right:0}
+.vow h3{font-size:clamp(21px,3vw,30px); margin-bottom:10px}
+.vow p{color:var(--slate); font-size:15.5px}
+@media (max-width:719px){
+  .vow,.vow:nth-child(even){max-width:none; text-align:left; padding:0 0 0 52px; margin-left:0}
+  .vow:nth-child(even) .vow-ic{left:0; right:auto}
+  .vow-ic{font-size:28px}
+}
+/* Kaydırdıkça teker teker gelsinler. Temel durum GÖRÜNÜR — animasyon
+   çalışmazsa hiçbir söz kaybolmaz. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .vow{animation:vowIn linear both; animation-timeline:view(); animation-range:entry 8% entry 62%}
+    @keyframes vowIn{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:none}}
+  }
+}
+
 /* ===================== KATMAN 3 · SESSİZLİK ===================== */
 .quiet{padding:clamp(90px,16vw,190px) 0; text-align:center}
 .quiet-line{font-size:clamp(22px,3.4vw,34px); font-weight:900; letter-spacing:-.02em}
@@ -506,14 +529,6 @@ section{padding:clamp(64px,10vw,120px) 0}
 .step p{font-size:15.5px; color:var(--slate)}
 .step p strong{color:var(--ink); font-weight:800}
 
-/* Sözlerimiz */
-.promises{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
-.promise{background:var(--card); border:1px solid var(--border); border-radius:var(--r-xl);
-  padding:26px 22px; box-shadow:var(--shadow)}
-.promise h3{font-size:16.5px; margin-bottom:7px}
-.promise p{font-size:14px; color:var(--slate)}
-.promise .ic{width:40px; height:40px; border-radius:var(--r-md); display:grid; place-items:center;
-  font-size:20px; margin-bottom:14px; background:var(--green-soft)}
 
 /* Temalar */
 .themes{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px}
@@ -995,11 +1010,22 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
       <button class="chip" type="button" data-theme="midnight" aria-pressed="false"><span class="dot" style="background:#0F0F0F"></span><span data-i18n="th4">Gece Yarısı</span></button>
     </div>
 
-    <div class="promises">
-      <div class="promise"><div class="ic">📴</div><h3 data-i18n="p1h">Çevrimdışı çalışır</h3><p data-i18n="p1p">İnternet olmadan da her şey yerinde. Verin cihazında kalır; bulut yedeklemeyi sen açmadıkça hiçbir yere gitmez.</p></div>
-      <div class="promise"><div class="ic">🔓</div><h3 data-i18n="p2h">Hesap istemez</h3><p data-i18n="p2p">Kayıt yok, e-posta yok. Aç ve başla. Hesap sadece istersen, cihazlar arası yedekleme için.</p></div>
-      <div class="promise"><div class="ic">🔔</div><h3 data-i18n="p3h">Günde en fazla bir kez</h3><p data-i18n="p3p">Tek, nazik bir hatırlatma, seçtiğin saatte. İstemezsen o da yok.</p></div>
-      <div class="promise"><div class="ic">🚫</div><h3 data-i18n="p4h">Reklam yok</h3><p data-i18n="p4p">Dikkatin satılık değil. Bu değişirse açıkça söyleriz, var olan özellikler sessizce ücretli hale gelmez.</p></div>
+    <!-- Söz vermek boşluk ister. Dört kart yan yana durunca "özellik listesi"
+         okunuyordu; teker teker, geniş boşlukta, kaydırdıkça gelince söz gibi
+         okunuyor. Başlıklar da özellik ADI değil, birinci ağızdan TAAHHÜT. -->
+    <div class="vows">
+      <div class="vow"><span class="vow-ic">📴</span>
+        <h3 data-i18n="p1h">İnternet olmasa da çalışır.</h3>
+        <p data-i18n="p1p">Verin cihazında kalır. Bulut yedeklemeyi sen açmadıkça hiçbir yere gitmez.</p></div>
+      <div class="vow"><span class="vow-ic">🔓</span>
+        <h3 data-i18n="p2h">Hesap istemiyoruz.</h3>
+        <p data-i18n="p2p">Kayıt yok, e-posta yok. Aç ve başla. Hesap sadece istersen, cihazlar arası yedekleme için.</p></div>
+      <div class="vow"><span class="vow-ic">🔔</span>
+        <h3 data-i18n="p3h">Günde bir kez. En fazla.</h3>
+        <p data-i18n="p3p">Tek, nazik bir hatırlatma, seçtiğin saatte. İstemezsen o da yok.</p></div>
+      <div class="vow"><span class="vow-ic">🚫</span>
+        <h3 data-i18n="p4h">Dikkatin satılık değil.</h3>
+        <p data-i18n="p4p">Reklam yok. Bu değişirse açıkça söyleriz; var olan özellikler sessizce ücretli hale gelmez.</p></div>
     </div>
   </div>
 </section>
@@ -1373,10 +1399,10 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     s4:"<strong>Can't decide? Spin the wheel.</strong> Let it pick where you start, then just begin for two minutes.",
     pr_eyebrow:"You're in control", pr_h2:"You set the rules",
     pr_p:"Tap one of the themes below and watch this page change with it. It works exactly like that in the app, too.",
-    p1h:"Works offline", p1p:"Everything works without a connection. Your data stays on your device and goes nowhere unless you turn on cloud backup yourself.",
-    p2h:"No account", p2p:"No sign-up, no email. Open it and start. An account is only for optional backup across devices.",
-    p3h:"Once a day, at most", p3p:"A single gentle reminder, at a time you choose. Or none at all, if you'd rather.",
-    p4h:"No ads", p4p:"Your attention isn't for sale. If that ever changes we'll say so plainly, and existing features won't quietly get paywalled.",
+    p1h:"It works without a connection.", p1p:"Your data stays on your device. It goes nowhere unless you turn on cloud backup yourself.",
+    p2h:"We don't want an account.", p2p:"No sign-up, no email. Open it and start. An account is only for optional backup across devices.",
+    p3h:"Once a day. At most.", p3p:"A single gentle reminder, at a time you choose. Or none at all, if you'd rather.",
+    p4h:"Your attention isn't for sale.", p4p:"No ads. If that ever changes we'll say so plainly, and existing features won't quietly get paywalled.",
     time_sr:"A hundred days: how a habit actually lasts",
     cal_desc:"A hundred-day calendar: each day fills in as a small green square. Day twenty-three was missed but a leaf protected it, so it shows gold and the streak holds. Days seven, thirty, sixty-six and one hundred are ringed.",
     ccap1:"Day one is easy.<small>So is day two. Day thirty isn't.</small>",
