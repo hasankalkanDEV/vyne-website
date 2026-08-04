@@ -1,0 +1,4 @@
+# scripts/make-images.mjs ve scripts/make-shots.mjs sharp'ı geçici kuruyor
+# (npm install --no-save sharp). Üretilmiş görseller depoda, bağımlılık değil.
+node_modules/
+package-lock.json

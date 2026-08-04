@@ -429,6 +429,11 @@ nav.stuck{border-bottom-color:var(--border)}
 .shots{display:grid; gap:clamp(20px,3vw,38px) clamp(16px,2.6vw,30px);
   grid-template-columns:repeat(auto-fit,minmax(140px,190px)); justify-content:center;
   margin-top:clamp(28px,4vw,44px)}
+/* auto-fit sütun sayısını MAKS değerden (190px) hesaplar, minimumdan değil.
+   Şerit 2 kareyken bu fark etmiyordu; 4'e çıkınca 375px'lik ekranda tek
+   sütuna düşüp şeridi ~1700px'lik ölü bir kaydırmaya çevirdi. Dar ekranda
+   ikişerli sabit ızgara: .shot zaten max-width:190px ile büyümeyi kesiyor. */
+@media (max-width:560px){ .shots{grid-template-columns:repeat(2,minmax(0,1fr))} }
 /* Bağlayıcı bir etiket, başlık değil: bölümün kendi eyebrow'u (16.5px)
    ile şeridin figcaption'ları (13px slate) arasında kalmalı. Çıplak
    .eyebrow yeşile boyanıyor; burada yeşil, altındaki sessiz şeritten
@@ -543,7 +548,10 @@ section{padding:clamp(64px,10vw,120px) 0}
 .closeup{display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,6vw,72px); align-items:center}
 .phone{width:min(280px,72vw); margin:0 auto; border-radius:38px; padding:9px;
   background:var(--ink); box-shadow:var(--shadow-lg)}
-.phone img{border-radius:30px; aspect-ratio:640/1328; background:var(--card-alt)}
+/* Oranı scripts/make-shots.mjs belirler ve çalışırken doğrular — bütün kareler
+   tek orana sahip olmak zorunda, yoksa buradaki TEK değer bazılarını ezer.
+   Kare setini yenilersen scriptin son satırdaki çıktısını buraya yaz. */
+.phone img{border-radius:30px; aspect-ratio:640/1314; background:var(--card-alt)}
 .steps{display:flex; flex-direction:column; gap:22px}
 .step{display:flex; gap:14px; align-items:flex-start}
 .step b{flex:none; width:28px; height:28px; border-radius:var(--r-pill); background:var(--green-soft);
@@ -1012,7 +1020,7 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     </div>
     <div class="closeup">
       <div class="phone">
-        <img src="shot-home.jpg" width="640" height="1328" loading="lazy" decoding="async"
+        <img src="shot-home.tr.jpg" data-shot="home" width="640" height="1314" loading="lazy" decoding="async"
              alt="Vyne ana ekranı: merkezdeki profilden dallanan kategoriler ve bugünün alışkanlıkları" data-i18n-alt="alt_home">
       </div>
       <div class="steps">
@@ -1024,16 +1032,30 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     </div>
 
     <p class="eyebrow shots-label" data-i18n="sh_more">Aynı uygulamadan</p>
+    <!-- src'ler `.tr` ile yazılı çünkü sayfanın kaynak dili Türkçe (TR sözlüğü
+         HTML'den toplanıyor). JS kapalıysa Türkçe kareler kalır, tutarlı.
+         data-shot dil değişiminde src'yi kuran anahtar — YENİ FİGÜR EKLERKEN
+         UNUTMA, yoksa o kare dil değişince İngilizce'de asılı kalır. -->
     <div class="shots">
       <figure class="shot">
-        <div class="phone"><img src="shot-wheel.jpg" width="640" height="1331" loading="lazy" decoding="async"
+        <div class="phone"><img src="shot-wheel.tr.jpg" data-shot="wheel" width="640" height="1314" loading="lazy" decoding="async"
           alt="Karar veremeyince alışkanlık seçen çark" data-i18n-alt="alt_wheel"></div>
         <figcaption data-i18n="sh_2">Çark</figcaption>
       </figure>
       <figure class="shot">
-        <div class="phone"><img src="shot-stats.jpg" width="640" height="1329" loading="lazy" decoding="async"
+        <div class="phone"><img src="shot-stats.tr.jpg" data-shot="stats" width="640" height="1314" loading="lazy" decoding="async"
           alt="Kategoriye göre ilerleme ve seriler" data-i18n-alt="alt_stats"></div>
         <figcaption data-i18n="sh_3">İstatistikler</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="shot-themes.tr.jpg" data-shot="themes" width="640" height="1314" loading="lazy" decoding="async"
+          alt="Görünüm ayarları: açık, sıcak, koyu ve gece yarısı temaları, dil seçimi ve günde en fazla bir bildirim" data-i18n-alt="alt_themes"></div>
+        <figcaption data-i18n="sh_4">Temalar</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone"><img src="shot-templates.tr.jpg" data-shot="templates" width="640" height="1314" loading="lazy" decoding="async"
+          alt="Hazır şablonlar: sınav dönemi, ev taşıma, yeni iş ve bütçe" data-i18n-alt="alt_templates"></div>
+        <figcaption data-i18n="sh_5">Şablonlar</figcaption>
       </figure>
     </div>
   </div>
@@ -1427,9 +1449,11 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     meta:"Free · No ads · No account needed",
     cue:"Scroll", hero_hint:"move your mouse",
     sh_more:"From the same app",
-    sh_2:"The wheel", sh_3:"Stats",
+    sh_2:"The wheel", sh_3:"Stats", sh_4:"Themes", sh_5:"Templates",
     alt_wheel:"Vyne's spin-the-wheel picking a habit to start",
     alt_stats:"Vyne stats screen showing streaks and progress by category",
+    alt_themes:"Appearance settings: light, warm, dark and midnight themes, a language picker, and at most one gentle nudge a day",
+    alt_templates:"Ready-made templates: exam period, moving house, a new job and budget",
     pl_1:"Structure", pl_2:"Time", pl_3:"Control",
     how_sr:"How Vyne works: a map of your life branching out from the centre",
     map_desc:"A green bubble representing you at the centre, with coloured curves reaching out to Work, Health, Habits, Study, Budget and Sports cards, plus smaller sub-branches.",
@@ -1503,6 +1527,14 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
       var v = d[el.getAttribute('data-i18n-alt')];
       if(v != null) el.alt = v;
+    });
+    /* EKRAN GÖRÜNTÜLERİ DE ÇEVRİLİR. Metin Türkçeleşirken karede "Today's
+       Habits" yazması sitenin kendi vaadini bozuyordu. Her kare iki dilde
+       çekildi ve scripts/make-shots.mjs shot-<ad>.<dil>.jpg olarak üretiyor;
+       burası sadece adı kuruyor. Bir dilde eksik dosya = kırık görsel, o
+       yüzden yeni kareyi HER İKİ dil klasörüne birden koy. */
+    document.querySelectorAll('img[data-shot]').forEach(function(el){
+      el.src = 'shot-' + el.getAttribute('data-shot') + '.' + lang + '.jpg';
     });
     document.querySelectorAll('.lang button').forEach(function(b){
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
