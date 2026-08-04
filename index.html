@@ -195,6 +195,16 @@ nav.stuck{border-bottom-color:var(--border)}
   transition:transform var(--enter) var(--ease)}
 .btn:hover{transform:translateY(-2px)}
 .hero-meta{margin-top:16px; font-size:13.5px; color:var(--slate)}
+/* Android bekleme listesi: ikinci bir .btn DEĞİL. iOS canlı, Android değil —
+   iki eşit düğme koymak ikisi de hazırmış gibi okunur. Sessiz bir metin
+   bağlantısı hiyerarşiyi doğru kuruyor. Android çıkınca burası silinir.
+   SEÇİCİ BİLEREK ÇİFT: hem hero'da hem kapanış bandında kullanılıyor, ama
+   bandda `.band p` (0,0,1,1) araya girip üst boşluğu sıfırlıyor ve puntoyu
+   15.5px'e çıkarıyordu — bağlantı düğmeye yapışık duruyordu. Bu yüzden band
+   için `.band p.alt-link` (0,0,2,1) kadar spesifik bir seçici gerekiyor. */
+.alt-link, .band p.alt-link{margin:14px 0 0; font-size:13.5px; max-width:none}
+.alt-link a{color:var(--slate); text-decoration:underline; text-underline-offset:3px}
+.alt-link a:hover{color:var(--green-text)}
 .cue{position:absolute; bottom:clamp(24px,5vh,52px); color:var(--slate); font-size:12px;
   font-weight:800; letter-spacing:.12em; text-transform:uppercase;
   display:flex; flex-direction:column; align-items:center; gap:10px}
@@ -665,7 +675,10 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
        görünürlüğü geciktiriliyor) — arama motorları ve ekran okuyucular için
        ilk andan itibaren orada. Ayrıca 1.6 sn'lik otomatik açılma var, yoksa
        faresi olmayan ya da ne yapacağını bilmeyen biri boş ekranda kalırdı.
-       Bu sayfanın işi etkilemek değil, tester toplamak. -->
+       SAYFANIN İŞİ 2026-08-03'TE DEĞİŞTİ: uygulama 24 Temmuz'da App Store'da
+       yayınlandı (id6790837181). Artık iş "tester toplamak" değil, iPhone'da
+       İNDİRME almak; Android hâlâ testte olduğu için bekleme listesi ikinci
+       planda duruyor. Android da çıkınca CTA'yı iki mağazaya böl. -->
   <div class="hero-stage">
     <svg class="hero-seed" viewBox="0 0 300 300" aria-hidden="true">
       <circle class="hub-ring" cx="150" cy="150" r="58"/>
@@ -675,11 +688,14 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     <div class="veil" aria-hidden="true"></div>
   </div>
   <div class="hero-copy">
-    <span class="kicker" data-i18n="kicker">🌱 Kapalı testte</span>
+    <span class="kicker" data-i18n="kicker">🌿 App Store'da yayında</span>
     <h1 data-i18n="h1">Hayatın,<br>tek bir yerden.</h1>
     <p class="lede" data-i18n="lede">Tek bir noktadan başlıyor: sen. Önemli olan her şey oradan bir dala dönüşüyor. Kaydır, hepsini bir arada gör.</p>
-    <a class="btn" href="#early" data-i18n="cta1">Erken erişim iste</a>
+    <!-- Bölgesiz App Store adresi: /tr/ gibi bir bölge yazmıyoruz, Apple
+         ziyaretçiyi 301 ile kendi ülkesinin mağazasına yönlendiriyor. -->
+    <a class="btn" href="https://apps.apple.com/app/id6790837181" data-i18n="cta1">iPhone için indir</a>
     <p class="hero-meta" data-i18n="meta">Ücretsiz · Reklamsız · Hesap gerekmez</p>
+    <p class="alt-link"><a href="#early" data-i18n="cta2">Android'de misin? Listeye gir</a></p>
   </div>
   <p class="cue"><span></span><em style="font-style:normal" data-i18n="cue">Kaydır</em></p>
   <p class="hero-hint" data-i18n="hero_hint">fareyi oynat</p>
@@ -1115,12 +1131,12 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   <div class="wrap">
     <div class="head"><p class="eyebrow" data-i18n="fq_eyebrow">Sorular</p><h2 data-i18n="fq_h2">Sıkça sorulanlar</h2></div>
     <div class="faq">
-      <details><summary data-i18n="q1">Vyne'i şimdi indirebilir miyim?</summary><p data-i18n="a1">Henüz mağazalarda değil. Tam lansmandan önce kapalı test aşamasında. Bize e-posta at, hazır olduğunda ilk sen bil ya da şimdiden denemeye katıl.</p></details>
+      <details><summary data-i18n="q1">Vyne'i şimdi indirebilir miyim?</summary><p data-i18n="a1">iPhone'daysan evet: App Store'da, ücretsiz. Android sürümü hâlâ testte; bize e-posta at, Play Store'a çıktığında ilk sen bil ya da şimdiden denemeye katıl.</p></details>
       <details><summary data-i18n="q2">Ücretsiz mi?</summary><p data-i18n="a2">Evet, ve şu an reklamsız. İleride değişirse açıkça söyleriz; var olan özellikler sessizce ücretli hale getirilmez.</p></details>
       <details><summary data-i18n="q3">Hesap oluşturmam gerekiyor mu?</summary><p data-i18n="a3">Hayır. Vyne kayıt olmadan tamamen çevrimdışı çalışır. Hesap sadece opsiyonel bulut yedekleme için, verini başka bir cihazda geri yükleyebilesin diye.</p></details>
       <details><summary data-i18n="q4">Verilerimi silebilir miyim?</summary><p data-i18n="a4">Evet, istediğin zaman, doğrudan uygulama içinden. Hem cihazındaki veri hem de varsa bulut yedeği. Beklemeye ya da destek talebine gerek yok.</p></details>
       <details><summary data-i18n="q5">Bu normal bir yapılacaklar listesinden nasıl farklı?</summary><p data-i18n="a5">Düz listeler hayatını da düzleştirir: bir iş teslim tarihi, hiçbir ölçek hissi olmadan "süt al" maddesinin yanına oturur. Vyne'de birbiriyle ilgili şeyler birbirinden dallanır, böylece her parça istediğin kadar detaylı ya da sade kalır.</p></details>
-      <details><summary data-i18n="q6">Hangi platformlarda olacak?</summary><p data-i18n="a6">Android ve iPhone. İkisi de şu an test aşamasında; ilk çıkış Android tarafında olacak.</p></details>
+      <details><summary data-i18n="q6">Hangi platformlarda var?</summary><p data-i18n="a6">iPhone'da App Store'da yayında. Android sürümü şu an test aşamasında ve hazır olduğunda Play Store'a çıkacak.</p></details>
       <details><summary data-i18n="q7">Bunu kim yapıyor?</summary><p data-i18n="a7">Tek kişi. Arkasında ekip ya da şirket yok, sadece düz bir yapılacaklar listesine sığmayan bir hayatı tutmanın daha iyi bir yolunu arayan biri.</p></details>
     </div>
   </div>
@@ -1130,9 +1146,10 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
 <section id="early">
   <div class="wrap">
     <div class="band">
-      <h2 data-i18n="e_h2">Herkese açılmadan önce dene</h2>
-      <p data-i18n="e_p">Vyne şu an kapalı testte. Bize bir e-posta at, seni listeye ekleyelim ya da hemen denemen için davet gönderelim.</p>
-      <a class="btn" href="mailto:vyneapp.help@gmail.com?subject=Vyne%20erken%20erisim" data-i18n="e_btn">E-posta gönder</a>
+      <h2 data-i18n="e_h2">Bugün başla</h2>
+      <p data-i18n="e_p">Vyne iPhone'da App Store'da, ücretsiz. Android sürümü hâlâ testte: bize bir e-posta at, çıktığında haber verelim ya da şimdiden denemen için davet gönderelim.</p>
+      <a class="btn" href="https://apps.apple.com/app/id6790837181" data-i18n="e_btn">App Store'da aç</a>
+      <p class="alt-link"><a href="mailto:vyneapp.help@gmail.com?subject=Vyne%20Android" data-i18n="e_alt">Android için e-posta gönder</a></p>
     </div>
   </div>
 </section>
@@ -1442,10 +1459,11 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
   var EN = {
     skip:"Skip to content",
     nav_how:"How it works", nav_promises:"Our promises", nav_faq:"FAQ", nav_privacy:"Privacy",
-    kicker:"🌱 In closed testing",
+    kicker:"🌿 Out now on the App Store",
     h1:"Your whole life,<br>from one place.",
     lede:"It starts with a single point: you. Everything that matters grows outward from there as a branch. Scroll, and see all of it at once.",
-    cta1:"Ask for early access",
+    cta1:"Download for iPhone",
+    cta2:"On Android? Join the list",
     meta:"Free · No ads · No account needed",
     cue:"Scroll", hero_hint:"move your mouse",
     sh_more:"From the same app",
@@ -1488,15 +1506,16 @@ try{ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)
     q_sub:"That's all. Tomorrow, once again.",
     th1:"Light", th2:"Warm", th3:"Dark", th4:"Midnight",
     fq_eyebrow:"Questions", fq_h2:"Frequently asked",
-    q1:"Can I download Vyne now?", a1:"Not from the stores yet. It's in closed testing ahead of a full launch. Email us and you'll be the first to know, or join and try it early.",
+    q1:"Can I download Vyne now?", a1:"On iPhone, yes: it's on the App Store, free. The Android version is still in testing — email us and you'll be the first to know when it hits the Play Store, or join and try it early.",
     q2:"Is it free?", a2:"Yes, and there are no ads right now. If that ever changes we'll be upfront about it, and existing features won't quietly get paywalled.",
     q3:"Do I need an account?", a3:"No. Vyne works fully offline with zero sign-up. An account is only needed for optional cloud backup, so you can restore your data on another device.",
     q4:"Can I delete my data?", a4:"Yes, any time, right from inside the app. Both the data on your device and any cloud backup. No waiting, no support ticket.",
     q5:"How is this different from a normal to-do list?", a5:"Flat lists flatten your life too: a work deadline sits right next to \"buy milk\" with no sense of scale. In Vyne related things branch off each other, so each part stays exactly as detailed, or as simple, as you want.",
-    q6:"Which platforms?", a6:"Android and iPhone. Both are in testing right now; Android will be first out.",
+    q6:"Which platforms?", a6:"It's out on iPhone, on the App Store. The Android version is in testing right now and will land on the Play Store when it's ready.",
     q7:"Who makes this?", a7:"One person. No team, no company behind it, just someone who wanted a better way to hold onto a life that kept overflowing a flat to-do list.",
-    e_h2:"Try it before it opens up", e_p:"Vyne is in closed testing. Send us an email and we'll add you to the list, or invite you to try it right away.",
-    e_btn:"Send an email",
+    e_h2:"Start today", e_p:"Vyne is on the App Store for iPhone, free. The Android version is still in testing: send us an email and we'll tell you when it lands, or invite you to try it right away.",
+    e_btn:"Open in the App Store",
+    e_alt:"Email us about Android",
     f_privacy:"Privacy Policy", f_terms:"Terms of Service", f_contact:"Contact",
     _title:"Vyne — your whole life, from one place",
     _desc:"Start from a single point and let every part of your life grow into a branch. Habits that actually last. No ads, no account, fully offline."
