@@ -48,9 +48,24 @@ Bu, sitedeki tek bilinen zamanlanmış iş. Üç yer:
 ## Ekran görüntüsü hattı — `scripts/make-shots.mjs`
 
 Sitedeki 5 kare (`home`, `wheel`, `stats`, `themes`, `templates`) bu scriptle
-üretiliyor. Ham kareler **depo dışında**: `../appscrenshots/selected ios <dil>/`.
-Depoyu tek başına klonlarsan script çalışmaz; üretilmiş JPEG'ler depoda olduğu
-için siteyi kurmak yine de sorun değil.
+üretiliyor. Ham kareler **depo dışında**:
+`../appscrenshots/selected ios <dil> <sürüm>/`. Depoyu tek başına klonlarsan
+script çalışmaz; üretilmiş JPEG'ler depoda olduğu için siteyi kurmak yine de
+sorun değil.
+
+> **📁 KLASÖR ADI SÜRÜMLÜ, ve bu her sürümde ELLE güncellenir.** 2026-08-09'da
+> kare seti 1.3.0'a yenilendi; eskiler `selected ios <dil> 1.2.0` olarak
+> arşivlendi, silinmedi. Scriptin başındaki `LANGS` sabiti şu an
+> `selected ios turkish 1.3.0` / `selected ios english 1.3.0`'a bakıyor.
+> **Yeni set gelince `LANGS`'i güncellemeyi unutma** — yoksa script eski
+> klasörü okumaya devam eder ve hata bile vermez, sessizce eski kareleri
+> üretir.
+>
+> Ham dosyalar telefondan `IMG_XXXX.PNG` diye geliyor; script **kanonik
+> adlarla** arıyor (`01_hero_branches.png`, `02_spin_wheel.png`,
+> `03_stats_overview.png`, `06_themes.png`, `08_templates.png`).
+> **TR ve EN'in çekim sırası aynı olmak zorunda değil** — 1.3.0'da değildi,
+> her kare tek tek açılıp eşlendi. Numarayı sıraya göre tahmin etme.
 
 ```bash
 npm install --no-save sharp && node scripts/make-shots.mjs

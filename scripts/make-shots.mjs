@@ -46,7 +46,7 @@ const SHOTS = {
   templates: '08_templates',
 };
 
-const LANGS = { tr: 'selected ios turkish', en: 'selected ios english' };
+const LANGS = { tr: 'selected ios turkish 1.3.0', en: 'selected ios english 1.3.0' };
 
 let ratio = null;
 for (const [lang, folder] of Object.entries(LANGS)) {
