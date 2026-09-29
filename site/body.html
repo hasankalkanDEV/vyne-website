@@ -34,8 +34,9 @@
     <p>⟪Uygulamada da tam olarak böyle: tema ve kâğıt senin.¦It works exactly like this in the app: the theme and paper are yours.⟫</p>
   </div>
 </header>
-<a class="lang-hint" id="langHint" href="⟪../¦tr/⟫" hidden>⟪Read this page in English →¦Bu sayfayı Türkçe oku →⟫</a>
-<div class="night-chip" id="nightChip" hidden>[[g:moon]]<span>⟪Gece oldu. Siteyi uygulamadaki Galaxy kâğıdına geçirelim mi?¦It's night. Switch the site to the app's Galaxy paper?⟫</span><button type="button" id="nightYes">⟪Geçir¦Switch⟫</button><button type="button" id="nightNo">⟪Kalsın¦No thanks⟫</button></div>
+<div class="toasts"><div class="toast lang-toast" id="langToast" hidden><a class="lang-hint" id="langHint" href="⟪../¦tr/⟫" lang="⟪en¦tr⟫">⟪Read this page in English →¦Bu sayfayı Türkçe oku →⟫</a><button type="button" class="tclose" id="langClose" aria-label="⟪Kapat¦Close⟫">×</button></div>
+<div class="toast night-chip" id="nightChip" hidden>[[g:moon]]<span>⟪Gece oldu. Siteyi uygulamadaki Galaxy kâğıdına geçirelim mi?¦It's night. Switch the site to the app's Galaxy paper?⟫</span><button type="button" id="nightYes">⟪Geçir¦Switch⟫</button><button type="button" id="nightNo">⟪Kalsın¦No thanks⟫</button></div></div>
+
 
 <main id="main">
 <div class="wrap">
@@ -60,18 +61,8 @@
       <button type="button" id="returnClose">⟪Kapat¦Close⟫</button>
     </div>
   </div>
-  <div class="phone"><div class="screen"><img src="{{P}}shots/app-home.webp" width="924" height="1810" alt="⟪Vyne ana ekranı: bugünün alışkanlıkları üstte, altında sağa dallanan sarmaşık (1.4.0, İngilizce arayüz)¦Vyne home screen: today's habits on top, the vine branching to the right below (1.4.0)⟫"></div></div>
+  <div class="phone"><div class="screen"><img src="{{P}}shots/⟪tr¦en⟫/home.webp" width="924" height="2000" alt="⟪Vyne ana ekranı: bugünün alışkanlıkları üstte, altında sağa dallanan sarmaşık¦Vyne home screen: today's habits on top, the vine branching to the right below ⟫"></div></div>
 </section>
-
-<div class="sprout-toy" id="sproutToy">
-  <p class="hint" id="stHint">⟪İstersen: tomurcuğu sağa çek, sarmaşığın büyüsün.¦If you like: pull the bud to the right and watch your vine grow.⟫</p>
-  <div class="st-row" id="stRow">
-    <svg class="vinebg" id="stSvg" aria-hidden="true"></svg>
-    <div class="st-me" aria-hidden="true">⟪sen¦you⟫</div>
-    <button class="bud idle" id="stBud" type="button" aria-label="⟪Sarmaşığı büyüt¦Grow the vine⟫">[[g:sprout]]</button>
-  </div>
-  <p class="st-done" id="stDone" aria-live="polite"></p>
-</div>
 
 <div class="quick">
   <div>[[g:leaf]]<b>⟪Bir gün kaçırmak seriyi bozmaz¦Missing a day won't break your streak⟫</b><span>⟪{{LEAF_EVERY}} gün üst üste yapınca bir yaprak kazanırsın; kaçan günü o kurtarır.¦Do it {{LEAF_EVERY}} days in a row and you earn a leaf; it saves a missed day.⟫</span></div>
@@ -141,9 +132,9 @@
         <h4 id="dTitle"></h4>
         <p class="dert" id="dDert"></p>
         <p class="how" id="dHow"></p>
-        <div class="day-nav"><button type="button" id="dPrev" aria-label="⟪Önceki durak¦Previous stop⟫">‹</button><button type="button" id="dNext" aria-label="⟪Sonraki durak¦Next stop⟫">›</button></div>
+        <div class="day-nav"><button type="button" id="dPrev" aria-label="⟪Önceki durak¦Previous stop⟫">‹</button><span class="dcount" id="dCount" aria-hidden="true"></span><button type="button" id="dNext" aria-label="⟪Sonraki durak¦Next stop⟫">›</button></div>
       </div>
-      <div><div class="phone"><div class="screen" id="dScreen"></div></div><p class="cap" id="dCap"></p></div>
+      <div class="phonebox"><div class="phone"><div class="screen" id="dScreen"></div></div></div>
     </div>
   </div>
 </section>
@@ -157,17 +148,17 @@
   </div>
 
   <div class="group" style="margin-top:0">
-    <div class="group-head">[[g:tree]]<h3>⟪Harita¦The map⟫</h3><span class="muted">⟪Hayatının yapısı¦The shape of your life⟫</span></div>
+    <div class="group-head">[[g:tree]]<h3>⟪Harita¦The map⟫</h3><span class="muted">⟪Hayatının yapısı¦The shape of your life⟫</span><span class="swipehint" aria-hidden="true"></span></div>
     <div class="feats">
-      <article class="feat"><div class="scene" style="--sc:#EFE9F8"><div class="sn"><div class="col"><span class="big">[[g:sprout]]</span><span class="buds"><i>[[g:note]]</i><s></s><i>[[g:journal]]</i><s></s><i>[[g:bell]]</i><s></s><i>[[g:people]]</i><s></s><i>[[g:cloud]]</i><s></s><i>[[g:bars]]</i></span><span class="hand">⟪altı tomurcuk, sırayla¦six buds, one by one⟫</span></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/welcome.webp" width="924" height="2000" alt="⟪Karşılama: ilk dalın ve altı tomurcuk¦First run: your first branch and six buds⟫"></div>
         <div class="fbody"><b>⟪Karşılama¦A new first run⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Yeni bir uygulama açınca nereden başlayacağımı bilemiyorum.¦I open a new app and don't know where to begin.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪İlk açılışta tek bir sarmaşık büyür: adın, ilk dalın.¦On first launch a single vine grows: your name, your first branch.⟫</li><li>⟪Altı tomurcuk sırayla açılır: Notlar, Günlük, Hatırlatıcılar, Çevre, Düşünce bulutu, İstatistik.¦Six buds open one by one: Notes, Journal, Reminders, People, Thought cloud, Stats.⟫</li><li>⟪İstersen günlük hatırlatma saatini seçersin; sonra ilk yaprağın.¦Pick a daily check-in time if you like; then your first leaf.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/app-home.webp" width="924" height="1810" alt="⟪Ana ekran: bugünün alışkanlıkları ve dallar¦Home: today's habits and branches⟫"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/home.webp" width="924" height="2000" alt="⟪Ana ekran: bugünün alışkanlıkları ve dallar¦Home: today's habits and branches⟫"></div>
         <div class="fbody"><b>⟪Dallar ve yol¦Branches and the path⟫</b><p class="fdert">⟪Hayatım düz bir listeye sığmıyor.¦My life doesn't fit in a flat list.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Ortadaki profilden bir dal aç: İş, Sağlık, Ev…¦Grow a branch from your profile: Work, Health, Home…⟫</li><li>⟪Her dal sağa doğru kendi sütununu açar; "+ Ekle" ile alt dal eklersin.¦Each branch opens its own column to the right; "+ Add" makes a sub-branch.⟫</li><li>⟪Üstteki yol hep nerede olduğunu söyler; bir adımına dokun, oraya dön.¦The path at the top always shows where you are; tap any step to jump back.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/app-branch.webp" width="924" height="1810" alt="⟪Dal sayfası: seri, takvim ve alt dallar¦Branch page: streak, calendar and sub-branches⟫"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/branch.webp" width="924" height="2000" alt="⟪Dal sayfası: seri, takvim ve alt dallar¦Branch page: streak, calendar and sub-branches⟫"></div>
         <div class="fbody"><b>⟪Dal sayfası¦Branch page⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Bir alışkanlığın bütün hikâyesini tek yerde görmek istiyorum.¦I want a habit's whole story in one place.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Karta dokun, dalın sayfası açılsın.¦Tap a card and its page opens.⟫</li><li>⟪Büyük seri: korunan, en uzun, toplam gün.¦A big streak: days in a row, longest, total.⟫</li><li>⟪Takvimde dünü ve önceki günü düzeltebilirsin; alt dallar, not ve para da burada.¦Fix yesterday and the day before in the calendar; sub-branches, a note and money live here too.⟫</li></ol></details></div></article>
 
@@ -187,15 +178,15 @@
         <div class="fbody"><b>⟪Tekrar hoş geldin¦Welcome back⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Birkaç gün açmadım, şimdi her şey kırmızı olacak.¦I haven't opened it for days; everything will be red now.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪3 gün ya da daha uzun aradan sonra nazik bir kart çıkar.¦After 3 or more days away, a gentle card appears.⟫</li><li>⟪"Yetişmen gereken bir şey yok. Bugün için birini seç."¦"Nothing to catch up on. Pick one for today."⟫</li><li>⟪Kaçanları görmek istersen tek dokunuş; istemezsen kapat.¦One tap shows what you missed, or just close it.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/app-wheel.webp" width="924" height="1810" alt="⟪Karar çarkı¦The wheel⟫"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/wheel.webp" width="924" height="2000" alt="⟪Karar çarkı¦The wheel⟫"></div>
         <div class="fbody"><b>⟪Çark¦The wheel⟫</b><p class="fdert">⟪Karar veremiyorum, hiçbirine başlamıyorum.¦I can't decide, so I start nothing.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Çarkı çevir, bir alışkanlık seçsin.¦Spin the wheel and let it pick a habit.⟫</li><li>⟪Sadece 2 dakika: süreyi başlat.¦Just 2 minutes: start the timer.⟫</li><li>⟪Beğenmezsen sınırlı sayıda tekrar çevirebilirsin.¦Don't like the pick? You get a few re-spins.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#EFE9F8"><div class="sn"><span class="pill">[[g:gradcap]]⟪Sınav Dönemi¦Exam Period⟫</span><span class="pill">[[g:box]]⟪Taşınma¦Moving House⟫</span><span class="pill">[[g:briefcase]]⟪Yeni İş¦New Job⟫</span><span class="pill">[[g:moneybag]]⟪Bütçe¦Budget⟫</span><span class="pill">[[g:stroller]]⟪Yeni Bebek¦New Baby⟫</span><span class="pill">[[g:sprout]]⟪Yeni Başlangıç¦Fresh Start⟫</span><span class="pill">[[g:no]]⟪Bırakıyorum¦Quitting⟫</span><span class="pill">[[g:ring]]⟪Düğün¦Wedding⟫</span><span class="pill">[[g:books]]⟪Yeni Dönem¦New Semester⟫</span></div></div>
+      <article class="feat"><div class="scene shot low" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/templates.webp" width="924" height="2000" alt="⟪Şablonlar: Yeni İş önizlemesi¦Templates: the New Job preview⟫"></div>
         <div class="fbody"><b>⟪Şablonlar¦Templates⟫</b><p class="fdert">⟪Büyük bir döneme nereden başlayacağımı bilmiyorum.¦A big change is coming and I don't know where to start.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Dokuz hazır başlangıç: Sınav Dönemi, Taşınma, Yeni İş ve diğerleri.¦Nine one-tap starts: Exam Period, Moving House, New Job and more.⟫</li><li>⟪Tarihi seç, dallar ve adımlar hazır gelir.¦Pick the date; branches and steps come ready.⟫</li><li>⟪Aşağıdaki "Şablon denemesi"nde hemen dene.¦Try one right now in "Try a template" below.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/app-stats.webp" width="924" height="1810" alt="⟪İstatistik: haftanın şekli ve son 12 hafta¦Stats: your week's shape and the last 12 weeks⟫"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/stats.webp" width="924" height="2000" alt="⟪İstatistik: haftanın şekli ve son 12 hafta¦Stats: your week's shape and the last 12 weeks⟫"></div>
         <div class="fbody"><b>⟪İstatistik merceği¦Stats as a lens⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Gerçekten ilerliyor muyum, bilmiyorum.¦Am I actually getting anywhere?⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Hafta, ay ya da yıl seç.¦Pick a week, a month or a year.⟫</li><li>⟪En üstte tek, sade bir cümle: "Her zamanki gibi."¦One plain sentence on top: "About the same as your usual."⟫</li><li>⟪Günlere göre, haftanın şekli, son 12 hafta. Gri sadece "o gün bir şey olmadı" demek, fazlası değil.¦Done per day, your week's shape, the last 12 weeks. Grey means nothing happened. Nothing more.⟫</li></ol></details></div></article>
 
@@ -206,9 +197,9 @@
   </div>
 
   <div class="group">
-    <div class="group-head">[[g:journal]]<h3>⟪Defterler¦Notebooks⟫</h3><span class="muted">⟪Aklındaki her şey¦Everything on your mind⟫</span></div>
+    <div class="group-head">[[g:journal]]<h3>⟪Defterler¦Notebooks⟫</h3><span class="muted">⟪Aklındaki her şey¦Everything on your mind⟫</span><span class="swipehint" aria-hidden="true"></span></div>
     <div class="feats">
-      <article class="feat"><div class="scene" style="--sc:#E3F5EC"><div class="sn"><div class="col"><div class="sn" style="flex-wrap:nowrap"><span class="scr-bub" style="width:52px;height:52px;border-radius:50%;background:#6E9468;display:grid;place-items:center;box-shadow:0 0 0 5px #D6EBCB;font-size:30px">[[c:gardener]]</span><span class="mid">[[g:cloud]]</span></div><div class="ui">[[g:pencil]]<span>⟪Pazartesi raporu at¦Send the report on Monday⟫<small>⟪Gelen Kutusu'na düştü¦Landed in your Inbox⟫</small></span></div></div></div></div>
+      <article class="feat"><div class="scene shot low" style="--sc:#E3F5EC"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/cloud.webp" width="924" height="2000" alt="⟪Düşünce bulutu: yaz, Gelen Kutusu'na düşsün¦Thought cloud: write it, it lands in your Inbox⟫"></div>
         <div class="fbody"><b>⟪Düşünce bulutu¦Thought cloud⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Aklıma gelen şey yerini bulana kadar uçup gidiyor.¦A thought flies away before it finds its place.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Profil balonunun yanında küçük bir bulut yükselir.¦A little cloud rises next to your profile bubble.⟫</li><li>⟪Dokun, yaz: Gelen Kutusu'na düşer.¦Tap, write: it lands in your Inbox.⟫</li><li>⟪Sonra "Gönder…" ile doğru klasöre. İstemezsen bulutu saklarsın.¦Later, "Send to…" the right folder. Don't want it? Hide the cloud.⟫</li></ol></details></div></article>
 
@@ -216,7 +207,7 @@
         <div class="fbody"><b>vyne / notes<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Notlara nasıl gidiyordum?¦How do I get to my notes again?⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Logonun altında kurşun kalemle "notes" yazar.¦"notes" is pencilled under the logo.⟫</li><li>⟪Tek dokunuş Notlar'ı açar.¦One tap opens Notes.⟫</li><li>⟪Notlar'ın içindeki aynası seni sarmaşığa geri götürür.¦Inside Notes, its mirror takes you back to the vine.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot low" style="--sc:#E3F5EC"><img loading="lazy" src="{{P}}shots/app-notes.webp" width="924" height="1810" alt="⟪Notlar: klasör, not, liste, hatırlatıcı ekle¦Notes: add a folder, note, list or reminder⟫"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#E3F5EC"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/notes.webp" width="924" height="2000" alt="⟪Notlar: klasörler baloncuk gibi, Gelen Kutusu en üstte¦Notes: folders as bubbles, the Inbox on top⟫"></div>
         <div class="fbody"><b>⟪Notlar ve klasörler¦Notes and folders⟫</b><p class="fdert">⟪Notlarım her yere dağılmış.¦My notes are scattered everywhere.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Sınırsız klasör; içine not, liste ya da hatırlatıcı.¦Unlimited folders; put notes, lists or reminders inside.⟫</li><li>⟪Klasörler baloncuk gibi açılıp kapanır.¦Folders open and close like bubbles.⟫</li><li>⟪Beş kâğıt; Cotton artık dört temaya da uyuyor.¦Five papers; Cotton now follows all four themes.⟫</li></ol></details></div></article>
 
@@ -228,7 +219,7 @@
         <div class="fbody"><b>⟪Hatırlatıcılar¦Reminders⟫</b><p class="fdert">⟪Kira, fatura, randevu: hep son gün.¦Rent, bills, appointments: always the last minute.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Tarih, saat ve tekrar seç.¦Pick a date, a time and a repeat.⟫</li><li>⟪İstersen önceden haber al.¦Get an early heads-up if you want one.⟫</li><li>⟪Bildirim gelince "15 dk ertele" ya da "Yarın".¦When it rings: "Snooze 15 min" or "Tomorrow".⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#1B1E3A"><div class="sn on-dark"><div class="col"><span class="big">[[g:journal]]</span><span class="hand" style="color:#E8C87A">⟪Bugün ne iyi gitti, neden?¦What went well today, and why?⟫</span><span class="pill" style="background:rgba(255,255,255,.1);color:#DFE2EC">[[g:calendar]] ⟪1 yıl önce bugün¦A year ago today⟫</span></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#1B1E3A"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/journal.webp" width="924" height="2000" alt="⟪Günlük, Galaxy kâğıdında¦The journal, on Galaxy paper⟫"></div>
         <div class="fbody"><b>⟪Günlük¦Journal⟫</b><p class="fdert">⟪Günlük tutmak istiyorum ama boş sayfa korkutuyor.¦I want to journal, but the blank page scares me.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Her gün bir sayfa; ne yazacağını bilmiyorsan bir soru önerir.¦One page a day; if you don't know what to write, it offers a question.⟫</li><li>⟪Pazartesileri haftaya bakan üç soru daha.¦On Mondays, three more questions about the week.⟫</li><li>⟪"1 yıl önce bugün" ve takvimle eski günler.¦"A year ago today" and a calendar of past days.⟫</li></ol></details></div></article>
 
@@ -236,14 +227,14 @@
         <div class="fbody"><b>⟪Haftalık defter¦Weekly diary⟫</b><p class="fdert">⟪Uzun yazacak vaktim yok.¦I don't have time to write much.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Hafta tek sayfa.¦A whole week on one page.⟫</li><li>⟪Her gün için bir satır yeter.¦One line a day is enough.⟫</li><li>⟪Haftalar listesinden geçmişe bak.¦Look back through the list of weeks.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#E3F5EC"><div class="sn"><div class="col"><span class="big">[[g:people]]</span><div class="ui">[[g:cake]]<span>⟪Annem¦Mom⟫<small>⟪doğum günü 3 gün sonra¦birthday in 3 days⟫</small></span></div><div class="ui">[[g:speech]]<span>⟪Can¦Sam⟫<small>⟪"yeni işe başladım"¦"started a new job"⟫</small></span></div></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#E3F5EC"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/people.webp" width="924" height="2000" alt="⟪Çevre: doğum günleri ve kısa notlar¦People: birthdays and short notes⟫"></div>
         <div class="fbody"><b>⟪Çevre¦People⟫</b><p class="fdert">⟪Sevdiklerimin doğum gününü, ne anlattıklarını unutuyorum.¦I forget birthdays, and what the people I love told me.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Kişi ekle, doğum gününü yaz.¦Add a person and their birthday.⟫</li><li>⟪İstersen bir gün önce akşam tek bildirim.¦If you like, one notice the evening before.⟫</li><li>⟪"Ne dediler?" diye kısa notlar düş.¦Jot short notes: "What did they say?"⟫</li></ol></details></div></article>
     </div>
   </div>
 
   <div class="group">
-    <div class="group-head">[[g:palette]]<h3>⟪Senin¦Yours⟫</h3><span class="muted">⟪Görünüm ve verin¦How it looks, and your data⟫</span></div>
+    <div class="group-head">[[g:palette]]<h3>⟪Senin¦Yours⟫</h3><span class="muted">⟪Görünüm ve verin¦How it looks, and your data⟫</span><span class="swipehint" aria-hidden="true"></span></div>
     <div class="feats">
       <article class="feat"><div class="scene" style="--sc:#F8EEDB"><div class="sn"><div class="col"><div class="papers"><i style="background:linear-gradient(180deg,#F9F7F3,#F1EEE7)"></i><i style="background:#F3F1DE repeating-linear-gradient(180deg,transparent 0 9px,rgba(143,160,94,.5) 9px 10px)"></i><i style="background:radial-gradient(60% 45% at 30% 30%,#E7B8DE,transparent 70%),radial-gradient(55% 45% at 80% 80%,#B9C7F2,transparent 70%),#F7F2F6"></i><i style="background:radial-gradient(80% 60% at 20% 10%,#2C4A6E,transparent 65%),#16202E"></i><i style="background:radial-gradient(1px 1px at 30% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 60%,#fff,transparent),#12142A"></i></div><span class="hand">Cotton · Matcha · Bloom · Space · Galaxy</span><span class="pill">⟪Açık · Sıcak · Koyu · Gece Yarısı¦Light · Warm · Dark · Midnight⟫</span></div></div></div>
         <div class="fbody"><b>⟪Temalar ve kâğıtlar¦Themes and papers⟫</b><p class="fdert">⟪Uygulama gözümü yormasın, bana benzesin.¦I want it easy on the eyes, and to feel like mine.⟫</p>
@@ -253,9 +244,9 @@
         <div class="fbody"><b>⟪Vyne için çizildi¦Drawn for Vyne⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Emojiler her telefonda başka görünüyor.¦Emoji look different on every phone.⟫</p>
         <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Uygulamadaki her ikon ve karakter Vyne için özel çizildi, boyuta göre dört tarzda. Bu sitedeki çizimler de onlar.¦Every icon and character in the app was drawn just for Vyne, in four styles by size. The drawings on this site are the same ones.⟫</li><li>⟪Profilin için 36 karakter; istersen yine kendi emojin.¦36 characters for your profile, or your own emoji.⟫</li><li>⟪Kayıtlı emojin değişmez, sadece görünüşü.¦Your saved emoji never change, only how they look.⟫</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#F8EEDB"><div class="sn"><div class="col"><div class="ui" style="min-width:220px">[[g:search]]<span>⟪ogrenci¦cafe⟫</span></div><div class="ui" style="min-width:220px">[[g:folder]]<span>⟪Öğrenci işleri¦Café list⟫<small>⟪Notlar · klasör¦Notes · folder⟫</small></span></div><div class="ui" style="min-width:220px">[[g:journal]]<span>⟪12 Mart¦March 12⟫<small>⟪Günlük · "öğrenci kartı"¦Journal · "the café by the park"⟫</small></span></div></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#F8EEDB"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/search.webp" width="924" height="2000" alt="⟪Arama: notlarda, listelerde, günlükte¦Search: across notes, lists and the journal⟫"></div>
         <div class="fbody"><b>⟪Her şeyde arama¦Search everything⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪O notu nereye yazmıştım?¦Where did I write that down?⟫</p>
-        <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Arama dallarda, notlarda, listelerde, günlük günlerinde ve kişilerde bulur.¦Search finds branches, notes, lists, journal days and people.⟫</li><li>⟪ş, ğ, ı, ö, ü farkını dert etmez: "ogrenci" yazsan da bulur.¦It ignores accents: "cafe" finds "café".⟫</li><li>⟪Sonuca dokun, doğrudan açılsın.¦Tap a result and it opens right there.⟫</li></ol></details></div></article>
+        <details><summary>⟪Nasıl kullanılır¦How to use it⟫</summary><ol><li>⟪Arama dallarda, notlarda, listelerde, günlük günlerinde ve kişilerde bulur.¦Search finds branches, notes, lists, journal days and people.⟫</li><li>⟪ş, ğ, ı, ö, ü farkını dert etmez: "ogrenci" yazsan da "öğrenci"yi bulur.¦It ignores accents: "cafe" finds "café".⟫</li><li>⟪Sonuca dokun, doğrudan açılsın.¦Tap a result and it opens right there.⟫</li></ol></details></div></article>
 
       <article class="feat"><div class="scene" style="--sc:#F8EEDB"><div class="sn"><div class="col"><div class="ui" style="max-width:260px"><img src="{{P}}app-icon.png" alt="" width="36" height="36" style="border-radius:9px"><span>Vyne<small>⟪Bugün için üç dalın var. Acelesi yok.¦Three branches for today. No rush.⟫</small></span></div><span class="pill">[[g:bell]] ⟪günde en fazla bir kez¦at most once a day⟫</span></div></div></div>
         <div class="fbody"><b>⟪Nazik bildirimler¦Kind notifications⟫<em>⟪yeni¦new⟫</em></b><p class="fdert">⟪Uygulamalar bana suçluluk hissettiriyor.¦Apps keep making me feel guilty.⟫</p>
@@ -290,7 +281,8 @@
           <div class="pg-art" aria-hidden="true">[[g:clipboard]]<span>→</span>[[g:tree]]</div>
           <p>⟪Hayatım düz bir yapılacaklar listesine sığmıyordu. İşin teslim tarihi "süt al"ın yanında duruyordu, doğum günleri bir uygulamada, günlük bir başkasında.¦My life didn't fit in a flat to-do list. A work deadline sat right next to "buy milk", birthdays lived in one app, the journal in another.⟫</p>
           <p>⟪Hepsini tek bir yerde, kendi yerlerinde görmek istedim. Vyne öyle başladı.¦I wanted all of it in one place, each thing in its own spot. That's how Vyne began.⟫</p>
-          <p class="margin">⟪— Cotton artık dört temaya da uyuyor¦— Cotton now follows all four themes⟫</p></div>
+          <p class="margin">⟪— Cotton artık dört temaya da uyuyor¦— Cotton now follows all four themes⟫</p>
+          <button type="button" class="pg-apply" data-paper="none">⟪Siteyi sade kâğıda al¦Back to plain paper⟫</button></div>
         <div class="pg matcha" data-paper="Matcha"><span class="no">2</span><h4>⟪Her şey bir dal, sağa doğru¦Everything is a branch, to the right⟫</h4>
           <svg viewBox="0 0 360 170" style="max-width:300px; width:100%" aria-hidden="true">
             <circle cx="30" cy="85" r="20" fill="#6E9468"/>
@@ -301,20 +293,24 @@
             <g font-family="Caveat,cursive" font-size="24" font-weight="700" fill="#3B4322"><text x="166" y="37">⟪iş¦work⟫</text><text x="166" y="92">⟪sağlık¦health⟫</text><text x="166" y="147">⟪ev¦home⟫</text><text x="280" y="20" font-size="20">⟪rapor¦report⟫</text><text x="280" y="52" font-size="20">⟪toplantı¦meeting⟫</text></g>
           </svg>
           <p>⟪Ortada sen varsın. Önemli olan her şey sağa doğru bir sütun açıyor, dallar da kendi sütunlarını açıyor. Üstteki yol hep nerede olduğunu söylüyor.¦You're in the middle. Everything that matters opens a column to the right, and branches open columns of their own. The path at the top always tells you where you are.⟫</p>
-          <p class="margin">⟪sen › iş › rapor¦you › work › report⟫</p></div>
+          <p class="margin">⟪sen › iş › rapor¦you › work › report⟫</p>
+          <button type="button" class="pg-apply" data-paper="matcha">⟪Siteyi bu kâğıda geçir¦Put this site on this paper⟫</button></div>
         <div class="pg bloom" data-paper="Bloom"><span class="no">3</span><h4>⟪Hasta oldun. Serin bekliyor.¦You got sick. Your streak waits.⟫</h4>
           <div class="mini-cal" id="miniCal" aria-hidden="true"></div>
           <p>⟪Otuz günün içinde bir gün unuttun: kazandığın yaprak onu kurtardı. İki gün de hastaydın: "Hasta" işaretledin, seri ne uzadı ne bozuldu.¦In thirty days you forgot one: a leaf you'd earned saved it. You were also sick for two days: you marked them "Sick", and the streak neither grew nor broke.⟫</p>
-          <p class="margin">⟪yaprak kazanılır, dinlenmek serbest¦leaves are earned, rest is free⟫</p></div>
+          <p class="margin">⟪yaprak kazanılır, dinlenmek serbest¦leaves are earned, rest is free⟫</p>
+          <button type="button" class="pg-apply" data-paper="bloom">⟪Siteyi bu kâğıda geçir¦Put this site on this paper⟫</button></div>
         <div class="pg space" data-paper="Space"><canvas class="stars" data-seed="3" aria-hidden="true"></canvas><span class="no">4</span><h4>⟪Klasörler baloncuk gibi açılır¦Folders open like bubbles⟫</h4>
           <div class="folders" aria-hidden="true"><div>[[g:house]]⟪Ev¦Home⟫</div><div>[[g:gradcap]]⟪Okul¦School⟫</div><div>[[g:pan]]⟪Tarifler¦Recipes⟫</div><div>[[g:cart]]⟪Market¦Groceries⟫</div><div>[[g:bulb]]⟪Fikirler¦Ideas⟫</div><div>[[g:suitcase]]⟪Tatil¦Holiday⟫</div></div>
           <p>⟪Logonun altındaki "notes" yazısına dokun, Notlar açılsın. Bir klasöre dokununca içindekiler o baloncuktan çıkıyor, geri dönünce yine ona kapanıyor.¦Tap "notes" under the logo and Notes opens. Tap a folder and its contents come out of that bubble; go back and they fold into it again.⟫</p>
-          <p class="margin">vyne / notes</p></div>
+          <p class="margin">vyne / notes</p>
+          <button type="button" class="pg-apply" data-paper="space">⟪Siteyi bu kâğıda geçir¦Put this site on this paper⟫</button></div>
         <div class="pg galaxy" data-paper="Galaxy"><canvas class="stars" data-seed="7" aria-hidden="true"></canvas><span class="no">5</span><h4>⟪Gece, bir soru¦Night, and one question⟫</h4>
           <div class="pg-art" aria-hidden="true">[[g:moon]][[g:journal]]</div>
           <p>⟪Günlük her gün için bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir: <b>"Bugün ne iyi gitti, neden?"</b> Pazartesileri üç soru daha gelir: haftaya bakmak için.¦The journal is one page a day. If you don't know what to write, it offers a question: <b>"What went well today, and why?"</b> On Mondays three more come, to look back at the week.⟫</p>
           <p>⟪Galaxy kâğıdı her zaman gece. Bu sayfa da öyle.¦Galaxy paper is always night. So is this page.⟫</p>
-          <p class="margin">⟪iyi geceler¦good night⟫</p></div>
+          <p class="margin">⟪iyi geceler¦good night⟫</p>
+          <button type="button" class="pg-apply" data-paper="galaxy">⟪Siteyi bu kâğıda geçir¦Put this site on this paper⟫</button></div>
       </div>
       <div class="book-nav"><button type="button" id="cPrev" aria-label="⟪Önceki sayfa¦Previous page⟫">‹</button><span class="pn" id="cNo">1 / 5 · Cotton</span><button type="button" id="cNext" aria-label="⟪Sonraki sayfa¦Next page⟫">›</button></div>
     </div>
@@ -335,9 +331,9 @@
       <p>⟪Reklam yok, hesap açman gerekmiyor. Bir şey tuhaf gelirse bana yaz; her mesajı okuyorum.¦No ads, no account needed. If something feels off, write to me. I read every message.⟫</p>
       <p class="sig">— Hasan</p>
     </div>
-    <figure class="polaroid" style="right:4%; top:40px; transform:rotate(4deg)"><a href="{{P}}shots/app-home.webp" target="_blank" rel="noopener"><img loading="lazy" src="{{P}}shots/app-home.webp" alt="⟪Vyne ana ekranı (İngilizce arayüz)¦Vyne home screen⟫"></a><figcaption>⟪ana ekran¦home⟫</figcaption></figure>
-    <figure class="polaroid" style="right:26%; top:300px; transform:rotate(-5deg)"><a href="{{P}}shots/app-wheel.webp" target="_blank" rel="noopener"><img loading="lazy" src="{{P}}shots/app-wheel.webp" alt="⟪Karar çarkı (İngilizce arayüz)¦The wheel⟫"></a><figcaption>⟪kararsız günler¦undecided days⟫</figcaption></figure>
-    <figure class="polaroid d-hide" style="right:3%; top:400px; transform:rotate(2deg)"><a href="{{P}}shots/app-branch.webp" target="_blank" rel="noopener"><img loading="lazy" src="{{P}}shots/app-branch.webp" alt="⟪Dal sayfası (İngilizce arayüz)¦Branch page⟫"></a><figcaption>⟪dal sayfası¦branch page⟫</figcaption></figure>
+    <figure class="polaroid" style="right:4%; top:40px; transform:rotate(4deg)"><a href="{{P}}shots/⟪tr¦en⟫/home.webp" target="_blank" rel="noopener"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/home.webp" alt="⟪Vyne ana ekranı¦Vyne home screen⟫"></a><figcaption>⟪ana ekran¦home⟫</figcaption></figure>
+    <figure class="polaroid" style="right:26%; top:300px; transform:rotate(-5deg)"><a href="{{P}}shots/⟪tr¦en⟫/pick.webp" target="_blank" rel="noopener"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/pick.webp" alt="⟪Karar çarkı¦The wheel⟫"></a><figcaption>⟪kararsız günler¦undecided days⟫</figcaption></figure>
+    <figure class="polaroid d-hide" style="right:3%; top:400px; transform:rotate(2deg)"><a href="{{P}}shots/⟪tr¦en⟫/branch.webp" target="_blank" rel="noopener"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/branch.webp" alt="⟪Dal sayfası¦Branch page⟫"></a><figcaption>⟪dal sayfası¦branch page⟫</figcaption></figure>
     <span class="stamp" style="left:6%; top:505px">⟪reklamsız · hesapsız¦no ads · no account⟫</span>
     <div class="sticky s-y" style="left:30%; top:500px; transform:rotate(-3deg)"><small>⟪dert¦problem⟫</small>⟪Aklıma gelen şey, yerini bulana kadar uçup gidiyor.¦A thought flies away before I find the right place for it.⟫</div>
     <div class="sticky s-g" style="left:48%; top:40px; transform:rotate(3deg)"><small>⟪çözüm¦fix⟫</small>⟪Profil balonunun yanındaki bulut: dokun, yaz, Gelen Kutusu'na düşsün.¦The cloud next to your profile bubble: tap, write, it lands in your Inbox.⟫</div>
@@ -349,6 +345,7 @@
   <div class="sub" id="neden">
     <h3>⟪Neden böyle?¦Why is it like this?⟫</h3>
     <p class="muted">⟪Uygulamayı yaparken tuttuğum notlardan. Bazıları hâlâ filiz, bazıları artık ağaç.¦From the notes I kept while building the app. Some are still sprouts, some are trees by now.⟫</p>
+    <p class="swipehint" aria-hidden="true"></p>
     <div class="garden">
       <article class="gnote"><span class="stage">[[g:tree]]⟪ağaç¦tree⟫</span><h4>⟪Neden 66. gün?¦Why day 66?⟫</h4><p>⟪Rastgele bir sayı değil. Phillippa Lally'nin UCL'deki çalışmasında bir davranışın kendiliğinden olmaya başladığı ortanca süre 66 gün çıktı. Kişiden kişiye çok değişiyor; o yüzden 66 bir eşik, bitiş çizgisi değil.¦Not a random number. In Phillippa Lally's study at UCL, the median time for a behaviour to become automatic was 66 days. It varies a lot from person to person, so 66 is a threshold, not a finish line.⟫</p><span class="by">— H.</span></article>
       <article class="gnote"><span class="stage">[[g:tree]]⟪ağaç¦tree⟫</span><h4>⟪Neden yaprak kazanılıyor?¦Why are leaves earned?⟫</h4><p>⟪Hiç kaçırmamayı değil, "iki kez üst üste kaçırmamayı" hedefliyoruz. Ama yaprak bedava olsaydı seri bir anlam taşımazdı. Önce alışkanlık alışkanlık olsun, sonra seni korusun.¦The goal isn't never missing, it's never missing twice in a row. But if leaves were free, a streak would mean nothing. First the habit becomes a habit, then it protects you.⟫</p><span class="by">— H.</span></article>
@@ -367,13 +364,15 @@
 <!-- ============ OYUNCAKLAR ============ -->
 <section class="sec" id="oyuncaklar">
   <div class="sec-head">
-    <p class="eyebrow">⟪Oyuncaklar¦Toys⟫</p>
-    <h2>⟪Üç küçük oyuncak¦Three small toys⟫</h2>
-    <p class="lede">⟪Hepsi uygulamada bir şeyi anlatıyor. Ama önce eğlence.¦Each one explains something in the app. But fun comes first.⟫</p>
+    <p class="eyebrow">⟪Dene¦Try it⟫</p>
+    <h2>⟪Kararsız mısın? Çarkı çevir¦Can't decide? Spin the wheel⟫</h2>
+    <p class="lede">⟪Uygulamadaki çarkın aynısı. Yorgun bir akşam hiçbirine başlamamak yerine çark birini seçer, sen sadece 2 dakika başlarsın.¦The same wheel as in the app. On a tired evening, instead of starting nothing, the wheel picks one and you just start for 2 minutes.⟫</p>
   </div>
   <div class="games">
     <article class="game">
-      <div class="gc"><h4>⟪Kararsız mısın? Çarkı çevir¦Can't decide? Spin the wheel⟫</h4><p class="muted">⟪Aklındaki işleri yaz (ikiden altıya kadar). Çark birini seçsin, sonra sadece 2 dakika başla. Uygulamadaki çark da böyle: bugünün alışkanlıklarından birini seçer.¦Write down what's on your mind (two to six things). Let the wheel pick one, then just start for 2 minutes. The wheel in the app works the same way: it picks one of today's habits.⟫</p></div>
+      <div class="gc"><h4>⟪Üç adım¦Three steps⟫</h4>
+        <ol class="steps"><li>⟪Aklındaki işleri yaz, ikiden altıya kadar.¦Write down what's on your mind, two to six things.⟫</li><li>⟪Çevir. Çark birini seçer; tartışmak yok.¦Spin. The wheel picks one; no arguing.⟫</li><li>⟪Sadece 2 dakika başla. Gerisi çoğu zaman kendiliğinden gelir.¦Just start for 2 minutes. The rest usually follows.⟫</li></ol>
+        <figure class="inapp"><img loading="lazy" src="{{P}}shots/⟪tr¦en⟫/pick.webp" width="924" height="2000" alt="⟪Uygulamadaki çarkın seçimi ve 2 dakika düğmesi¦The app's wheel pick and its 2-minute button⟫"><figcaption>⟪Uygulamada: çark bugünün alışkanlıklarından birini seçer.¦In the app: the wheel picks one of today's habits.⟫</figcaption></figure></div>
       <div class="gs wheelstage">
         <div class="wheel-wrap"><svg class="wheel" id="wheel" viewBox="-170 -170 340 340" role="img" aria-label="⟪Seçim çarkı¦The wheel⟫"></svg><div class="pointer" id="wPointer" aria-hidden="true"></div></div>
         <div class="wlist" id="wList"></div>
@@ -381,27 +380,7 @@
         <div class="wres" id="wRes" hidden aria-live="polite"></div>
       </div>
     </article>
-    <article class="game">
-      <div class="gc"><h4>⟪Hangi şablon sensin?¦Which template are you?⟫</h4><p class="muted">⟪Üç soru. Sonunda sana uyan şablon ve ilk üç dalın.¦Three questions. At the end, the template that fits you and your first three branches.⟫</p></div>
-      <div class="gs quiz" id="quiz"></div>
-    </article>
-    <article class="game">
-      <div class="gc"><h4>⟪Yıl yaprakları¦A year in leaves⟫</h4><p class="muted">⟪Bir yıl, bir sarmaşıkta 365 yaprak. Yeşil yapılan, altın yaprağın koruduğu, mavi dinlenme günü. Kaçan günler solgun, ceza yok.¦One year, 365 leaves on a vine. Green is done, gold is kept by a leaf, blue is a rest day. Missed days are faint, never punished.⟫</p></div>
-      <div class="gs yearstage"><canvas id="year" role="img" aria-label="⟪Bir yılın yapraklardan çizimi¦A year drawn as leaves⟫"></canvas><button class="btn2" id="yearBtn" type="button">⟪Başka bir yıl çiz¦Draw another year⟫</button></div>
-    </article>
-    <div class="toys2">
-      <div class="almanac" aria-label="⟪Bugünün almanağı¦Today's almanac⟫">
-        <canvas id="almCanvas" aria-hidden="true"></canvas>
-        <div class="alm-in">
-          <span class="eyebrow" style="color:#E8C87A" id="almDow"></span>
-          <span class="big" id="almDay"></span>
-          <span id="almMonth" style="font-weight:800"></span>
-          <span id="almMoon" style="opacity:.9; font-size:14.5px"></span>
-          <span class="q" id="almQ"></span>
-        </div>
-      </div>
-      <div class="secret">[[g:mobile]]<h4 style="font-size:20px">⟪Bir gizli oyuncak daha¦One more hidden toy⟫</h4><p class="muted">⟪Üstteki "vyne" logosuna basılı tut. Vyne 1998'de olsaydı nasıl görünürdü?¦Press and hold the "vyne" logo at the top. What would Vyne look like in 1998?⟫</p></div>
-    </div>
+    <div class="secret" style="grid-template-columns:auto 1fr; align-items:center; column-gap:16px">[[g:mobile]]<div><h4 style="font-size:20px">⟪Bir gizli oyuncak daha¦One more hidden toy⟫</h4><p class="muted">⟪Üstteki "vyne" logosuna basılı tut. Vyne 1998'de olsaydı nasıl görünürdü?¦Press and hold the "vyne" logo at the top. What would Vyne look like in 1998?⟫</p></div></div>
   </div>
 </section>
 
@@ -428,6 +407,7 @@
         <li>⟪Yeni bir ilk açılış, yeni bir ikon ve Vyne için özel çizilmiş ikonlar ile 36 karakter¦A new first run, a new icon, and icons and 36 characters drawn just for Vyne⟫</li>
         <li>⟪Ve Android: Google Play'deki ilk sürüm¦And Android: the first release on Google Play⟫</li>
       </ul></div>
+    <details class="older"><summary>⟪Önceki sürümler¦Earlier versions⟫</summary>
     <div class="ver"><h4>1.3.0<small>⟪Ağustos 2026¦August 2026⟫</small></h4><ul>
       <li>⟪Şablonlar 4'ten 9'a çıktı¦Templates went from 4 to 9⟫</li>
       <li>⟪Bir alışkanlık bitince sıradaki kendiliğinden öne gelir¦Finish a habit and the next one steps forward⟫</li>
@@ -438,6 +418,7 @@
       <li>⟪İlk App Store sürümü¦First App Store release⟫</li>
       <li>⟪Yaprak, çark ve kutlamalar¦Leaves, the wheel and celebrations⟫</li>
       <li>⟪Bütçe şablonu ve tutar takibi¦Budget template and amount tracking⟫</li></ul></div>
+    </details>
   </div>
 </section>
 
@@ -480,6 +461,9 @@
     <details><summary>⟪Bir gün kaçırırsam ne olur?¦What happens if I miss a day?⟫</summary><p>⟪{{LEAF_EVERY}} gün üst üste yaptıysan bir yaprak kazanmışsındır; yaprak o günü kurtarır ve serin sürer. En fazla {{LEAF_CAP}} yaprak birikir ve bir yaprak sadece bir önceki günü kurtarır. Hasta ya da yoldaysan o günü işaretle: serin bekler, yaprak harcanmaz. <a href="#yaprak">Burada dene.</a>¦If you've done it {{LEAF_EVERY}} days in a row you've earned a leaf; it saves that day and your streak goes on. You can hold at most {{LEAF_CAP}}, and a leaf only saves the day before. Sick or travelling? Mark the day: your streak waits and no leaf is spent. <a href="#yaprak">Try it here.</a>⟫</p></details>
     <details><summary>⟪Verilerimi silebilir miyim?¦Can I delete my data?⟫</summary><p>⟪Evet, istediğin zaman, doğrudan uygulamanın içinden. Hem cihazdaki veri hem varsa bulut yedeği.¦Yes, any time, right inside the app. Both the data on your device and any cloud backup.⟫</p></details>
     <details><summary>⟪Telefonumu değiştirirsem?¦What if I change phones?⟫</summary><p>⟪Dosyaya aktarıp yeni telefonda içe alabilirsin; ikinci kez alırsan kopya oluşmaz, eksikleri ekler. Ya da bulut yedeğiyle geri yüklersin.¦Export to a file and import it on the new phone; importing twice makes no duplicates, it only adds what's missing. Or restore from cloud backup.⟫</p></details>
+    <details><summary>⟪Hangi dillerde?¦Which languages?⟫</summary><p>⟪Türkçe ve İngilizce. Uygulama telefonunun dilini izler; istersen ayarlardan değiştirirsin.¦English and Turkish. The app follows your phone's language, and you can switch it in settings.⟫</p></details>
+    <details><summary>⟪iPad'de ya da bilgisayarda çalışır mı?¦Does it work on iPad or a computer?⟫</summary><p>⟪Şimdilik telefon için: iPhone, ve incelemesi bitince Android. iPad sürümü yok.¦For now it's made for phones: iPhone, and Android once its review is done. There's no iPad version.⟫</p></details>
+    <details><summary>⟪İnternet olmadan çalışır mı?¦Does it work offline?⟫</summary><p>⟪Evet, tamamen. Her şey telefonunda. İnternet sadece istersen açtığın bulut yedeği için.¦Yes, fully. Everything lives on your phone. The internet is only for cloud backup, if you turn it on.⟫</p></details>
     <details><summary>⟪Bunu kim yapıyor?¦Who makes this?⟫</summary><p>⟪Tek kişi. Arkasında ekip ya da şirket yok. Her gün kendim kullanıyorum. <a href="#hikaye">Mektubu oku.</a>¦One person. No team, no company behind it. I use it every day myself. <a href="#hikaye">Read the letter.</a>⟫</p></details>
   </div>
 </section>
@@ -497,6 +481,7 @@
         {{^android}}<span class="store play soon">[[g:mobile]]<span><small>⟪Android için · çok yakında¦For Android · coming soon⟫</small><b>Google Play</b></span></span>{{/android}}
       </div>
     </div>
+    <div class="qrs" aria-hidden="true"><figure>{{QR_IOS}}<figcaption>⟪Telefonunun kamerasıyla okut: App Store¦Scan with your phone camera: App Store⟫</figcaption></figure>{{#android}}<figure>{{QR_PLAY}}<figcaption>⟪Android: Google Play¦Android: Google Play⟫</figcaption></figure>{{/android}}</div>
   </div>
   <div class="contact">
     <p class="eyebrow">⟪Bana yaz¦Write to me⟫</p>
@@ -511,7 +496,7 @@
   <a href="https://hasankalkandev.github.io/vyne-legal/terms.html" target="_blank" rel="noopener">⟪Kullanım Şartları¦Terms⟫</a>
   <a href="#yenilikler">⟪Yenilikler¦What's new⟫</a>
   <a href="#sozler">⟪Sözlerimiz¦Promises⟫</a>
-  <a href="#oyuncaklar">⟪Oyuncaklar¦Toys⟫</a>
+  <a href="#oyuncaklar">⟪Çark¦The wheel⟫</a>
 </footer>
 
 </div>

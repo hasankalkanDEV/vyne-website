@@ -20,15 +20,17 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hasankalkandev.github.io/vyne-website/tr/">
 <meta property="og:locale" content="tr_TR">
-<meta property="og:image" content="https://hasankalkandev.github.io/vyne-website/og-image.png">
+<meta property="og:image" content="https://hasankalkandev.github.io/vyne-website/og-image-tr.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Vyne: merkezdeki bir baloncuktan hayatın alanlarına dallanan sarmaşık">
+<meta property="og:image:alt" content="Vyne: bir günü kaçırmak dert değil. Uygulamanın ana ekranı.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vyne: Alışkanlık ve Günlük · Bir günü kaçırmak dert değil">
 <meta name="twitter:description" content="Alışkanlıkların, günlüğün ve notların için tek, sakin bir yer. Bir günü kaçırınca serin bozulmaz.">
-<meta name="twitter:image" content="https://hasankalkandev.github.io/vyne-website/og-image.png">
+<meta name="twitter:image" content="https://hasankalkandev.github.io/vyne-website/og-image-tr.png">
 <script>if(/Android/i.test(navigator.userAgent))document.documentElement.classList.add('is-android');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Vyne","alternateName":"Vyne: Alışkanlık ve Günlük","operatingSystem":"iOS","applicationCategory":"LifestyleApplication","inLanguage":["en","tr"],"description":"Alışkanlıkların, günlüğün ve notların için tek, sakin bir yer. Bir günü kaçırınca serin bozulmaz.","url":"https://hasankalkandev.github.io/vyne-website/tr/","downloadUrl":"https://apps.apple.com/app/id6790837181","image":"https://hasankalkandev.github.io/vyne-website/app-icon.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<link rel="preload" href="../shots/tr/home.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="preload" href="../fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Fontlar yerel: dış CDN yok (site kuralı). */
@@ -115,7 +117,6 @@ svg.g .gf{opacity:var(--gfo)}
 .on-dark svg.g{color:#F0EDE8}
 .kicker svg.g{font-size:20px}
 .return-card b svg.g{font-size:22px}
-.night-chip svg.g{color:#E8E4D0; font-size:24px}
 .store svg.g{color:#fff} .store .gf{opacity:1} .store.soon svg.g{color:var(--ink)}
 
 /* ===== Üst çubuk ===== */
@@ -142,9 +143,6 @@ svg.g .gf{opacity:var(--gfo)}
 .switch{display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:14px; font-weight:800}
 .switch button{border:1.5px solid var(--border); background:var(--card-alt); color:var(--ink); border-radius:999px; padding:5px 12px; font-size:13.5px; font-weight:800; cursor:pointer}
 .switch button[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-ink); border-color:var(--btn-bg)}
-.lang-hint{display:block; width:max-content; max-width:calc(100% - 32px); margin:12px auto 0; font-size:14px; font-weight:800; color:var(--green-text); background:var(--green-soft); padding:7px 14px; border-radius:999px; text-decoration:none}
-.night-chip{max-width:760px; margin:12px auto 0; width:calc(100% - 32px); background:#1B1E3A; color:#E8E4D0; font-weight:800; font-size:14px; padding:10px 16px; border-radius:18px; display:flex; gap:8px 14px; align-items:center; flex-wrap:wrap}
-.night-chip button{border:1.5px solid rgba(232,228,208,.35); background:transparent; color:#E8C87A; border-radius:999px; padding:5px 12px; cursor:pointer; font-size:14px; font-weight:800}
 @media (max-width:760px){
   .top-in{padding:8px 16px; gap:6px 10px}
   .nav{order:3; width:100%; justify-content:space-between; margin-inline:-8px}
@@ -178,26 +176,12 @@ html.is-android .store.play{order:-1}
 .return-card{background:var(--card); border:1px solid var(--border); border-left:4px solid var(--green); border-radius:16px; padding:14px 18px; display:grid; gap:4px; max-width:560px}
 .return-card b{font-size:17px}
 .return-card button{justify-self:start; border:0; background:transparent; color:var(--green-text); font-weight:800; cursor:pointer; padding:6px 0; text-decoration:underline}
-.phone{width:min(300px,78vw); aspect-ratio:924/1810; margin:0 auto; border-radius:40px; padding:9px; background:#2C2A26; box-shadow:0 24px 60px rgba(0,0,0,.25); position:relative}
+.phone{width:min(300px,78vw); aspect-ratio:924/2000; margin:0 auto; border-radius:40px; padding:9px; background:#2C2A26; box-shadow:0 24px 60px rgba(0,0,0,.25); position:relative}
 .screen{width:100%; height:100%; border-radius:32px; overflow:hidden; position:relative; background:#F8F6F0}
 .screen img{width:100%; height:100%; object-fit:cover; object-position:top; display:block}
 @media (max-width:820px){ .hero{grid-template-columns:1fr; gap:28px} .hero .phone{width:min(290px,76vw)} }
 
 /* Süs: tomurcuğu sağa çek, sarmaşık sağa büyüsün. İçerik buna bağlı değil. */
-.sprout-toy{margin-top:clamp(34px,6vw,60px); background:var(--card); border:1px solid var(--border); border-radius:22px; padding:16px 18px; display:grid; gap:6px}
-.sprout-toy .hint{font-family:var(--hand); font-size:22px; color:var(--pen); line-height:1.1}
-.st-row{position:relative; height:132px; touch-action:pan-y; user-select:none; -webkit-user-select:none}
-.st-row svg.vinebg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
-.st-row svg.vinebg path{fill:none; stroke-linecap:round}
-.st-me{position:absolute; left:0; top:50%; transform:translateY(-50%); width:58px; height:58px; border-radius:50%; background:var(--green); color:var(--btn-ink); display:grid; place-items:center; font-weight:900; font-size:15px; box-shadow:0 0 0 7px color-mix(in srgb,var(--green) 22%,transparent)}
-.bud{position:absolute; left:64px; top:50%; margin-top:-24px; z-index:2; width:48px; height:48px; border-radius:50% 50% 50% 8px; border:0; cursor:grab; touch-action:none; background:var(--leaf); box-shadow:0 8px 20px rgba(0,0,0,.16); rotate:-45deg; display:grid; place-items:center; padding:0}
-.bud svg.g{rotate:45deg; font-size:26px; color:#2C2A26}
-.bud svg.g .gf{opacity:1}
-.bud.idle{animation:nudge 2.6s var(--ease) infinite}
-@keyframes nudge{0%,60%,100%{translate:0 0}70%{translate:14px 0}80%{translate:0 0}90%{translate:8px 0}}
-.st-label{position:absolute; font-weight:800; font-size:14.5px; background:var(--bg); border:1.5px solid var(--c); border-radius:12px; padding:3px 10px; white-space:nowrap; opacity:0; transform:translateX(-8px); transition:opacity 300ms, transform 300ms}
-.st-label.on{opacity:1; transform:none}
-.st-done{font-size:15px; color:var(--green-text); font-weight:800; min-height:24px}
 
 /* ===== Hızlı dört madde ===== */
 .quick{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:clamp(28px,5vw,48px)}
@@ -510,22 +494,6 @@ html.is-android .store.play{order:-1}
 .wres .ring em{position:absolute; inset:0; display:grid; place-items:center; font-style:normal; font-weight:900; font-size:14px; font-variant-numeric:tabular-nums}
 .wres .acts{grid-column:1 / -1; display:flex; gap:8px; justify-content:flex-end; margin-top:6px}
 .wres .acts button{font-size:14px; font-weight:800; border-radius:999px; padding:7px 14px; border:1.5px solid #E8E4DC; background:#fff; color:#2C2A26; cursor:pointer; min-height:38px}
-.quiz{background:#F3F1DE; color:#25290F; place-items:stretch!important; align-content:center}
-.quiz .qq{font-weight:900; font-size:19px; margin-bottom:10px}
-.quiz .qa{display:grid; gap:8px}
-.quiz .qa button{text-align:left; border:1.5px solid #DDDBBE; background:#FBFAF0; color:#25290F; border-radius:14px; padding:10px 14px; font-weight:800; cursor:pointer; font-size:15px}
-.quiz .res{display:grid; gap:8px}
-.quiz .res b{font-size:24px}
-.yearstage{background:#12142A; color:#DFE2EC; gap:10px}
-.yearstage canvas{width:100%; max-width:520px; aspect-ratio:1.4; display:block}
-.yearstage .btn2{border-color:rgba(223,226,236,.4); background:transparent; color:#DFE2EC}
-.almanac{position:relative; overflow:hidden; border-radius:22px; color:#F0EDE8; min-height:260px}
-.almanac canvas{position:absolute; inset:0; width:100%; height:100%}
-.alm-in{position:relative; padding:22px 24px; display:flex; flex-direction:column; gap:4px; min-height:260px}
-.alm-in .big{font-size:clamp(56px,9vw,86px); font-weight:900; letter-spacing:-.05em; line-height:.9}
-.alm-in .q{font-family:var(--hand); font-size:clamp(24px,3.4vw,32px); color:#E8C87A; margin-top:auto; line-height:1.1}
-.toys2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-@media (max-width:760px){ .toys2{grid-template-columns:1fr} }
 .secret{background:var(--card); border:1.5px dashed var(--border); border-radius:22px; padding:20px 22px; display:grid; gap:8px; align-content:center}
 .secret svg.g{font-size:44px}
 
@@ -600,6 +568,81 @@ footer a{color:var(--slate)}
 .leafrain span{position:absolute; top:-40px; font-size:28px; animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
 @media (prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} html{scroll-behavior:auto} .vinebox .grow{stroke-dashoffset:0} }
+
+/* ===== 2026-09-30: gerçek ekranlar, telefonda kısa sayfa ===== */
+/* Bildirim şeritleri sayfayı itmez: altta, kapatılabilir */
+.toasts{position:fixed; left:12px; right:12px; bottom:calc(84px + env(safe-area-inset-bottom,0px)); z-index:46; display:grid; gap:8px; justify-items:center; pointer-events:none}
+.toast{pointer-events:auto; display:flex; align-items:center; gap:8px 12px; flex-wrap:wrap; max-width:560px; border-radius:18px; padding:9px 10px 9px 16px; box-shadow:var(--shadow-lg); font-weight:800; font-size:14px}
+.lang-toast{background:var(--green-soft); border:1px solid var(--border)}
+.lang-hint{color:var(--green-text); text-decoration:none}
+.tclose{border:0; background:transparent; color:var(--slate); font-size:20px; width:32px; height:32px; border-radius:50%; cursor:pointer}
+.night-chip{background:#1B1E3A; color:#E8E4D0}
+.night-chip svg.g{color:#E8E4D0; font-size:24px}
+.night-chip button{border:1.5px solid rgba(232,228,208,.35); background:transparent; color:#E8C87A; border-radius:999px; padding:5px 12px; cursor:pointer; font-size:14px; font-weight:800}
+@media (max-width:820px){ .hero-icon{display:none} .hero{padding-top:18px} }
+
+/* Bir gün: telefonda tek ekranda, telefon solda, yazı sağda */
+.phonebox .phone{width:min(290px,74vw)}
+@media (max-width:820px){
+  .day{grid-template-columns:42% minmax(0,1fr); grid-template-areas:"stops stops" "phone clock" "phone title" "phone dert" "how how" "nav nav"; column-gap:14px; row-gap:8px; padding:14px; align-items:start}
+  .day-copy{display:contents}
+  .day .stops{grid-area:stops; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin-inline:-14px; padding:2px 14px 4px}
+  .day .stops::-webkit-scrollbar{display:none}
+  .day .stops button{flex:none}
+  .day .phonebox{grid-area:phone; align-self:start}
+  .phonebox .phone{width:100%; border-radius:22px; padding:5px}
+  .phonebox .screen{border-radius:18px}
+  .day .clock{grid-area:clock; font-size:38px; align-self:end}
+  .day .clock small{display:block; margin:4px 0 0; font-size:13px}
+  .day h4{grid-area:title; font-size:19px}
+  .day .dert{grid-area:dert; font-size:20px}
+  .day .how{grid-area:how; font-size:15.5px}
+  .day .day-nav{grid-area:nav; justify-content:space-between; align-items:center}
+}
+.day-nav .dcount{font-weight:800; font-size:14px; opacity:.8}
+
+/* Özellikler ve "Neden böyle?": telefonda yana kayan sıra, sayfa kısalır */
+.swipehint{display:none; font-size:14px; font-weight:800; color:var(--slate); margin-left:auto}
+@media (max-width:620px){
+  .feats,.garden{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:84%; overflow-x:auto; scroll-snap-type:x mandatory; margin-inline:-20px; padding:4px 20px 8px; scroll-padding-inline:20px; scrollbar-width:none; overscroll-behavior-x:contain}
+  .feats::-webkit-scrollbar,.garden::-webkit-scrollbar{display:none}
+  .feat,.gnote{scroll-snap-align:start}
+  .swipehint{display:inline}
+  .group-head{flex-wrap:nowrap}
+  .group-head .muted{display:none}
+}
+
+/* Kâğıtlar: sayfadan siteye */
+.pg-apply{align-self:flex-start; margin-top:4px; font:inherit; font-size:14px; font-weight:800; border-radius:999px; padding:8px 14px; cursor:pointer; border:1.5px solid currentColor; background:transparent; color:inherit; opacity:.9}
+.pg-apply:hover{opacity:1}
+
+/* Çark: adımlar ve uygulamadaki hâli */
+.steps{margin:4px 0 0; padding-left:20px; display:grid; gap:6px; font-size:15.5px}
+.inapp{margin:10px 0 0; display:grid; grid-template-columns:120px 1fr; gap:12px; align-items:center}
+.inapp img{width:120px; border-radius:16px; border:4px solid #2C2A26; box-shadow:var(--shadow)}
+.inapp figcaption{font-size:14px; color:var(--slate)}
+.secret{display:grid}
+@media (max-width:820px){ .inapp{grid-template-columns:96px 1fr} .inapp img{width:96px} }
+
+/* Yenilikler: eski sürümler katlı */
+.older summary{cursor:pointer; font-weight:800; color:var(--green-text); padding:6px 0; list-style:none}
+.older summary::-webkit-details-marker{display:none}
+.older[open] summary{margin-bottom:14px}
+.older .ver{margin-bottom:22px}
+
+/* İndir: bilgisayarda QR */
+.qrs{display:none}
+@media (min-width:900px){
+  .dlband{grid-template-columns:auto 1fr auto}
+  .qrs{display:flex; gap:16px}
+  .qrs figure{margin:0; background:#fff; border-radius:18px; padding:10px 10px 8px; display:grid; gap:4px; justify-items:center; box-shadow:var(--shadow); width:150px}
+  .qrs svg.qr{width:130px; height:130px; display:block}
+  .qrs figcaption{font-size:13px; font-weight:800; color:#4A4740; text-align:center; line-height:1.25}
+}
+
+/* Yüz güne iniş: daha kısa, sayfa kaydırmasını hapsetmez */
+.well-scroll{overscroll-behavior:auto}
+@media (max-width:620px){ .well-scroll{height:380px} }
 </style>
 </head>
 <body>
@@ -638,8 +681,9 @@ footer a{color:var(--slate)}
     <p>Uygulamada da tam olarak böyle: tema ve kâğıt senin.</p>
   </div>
 </header>
-<a class="lang-hint" id="langHint" href="../" hidden>Read this page in English →</a>
-<div class="night-chip" id="nightChip" hidden><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M19 4 A12 12 0 1 0 28 21 A9.5 9.5 0 0 1 19 4 Z" fill="#F2D58A"/></g><path d="M19 4 A12 12 0 1 0 28 21 A9.5 9.5 0 0 1 19 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Gece oldu. Siteyi uygulamadaki Galaxy kâğıdına geçirelim mi?</span><button type="button" id="nightYes">Geçir</button><button type="button" id="nightNo">Kalsın</button></div>
+<div class="toasts"><div class="toast lang-toast" id="langToast" hidden><a class="lang-hint" id="langHint" href="../" lang="en">Read this page in English →</a><button type="button" class="tclose" id="langClose" aria-label="Kapat">×</button></div>
+<div class="toast night-chip" id="nightChip" hidden><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M19 4 A12 12 0 1 0 28 21 A9.5 9.5 0 0 1 19 4 Z" fill="#F2D58A"/></g><path d="M19 4 A12 12 0 1 0 28 21 A9.5 9.5 0 0 1 19 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Gece oldu. Siteyi uygulamadaki Galaxy kâğıdına geçirelim mi?</span><button type="button" id="nightYes">Geçir</button><button type="button" id="nightNo">Kalsın</button></div></div>
+
 
 <main id="main">
 <div class="wrap">
@@ -664,18 +708,8 @@ footer a{color:var(--slate)}
       <button type="button" id="returnClose">Kapat</button>
     </div>
   </div>
-  <div class="phone"><div class="screen"><img src="../shots/app-home.webp" width="924" height="1810" alt="Vyne ana ekranı: bugünün alışkanlıkları üstte, altında sağa dallanan sarmaşık (1.4.0, İngilizce arayüz)"></div></div>
+  <div class="phone"><div class="screen"><img src="../shots/tr/home.webp" width="924" height="2000" alt="Vyne ana ekranı: bugünün alışkanlıkları üstte, altında sağa dallanan sarmaşık"></div></div>
 </section>
-
-<div class="sprout-toy" id="sproutToy">
-  <p class="hint" id="stHint">İstersen: tomurcuğu sağa çek, sarmaşığın büyüsün.</p>
-  <div class="st-row" id="stRow">
-    <svg class="vinebg" id="stSvg" aria-hidden="true"></svg>
-    <div class="st-me" aria-hidden="true">sen</div>
-    <button class="bud idle" id="stBud" type="button" aria-label="Sarmaşığı büyüt"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 28 V14" fill="none" stroke="#6E9468" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="#8DB585"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="#A9CB93"/><path d="M9 28.5 H23" fill="none" stroke="#B98A5E" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 28 V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M9 28.5 H23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></button>
-  </div>
-  <p class="st-done" id="stDone" aria-live="polite"></p>
-</div>
 
 <div class="quick">
   <div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M6 26 C6 14 14 6 26 6 C26 18 18 26 6 26 Z" fill="#E8C170"/><path d="M6 26 L3.5 28.5" fill="none" stroke="#B98A3C" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M6 26 C6 14 14 6 26 6 C26 18 18 26 6 26 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M6 26 L19.5 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M6 26 L3.5 28.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><b>Bir gün kaçırmak seriyi bozmaz</b><span>7 gün üst üste yapınca bir yaprak kazanırsın; kaçan günü o kurtarır.</span></div>
@@ -745,9 +779,9 @@ footer a{color:var(--slate)}
         <h4 id="dTitle"></h4>
         <p class="dert" id="dDert"></p>
         <p class="how" id="dHow"></p>
-        <div class="day-nav"><button type="button" id="dPrev" aria-label="Önceki durak">‹</button><button type="button" id="dNext" aria-label="Sonraki durak">›</button></div>
+        <div class="day-nav"><button type="button" id="dPrev" aria-label="Önceki durak">‹</button><span class="dcount" id="dCount" aria-hidden="true"></span><button type="button" id="dNext" aria-label="Sonraki durak">›</button></div>
       </div>
-      <div><div class="phone"><div class="screen" id="dScreen"></div></div><p class="cap" id="dCap"></p></div>
+      <div class="phonebox"><div class="phone"><div class="screen" id="dScreen"></div></div></div>
     </div>
   </div>
 </section>
@@ -761,17 +795,17 @@ footer a{color:var(--slate)}
   </div>
 
   <div class="group" style="margin-top:0">
-    <div class="group-head"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h3>Harita</h3><span class="muted">Hayatının yapısı</span></div>
+    <div class="group-head"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h3>Harita</h3><span class="muted">Hayatının yapısı</span><span class="swipehint" aria-hidden="true"></span></div>
     <div class="feats">
-      <article class="feat"><div class="scene" style="--sc:#EFE9F8"><div class="sn"><div class="col"><span class="big"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 28 V14" fill="none" stroke="#6E9468" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="#8DB585"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="#A9CB93"/><path d="M9 28.5 H23" fill="none" stroke="#B98A5E" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 28 V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M9 28.5 H23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="buds"><i><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="7" y="4" width="18" height="24" rx="3" fill="#F3E9D2"/><path d="M11 11 H21" fill="none" stroke="#B98A5E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 16 H21" fill="none" stroke="#B98A5E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 21 H17" fill="none" stroke="#B98A5E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="7" y="4" width="18" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 11 H21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 16 H21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 21 H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></i><s></s><i><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="4" width="20" height="24" rx="3" fill="#6E9468"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="#4A6E45"/><rect x="13" y="9" width="9" height="5" rx="1" fill="#F3E9D2"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="#E0564F"/></g><rect x="6" y="4" width="20" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13" y="9" width="9" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></i><s></s><i><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 2.5 V4.5" fill="none" stroke="#C9A04A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 C11 4 8 8 8 13 V19 L5.5 23 H26.5 L24 19 V13 C24 8 21 4 16 4 Z" fill="#F2C66B"/><circle cx="16" cy="25.5" r="2.6" fill="#C9A04A"/></g><path d="M16 2.5 V4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 C11 4 8 8 8 13 V19 L5.5 23 H26.5 L24 19 V13 C24 8 21 4 16 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="25.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></i><s></s><i><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="20.5" cy="10" r="4" fill="#96BEE8"/><path d="M13 27 V23 A7.5 7.5 0 0 1 28 23 V27 Z" fill="#96BEE8"/><circle cx="12" cy="12.5" r="4.3" fill="#EE96BA"/><path d="M4 28 V25 A8 8 0 0 1 20 25 V28 Z" fill="#EE96BA"/></g><circle cx="20.5" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M13 27 V23 A7.5 7.5 0 0 1 28 23 V27 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="12" cy="12.5" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 28 V25 A8 8 0 0 1 20 25 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></i><s></s><i><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M9 24 A5.5 5.5 0 0 1 8 13.1 A7.5 7.5 0 0 1 22 10.5 A6.5 6.5 0 0 1 23.5 24 Z" fill="#BFD6EE"/></g><path d="M9 24 A5.5 5.5 0 0 1 8 13.1 A7.5 7.5 0 0 1 22 10.5 A6.5 6.5 0 0 1 23.5 24 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></i><s></s><i><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="5" y="17" width="5.5" height="10" rx="1.5" fill="#96BEE8"/><rect x="13.25" y="11" width="5.5" height="16" rx="1.5" fill="#A9CB93"/><rect x="21.5" y="6" width="5.5" height="21" rx="1.5" fill="#F2C66B"/><path d="M3.5 28.5 H28.5" fill="none" stroke="#8F877A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="5" y="17" width="5.5" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13.25" y="11" width="5.5" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="21.5" y="6" width="5.5" height="21" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M3.5 28.5 H28.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></i></span><span class="hand">altı tomurcuk, sırayla</span></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/tr/welcome.webp" width="924" height="2000" alt="Karşılama: ilk dalın ve altı tomurcuk"></div>
         <div class="fbody"><b>Karşılama<em>yeni</em></b><p class="fdert">Yeni bir uygulama açınca nereden başlayacağımı bilemiyorum.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>İlk açılışta tek bir sarmaşık büyür: adın, ilk dalın.</li><li>Altı tomurcuk sırayla açılır: Notlar, Günlük, Hatırlatıcılar, Çevre, Düşünce bulutu, İstatistik.</li><li>İstersen günlük hatırlatma saatini seçersin; sonra ilk yaprağın.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/app-home.webp" width="924" height="1810" alt="Ana ekran: bugünün alışkanlıkları ve dallar"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/tr/home.webp" width="924" height="2000" alt="Ana ekran: bugünün alışkanlıkları ve dallar"></div>
         <div class="fbody"><b>Dallar ve yol</b><p class="fdert">Hayatım düz bir listeye sığmıyor.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Ortadaki profilden bir dal aç: İş, Sağlık, Ev…</li><li>Her dal sağa doğru kendi sütununu açar; "+ Ekle" ile alt dal eklersin.</li><li>Üstteki yol hep nerede olduğunu söyler; bir adımına dokun, oraya dön.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/app-branch.webp" width="924" height="1810" alt="Dal sayfası: seri, takvim ve alt dallar"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/tr/branch.webp" width="924" height="2000" alt="Dal sayfası: seri, takvim ve alt dallar"></div>
         <div class="fbody"><b>Dal sayfası<em>yeni</em></b><p class="fdert">Bir alışkanlığın bütün hikâyesini tek yerde görmek istiyorum.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Karta dokun, dalın sayfası açılsın.</li><li>Büyük seri: korunan, en uzun, toplam gün.</li><li>Takvimde dünü ve önceki günü düzeltebilirsin; alt dallar, not ve para da burada.</li></ol></details></div></article>
 
@@ -791,15 +825,15 @@ footer a{color:var(--slate)}
         <div class="fbody"><b>Tekrar hoş geldin<em>yeni</em></b><p class="fdert">Birkaç gün açmadım, şimdi her şey kırmızı olacak.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>3 gün ya da daha uzun aradan sonra nazik bir kart çıkar.</li><li>"Yetişmen gereken bir şey yok. Bugün için birini seç."</li><li>Kaçanları görmek istersen tek dokunuş; istemezsen kapat.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/app-wheel.webp" width="924" height="1810" alt="Karar çarkı"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/tr/wheel.webp" width="924" height="2000" alt="Karar çarkı"></div>
         <div class="fbody"><b>Çark</b><p class="fdert">Karar veremiyorum, hiçbirine başlamıyorum.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Çarkı çevir, bir alışkanlık seçsin.</li><li>Sadece 2 dakika: süreyi başlat.</li><li>Beğenmezsen sınırlı sayıda tekrar çevirebilirsin.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#EFE9F8"><div class="sn"><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M9 15 V21 C12 23.5 20 23.5 23 21 V15 L16 18 Z" fill="#5A5A66"/><path d="M3 12 L16 6 L29 12 L16 18 Z" fill="#6A6A78"/><path d="M16 12 L26 13.5 V20" fill="none" stroke="#F2C66B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M9 15 V21 C12 23.5 20 23.5 23 21 V15 L16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M3 12 L16 6 L29 12 L16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 12 L26 13.5 V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Sınav Dönemi</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M5 11 L16 16 V28 L5 23 Z" fill="#D8B98A"/><path d="M27 11 L16 16 V28 L27 23 Z" fill="#C9A87A"/><path d="M5 11 L16 6 L27 11 L16 16 Z" fill="#E8D3A2"/><path d="M10.5 8.5 L21.5 13.5" fill="none" stroke="#B98A5E" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M5 11 L16 16 V28 L5 23 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M27 11 L16 16 V28 L27 23 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 11 L16 6 L27 11 L16 16 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M10.5 8.5 L21.5 13.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Taşınma</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="4" y="10" width="24" height="16" rx="3" fill="#96BEE8"/><path d="M12 10 V7.5 A1.5 1.5 0 0 1 13.5 6 H18.5 A1.5 1.5 0 0 1 20 7.5 V10" fill="none" stroke="#4C7CAC" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/><rect x="14" y="14.5" width="4" height="4" rx="1" fill="#F2C66B"/></g><rect x="4" y="10" width="24" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 10 V7.5 A1.5 1.5 0 0 1 13.5 6 H18.5 A1.5 1.5 0 0 1 20 7.5 V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 16.5 H28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="14" y="14.5" width="4" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Yeni İş</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M11 9 C7 13 5 17 5 21 C5 25.5 9 28 16 28 C23 28 27 25.5 27 21 C27 17 25 13 21 9 Z" fill="#8FD3AE"/><path d="M11.5 8.5 L10 4.5 C12 5.5 14 4 16 4 C18 4 20 5.5 22 4.5 L20.5 8.5 Z" fill="#8FD3AE"/><path d="M11 9 H21" fill="none" stroke="#4A6E45" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 13.5 V24" fill="none" stroke="#4A6E45" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 16 C18 15 13.5 15 13.5 17.3 C13.5 19.8 18.5 18.5 18.5 21 C18.5 23 14 23 13 22" fill="none" stroke="#4A6E45" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M11 9 C7 13 5 17 5 21 C5 25.5 9 28 16 28 C23 28 27 25.5 27 21 C27 17 25 13 21 9 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11.5 8.5 L10 4.5 C12 5.5 14 4 16 4 C18 4 20 5.5 22 4.5 L20.5 8.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 9 H21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 13.5 V24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 16 C18 15 13.5 15 13.5 17.3 C13.5 19.8 18.5 18.5 18.5 21 C18.5 23 14 23 13 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Bütçe</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M24 16 L27 9" fill="none" stroke="#8F877A" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 16 A9 9 0 0 1 16 7 V16 Z" fill="#EE96BA"/><path d="M5 16 H24 C24 20.5 20 23 15 23 C9 23 5 20.5 5 16 Z" fill="#F0B8C8"/><circle cx="9" cy="26" r="2.4" fill="#5A5A66"/><circle cx="20" cy="26" r="2.4" fill="#5A5A66"/></g><path d="M24 16 L27 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 16 A9 9 0 0 1 16 7 V16 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 16 H24 C24 20.5 20 23 15 23 C9 23 5 20.5 5 16 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="26" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="26" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Yeni Bebek</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 28 V14" fill="none" stroke="#6E9468" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="#8DB585"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="#A9CB93"/><path d="M9 28.5 H23" fill="none" stroke="#B98A5E" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 28 V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M9 28.5 H23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Yeni Başlangıç</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 5 A11 11 0 1 1 15.99 5" fill="none" stroke="#E0564F" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M8.2 8.2 L23.8 23.8" fill="none" stroke="#E0564F" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 5 A11 11 0 1 1 15.99 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M8.2 8.2 L23.8 23.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Bırakıyorum</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 12.5 A7.5 7.5 0 1 1 15.99 12.5" fill="none" stroke="#F2C66B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 8 L14 4.5 H18 L20 8 L16 12.5 Z" fill="#96CEEE"/></g><path d="M16 12.5 A7.5 7.5 0 1 1 15.99 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 8 L14 4.5 H18 L20 8 L16 12.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Düğün</span><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="4.5" y="8" width="6.5" height="19" rx="1.5" fill="#BEA8EE"/><rect x="12" y="5" width="6.5" height="22" rx="1.5" fill="#96BEE8"/><path d="M21.2 9 L27.3 10.4 L23.6 27.5 L17.5 26.1 Z" fill="#EEC896"/></g><rect x="4.5" y="8" width="6.5" height="19" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="12" y="5" width="6.5" height="22" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M21.2 9 L27.3 10.4 L23.6 27.5 L17.5 26.1 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4.5 12 H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 9 H18.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 23 H18.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Yeni Dönem</span></div></div>
+      <article class="feat"><div class="scene shot low" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/tr/templates.webp" width="924" height="2000" alt="Şablonlar: Yeni İş önizlemesi"></div>
         <div class="fbody"><b>Şablonlar</b><p class="fdert">Büyük bir döneme nereden başlayacağımı bilmiyorum.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Dokuz hazır başlangıç: Sınav Dönemi, Taşınma, Yeni İş ve diğerleri.</li><li>Tarihi seç, dallar ve adımlar hazır gelir.</li><li>Aşağıdaki "Şablon denemesi"nde hemen dene.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/app-stats.webp" width="924" height="1810" alt="İstatistik: haftanın şekli ve son 12 hafta"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#EFE9F8"><img loading="lazy" src="../shots/tr/stats.webp" width="924" height="2000" alt="İstatistik: haftanın şekli ve son 12 hafta"></div>
         <div class="fbody"><b>İstatistik merceği<em>yeni</em></b><p class="fdert">Gerçekten ilerliyor muyum, bilmiyorum.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Hafta, ay ya da yıl seç.</li><li>En üstte tek, sade bir cümle: "Her zamanki gibi."</li><li>Günlere göre, haftanın şekli, son 12 hafta. Gri sadece "o gün bir şey olmadı" demek, fazlası değil.</li></ol></details></div></article>
 
@@ -810,9 +844,9 @@ footer a{color:var(--slate)}
   </div>
 
   <div class="group">
-    <div class="group-head"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="4" width="20" height="24" rx="3" fill="#6E9468"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="#4A6E45"/><rect x="13" y="9" width="9" height="5" rx="1" fill="#F3E9D2"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="#E0564F"/></g><rect x="6" y="4" width="20" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13" y="9" width="9" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h3>Defterler</h3><span class="muted">Aklındaki her şey</span></div>
+    <div class="group-head"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="4" width="20" height="24" rx="3" fill="#6E9468"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="#4A6E45"/><rect x="13" y="9" width="9" height="5" rx="1" fill="#F3E9D2"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="#E0564F"/></g><rect x="6" y="4" width="20" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13" y="9" width="9" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h3>Defterler</h3><span class="muted">Aklındaki her şey</span><span class="swipehint" aria-hidden="true"></span></div>
     <div class="feats">
-      <article class="feat"><div class="scene" style="--sc:#E3F5EC"><div class="sn"><div class="col"><div class="sn" style="flex-wrap:nowrap"><span class="scr-bub" style="width:52px;height:52px;border-radius:50%;background:#6E9468;display:grid;place-items:center;box-shadow:0 0 0 5px #D6EBCB;font-size:30px"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><path d="M4 34 C4 26 9 22.5 16 22.5 C23 22.5 28 26 28 34 Z" fill="#6E9468"/><path d="M11 23.5 V30" fill="none" stroke="#4A6E45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 23.5 V30" fill="none" stroke="#4A6E45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="16" r="6.5" fill="#D9A57B"/><path d="M11 11.5 C11 7.5 13 6 16 6 C19 6 21 7.5 21 11.5 Z" fill="#E8D3A2"/><ellipse cx="16" cy="11.8" rx="11" ry="2.2" fill="#E8C170"/><path d="M11.2 10.4 H20.8" fill="none" stroke="#6E9468" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 7 C19 5 20.5 4 22.5 4 C22.5 6 21 7 19 7 Z" fill="#8DB585"/><circle cx="13.5" cy="16.8" r="1.1" fill="#2C2A26"/><circle cx="18.5" cy="16.8" r="1.1" fill="#2C2A26"/></svg></span><span class="mid"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M9 24 A5.5 5.5 0 0 1 8 13.1 A7.5 7.5 0 0 1 22 10.5 A6.5 6.5 0 0 1 23.5 24 Z" fill="#BFD6EE"/></g><path d="M9 24 A5.5 5.5 0 0 1 8 13.1 A7.5 7.5 0 0 1 22 10.5 A6.5 6.5 0 0 1 23.5 24 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span></div><div class="ui"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M6 26 L7.5 20 L21.5 6 A2.8 2.8 0 0 1 25.5 6 L26 6.5 A2.8 2.8 0 0 1 26 10.5 L12 24.5 Z" fill="#F2C66B"/><path d="M6 26 L7.5 20 L12 24.5 Z" fill="#EEC896"/><path d="M19.5 8 L24 12.5" fill="none" stroke="#E97A8C" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M6 26 L7.5 20 L21.5 6 A2.8 2.8 0 0 1 25.5 6 L26 6.5 A2.8 2.8 0 0 1 26 10.5 L12 24.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M6 26 L7.5 20 L12 24.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M19.5 8 L24 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Pazartesi raporu at<small>Gelen Kutusu'na düştü</small></span></div></div></div></div>
+      <article class="feat"><div class="scene shot low" style="--sc:#E3F5EC"><img loading="lazy" src="../shots/tr/cloud.webp" width="924" height="2000" alt="Düşünce bulutu: yaz, Gelen Kutusu'na düşsün"></div>
         <div class="fbody"><b>Düşünce bulutu<em>yeni</em></b><p class="fdert">Aklıma gelen şey yerini bulana kadar uçup gidiyor.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Profil balonunun yanında küçük bir bulut yükselir.</li><li>Dokun, yaz: Gelen Kutusu'na düşer.</li><li>Sonra "Gönder…" ile doğru klasöre. İstemezsen bulutu saklarsın.</li></ol></details></div></article>
 
@@ -820,7 +854,7 @@ footer a{color:var(--slate)}
         <div class="fbody"><b>vyne / notes<em>yeni</em></b><p class="fdert">Notlara nasıl gidiyordum?</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Logonun altında kurşun kalemle "notes" yazar.</li><li>Tek dokunuş Notlar'ı açar.</li><li>Notlar'ın içindeki aynası seni sarmaşığa geri götürür.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene shot low" style="--sc:#E3F5EC"><img loading="lazy" src="../shots/app-notes.webp" width="924" height="1810" alt="Notlar: klasör, not, liste, hatırlatıcı ekle"></div>
+      <article class="feat"><div class="scene shot" style="--sc:#E3F5EC"><img loading="lazy" src="../shots/tr/notes.webp" width="924" height="2000" alt="Notlar: klasörler baloncuk gibi, Gelen Kutusu en üstte"></div>
         <div class="fbody"><b>Notlar ve klasörler</b><p class="fdert">Notlarım her yere dağılmış.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Sınırsız klasör; içine not, liste ya da hatırlatıcı.</li><li>Klasörler baloncuk gibi açılıp kapanır.</li><li>Beş kâğıt; Cotton artık dört temaya da uyuyor.</li></ol></details></div></article>
 
@@ -832,7 +866,7 @@ footer a{color:var(--slate)}
         <div class="fbody"><b>Hatırlatıcılar</b><p class="fdert">Kira, fatura, randevu: hep son gün.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Tarih, saat ve tekrar seç.</li><li>İstersen önceden haber al.</li><li>Bildirim gelince "15 dk ertele" ya da "Yarın".</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#1B1E3A"><div class="sn on-dark"><div class="col"><span class="big"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="4" width="20" height="24" rx="3" fill="#6E9468"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="#4A6E45"/><rect x="13" y="9" width="9" height="5" rx="1" fill="#F3E9D2"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="#E0564F"/></g><rect x="6" y="4" width="20" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13" y="9" width="9" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="hand" style="color:#E8C87A">Bugün ne iyi gitti, neden?</span><span class="pill" style="background:rgba(255,255,255,.1);color:#DFE2EC"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="5" y="7" width="22" height="20" rx="4" fill="#F6D3DF"/><path d="M5 13 V11 A4 4 0 0 1 9 7 H23 A4 4 0 0 1 27 11 V13 Z" fill="#EE96BA"/><rect x="18" y="17" width="5" height="5" rx="1.5" fill="#EE96BA"/><path d="M11 4 V9.5" fill="none" stroke="#B0456E" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 4 V9.5" fill="none" stroke="#B0456E" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="5" y="7" width="22" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 13 V11 A4 4 0 0 1 9 7 H23 A4 4 0 0 1 27 11 V13 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="18" y="17" width="5" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 4 V9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 4 V9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg> 1 yıl önce bugün</span></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#1B1E3A"><img loading="lazy" src="../shots/tr/journal.webp" width="924" height="2000" alt="Günlük, Galaxy kâğıdında"></div>
         <div class="fbody"><b>Günlük</b><p class="fdert">Günlük tutmak istiyorum ama boş sayfa korkutuyor.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Her gün bir sayfa; ne yazacağını bilmiyorsan bir soru önerir.</li><li>Pazartesileri haftaya bakan üç soru daha.</li><li>"1 yıl önce bugün" ve takvimle eski günler.</li></ol></details></div></article>
 
@@ -840,14 +874,14 @@ footer a{color:var(--slate)}
         <div class="fbody"><b>Haftalık defter</b><p class="fdert">Uzun yazacak vaktim yok.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Hafta tek sayfa.</li><li>Her gün için bir satır yeter.</li><li>Haftalar listesinden geçmişe bak.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#E3F5EC"><div class="sn"><div class="col"><span class="big"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="20.5" cy="10" r="4" fill="#96BEE8"/><path d="M13 27 V23 A7.5 7.5 0 0 1 28 23 V27 Z" fill="#96BEE8"/><circle cx="12" cy="12.5" r="4.3" fill="#EE96BA"/><path d="M4 28 V25 A8 8 0 0 1 20 25 V28 Z" fill="#EE96BA"/></g><circle cx="20.5" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M13 27 V23 A7.5 7.5 0 0 1 28 23 V27 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="12" cy="12.5" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 28 V25 A8 8 0 0 1 20 25 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><div class="ui"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M3 28.5 H29" fill="none" stroke="#C9A04A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><rect x="5" y="17" width="22" height="10" rx="2.5" fill="#F3E9D2"/><path d="M5 19.5 V19 A2.5 2.5 0 0 1 7.5 17 H24.5 A2.5 2.5 0 0 1 27 19 V19.5 C25 22 23 19.5 21.5 21 C19.5 23 18 20 16 21.5 C14 23 12.5 20 10.5 21.5 C8.5 23 7 20 5 19.5 Z" fill="#EE96BA"/><rect x="10.2" y="10" width="2.6" height="7" rx="1" fill="#96BEE8"/><rect x="14.7" y="10" width="2.6" height="7" rx="1" fill="#A9CB93"/><rect x="19.2" y="10" width="2.6" height="7" rx="1" fill="#F2C66B"/><circle cx="11.5" cy="7.6" r="1.3" fill="#EE8F66"/><circle cx="16" cy="7.6" r="1.3" fill="#EE8F66"/><circle cx="20.5" cy="7.6" r="1.3" fill="#EE8F66"/></g><path d="M3 28.5 H29" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="5" y="17" width="22" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 19.5 V19 A2.5 2.5 0 0 1 7.5 17 H24.5 A2.5 2.5 0 0 1 27 19 V19.5 C25 22 23 19.5 21.5 21 C19.5 23 18 20 16 21.5 C14 23 12.5 20 10.5 21.5 C8.5 23 7 20 5 19.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="10.2" y="10" width="2.6" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="14.7" y="10" width="2.6" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="19.2" y="10" width="2.6" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="11.5" cy="7.6" r="1.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="7.6" r="1.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20.5" cy="7.6" r="1.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Annem<small>doğum günü 3 gün sonra</small></span></div><div class="ui"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M5 7 A3 3 0 0 1 8 4 H24 A3 3 0 0 1 27 7 V17 A3 3 0 0 1 24 20 H13 L7 25 V20 A3 3 0 0 1 5 17 Z" fill="#A9CB93"/></g><path d="M5 7 A3 3 0 0 1 8 4 H24 A3 3 0 0 1 27 7 V17 A3 3 0 0 1 24 20 H13 L7 25 V20 A3 3 0 0 1 5 17 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="11" cy="12" r="1.4" fill="#2C2A26"/><circle cx="16" cy="12" r="1.4" fill="#2C2A26"/><circle cx="21" cy="12" r="1.4" fill="#2C2A26"/></svg><span>Can<small>"yeni işe başladım"</small></span></div></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#E3F5EC"><img loading="lazy" src="../shots/tr/people.webp" width="924" height="2000" alt="Çevre: doğum günleri ve kısa notlar"></div>
         <div class="fbody"><b>Çevre</b><p class="fdert">Sevdiklerimin doğum gününü, ne anlattıklarını unutuyorum.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Kişi ekle, doğum gününü yaz.</li><li>İstersen bir gün önce akşam tek bildirim.</li><li>"Ne dediler?" diye kısa notlar düş.</li></ol></details></div></article>
     </div>
   </div>
 
   <div class="group">
-    <div class="group-head"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 4 C9 4 4 9 4 15.5 C4 22 9 27.5 15 27.5 C17.5 27.5 18 25.5 17 24 C16 22.5 17 20.5 19 20.5 H22 C25.5 20.5 28 18 28 14.5 C28 8.5 22.5 4 16 4 Z" fill="#EEC896"/><circle cx="10" cy="13.5" r="2" fill="#E0564F"/><circle cx="13.5" cy="8.8" r="2" fill="#F2C66B"/><circle cx="19.5" cy="8.5" r="2" fill="#6F98C4"/><circle cx="23.5" cy="13" r="2" fill="#7FAE76"/></g><path d="M16 4 C9 4 4 9 4 15.5 C4 22 9 27.5 15 27.5 C17.5 27.5 18 25.5 17 24 C16 22.5 17 20.5 19 20.5 H22 C25.5 20.5 28 18 28 14.5 C28 8.5 22.5 4 16 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="13.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13.5" cy="8.8" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="19.5" cy="8.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="23.5" cy="13" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h3>Senin</h3><span class="muted">Görünüm ve verin</span></div>
+    <div class="group-head"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 4 C9 4 4 9 4 15.5 C4 22 9 27.5 15 27.5 C17.5 27.5 18 25.5 17 24 C16 22.5 17 20.5 19 20.5 H22 C25.5 20.5 28 18 28 14.5 C28 8.5 22.5 4 16 4 Z" fill="#EEC896"/><circle cx="10" cy="13.5" r="2" fill="#E0564F"/><circle cx="13.5" cy="8.8" r="2" fill="#F2C66B"/><circle cx="19.5" cy="8.5" r="2" fill="#6F98C4"/><circle cx="23.5" cy="13" r="2" fill="#7FAE76"/></g><path d="M16 4 C9 4 4 9 4 15.5 C4 22 9 27.5 15 27.5 C17.5 27.5 18 25.5 17 24 C16 22.5 17 20.5 19 20.5 H22 C25.5 20.5 28 18 28 14.5 C28 8.5 22.5 4 16 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="13.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13.5" cy="8.8" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="19.5" cy="8.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="23.5" cy="13" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h3>Senin</h3><span class="muted">Görünüm ve verin</span><span class="swipehint" aria-hidden="true"></span></div>
     <div class="feats">
       <article class="feat"><div class="scene" style="--sc:#F8EEDB"><div class="sn"><div class="col"><div class="papers"><i style="background:linear-gradient(180deg,#F9F7F3,#F1EEE7)"></i><i style="background:#F3F1DE repeating-linear-gradient(180deg,transparent 0 9px,rgba(143,160,94,.5) 9px 10px)"></i><i style="background:radial-gradient(60% 45% at 30% 30%,#E7B8DE,transparent 70%),radial-gradient(55% 45% at 80% 80%,#B9C7F2,transparent 70%),#F7F2F6"></i><i style="background:radial-gradient(80% 60% at 20% 10%,#2C4A6E,transparent 65%),#16202E"></i><i style="background:radial-gradient(1px 1px at 30% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 60%,#fff,transparent),#12142A"></i></div><span class="hand">Cotton · Matcha · Bloom · Space · Galaxy</span><span class="pill">Açık · Sıcak · Koyu · Gece Yarısı</span></div></div></div>
         <div class="fbody"><b>Temalar ve kâğıtlar</b><p class="fdert">Uygulama gözümü yormasın, bana benzesin.</p>
@@ -857,9 +891,9 @@ footer a{color:var(--slate)}
         <div class="fbody"><b>Vyne için çizildi<em>yeni</em></b><p class="fdert">Emojiler her telefonda başka görünüyor.</p>
         <details><summary>Nasıl kullanılır</summary><ol><li>Uygulamadaki her ikon ve karakter Vyne için özel çizildi, boyuta göre dört tarzda. Bu sitedeki çizimler de onlar.</li><li>Profilin için 36 karakter; istersen yine kendi emojin.</li><li>Kayıtlı emojin değişmez, sadece görünüşü.</li></ol></details></div></article>
 
-      <article class="feat"><div class="scene" style="--sc:#F8EEDB"><div class="sn"><div class="col"><div class="ui" style="min-width:220px"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M20 20 L27 27" fill="none" stroke="#8F877A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13.5" cy="13.5" r="8.5" fill="#BFD6EE"/></g><path d="M20 20 L27 27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13.5" cy="13.5" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>ogrenci</span></div><div class="ui" style="min-width:220px"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M4 9 A2 2 0 0 1 6 7 H12.5 L15 9.5 H26 A2 2 0 0 1 28 11.5 V25 A2 2 0 0 1 26 27 H6 A2 2 0 0 1 4 25 Z" fill="#E8C170"/><path d="M4 13 H28 V25 A2 2 0 0 1 26 27 H6 A2 2 0 0 1 4 25 Z" fill="#F2D58A"/></g><path d="M4 9 A2 2 0 0 1 6 7 H12.5 L15 9.5 H26 A2 2 0 0 1 28 11.5 V25 A2 2 0 0 1 26 27 H6 A2 2 0 0 1 4 25 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 13 H28 V25 A2 2 0 0 1 26 27 H6 A2 2 0 0 1 4 25 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Öğrenci işleri<small>Notlar · klasör</small></span></div><div class="ui" style="min-width:220px"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="4" width="20" height="24" rx="3" fill="#6E9468"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="#4A6E45"/><rect x="13" y="9" width="9" height="5" rx="1" fill="#F3E9D2"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="#E0564F"/></g><rect x="6" y="4" width="20" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13" y="9" width="9" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>12 Mart<small>Günlük · "öğrenci kartı"</small></span></div></div></div></div>
+      <article class="feat"><div class="scene shot" style="--sc:#F8EEDB"><img loading="lazy" src="../shots/tr/search.webp" width="924" height="2000" alt="Arama: notlarda, listelerde, günlükte"></div>
         <div class="fbody"><b>Her şeyde arama<em>yeni</em></b><p class="fdert">O notu nereye yazmıştım?</p>
-        <details><summary>Nasıl kullanılır</summary><ol><li>Arama dallarda, notlarda, listelerde, günlük günlerinde ve kişilerde bulur.</li><li>ş, ğ, ı, ö, ü farkını dert etmez: "ogrenci" yazsan da bulur.</li><li>Sonuca dokun, doğrudan açılsın.</li></ol></details></div></article>
+        <details><summary>Nasıl kullanılır</summary><ol><li>Arama dallarda, notlarda, listelerde, günlük günlerinde ve kişilerde bulur.</li><li>ş, ğ, ı, ö, ü farkını dert etmez: "ogrenci" yazsan da "öğrenci"yi bulur.</li><li>Sonuca dokun, doğrudan açılsın.</li></ol></details></div></article>
 
       <article class="feat"><div class="scene" style="--sc:#F8EEDB"><div class="sn"><div class="col"><div class="ui" style="max-width:260px"><img src="../app-icon.png" alt="" width="36" height="36" style="border-radius:9px"><span>Vyne<small>Bugün için üç dalın var. Acelesi yok.</small></span></div><span class="pill"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 2.5 V4.5" fill="none" stroke="#C9A04A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 C11 4 8 8 8 13 V19 L5.5 23 H26.5 L24 19 V13 C24 8 21 4 16 4 Z" fill="#F2C66B"/><circle cx="16" cy="25.5" r="2.6" fill="#C9A04A"/></g><path d="M16 2.5 V4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 C11 4 8 8 8 13 V19 L5.5 23 H26.5 L24 19 V13 C24 8 21 4 16 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="25.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg> günde en fazla bir kez</span></div></div></div>
         <div class="fbody"><b>Nazik bildirimler<em>yeni</em></b><p class="fdert">Uygulamalar bana suçluluk hissettiriyor.</p>
@@ -894,7 +928,8 @@ footer a{color:var(--slate)}
           <div class="pg-art" aria-hidden="true"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="5" width="20" height="23" rx="3" fill="#D8B98A"/><rect x="9" y="8" width="14" height="17" rx="1.5" fill="#F3E9D2"/><rect x="12" y="3" width="8" height="4" rx="1.5" fill="#8F99A3"/><path d="M12 13 H20" fill="none" stroke="#B98A5E" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 17 H20" fill="none" stroke="#B98A5E" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 21 H17" fill="none" stroke="#B98A5E" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="6" y="5" width="20" height="23" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="9" y="8" width="14" height="17" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="12" y="3" width="8" height="4" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 13 H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 17 H20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 21 H17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>→</span><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
           <p>Hayatım düz bir yapılacaklar listesine sığmıyordu. İşin teslim tarihi "süt al"ın yanında duruyordu, doğum günleri bir uygulamada, günlük bir başkasında.</p>
           <p>Hepsini tek bir yerde, kendi yerlerinde görmek istedim. Vyne öyle başladı.</p>
-          <p class="margin">— Cotton artık dört temaya da uyuyor</p></div>
+          <p class="margin">— Cotton artık dört temaya da uyuyor</p>
+          <button type="button" class="pg-apply" data-paper="none">Siteyi sade kâğıda al</button></div>
         <div class="pg matcha" data-paper="Matcha"><span class="no">2</span><h4>Her şey bir dal, sağa doğru</h4>
           <svg viewBox="0 0 360 170" style="max-width:300px; width:100%" aria-hidden="true">
             <circle cx="30" cy="85" r="20" fill="#6E9468"/>
@@ -905,20 +940,24 @@ footer a{color:var(--slate)}
             <g font-family="Caveat,cursive" font-size="24" font-weight="700" fill="#3B4322"><text x="166" y="37">iş</text><text x="166" y="92">sağlık</text><text x="166" y="147">ev</text><text x="280" y="20" font-size="20">rapor</text><text x="280" y="52" font-size="20">toplantı</text></g>
           </svg>
           <p>Ortada sen varsın. Önemli olan her şey sağa doğru bir sütun açıyor, dallar da kendi sütunlarını açıyor. Üstteki yol hep nerede olduğunu söylüyor.</p>
-          <p class="margin">sen › iş › rapor</p></div>
+          <p class="margin">sen › iş › rapor</p>
+          <button type="button" class="pg-apply" data-paper="matcha">Siteyi bu kâğıda geçir</button></div>
         <div class="pg bloom" data-paper="Bloom"><span class="no">3</span><h4>Hasta oldun. Serin bekliyor.</h4>
           <div class="mini-cal" id="miniCal" aria-hidden="true"></div>
           <p>Otuz günün içinde bir gün unuttun: kazandığın yaprak onu kurtardı. İki gün de hastaydın: "Hasta" işaretledin, seri ne uzadı ne bozuldu.</p>
-          <p class="margin">yaprak kazanılır, dinlenmek serbest</p></div>
+          <p class="margin">yaprak kazanılır, dinlenmek serbest</p>
+          <button type="button" class="pg-apply" data-paper="bloom">Siteyi bu kâğıda geçir</button></div>
         <div class="pg space" data-paper="Space"><canvas class="stars" data-seed="3" aria-hidden="true"></canvas><span class="no">4</span><h4>Klasörler baloncuk gibi açılır</h4>
           <div class="folders" aria-hidden="true"><div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="20.5" y="6.5" width="3" height="6" rx="0.5" fill="#E0957A"/><path d="M7 14.5 V27 H25 V14.5 Z" fill="#F0D8A8"/><path d="M4 16 L16 5 L28 16 Z" fill="#E0957A"/><rect x="13.5" y="19.5" width="5" height="7.5" rx="1.5" fill="#B98A5E"/></g><rect x="20.5" y="6.5" width="3" height="6" rx="0.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M7 14.5 V27 H25 V14.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 16 L16 5 L28 16 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13.5" y="19.5" width="5" height="7.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Ev</div><div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M9 15 V21 C12 23.5 20 23.5 23 21 V15 L16 18 Z" fill="#5A5A66"/><path d="M3 12 L16 6 L29 12 L16 18 Z" fill="#6A6A78"/><path d="M16 12 L26 13.5 V20" fill="none" stroke="#F2C66B" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M9 15 V21 C12 23.5 20 23.5 23 21 V15 L16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M3 12 L16 6 L29 12 L16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 12 L26 13.5 V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Okul</div><div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M21.5 20.5 L29 26" fill="none" stroke="#8A6440" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13" cy="17" r="9" fill="#5A5A66"/><path d="M8 16 C8 12 11 10.5 13.5 11.5 C16.5 10.5 19 13 18 16.5 C18 20 15 22 12.5 21.5 C9.5 21.5 8 19 8 16 Z" fill="#FAFAF7"/><circle cx="13" cy="16" r="2.5" fill="#F2C66B"/></g><path d="M21.5 20.5 L29 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13" cy="17" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M8 16 C8 12 11 10.5 13.5 11.5 C16.5 10.5 19 13 18 16.5 C18 20 15 22 12.5 21.5 C9.5 21.5 8 19 8 16 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Tarifler</div><div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M7 8 H27 L24.5 18 H9.5 Z" fill="#96BEE8"/><path d="M3 4.5 H6 L10 22 H24" fill="none" stroke="#4C7CAC" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="11.5" cy="26" r="2" fill="#4C7CAC"/><circle cx="22" cy="26" r="2" fill="#4C7CAC"/></g><path d="M7 8 H27 L24.5 18 H9.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M3 4.5 H6 L10 22 H24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="11.5" cy="26" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="22" cy="26" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Market</div><div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="16" cy="13" r="8" fill="#F6D98A"/><rect x="12.5" y="19.5" width="7" height="6.5" rx="1.5" fill="#BFC6CF"/><path d="M12.5 22.5 H19.5" fill="none" stroke="#8F99A3" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M13.5 13 L15 15.5 L16 12.5 L17 15.5 L18.5 13" fill="none" stroke="#E0A93E" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M14.5 28 H17.5" fill="none" stroke="#8F99A3" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></g><circle cx="16" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="12.5" y="19.5" width="7" height="6.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12.5 22.5 H19.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M13.5 13 L15 15.5 L16 12.5 L17 15.5 L18.5 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M14.5 28 H17.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Fikirler</div><div><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M12 10 V7 A1.5 1.5 0 0 1 13.5 5.5 H18.5 A1.5 1.5 0 0 1 20 7 V10" fill="none" stroke="#8A6440" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><rect x="4" y="10" width="24" height="17" rx="3" fill="#E0957A"/><path d="M10 10 V27" fill="none" stroke="#B0663E" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M22 10 V27" fill="none" stroke="#B0663E" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M12 10 V7 A1.5 1.5 0 0 1 13.5 5.5 H18.5 A1.5 1.5 0 0 1 20 7 V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="4" y="10" width="24" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M10 10 V27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M22 10 V27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Tatil</div></div>
           <p>Logonun altındaki "notes" yazısına dokun, Notlar açılsın. Bir klasöre dokununca içindekiler o baloncuktan çıkıyor, geri dönünce yine ona kapanıyor.</p>
-          <p class="margin">vyne / notes</p></div>
+          <p class="margin">vyne / notes</p>
+          <button type="button" class="pg-apply" data-paper="space">Siteyi bu kâğıda geçir</button></div>
         <div class="pg galaxy" data-paper="Galaxy"><canvas class="stars" data-seed="7" aria-hidden="true"></canvas><span class="no">5</span><h4>Gece, bir soru</h4>
           <div class="pg-art" aria-hidden="true"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M19 4 A12 12 0 1 0 28 21 A9.5 9.5 0 0 1 19 4 Z" fill="#F2D58A"/></g><path d="M19 4 A12 12 0 1 0 28 21 A9.5 9.5 0 0 1 19 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="6" y="4" width="20" height="24" rx="3" fill="#6E9468"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="#4A6E45"/><rect x="13" y="9" width="9" height="5" rx="1" fill="#F3E9D2"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="#E0564F"/></g><rect x="6" y="4" width="20" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="6" y="4" width="4.5" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="13" y="9" width="9" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 27.5 V31 L21.5 29.8 L23 31 V27.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
           <p>Günlük her gün için bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir: <b>"Bugün ne iyi gitti, neden?"</b> Pazartesileri üç soru daha gelir: haftaya bakmak için.</p>
           <p>Galaxy kâğıdı her zaman gece. Bu sayfa da öyle.</p>
-          <p class="margin">iyi geceler</p></div>
+          <p class="margin">iyi geceler</p>
+          <button type="button" class="pg-apply" data-paper="galaxy">Siteyi bu kâğıda geçir</button></div>
       </div>
       <div class="book-nav"><button type="button" id="cPrev" aria-label="Önceki sayfa">‹</button><span class="pn" id="cNo">1 / 5 · Cotton</span><button type="button" id="cNext" aria-label="Sonraki sayfa">›</button></div>
     </div>
@@ -939,9 +978,9 @@ footer a{color:var(--slate)}
       <p>Reklam yok, hesap açman gerekmiyor. Bir şey tuhaf gelirse bana yaz; her mesajı okuyorum.</p>
       <p class="sig">— Hasan</p>
     </div>
-    <figure class="polaroid" style="right:4%; top:40px; transform:rotate(4deg)"><a href="../shots/app-home.webp" target="_blank" rel="noopener"><img loading="lazy" src="../shots/app-home.webp" alt="Vyne ana ekranı (İngilizce arayüz)"></a><figcaption>ana ekran</figcaption></figure>
-    <figure class="polaroid" style="right:26%; top:300px; transform:rotate(-5deg)"><a href="../shots/app-wheel.webp" target="_blank" rel="noopener"><img loading="lazy" src="../shots/app-wheel.webp" alt="Karar çarkı (İngilizce arayüz)"></a><figcaption>kararsız günler</figcaption></figure>
-    <figure class="polaroid d-hide" style="right:3%; top:400px; transform:rotate(2deg)"><a href="../shots/app-branch.webp" target="_blank" rel="noopener"><img loading="lazy" src="../shots/app-branch.webp" alt="Dal sayfası (İngilizce arayüz)"></a><figcaption>dal sayfası</figcaption></figure>
+    <figure class="polaroid" style="right:4%; top:40px; transform:rotate(4deg)"><a href="../shots/tr/home.webp" target="_blank" rel="noopener"><img loading="lazy" src="../shots/tr/home.webp" alt="Vyne ana ekranı"></a><figcaption>ana ekran</figcaption></figure>
+    <figure class="polaroid" style="right:26%; top:300px; transform:rotate(-5deg)"><a href="../shots/tr/pick.webp" target="_blank" rel="noopener"><img loading="lazy" src="../shots/tr/pick.webp" alt="Karar çarkı"></a><figcaption>kararsız günler</figcaption></figure>
+    <figure class="polaroid d-hide" style="right:3%; top:400px; transform:rotate(2deg)"><a href="../shots/tr/branch.webp" target="_blank" rel="noopener"><img loading="lazy" src="../shots/tr/branch.webp" alt="Dal sayfası"></a><figcaption>dal sayfası</figcaption></figure>
     <span class="stamp" style="left:6%; top:505px">reklamsız · hesapsız</span>
     <div class="sticky s-y" style="left:30%; top:500px; transform:rotate(-3deg)"><small>dert</small>Aklıma gelen şey, yerini bulana kadar uçup gidiyor.</div>
     <div class="sticky s-g" style="left:48%; top:40px; transform:rotate(3deg)"><small>çözüm</small>Profil balonunun yanındaki bulut: dokun, yaz, Gelen Kutusu'na düşsün.</div>
@@ -953,6 +992,7 @@ footer a{color:var(--slate)}
   <div class="sub" id="neden">
     <h3>Neden böyle?</h3>
     <p class="muted">Uygulamayı yaparken tuttuğum notlardan. Bazıları hâlâ filiz, bazıları artık ağaç.</p>
+    <p class="swipehint" aria-hidden="true"></p>
     <div class="garden">
       <article class="gnote"><span class="stage"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>ağaç</span><h4>Neden 66. gün?</h4><p>Rastgele bir sayı değil. Phillippa Lally'nin UCL'deki çalışmasında bir davranışın kendiliğinden olmaya başladığı ortanca süre 66 gün çıktı. Kişiden kişiye çok değişiyor; o yüzden 66 bir eşik, bitiş çizgisi değil.</p><span class="by">— H.</span></article>
       <article class="gnote"><span class="stage"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>ağaç</span><h4>Neden yaprak kazanılıyor?</h4><p>Hiç kaçırmamayı değil, "iki kez üst üste kaçırmamayı" hedefliyoruz. Ama yaprak bedava olsaydı seri bir anlam taşımazdı. Önce alışkanlık alışkanlık olsun, sonra seni korusun.</p><span class="by">— H.</span></article>
@@ -971,13 +1011,15 @@ footer a{color:var(--slate)}
 <!-- ============ OYUNCAKLAR ============ -->
 <section class="sec" id="oyuncaklar">
   <div class="sec-head">
-    <p class="eyebrow">Oyuncaklar</p>
-    <h2>Üç küçük oyuncak</h2>
-    <p class="lede">Hepsi uygulamada bir şeyi anlatıyor. Ama önce eğlence.</p>
+    <p class="eyebrow">Dene</p>
+    <h2>Kararsız mısın? Çarkı çevir</h2>
+    <p class="lede">Uygulamadaki çarkın aynısı. Yorgun bir akşam hiçbirine başlamamak yerine çark birini seçer, sen sadece 2 dakika başlarsın.</p>
   </div>
   <div class="games">
     <article class="game">
-      <div class="gc"><h4>Kararsız mısın? Çarkı çevir</h4><p class="muted">Aklındaki işleri yaz (ikiden altıya kadar). Çark birini seçsin, sonra sadece 2 dakika başla. Uygulamadaki çark da böyle: bugünün alışkanlıklarından birini seçer.</p></div>
+      <div class="gc"><h4>Üç adım</h4>
+        <ol class="steps"><li>Aklındaki işleri yaz, ikiden altıya kadar.</li><li>Çevir. Çark birini seçer; tartışmak yok.</li><li>Sadece 2 dakika başla. Gerisi çoğu zaman kendiliğinden gelir.</li></ol>
+        <figure class="inapp"><img loading="lazy" src="../shots/tr/pick.webp" width="924" height="2000" alt="Uygulamadaki çarkın seçimi ve 2 dakika düğmesi"><figcaption>Uygulamada: çark bugünün alışkanlıklarından birini seçer.</figcaption></figure></div>
       <div class="gs wheelstage">
         <div class="wheel-wrap"><svg class="wheel" id="wheel" viewBox="-170 -170 340 340" role="img" aria-label="Seçim çarkı"></svg><div class="pointer" id="wPointer" aria-hidden="true"></div></div>
         <div class="wlist" id="wList"></div>
@@ -985,27 +1027,7 @@ footer a{color:var(--slate)}
         <div class="wres" id="wRes" hidden aria-live="polite"></div>
       </div>
     </article>
-    <article class="game">
-      <div class="gc"><h4>Hangi şablon sensin?</h4><p class="muted">Üç soru. Sonunda sana uyan şablon ve ilk üç dalın.</p></div>
-      <div class="gs quiz" id="quiz"></div>
-    </article>
-    <article class="game">
-      <div class="gc"><h4>Yıl yaprakları</h4><p class="muted">Bir yıl, bir sarmaşıkta 365 yaprak. Yeşil yapılan, altın yaprağın koruduğu, mavi dinlenme günü. Kaçan günler solgun, ceza yok.</p></div>
-      <div class="gs yearstage"><canvas id="year" role="img" aria-label="Bir yılın yapraklardan çizimi"></canvas><button class="btn2" id="yearBtn" type="button">Başka bir yıl çiz</button></div>
-    </article>
-    <div class="toys2">
-      <div class="almanac" aria-label="Bugünün almanağı">
-        <canvas id="almCanvas" aria-hidden="true"></canvas>
-        <div class="alm-in">
-          <span class="eyebrow" style="color:#E8C87A" id="almDow"></span>
-          <span class="big" id="almDay"></span>
-          <span id="almMonth" style="font-weight:800"></span>
-          <span id="almMoon" style="opacity:.9; font-size:14.5px"></span>
-          <span class="q" id="almQ"></span>
-        </div>
-      </div>
-      <div class="secret"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="9" y="3" width="14" height="26" rx="3" fill="#5A5A66"/><rect x="11" y="6" width="10" height="18" rx="1" fill="#96CEEE"/><circle cx="16" cy="26.5" r="1" fill="#BFC6CF"/></g><rect x="9" y="3" width="14" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="11" y="6" width="10" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="26.5" r="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><h4 style="font-size:20px">Bir gizli oyuncak daha</h4><p class="muted">Üstteki "vyne" logosuna basılı tut. Vyne 1998'de olsaydı nasıl görünürdü?</p></div>
-    </div>
+    <div class="secret" style="grid-template-columns:auto 1fr; align-items:center; column-gap:16px"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="9" y="3" width="14" height="26" rx="3" fill="#5A5A66"/><rect x="11" y="6" width="10" height="18" rx="1" fill="#96CEEE"/><circle cx="16" cy="26.5" r="1" fill="#BFC6CF"/></g><rect x="9" y="3" width="14" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="11" y="6" width="10" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="26.5" r="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><div><h4 style="font-size:20px">Bir gizli oyuncak daha</h4><p class="muted">Üstteki "vyne" logosuna basılı tut. Vyne 1998'de olsaydı nasıl görünürdü?</p></div></div>
   </div>
 </section>
 
@@ -1032,6 +1054,7 @@ footer a{color:var(--slate)}
         <li>Yeni bir ilk açılış, yeni bir ikon ve Vyne için özel çizilmiş ikonlar ile 36 karakter</li>
         <li>Ve Android: Google Play'deki ilk sürüm</li>
       </ul></div>
+    <details class="older"><summary>Önceki sürümler</summary>
     <div class="ver"><h4>1.3.0<small>Ağustos 2026</small></h4><ul>
       <li>Şablonlar 4'ten 9'a çıktı</li>
       <li>Bir alışkanlık bitince sıradaki kendiliğinden öne gelir</li>
@@ -1042,6 +1065,7 @@ footer a{color:var(--slate)}
       <li>İlk App Store sürümü</li>
       <li>Yaprak, çark ve kutlamalar</li>
       <li>Bütçe şablonu ve tutar takibi</li></ul></div>
+    </details>
   </div>
 </section>
 
@@ -1084,6 +1108,9 @@ footer a{color:var(--slate)}
     <details><summary>Bir gün kaçırırsam ne olur?</summary><p>7 gün üst üste yaptıysan bir yaprak kazanmışsındır; yaprak o günü kurtarır ve serin sürer. En fazla 2 yaprak birikir ve bir yaprak sadece bir önceki günü kurtarır. Hasta ya da yoldaysan o günü işaretle: serin bekler, yaprak harcanmaz. <a href="#yaprak">Burada dene.</a></p></details>
     <details><summary>Verilerimi silebilir miyim?</summary><p>Evet, istediğin zaman, doğrudan uygulamanın içinden. Hem cihazdaki veri hem varsa bulut yedeği.</p></details>
     <details><summary>Telefonumu değiştirirsem?</summary><p>Dosyaya aktarıp yeni telefonda içe alabilirsin; ikinci kez alırsan kopya oluşmaz, eksikleri ekler. Ya da bulut yedeğiyle geri yüklersin.</p></details>
+    <details><summary>Hangi dillerde?</summary><p>Türkçe ve İngilizce. Uygulama telefonunun dilini izler; istersen ayarlardan değiştirirsin.</p></details>
+    <details><summary>iPad'de ya da bilgisayarda çalışır mı?</summary><p>Şimdilik telefon için: iPhone, ve incelemesi bitince Android. iPad sürümü yok.</p></details>
+    <details><summary>İnternet olmadan çalışır mı?</summary><p>Evet, tamamen. Her şey telefonunda. İnternet sadece istersen açtığın bulut yedeği için.</p></details>
     <details><summary>Bunu kim yapıyor?</summary><p>Tek kişi. Arkasında ekip ya da şirket yok. Her gün kendim kullanıyorum. <a href="#hikaye">Mektubu oku.</a></p></details>
   </div>
 </section>
@@ -1101,6 +1128,7 @@ footer a{color:var(--slate)}
         <span class="store play soon"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="9" y="3" width="14" height="26" rx="3" fill="#5A5A66"/><rect x="11" y="6" width="10" height="18" rx="1" fill="#96CEEE"/><circle cx="16" cy="26.5" r="1" fill="#BFC6CF"/></g><rect x="9" y="3" width="14" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="11" y="6" width="10" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="26.5" r="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span><small>Android için · çok yakında</small><b>Google Play</b></span></span>
       </div>
     </div>
+    <div class="qrs" aria-hidden="true"><figure><svg class="qr" role="img" aria-label="QR" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h31v31H0z"/><path stroke="#2C2A26" d="M1 1.5h7m5 0h1m2 0h5m2 0h7M1 2.5h1m5 0h1m2 0h2m6 0h1m2 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m8 0h1m1 0h1m2 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m2 0h3m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m1 0h1m1 0h5m1 0h1m1 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h2m3 0h1m1 0h1m3 0h2M1 9.5h1m1 0h5m3 0h3m1 0h2m1 0h1m1 0h1m2 0h5M1 10.5h1m1 0h3m2 0h1m1 0h3m4 0h1m2 0h4m1 0h1m3 0h1M1 11.5h1m1 0h1m3 0h2m3 0h2m5 0h1m1 0h1m1 0h2M2 12.5h2m1 0h1m2 0h1m1 0h1m4 0h3m1 0h2m1 0h2m1 0h2m1 0h1M1 13.5h1m4 0h2m1 0h1m8 0h1m5 0h1m1 0h2M3 14.5h3m5 0h1m1 0h3m1 0h1m2 0h6m3 0h1M4 15.5h1m2 0h4m1 0h4m3 0h1m2 0h1m2 0h3M9 16.5h1m2 0h3m1 0h2m1 0h3m3 0h1m2 0h1M1 17.5h1m1 0h10m2 0h6m3 0h1m1 0h2M1 18.5h1m4 0h1m2 0h1m1 0h1m4 0h1m1 0h3m2 0h3m1 0h1m1 0h1M1 19.5h1m1 0h9m4 0h3m2 0h2m2 0h1m1 0h1M1 20.5h1m2 0h1m4 0h2m1 0h1m2 0h1m1 0h1m3 0h2m2 0h1m2 0h1M1 21.5h1m1 0h3m1 0h1m2 0h4m2 0h1m1 0h1m2 0h5m1 0h3M9 22.5h2m2 0h3m2 0h2m1 0h1m3 0h5M1 23.5h7m2 0h1m3 0h2m3 0h3m1 0h1m1 0h3M1 24.5h1m5 0h1m1 0h1m2 0h3m5 0h2m3 0h1M1 25.5h1m1 0h3m1 0h1m1 0h2m4 0h1m2 0h1m2 0h5m1 0h1m1 0h1M1 26.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m4 0h1m4 0h1m1 0h2M1 27.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m3 0h2m1 0h6M1 28.5h1m5 0h1m2 0h1m3 0h3m2 0h1m1 0h2m1 0h3m1 0h1M1 29.5h7m1 0h1m2 0h2m2 0h2m1 0h2m1 0h1m2 0h1m1 0h1"/></svg><figcaption>Telefonunun kamerasıyla okut: App Store</figcaption></figure></div>
   </div>
   <div class="contact">
     <p class="eyebrow">Bana yaz</p>
@@ -1115,7 +1143,7 @@ footer a{color:var(--slate)}
   <a href="https://hasankalkandev.github.io/vyne-legal/terms.html" target="_blank" rel="noopener">Kullanım Şartları</a>
   <a href="#yenilikler">Yenilikler</a>
   <a href="#sozler">Sözlerimiz</a>
-  <a href="#oyuncaklar">Oyuncaklar</a>
+  <a href="#oyuncaklar">Çark</a>
 </footer>
 
 </div>
@@ -1156,7 +1184,8 @@ footer a{color:var(--slate)}
   var LEAF_EVERY = 7, LEAF_CAP = 2;
   var ANDROID_LIVE = false;
   var IOS_URL = 'https://apps.apple.com/app/id6790837181', PLAY_URL = 'https://play.google.com/store/apps/details?id=com.hasankalkan.vyne';
-  var SHOT = {home:'../shots/app-home.webp', stats:'../shots/app-stats.webp', notes:'../shots/app-notes.webp', wheel:'../shots/app-wheel.webp', branch:'../shots/app-branch.webp'};
+  /* Ekranlar uygulamanın kendisinden, örnek profille (scripts/app-shots). */
+  function SHOT(n){ return '../shots/tr/' + n + '.webp'; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function store(k,v){ try{ if(v === undefined) return localStorage.getItem(k); if(v === null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){ return null; } }
   function $(id){ return document.getElementById(id); }
@@ -1297,39 +1326,6 @@ footer a{color:var(--slate)}
     setTimeout(function(){ box.remove(); }, 9000);
   }
 
-  /* ---------- Süs: tomurcuğu sağa çek, sarmaşık büyüsün (içerik buna bağlı değil) ---------- */
-  var stRow = $('stRow'), stSvg = $('stSvg'), stBud = $('stBud'), stDone = $('stDone'), stX = 0, stDrag = false, stSx = 0, stMoved = false, stFinished = false;
-  var ST_B = [['İş','#BEA8EE'],['Sağlık','#96BEE8'],['Ev','#EE96BA'],['Aile','#96EEC8']], stLabels = [];
-  ST_B.forEach(function(b){ var l = document.createElement('span'); l.className = 'st-label'; l.style.setProperty('--c', b[1]); l.textContent = b[0]; l.setAttribute('aria-hidden','true'); stRow.appendChild(l); stLabels.push(l); });
-  function stMax(){ return Math.max(60, stRow.clientWidth - 64 - 52); }
-  function stDraw(){
-    var W = stRow.clientWidth, H = stRow.clientHeight, mid = H/2, x = 64 + stX, p = stX / stMax(), out = '';
-    stBud.style.translate = stX+'px 0';
-    out += '<path d="M 56 '+mid+' C '+(56+(x-56)*0.3)+' '+(mid-10)+', '+(56+(x-56)*0.7)+' '+(mid+10)+', '+(x+8)+' '+mid+'" stroke="var(--green)" stroke-width="4"/>';
-    ST_B.forEach(function(b,i){
-      var f = 0.18 + i*0.22, on = p >= f, l = stLabels[i];
-      l.classList.toggle('on', on);
-      if(!on) return;
-      var sx = 64 + f*stMax() + 10, up = i % 2 === 0, ly = up ? 22 : H - 22;
-      l.style.left = (sx + 16)+'px'; l.style.top = (up ? 8 : H - 36)+'px';
-      out += '<path d="M '+sx+' '+mid+' C '+(sx+6)+' '+mid+', '+(sx+4)+' '+ly+', '+(sx+16)+' '+ly+'" stroke="'+b[1]+'" stroke-width="3"/>';
-    });
-    stSvg.setAttribute('viewBox','0 0 '+W+' '+H); stSvg.innerHTML = out;
-  }
-  function stFinish(){
-    if(stFinished) return; stFinished = true; stBud.classList.remove('idle');
-    var from = stX, to = stMax(), t0 = performance.now();
-    (function step(t){ var k = reduce ? 1 : Math.min(1, (t-t0)/700); stX = from + (to-from)*(1-Math.pow(1-k,3)); stDraw(); if(k < 1) requestAnimationFrame(step); })(t0);
-    stDone.textContent = 'İşte böyle: sen soldasın, hayatın sağa doğru dallanıyor. Uygulama da tam olarak böyle.';
-    tick(880); if(navigator.vibrate) navigator.vibrate(15);
-  }
-  stBud.addEventListener('pointerdown', function(e){ stDrag = true; stMoved = false; stSx = e.clientX - stX; stBud.setPointerCapture(e.pointerId); stBud.classList.remove('idle'); });
-  stBud.addEventListener('pointermove', function(e){ if(!stDrag || stFinished) return; var x = Math.max(0, Math.min(stMax(), e.clientX - stSx)); if(Math.abs(x - stX) > 3) stMoved = true; stX = x; stDraw(); if(x >= stMax()*0.92){ stDrag = false; stFinish(); } });
-  function stRelease(){ if(!stDrag) return; stDrag = false; if(stX > stMax()*0.6) stFinish(); }
-  stBud.addEventListener('pointerup', stRelease); stBud.addEventListener('pointercancel', stRelease);
-  stBud.addEventListener('click', function(){ if(!stMoved) stFinish(); });
-  stBud.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ e.preventDefault(); stX = Math.min(stMax(), stX + stMax()*0.25); stDraw(); if(stX >= stMax()) stFinish(); } });
-
   /* ---------- Düz liste ↔ sarmaşık (sağa) ---------- */
   var ITEMS = [['İş','#BEA8EE',1],['Sağlık','#96BEE8',1],['Ev','#EE96BA',1],['Rapor teslim','#BEA8EE'],['Süt al','#EE96BA'],['Su içmek','#96BEE8'],['Toplantı notu','#BEA8EE'],['Kira','#EE96BA'],['10 dk yürüyüş','#96BEE8'],['Dişçi','#96BEE8'],['Çamaşır','#EE96BA'],['Sunum','#BEA8EE']];
   var box = $('flipbox'), fsvg = $('flipSvg'), itEls = [], vineMode = false;
@@ -1347,6 +1343,12 @@ footer a{color:var(--slate)}
     paths += '<circle cx="'+hubX+'" cy="'+hubY+'" r="12" fill="#6E9468"/>'; fsvg.setAttribute('viewBox','0 0 '+W+' '+H); fsvg.innerHTML = paths;
   }
   $('flipBtn').addEventListener('click', function(){ vineMode = !vineMode; box.classList.toggle('vine', vineMode); this.textContent = vineMode ? 'Düz listeye döndür' : 'Sarmaşığa çevir'; $('flatTitle').textContent = vineMode ? 'Aynı şeyler, sarmaşıkta' : 'Düz bir liste'; layoutFlip(); tick(vineMode?760:420); });
+
+  /* İlk görünüşte kendiliğinden bir kez sarmaşığa döner: düğmeye basmadan da fikir görülsün. */
+  if('IntersectionObserver' in window && !reduce){
+    var flatIO = new IntersectionObserver(function(en){ if(en[0].isIntersecting){ flatIO.disconnect(); setTimeout(function(){ if(!vineMode) $('flipBtn').click(); }, 900); } }, {threshold:.6});
+    flatIO.observe(box);
+  }
 
   /* ---------- Kendi sarmaşığın: gerçek piksel boyutunda çizilir, yazılar telefonda da okunur ---------- */
   var COLORS = ['#BEA8EE','#96BEE8','#EE96BA','#EEE096','#96EEC8','#F0D8A8'];
@@ -1460,9 +1462,9 @@ footer a{color:var(--slate)}
     {d:66, t:'Gün 66 · gerçek eşik', s:'Uydurma değil: Phillippa Lally\'nin (UCL) çalışmasında bir alışkanlığın kendiliğinden olmaya başladığı ortanca süre.'},
     {d:100, t:'Gün 100', s:'Dibe geldin. Kurallar hep aynıydı: yaprak kazanılır, sadece dünü kurtarır, dinlenmek serbest.'}
   ];
-  var wellInner = $('wellInner'), well = $('well'), depth = $('depth'), prevY = -999, WH = 2700, pad = 60;
+  var wellInner = $('wellInner'), well = $('well'), depth = $('depth'), prevY = -999, WH = 1900, pad = 60;
   MARKS.sort(function(a,b){ return a.d-b.d; }).forEach(function(m){
-    var y = Math.max(pad + (m.d-1)/99*(WH-2*pad), prevY + 110); prevY = y;
+    var y = Math.max(pad + (m.d-1)/99*(WH-2*pad), prevY + 118); prevY = y;
     var el = document.createElement('div'); el.className = 'mark'+(m.k?' '+m.k:'')+(y/WH > 0.57 ? ' deep' : ''); el.style.top = y+'px';
     el.innerHTML = '<span class="dotm"></span><span>'+esc(m.t)+'<small>'+esc(m.s)+'</small></span>'; wellInner.appendChild(el);
   });
@@ -1474,24 +1476,15 @@ footer a{color:var(--slate)}
   var now = new Date();
   var DOW = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
   var MON = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
-  var CAP_SHOT = 'Uygulamadan gerçek ekran (arayüz şimdilik İngilizce)', CAP_DRAW = 'Çizim: uygulamadaki ekranın sade hâli';
   var STOPS = [
     {t:'07:30', part:'sabah', sky:['#F6E2BE','#F8F6F0'], title:'Güne bakmak, beş uygulama açmadan', dert:'"Bugün ne yapacaktım?" derken telefonu elimden bırakamıyordum.', how:'Bugünün alışkanlıkları en üstte; hepsi bitince küçük bir kutlama. Altında hayatın sağa doğru dal dal duruyor.', shot:'home'},
-    {t:'12:40', part:'öğle', sky:['#CFE3F2','#F8F6F0'], title:'Aklına geleni buluta yaz', dert:'Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.', how:'Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.', scr:'cloud'},
+    {t:'12:40', part:'öğle', sky:['#CFE3F2','#F8F6F0'], title:'Aklına geleni buluta yaz', dert:'Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.', how:'Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.', shot:'cloud'},
     {t:'17:15', part:'akşamüstü', sky:['#F2D2B5','#F5EFE0'], title:'Liste de hatırlatıcı da tek yerde', dert:'Market listesi bir yerde, kira hatırlatıcısı başka yerde.', how:'Logonun altındaki "notes"a dokun, sonra Ekle: klasör, not, liste, hatırlatıcı, çevre, haftalık defter, günlük. Kâğıdını da orada seçersin.', shot:'notes'},
-    {t:'19:00', part:'akşam', sky:['#E6C7D8','#F7F2F6'], title:'Karar veremeyince çarkı çevir', dert:'Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.', how:'Başlıktaki çark düğmesine dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.', shot:'wheel'},
+    {t:'19:00', part:'akşam', sky:['#E6C7D8','#F7F2F6'], title:'Karar veremeyince çarkı çevir', dert:'Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.', how:'Başlıktaki çark düğmesine dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.', shot:'pick'},
     {t:'21:00', part:'hasta bir akşam', sky:['#DCE6F5','#F2F4F8'], title:'Bugün hastayım, seri ne olacak?', dert:'Hasta olunca seri gidiyor, sonra hepsini bırakıyorum.', how:'Dalın sayfasını aç, takvimde günü seç, "ya da bugün ara ver" → Hasta. Serin seni bekler: ne uzar, ne bozulur. Dünü ve önceki günü sonradan da düzeltebilirsin.', shot:'branch'},
-    {t:'22:30', part:'gece', sky:['#1B1E3A','#12142A'], night:true, title:'Günlük, istersen bir soruyla', dert:'Günlük tutmak istiyorum ama boş sayfa korkutuyor.', how:'Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.', scr:'journal'},
+    {t:'22:30', part:'gece', sky:['#1B1E3A','#12142A'], night:true, title:'Günlük, istersen bir soruyla', dert:'Günlük tutmak istiyorum ama boş sayfa korkutuyor.', how:'Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.', shot:'journal'},
     {t:'Pazartesi', part:'hafta', sky:['#DCE9D4','#F3F1DE'], title:'Haftaya bir bakış', dert:'Hafta nasıl geçti, hiç düşünmüyorum.', how:'İstatistik günleri, haftanın şeklini ve son 12 haftayı gösterir. Gri kare sadece "o gün bir şey olmadı" demek, fazlası değil. Pazartesileri günlükte haftaya bakan üç soru daha çıkar.', shot:'stats'}
   ];
-  var SCR = {
-    cloud: '<div class="scr" role="img" aria-label="Düşünce bulutu çizimi"><div class="logo"><span class="pbub"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><path d="M4 34 C4 26 9 22.5 16 22.5 C23 22.5 28 26 28 34 Z" fill="#6E9468"/><path d="M11 23.5 V30" fill="none" stroke="#4A6E45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 23.5 V30" fill="none" stroke="#4A6E45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="16" r="6.5" fill="#D9A57B"/><path d="M11 11.5 C11 7.5 13 6 16 6 C19 6 21 7.5 21 11.5 Z" fill="#E8D3A2"/><ellipse cx="16" cy="11.8" rx="11" ry="2.2" fill="#E8C170"/><path d="M11.2 10.4 H20.8" fill="none" stroke="#6E9468" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 7 C19 5 20.5 4 22.5 4 C22.5 6 21 7 19 7 Z" fill="#8DB585"/><circle cx="13.5" cy="16.8" r="1.1" fill="#2C2A26"/><circle cx="18.5" cy="16.8" r="1.1" fill="#2C2A26"/></svg></span><span class="cloudb"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M9 24 A5.5 5.5 0 0 1 8 13.1 A7.5 7.5 0 0 1 22 10.5 A6.5 6.5 0 0 1 23.5 24 Z" fill="#BFD6EE"/></g><path d="M9 24 A5.5 5.5 0 0 1 8 13.1 A7.5 7.5 0 0 1 22 10.5 A6.5 6.5 0 0 1 23.5 24 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Aklında ne var?</span></div>' +
-      '<div class="field">Pazartesi raporu at<small>Gelen Kutusu\'na düştü</small></div>' +
-      '<h5><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M3 18 L7 8 H25 L29 18 V26 H3 Z" fill="#BFC6CF"/><path d="M3 18 H10 L12 21 H20 L22 18 H29" fill="none" stroke="#8F99A3" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 V14" fill="none" stroke="#6F98C4" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 10 L16 14 L20 10" fill="none" stroke="#6F98C4" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M3 18 L7 8 H25 L29 18 V26 H3 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M3 18 H10 L12 21 H20 L22 18 H29" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 10 L16 14 L20 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Gelen Kutusu</h5><div class="row"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M8 8 C8 4.5 11 3.5 13.5 4.5 C15 5.2 17 5.2 18.5 4.5 C21 3.5 24 4.5 24 8 C24 12 22 14 22 18 C22 23 21 28 19 28 C17.5 28 17.5 21 16 21 C14.5 21 14.5 28 13 28 C11 28 10 23 10 18 C10 14 8 12 8 8 Z" fill="#F3F1EC"/></g><path d="M8 8 C8 4.5 11 3.5 13.5 4.5 C15 5.2 17 5.2 18.5 4.5 C21 3.5 24 4.5 24 8 C24 12 22 14 22 18 C22 23 21 28 19 28 C17.5 28 17.5 21 16 21 C14.5 21 14.5 28 13 28 C11 28 10 23 10 18 C10 14 8 12 8 8 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Salı dişçi<span class="tagx">Gönder…</span></div><div class="row"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="4.5" y="8" width="6.5" height="19" rx="1.5" fill="#BEA8EE"/><rect x="12" y="5" width="6.5" height="22" rx="1.5" fill="#96BEE8"/><path d="M21.2 9 L27.3 10.4 L23.6 27.5 L17.5 26.1 Z" fill="#EEC896"/></g><rect x="4.5" y="8" width="6.5" height="19" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="12" y="5" width="6.5" height="22" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M21.2 9 L27.3 10.4 L23.6 27.5 L17.5 26.1 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M4.5 12 H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 9 H18.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 23 H18.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Kitap önerisi</div><div class="row"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="16" cy="13" r="8" fill="#F6D98A"/><rect x="12.5" y="19.5" width="7" height="6.5" rx="1.5" fill="#BFC6CF"/><path d="M12.5 22.5 H19.5" fill="none" stroke="#8F99A3" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M13.5 13 L15 15.5 L16 12.5 L17 15.5 L18.5 13" fill="none" stroke="#E0A93E" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M14.5 28 H17.5" fill="none" stroke="#8F99A3" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></g><circle cx="16" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="12.5" y="19.5" width="7" height="6.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12.5 22.5 H19.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M13.5 13 L15 15.5 L16 12.5 L17 15.5 L18.5 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M14.5 28 H17.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Balkona saksı</div></div>',
-    journal: function(){ return '<div class="scr jr" role="img" aria-label="Günlük sayfası çizimi"><span class="big">'+now.getDate()+'</span><span>'+MON[now.getMonth()]+' · '+DOW[now.getDay()]+'</span>' +
-      '<p class="q"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="5.5" cy="28.5" r="1.3" fill="#DCD0F6"/><circle cx="9" cy="25" r="2" fill="#DCD0F6"/><path d="M9 21 A5 5 0 0 1 8.2 11.3 A7 7 0 0 1 21.2 9 A6 6 0 0 1 23 21 Z" fill="#DCD0F6"/></g><circle cx="5.5" cy="28.5" r="1.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="25" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M9 21 A5 5 0 0 1 8.2 11.3 A7 7 0 0 1 21.2 9 A6 6 0 0 1 23 21 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Bugün ne iyi gitti, neden?</span></p><p class="w">Sabah yürüyüşü. Yağmur vardı ama yine de çıktık.</p><p class="w">&nbsp;</p>' +
-      '<div class="ago"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="5" y="7" width="22" height="20" rx="4" fill="#F6D3DF"/><path d="M5 13 V11 A4 4 0 0 1 9 7 H23 A4 4 0 0 1 27 11 V13 Z" fill="#EE96BA"/><rect x="18" y="17" width="5" height="5" rx="1.5" fill="#EE96BA"/><path d="M11 4 V9.5" fill="none" stroke="#B0456E" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 4 V9.5" fill="none" stroke="#B0456E" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="5" y="7" width="22" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 13 V11 A4 4 0 0 1 9 7 H23 A4 4 0 0 1 27 11 V13 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="18" y="17" width="5" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 4 V9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 4 V9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg> 1 yıl önce bugün ne yazdığını da gösterir.</div></div>'; }
-  };
   var day = $('day'), stopsEl = $('dStops'), dscr = $('dScreen'), di = 0;
   STOPS.forEach(function(s,i){ var b = document.createElement('button'); b.type = 'button'; b.textContent = s.t; b.addEventListener('click', function(){ showDay(i); }); stopsEl.appendChild(b); });
   function showDay(i){
@@ -1499,11 +1492,18 @@ footer a{color:var(--slate)}
     day.style.setProperty('--sky1', s.sky[0]); day.style.setProperty('--sky2', s.sky[1]); day.classList.toggle('night', !!s.night);
     $('dClock').textContent = s.t; $('dPart').textContent = s.part;
     $('dTitle').textContent = s.title; $('dDert').textContent = s.dert; $('dHow').textContent = s.how;
-    dscr.innerHTML = s.shot ? '<img alt="'+esc(s.title)+'" src="'+SHOT[s.shot]+'">' : (typeof SCR[s.scr] === 'function' ? SCR[s.scr]() : SCR[s.scr]);
-    $('dCap').textContent = s.shot ? CAP_SHOT : CAP_DRAW;
+    dscr.innerHTML = '<img alt="'+esc(s.title)+'" src="'+SHOT(s.shot)+'" width="924" height="2000">';
+    $('dCount').textContent = (di+1)+' / '+STOPS.length;
     [].forEach.call(stopsEl.children, function(b,k){ b.setAttribute('aria-current', String(k === di)); });
+    var cur = stopsEl.children[di]; stopsEl.scrollTo({ left: cur.offsetLeft - (stopsEl.clientWidth - cur.offsetWidth)/2, behavior: reduce ? 'auto' : 'smooth' });
     tick(460 + di*40);
   }
+  /* Parmakla yana kaydırınca bir sonraki durak */
+  var dsx = null, dsy = 0;
+  day.addEventListener('touchstart', function(e){ if(e.target.closest('.stops')) return; dsx = e.touches[0].clientX; dsy = e.touches[0].clientY; }, {passive:true});
+  day.addEventListener('touchend', function(e){ if(dsx === null) return; var dx = e.changedTouches[0].clientX - dsx, dy = e.changedTouches[0].clientY - dsy; dsx = null; if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)*1.5) showDay(di + (dx < 0 ? 1 : -1)); }, {passive:true});
+  /* Her durağın ekranı önceden yüklensin, geçişte boş kalmasın */
+  STOPS.forEach(function(s){ var im = new Image(); im.src = SHOT(s.shot); });
   day.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ e.preventDefault(); showDay(di+1); } if(e.key === 'ArrowLeft'){ e.preventDefault(); showDay(di-1); } });
   $('dPrev').addEventListener('click', function(){ showDay(di-1); });
   $('dNext').addEventListener('click', function(){ showDay(di+1); });
@@ -1560,7 +1560,17 @@ footer a{color:var(--slate)}
   pagesEl.addEventListener('pointerdown', function(e){ if(e.pointerType !== 'mouse') return; pgDrag = {x:e.clientX, s:pagesEl.scrollLeft}; });
   addEventListener('pointerup', function(e){ if(!pgDrag) return; var dx = e.clientX - pgDrag.x; pgDrag = null; if(Math.abs(dx) > 40) goPage(cur + (dx < 0 ? 1 : -1)); });
   label();
+  [].forEach.call(document.querySelectorAll('.pg-apply'), function(b){ b.addEventListener('click', function(){ setPaper(b.dataset.paper); tick(600); }); });
   function drawStars(){ [].forEach.call(document.querySelectorAll('canvas.stars'), function(cv){ var r = cv.getBoundingClientRect(); if(!r.width) return; cv.width = r.width; cv.height = r.height; var g = cv.getContext('2d'), seed = +cv.dataset.seed || 7; function rnd(){ seed = (seed*9301+49297)%233280; return seed/233280; } for(var s=0;s<90;s++){ g.globalAlpha = .3+rnd()*.6; g.fillStyle = '#DFE2EC'; g.beginPath(); g.arc(rnd()*r.width, rnd()*r.height, rnd()*1.4+.3, 0, 7); g.fill(); } }); }
+
+  /* ---------- Telefonda yana kayan sıralar: "3 / 11" sayacı ---------- */
+  [].forEach.call(document.querySelectorAll('.feats, .garden'), function(sc){
+    var hint = sc.classList.contains('feats') ? sc.closest('.group').querySelector('.swipehint') : sc.previousElementSibling;
+    if(!hint || !hint.classList.contains('swipehint')) return;
+    var n = sc.children.length;
+    function upd(){ var w = sc.children[0].getBoundingClientRect().width + 14, k = Math.min(n, Math.round(sc.scrollLeft / w) + 1); hint.textContent = k + ' / ' + n + (k < n ? ' →' : ''); }
+    sc.addEventListener('scroll', function(){ requestAnimationFrame(upd); }, {passive:true}); upd();
+  });
 
   /* ---------- Masa: bilgisayarda notlar taşınır, telefonda düz sütun ---------- */
   var desk = $('desk');
@@ -1639,88 +1649,19 @@ footer a{color:var(--slate)}
   }
   $('spinBtn').addEventListener('click', spin);
   drawWList(); drawWheel();
-  /* Oyuncak: hangi şablon sensin */
-  var QUIZ = [
-    {q:'Bu ay hayatında en çok ne değişiyor?', a:[['Okul ya da sınav',[0,8]],['İş ya da ev',[1,2]],['Ailem büyüyor',[4,7]],['Kendim',[5,6]]]},
-    {q:'En çok neye ihtiyacın var?', a:[['Düzen',[0,3]],['Hazırlık listesi',[1,4,7]],['Sakin bir başlangıç',[2,5,8]],['Bir alışkanlığı bırakmak',[6]]]},
-    {q:'Sence iyi bir gün nasıl biter?', a:[['Tekrarımı bitirmişim',[0,8]],['Kutular azalmış',[1]],['Hesabım tutmuş',[3]],['İçim rahat',[4,5,6,7,2]]]}
-  ];
-  var quiz = $('quiz'), qi = 0, score = [];
-  function drawQuiz(){
-    if(qi === 0) score = TPL.map(function(){ return 0; });
-    if(qi < QUIZ.length){
-      var q = QUIZ[qi]; quiz.innerHTML = '<p class="qq">'+(qi+1)+'/3 · '+esc(q.q)+'</p><div class="qa">'+q.a.map(function(a,i){ return '<button type="button" data-i="'+i+'">'+esc(a[0])+'</button>'; }).join('')+'</div>';
-      [].forEach.call(quiz.querySelectorAll('.qa button'), function(b){ b.addEventListener('click', function(){ q.a[+b.dataset.i][1].forEach(function(t){ score[t]++; }); qi++; tick(600); drawQuiz(); }); });
-    } else {
-      var best = score.indexOf(Math.max.apply(null, score)), t = TPL[best];
-      quiz.innerHTML = '<div class="res"><span class="eyebrow" style="color:#4A6E45">Sana uyan şablon</span><b>'+esc(t.n)+'</b><p>İlk üç dalın: '+t.c.slice(0,3).map(function(b){ return esc(b.t); }).join(', ')+'.</p><div class="row-btns"><a class="btn2 primary" href="#sablon" id="quizTry" style="text-decoration:none">Şablonu dene</a><button class="btn2" type="button" id="quizAgain">Tekrar</button></div></div>';
-      $('quizTry').addEventListener('click', function(){ tplI = best; drawTpl(); });
-      $('quizAgain').addEventListener('click', function(){ qi = 0; drawQuiz(); }); tick(990);
-    }
-  }
-  drawQuiz();
-  /* Oyuncak: yıl yaprakları (kural: LEAF_EVERY günde yaprak, en fazla LEAF_CAP, dinlenme serbest) */
-  var yc = $('year'), yseed = 11;
-  function yrnd(){ yseed = (yseed*9301+49297)%233280; return yseed/233280; }
-  function drawYear(){
-    var r = yc.getBoundingClientRect(); if(!r.width) return; var dpr = window.devicePixelRatio||1; yc.width = r.width*dpr; yc.height = r.height*dpr;
-    var g = yc.getContext('2d'); g.scale(dpr,dpr); var W = r.width, H = r.height; g.clearRect(0,0,W,H); var s0 = yseed;
-    var pts = []; for(var i=0;i<365;i++){ var t = i/364; pts.push([24+t*(W-48), H/2+Math.sin(t*Math.PI*5)*H*0.26*(0.6+0.4*Math.sin(t*9))]); }
-    g.strokeStyle = 'rgba(166,203,158,.55)'; g.lineWidth = 2; g.beginPath(); pts.forEach(function(p,i){ i ? g.lineTo(p[0],p[1]) : g.moveTo(p[0],p[1]); }); g.stroke();
-    var leaves = 0, streak = 0, prevMiss = false;
-    pts.forEach(function(p,i){
-      var roll = yrnd(), type = roll < 0.05 ? 'rest' : roll < 0.12 ? 'miss' : 'done';
-      if(type === 'done'){ streak++; if(streak % LEAF_EVERY === 0 && leaves < LEAF_CAP) leaves++; prevMiss = false; }
-      else if(type === 'miss'){ if(!prevMiss && leaves > 0){ leaves--; streak++; type = 'leaf'; prevMiss = false; } else { streak = 0; prevMiss = true; } }
-      var col = type === 'done' ? '#8FBF86' : type === 'leaf' ? '#E8C87A' : type === 'rest' ? '#96BEE8' : 'rgba(223,226,236,.18)';
-      var side = i%2 ? 1 : -1, len = 7+yrnd()*4, ang = side*(0.9+yrnd()*0.5);
-      g.save(); g.translate(p[0],p[1]); g.rotate(ang); g.fillStyle = col; g.beginPath(); g.moveTo(0,0); g.quadraticCurveTo(len*0.5,-len*0.45,len,0); g.quadraticCurveTo(len*0.5,len*0.45,0,0); g.fill(); g.restore();
-    });
-    yseed = s0;
-    g.fillStyle = '#DFE2EC'; g.font = '800 14px Nunito, sans-serif'; g.fillText('bir yıl · 365 yaprak', 24, 24);
-    g.font = '800 13px Nunito, sans-serif';
-    g.fillStyle = '#8FBF86'; g.fillText('● yapıldı', 24, H-14); g.fillStyle = '#E8C87A'; g.fillText('● yaprak', 112, H-14); g.fillStyle = '#96BEE8'; g.fillText('● dinlenme', 186, H-14);
-  }
-  $('yearBtn').addEventListener('click', function(){ yseed = Math.floor(Math.random()*9999)+1; drawYear(); tick(700); });
-
-  /* ---------- Almanak: gerçek ay evresi ---------- */
-  var SEASON = ['kış','kış','ilkbahar','ilkbahar','ilkbahar','yaz','yaz','yaz','sonbahar','sonbahar','sonbahar','kış'];
-  var QS = ['Bugün ne iyi gitti, neden?','Yarın için tek bir şey.','Bugün neyi yoluna koydun?','Her şey olabileceği kadar iyi gitseydi...','Bugün neler yaşadın?'];
-  var doy = Math.floor((now - new Date(now.getFullYear(),0,0))/864e5);
-  var age = (((now - Date.UTC(2000,0,6,18,14))/864e5) % 29.530588 + 29.530588) % 29.530588;
-  var phase = age<1.8?'yeni ay':age<7.4?'hilal':age<9.2?'ilk dördün':age<14.8?'büyüyen ay':age<16.6?'dolunay':age<22.1?'küçülen ay':age<23.9?'son dördün':'son hilal';
-  $('almDow').textContent = DOW[now.getDay()] + ' · ' + SEASON[now.getMonth()] + (now.getDay() === 1 ? ' · haftaya bakma günü' : '');
-  $('almDay').textContent = now.getDate();
-  $('almMonth').textContent = MON[now.getMonth()] + ' ' + now.getFullYear();
-  $('almMoon').textContent = 'gökyüzü: ' + phase + ' · yılın ' + doy + '. günü';
-  $('almQ').textContent = QS[doy % QS.length];
-  var ac = $('almCanvas');
-  function drawAlm(){
-    var r = ac.getBoundingClientRect(); if(!r.width) return; ac.width = r.width; ac.height = r.height;
-    var g = ac.getContext('2d'), W = r.width, H = r.height, sd = now.getFullYear()*1000 + doy;
-    function rr(){ sd = (sd*9301+49297)%233280; return sd/233280; }
-    var grd = g.createLinearGradient(0,0,0,H); grd.addColorStop(0,'#1B1E3A'); grd.addColorStop(1,'#0C0E1F'); g.fillStyle = grd; g.fillRect(0,0,W,H);
-    for(var i=0;i<140;i++){ g.globalAlpha = .25+rr()*.7; g.fillStyle = '#DFE2EC'; g.beginPath(); g.arc(rr()*W, rr()*H, rr()*1.3+.3, 0, 7); g.fill(); }
-    g.globalAlpha = 1; var mx = W*0.8, my = H*0.26, mr = Math.min(W,H)*0.09, lit = age/29.53;
-    g.fillStyle = '#E8E4D0'; g.beginPath(); g.arc(mx,my,mr,0,7); g.fill();
-    var sx = lit < 0.5 ? mx - (lit/0.5)*2*mr : mx + (1-(lit-0.5)/0.5)*2*mr;
-    g.fillStyle = '#16193A'; g.beginPath(); g.arc(sx, my, mr*1.02, 0, 7); g.fill();
-    g.strokeStyle = getComputedStyle(root).getPropertyValue('--season').trim() || '#E8C87A'; g.globalAlpha = .5; g.lineWidth = 2; g.beginPath();
-    for(var x=0;x<=W;x+=8){ var y = H-18 + Math.sin(x/40)*6; x ? g.lineTo(x,y) : g.moveTo(x,y); } g.stroke(); g.globalAlpha = 1;
-  }
-
   /* ---------- Boyuta bağlı çizimler ---------- */
   var lastW = 0; ready = true;
-  function redrawAll(){ if(!ready) return; stDraw(); layoutFlip(); drawVine(); drawStars(); drawYear(); drawAlm(); }
+  function redrawAll(){ if(!ready) return; layoutFlip(); drawVine(); drawStars(); }
   addEventListener('resize', function(){ if(innerWidth === lastW) return; lastW = innerWidth; requestAnimationFrame(redrawAll); });
   lastW = innerWidth; redrawAll();
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layoutFlip(); drawVine(); drawYear(); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layoutFlip(); drawVine(); });
   routeHash();
 
   /* ---------- Dil: düğme tercihi hatırlar ve aynı yerde kalır. Tercih yoksa ve tarayıcı dili
      bu sayfanın dili değilse öteki dile küçük bir öneri gösterilir (yönlendirme YOK). ---------- */
-  var langA = $('langSw'), langH = $('langHint'), saved = store('vyne-site-lang');
-  if(!saved && (navigator.language||'').toLowerCase().indexOf(PAGE_LANG) !== 0) langH.hidden = false;
+  var langA = $('langSw'), langH = $('langHint'), langT = $('langToast'), saved = store('vyne-site-lang');
+  if(!saved && (navigator.language||'').toLowerCase().indexOf(PAGE_LANG) !== 0) langT.hidden = false;
+  $('langClose').addEventListener('click', function(){ langT.hidden = true; store('vyne-site-lang', PAGE_LANG); });
   [langA, langH].forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); store('vyne-site-lang', langA.dataset.lang); location.href = el.getAttribute('href') + location.hash; }); });
 })();
 </script>

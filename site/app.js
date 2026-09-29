@@ -7,7 +7,8 @@
   var LEAF_EVERY = {{LEAF_EVERY}}, LEAF_CAP = {{LEAF_CAP}};
   var ANDROID_LIVE = {{#android}}true{{/android}}{{^android}}false{{/android}};
   var IOS_URL = '{{IOS_URL}}', PLAY_URL = '{{PLAY_URL}}';
-  var SHOT = {home:'{{P}}shots/app-home.webp', stats:'{{P}}shots/app-stats.webp', notes:'{{P}}shots/app-notes.webp', wheel:'{{P}}shots/app-wheel.webp', branch:'{{P}}shots/app-branch.webp'};
+  /* Ekranlar uygulamanın kendisinden, örnek profille (scripts/app-shots). */
+  function SHOT(n){ return '{{P}}shots/⟪tr¦en⟫/' + n + '.webp'; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function store(k,v){ try{ if(v === undefined) return localStorage.getItem(k); if(v === null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){ return null; } }
   function $(id){ return document.getElementById(id); }
@@ -148,39 +149,6 @@
     setTimeout(function(){ box.remove(); }, 9000);
   }
 
-  /* ---------- Süs: tomurcuğu sağa çek, sarmaşık büyüsün (içerik buna bağlı değil) ---------- */
-  var stRow = $('stRow'), stSvg = $('stSvg'), stBud = $('stBud'), stDone = $('stDone'), stX = 0, stDrag = false, stSx = 0, stMoved = false, stFinished = false;
-  var ST_B = [['⟪İş¦Work⟫','#BEA8EE'],['⟪Sağlık¦Health⟫','#96BEE8'],['⟪Ev¦Home⟫','#EE96BA'],['⟪Aile¦Family⟫','#96EEC8']], stLabels = [];
-  ST_B.forEach(function(b){ var l = document.createElement('span'); l.className = 'st-label'; l.style.setProperty('--c', b[1]); l.textContent = b[0]; l.setAttribute('aria-hidden','true'); stRow.appendChild(l); stLabels.push(l); });
-  function stMax(){ return Math.max(60, stRow.clientWidth - 64 - 52); }
-  function stDraw(){
-    var W = stRow.clientWidth, H = stRow.clientHeight, mid = H/2, x = 64 + stX, p = stX / stMax(), out = '';
-    stBud.style.translate = stX+'px 0';
-    out += '<path d="M 56 '+mid+' C '+(56+(x-56)*0.3)+' '+(mid-10)+', '+(56+(x-56)*0.7)+' '+(mid+10)+', '+(x+8)+' '+mid+'" stroke="var(--green)" stroke-width="4"/>';
-    ST_B.forEach(function(b,i){
-      var f = 0.18 + i*0.22, on = p >= f, l = stLabels[i];
-      l.classList.toggle('on', on);
-      if(!on) return;
-      var sx = 64 + f*stMax() + 10, up = i % 2 === 0, ly = up ? 22 : H - 22;
-      l.style.left = (sx + 16)+'px'; l.style.top = (up ? 8 : H - 36)+'px';
-      out += '<path d="M '+sx+' '+mid+' C '+(sx+6)+' '+mid+', '+(sx+4)+' '+ly+', '+(sx+16)+' '+ly+'" stroke="'+b[1]+'" stroke-width="3"/>';
-    });
-    stSvg.setAttribute('viewBox','0 0 '+W+' '+H); stSvg.innerHTML = out;
-  }
-  function stFinish(){
-    if(stFinished) return; stFinished = true; stBud.classList.remove('idle');
-    var from = stX, to = stMax(), t0 = performance.now();
-    (function step(t){ var k = reduce ? 1 : Math.min(1, (t-t0)/700); stX = from + (to-from)*(1-Math.pow(1-k,3)); stDraw(); if(k < 1) requestAnimationFrame(step); })(t0);
-    stDone.textContent = '⟪İşte böyle: sen soldasın, hayatın sağa doğru dallanıyor. Uygulama da tam olarak böyle.¦That\'s it: you\'re on the left and your life branches to the right. The app works exactly like this.⟫';
-    tick(880); if(navigator.vibrate) navigator.vibrate(15);
-  }
-  stBud.addEventListener('pointerdown', function(e){ stDrag = true; stMoved = false; stSx = e.clientX - stX; stBud.setPointerCapture(e.pointerId); stBud.classList.remove('idle'); });
-  stBud.addEventListener('pointermove', function(e){ if(!stDrag || stFinished) return; var x = Math.max(0, Math.min(stMax(), e.clientX - stSx)); if(Math.abs(x - stX) > 3) stMoved = true; stX = x; stDraw(); if(x >= stMax()*0.92){ stDrag = false; stFinish(); } });
-  function stRelease(){ if(!stDrag) return; stDrag = false; if(stX > stMax()*0.6) stFinish(); }
-  stBud.addEventListener('pointerup', stRelease); stBud.addEventListener('pointercancel', stRelease);
-  stBud.addEventListener('click', function(){ if(!stMoved) stFinish(); });
-  stBud.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ e.preventDefault(); stX = Math.min(stMax(), stX + stMax()*0.25); stDraw(); if(stX >= stMax()) stFinish(); } });
-
   /* ---------- Düz liste ↔ sarmaşık (sağa) ---------- */
   var ITEMS = [['⟪İş¦Work⟫','#BEA8EE',1],['⟪Sağlık¦Health⟫','#96BEE8',1],['⟪Ev¦Home⟫','#EE96BA',1],['⟪Rapor teslim¦Report due⟫','#BEA8EE'],['⟪Süt al¦Buy milk⟫','#EE96BA'],['⟪Su içmek¦Drink water⟫','#96BEE8'],['⟪Toplantı notu¦Meeting notes⟫','#BEA8EE'],['⟪Kira¦Rent⟫','#EE96BA'],['⟪10 dk yürüyüş¦10 min walk⟫','#96BEE8'],['⟪Dişçi¦Dentist⟫','#96BEE8'],['⟪Çamaşır¦Laundry⟫','#EE96BA'],['⟪Sunum¦Slides⟫','#BEA8EE']];
   var box = $('flipbox'), fsvg = $('flipSvg'), itEls = [], vineMode = false;
@@ -198,6 +166,12 @@
     paths += '<circle cx="'+hubX+'" cy="'+hubY+'" r="12" fill="#6E9468"/>'; fsvg.setAttribute('viewBox','0 0 '+W+' '+H); fsvg.innerHTML = paths;
   }
   $('flipBtn').addEventListener('click', function(){ vineMode = !vineMode; box.classList.toggle('vine', vineMode); this.textContent = vineMode ? '⟪Düz listeye döndür¦Back to a flat list⟫' : '⟪Sarmaşığa çevir¦Turn it into a vine⟫'; $('flatTitle').textContent = vineMode ? '⟪Aynı şeyler, sarmaşıkta¦The same things, as a vine⟫' : '⟪Düz bir liste¦A flat list⟫'; layoutFlip(); tick(vineMode?760:420); });
+
+  /* İlk görünüşte kendiliğinden bir kez sarmaşığa döner: düğmeye basmadan da fikir görülsün. */
+  if('IntersectionObserver' in window && !reduce){
+    var flatIO = new IntersectionObserver(function(en){ if(en[0].isIntersecting){ flatIO.disconnect(); setTimeout(function(){ if(!vineMode) $('flipBtn').click(); }, 900); } }, {threshold:.6});
+    flatIO.observe(box);
+  }
 
   /* ---------- Kendi sarmaşığın: gerçek piksel boyutunda çizilir, yazılar telefonda da okunur ---------- */
   var COLORS = ['#BEA8EE','#96BEE8','#EE96BA','#EEE096','#96EEC8','#F0D8A8'];
@@ -311,9 +285,9 @@
     {d:66, t:'⟪Gün 66 · gerçek eşik¦Day 66 · a real threshold⟫', s:'⟪Uydurma değil: Phillippa Lally\'nin (UCL) çalışmasında bir alışkanlığın kendiliğinden olmaya başladığı ortanca süre.¦Not made up: in Phillippa Lally\'s study at UCL, the median time for a habit to become automatic.⟫'},
     {d:100, t:'⟪Gün 100¦Day 100⟫', s:'⟪Dibe geldin. Kurallar hep aynıydı: yaprak kazanılır, sadece dünü kurtarır, dinlenmek serbest.¦You reached the bottom. The rules never changed: leaves are earned, a leaf only saves yesterday, rest is free.⟫'}
   ];
-  var wellInner = $('wellInner'), well = $('well'), depth = $('depth'), prevY = -999, WH = 2700, pad = 60;
+  var wellInner = $('wellInner'), well = $('well'), depth = $('depth'), prevY = -999, WH = 1900, pad = 60;
   MARKS.sort(function(a,b){ return a.d-b.d; }).forEach(function(m){
-    var y = Math.max(pad + (m.d-1)/99*(WH-2*pad), prevY + 110); prevY = y;
+    var y = Math.max(pad + (m.d-1)/99*(WH-2*pad), prevY + 118); prevY = y;
     var el = document.createElement('div'); el.className = 'mark'+(m.k?' '+m.k:'')+(y/WH > 0.57 ? ' deep' : ''); el.style.top = y+'px';
     el.innerHTML = '<span class="dotm"></span><span>'+esc(m.t)+'<small>'+esc(m.s)+'</small></span>'; wellInner.appendChild(el);
   });
@@ -325,24 +299,15 @@
   var now = new Date();
   var DOW = ['⟪Pazar¦Sunday⟫','⟪Pazartesi¦Monday⟫','⟪Salı¦Tuesday⟫','⟪Çarşamba¦Wednesday⟫','⟪Perşembe¦Thursday⟫','⟪Cuma¦Friday⟫','⟪Cumartesi¦Saturday⟫'];
   var MON = ['⟪Ocak¦January⟫','⟪Şubat¦February⟫','⟪Mart¦March⟫','⟪Nisan¦April⟫','⟪Mayıs¦May⟫','⟪Haziran¦June⟫','⟪Temmuz¦July⟫','⟪Ağustos¦August⟫','⟪Eylül¦September⟫','⟪Ekim¦October⟫','⟪Kasım¦November⟫','⟪Aralık¦December⟫'];
-  var CAP_SHOT = '⟪Uygulamadan gerçek ekran (arayüz şimdilik İngilizce)¦A real screen from the app⟫', CAP_DRAW = '⟪Çizim: uygulamadaki ekranın sade hâli¦Drawing: a simplified version of the app screen⟫';
   var STOPS = [
     {t:'⟪07:30¦7:30⟫', part:'⟪sabah¦morning⟫', sky:['#F6E2BE','#F8F6F0'], title:'⟪Güne bakmak, beş uygulama açmadan¦See the day without opening five apps⟫', dert:'⟪"Bugün ne yapacaktım?" derken telefonu elimden bırakamıyordum.¦"What was I supposed to do today?" and I couldn\'t put the phone down.⟫', how:'⟪Bugünün alışkanlıkları en üstte; hepsi bitince küçük bir kutlama. Altında hayatın sağa doğru dal dal duruyor.¦Today\'s habits sit at the top; when they\'re all ticked it says "All done!". Below, your life branches out to the right.⟫', shot:'home'},
-    {t:'12:40', part:'⟪öğle¦midday⟫', sky:['#CFE3F2','#F8F6F0'], title:'⟪Aklına geleni buluta yaz¦Write it on the cloud⟫', dert:'⟪Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.¦A thought hits me in a meeting and flies away before I find the right place for it.⟫', how:'⟪Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.¦Tap the little cloud rising from your profile bubble and write. It lands in your Inbox; in the evening, "Send to…" puts it in the right folder.⟫', scr:'cloud'},
+    {t:'12:40', part:'⟪öğle¦midday⟫', sky:['#CFE3F2','#F8F6F0'], title:'⟪Aklına geleni buluta yaz¦Write it on the cloud⟫', dert:'⟪Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.¦A thought hits me in a meeting and flies away before I find the right place for it.⟫', how:'⟪Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.¦Tap the little cloud rising from your profile bubble and write. It lands in your Inbox; in the evening, "Send to…" puts it in the right folder.⟫', shot:'cloud'},
     {t:'17:15', part:'⟪akşamüstü¦late afternoon⟫', sky:['#F2D2B5','#F5EFE0'], title:'⟪Liste de hatırlatıcı da tek yerde¦Lists and reminders, in one place⟫', dert:'⟪Market listesi bir yerde, kira hatırlatıcısı başka yerde.¦The grocery list lives in one app, the rent reminder in another.⟫', how:'⟪Logonun altındaki "notes"a dokun, sonra Ekle: klasör, not, liste, hatırlatıcı, çevre, haftalık defter, günlük. Kâğıdını da orada seçersin.¦Tap "notes" under the logo, then Add: folder, note, list, reminders, people, weekly diary, daily journal. You pick the paper right there.⟫', shot:'notes'},
-    {t:'19:00', part:'⟪akşam¦evening⟫', sky:['#E6C7D8','#F7F2F6'], title:'⟪Karar veremeyince çarkı çevir¦Can\'t decide? Spin for one⟫', dert:'⟪Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.¦I\'m tired and don\'t know where to start. So I start nothing.⟫', how:'⟪Başlıktaki çark düğmesine dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.¦Tap "Can\'t decide? Spin for one" in the header and the wheel picks one of today\'s habits. Just 2 minutes: that\'s the whole rule.⟫', shot:'wheel'},
+    {t:'19:00', part:'⟪akşam¦evening⟫', sky:['#E6C7D8','#F7F2F6'], title:'⟪Karar veremeyince çarkı çevir¦Can\'t decide? Spin for one⟫', dert:'⟪Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.¦I\'m tired and don\'t know where to start. So I start nothing.⟫', how:'⟪Başlıktaki çark düğmesine dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.¦Tap "Can\'t decide? Spin for one" in the header and the wheel picks one of today\'s habits. Just 2 minutes: that\'s the whole rule.⟫', shot:'pick'},
     {t:'21:00', part:'⟪hasta bir akşam¦a sick evening⟫', sky:['#DCE6F5','#F2F4F8'], title:'⟪Bugün hastayım, seri ne olacak?¦I\'m sick today. What about my streak?⟫', dert:'⟪Hasta olunca seri gidiyor, sonra hepsini bırakıyorum.¦When I get sick the streak goes, and then I drop everything.⟫', how:'⟪Dalın sayfasını aç, takvimde günü seç, "ya da bugün ara ver" → Hasta. Serin seni bekler: ne uzar, ne bozulur. Dünü ve önceki günü sonradan da düzeltebilirsin.¦Open the branch page, pick the day, "or take a break today" → Sick. Your streak waits: it doesn\'t grow, it doesn\'t break. You can also fix yesterday and the day before.⟫', shot:'branch'},
-    {t:'22:30', part:'⟪gece¦night⟫', sky:['#1B1E3A','#12142A'], night:true, title:'⟪Günlük, istersen bir soruyla¦A journal, with a question if you want one⟫', dert:'⟪Günlük tutmak istiyorum ama boş sayfa korkutuyor.¦I want to keep a journal, but the blank page scares me.⟫', how:'⟪Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.¦One page a day. If you don\'t know what to write, it offers a question. It also shows what you wrote a year ago today.⟫', scr:'journal'},
+    {t:'22:30', part:'⟪gece¦night⟫', sky:['#1B1E3A','#12142A'], night:true, title:'⟪Günlük, istersen bir soruyla¦A journal, with a question if you want one⟫', dert:'⟪Günlük tutmak istiyorum ama boş sayfa korkutuyor.¦I want to keep a journal, but the blank page scares me.⟫', how:'⟪Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.¦One page a day. If you don\'t know what to write, it offers a question. It also shows what you wrote a year ago today.⟫', shot:'journal'},
     {t:'⟪Pazartesi¦Monday⟫', part:'⟪hafta¦the week⟫', sky:['#DCE9D4','#F3F1DE'], title:'⟪Haftaya bir bakış¦A look back at the week⟫', dert:'⟪Hafta nasıl geçti, hiç düşünmüyorum.¦I never stop to think about how the week went.⟫', how:'⟪İstatistik günleri, haftanın şeklini ve son 12 haftayı gösterir. Gri kare sadece "o gün bir şey olmadı" demek, fazlası değil. Pazartesileri günlükte haftaya bakan üç soru daha çıkar.¦Stats shows your days, your week\'s shape and the last 12 weeks. Grey means nothing happened. Nothing more. On Mondays the journal adds three questions about the week.⟫', shot:'stats'}
   ];
-  var SCR = {
-    cloud: '<div class="scr" role="img" aria-label="⟪Düşünce bulutu çizimi¦Drawing of the thought cloud⟫"><div class="logo"><span class="pbub">[[c:gardener]]</span><span class="cloudb">[[g:cloud]]⟪Aklında ne var?¦What\'s on your mind?⟫</span></div>' +
-      '<div class="field">⟪Pazartesi raporu at¦Send the report on Monday⟫<small>⟪Gelen Kutusu\'na düştü¦Landed in your Inbox⟫</small></div>' +
-      '<h5>[[g:tray]]⟪Gelen Kutusu¦Inbox⟫</h5><div class="row">[[g:tooth]]⟪Salı dişçi¦Dentist, Tuesday⟫<span class="tagx">⟪Gönder…¦Send to…⟫</span></div><div class="row">[[g:books]]⟪Kitap önerisi¦A book tip⟫</div><div class="row">[[g:bulb]]⟪Balkona saksı¦Pots for the balcony⟫</div></div>',
-    journal: function(){ return '<div class="scr jr" role="img" aria-label="⟪Günlük sayfası çizimi¦Drawing of a journal page⟫"><span class="big">'+now.getDate()+'</span><span>'+MON[now.getMonth()]+' · '+DOW[now.getDay()]+'</span>' +
-      '<p class="q">[[g:thought]]<span>⟪Bugün ne iyi gitti, neden?¦What went well today, and why?⟫</span></p><p class="w">⟪Sabah yürüyüşü. Yağmur vardı ama yine de çıktık.¦A morning walk. It rained, and we went anyway.⟫</p><p class="w">&nbsp;</p>' +
-      '<div class="ago">[[g:calendar]] ⟪1 yıl önce bugün ne yazdığını da gösterir.¦It also shows what you wrote a year ago today.⟫</div></div>'; }
-  };
   var day = $('day'), stopsEl = $('dStops'), dscr = $('dScreen'), di = 0;
   STOPS.forEach(function(s,i){ var b = document.createElement('button'); b.type = 'button'; b.textContent = s.t; b.addEventListener('click', function(){ showDay(i); }); stopsEl.appendChild(b); });
   function showDay(i){
@@ -350,11 +315,18 @@
     day.style.setProperty('--sky1', s.sky[0]); day.style.setProperty('--sky2', s.sky[1]); day.classList.toggle('night', !!s.night);
     $('dClock').textContent = s.t; $('dPart').textContent = s.part;
     $('dTitle').textContent = s.title; $('dDert').textContent = s.dert; $('dHow').textContent = s.how;
-    dscr.innerHTML = s.shot ? '<img alt="'+esc(s.title)+'" src="'+SHOT[s.shot]+'">' : (typeof SCR[s.scr] === 'function' ? SCR[s.scr]() : SCR[s.scr]);
-    $('dCap').textContent = s.shot ? CAP_SHOT : CAP_DRAW;
+    dscr.innerHTML = '<img alt="'+esc(s.title)+'" src="'+SHOT(s.shot)+'" width="924" height="2000">';
+    $('dCount').textContent = (di+1)+' / '+STOPS.length;
     [].forEach.call(stopsEl.children, function(b,k){ b.setAttribute('aria-current', String(k === di)); });
+    var cur = stopsEl.children[di]; stopsEl.scrollTo({ left: cur.offsetLeft - (stopsEl.clientWidth - cur.offsetWidth)/2, behavior: reduce ? 'auto' : 'smooth' });
     tick(460 + di*40);
   }
+  /* Parmakla yana kaydırınca bir sonraki durak */
+  var dsx = null, dsy = 0;
+  day.addEventListener('touchstart', function(e){ if(e.target.closest('.stops')) return; dsx = e.touches[0].clientX; dsy = e.touches[0].clientY; }, {passive:true});
+  day.addEventListener('touchend', function(e){ if(dsx === null) return; var dx = e.changedTouches[0].clientX - dsx, dy = e.changedTouches[0].clientY - dsy; dsx = null; if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)*1.5) showDay(di + (dx < 0 ? 1 : -1)); }, {passive:true});
+  /* Her durağın ekranı önceden yüklensin, geçişte boş kalmasın */
+  STOPS.forEach(function(s){ var im = new Image(); im.src = SHOT(s.shot); });
   day.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ e.preventDefault(); showDay(di+1); } if(e.key === 'ArrowLeft'){ e.preventDefault(); showDay(di-1); } });
   $('dPrev').addEventListener('click', function(){ showDay(di-1); });
   $('dNext').addEventListener('click', function(){ showDay(di+1); });
@@ -411,7 +383,17 @@
   pagesEl.addEventListener('pointerdown', function(e){ if(e.pointerType !== 'mouse') return; pgDrag = {x:e.clientX, s:pagesEl.scrollLeft}; });
   addEventListener('pointerup', function(e){ if(!pgDrag) return; var dx = e.clientX - pgDrag.x; pgDrag = null; if(Math.abs(dx) > 40) goPage(cur + (dx < 0 ? 1 : -1)); });
   label();
+  [].forEach.call(document.querySelectorAll('.pg-apply'), function(b){ b.addEventListener('click', function(){ setPaper(b.dataset.paper); tick(600); }); });
   function drawStars(){ [].forEach.call(document.querySelectorAll('canvas.stars'), function(cv){ var r = cv.getBoundingClientRect(); if(!r.width) return; cv.width = r.width; cv.height = r.height; var g = cv.getContext('2d'), seed = +cv.dataset.seed || 7; function rnd(){ seed = (seed*9301+49297)%233280; return seed/233280; } for(var s=0;s<90;s++){ g.globalAlpha = .3+rnd()*.6; g.fillStyle = '#DFE2EC'; g.beginPath(); g.arc(rnd()*r.width, rnd()*r.height, rnd()*1.4+.3, 0, 7); g.fill(); } }); }
+
+  /* ---------- Telefonda yana kayan sıralar: "3 / 11" sayacı ---------- */
+  [].forEach.call(document.querySelectorAll('.feats, .garden'), function(sc){
+    var hint = sc.classList.contains('feats') ? sc.closest('.group').querySelector('.swipehint') : sc.previousElementSibling;
+    if(!hint || !hint.classList.contains('swipehint')) return;
+    var n = sc.children.length;
+    function upd(){ var w = sc.children[0].getBoundingClientRect().width + 14, k = Math.min(n, Math.round(sc.scrollLeft / w) + 1); hint.textContent = k + ' / ' + n + (k < n ? ' →' : ''); }
+    sc.addEventListener('scroll', function(){ requestAnimationFrame(upd); }, {passive:true}); upd();
+  });
 
   /* ---------- Masa: bilgisayarda notlar taşınır, telefonda düz sütun ---------- */
   var desk = $('desk');
@@ -490,87 +472,18 @@
   }
   $('spinBtn').addEventListener('click', spin);
   drawWList(); drawWheel();
-  /* Oyuncak: hangi şablon sensin */
-  var QUIZ = [
-    {q:'⟪Bu ay hayatında en çok ne değişiyor?¦What\'s changing most in your life this month?⟫', a:[['⟪Okul ya da sınav¦School or exams⟫',[0,8]],['⟪İş ya da ev¦Work or home⟫',[1,2]],['⟪Ailem büyüyor¦My family is growing⟫',[4,7]],['⟪Kendim¦Me⟫',[5,6]]]},
-    {q:'⟪En çok neye ihtiyacın var?¦What do you need most?⟫', a:[['⟪Düzen¦Some order⟫',[0,3]],['⟪Hazırlık listesi¦A to-do list for getting ready⟫',[1,4,7]],['⟪Sakin bir başlangıç¦A calm start⟫',[2,5,8]],['⟪Bir alışkanlığı bırakmak¦To quit a habit⟫',[6]]]},
-    {q:'⟪Sence iyi bir gün nasıl biter?¦How does a good day end?⟫', a:[['⟪Tekrarımı bitirmişim¦My revision is done⟫',[0,8]],['⟪Kutular azalmış¦Fewer boxes left⟫',[1]],['⟪Hesabım tutmuş¦The numbers add up⟫',[3]],['⟪İçim rahat¦I feel at peace⟫',[4,5,6,7,2]]]}
-  ];
-  var quiz = $('quiz'), qi = 0, score = [];
-  function drawQuiz(){
-    if(qi === 0) score = TPL.map(function(){ return 0; });
-    if(qi < QUIZ.length){
-      var q = QUIZ[qi]; quiz.innerHTML = '<p class="qq">'+(qi+1)+'/3 · '+esc(q.q)+'</p><div class="qa">'+q.a.map(function(a,i){ return '<button type="button" data-i="'+i+'">'+esc(a[0])+'</button>'; }).join('')+'</div>';
-      [].forEach.call(quiz.querySelectorAll('.qa button'), function(b){ b.addEventListener('click', function(){ q.a[+b.dataset.i][1].forEach(function(t){ score[t]++; }); qi++; tick(600); drawQuiz(); }); });
-    } else {
-      var best = score.indexOf(Math.max.apply(null, score)), t = TPL[best];
-      quiz.innerHTML = '<div class="res"><span class="eyebrow" style="color:#4A6E45">⟪Sana uyan şablon¦The template for you⟫</span><b>'+esc(t.n)+'</b><p>⟪İlk üç dalın: ¦Your first three branches: ⟫'+t.c.slice(0,3).map(function(b){ return esc(b.t); }).join(', ')+'.</p><div class="row-btns"><a class="btn2 primary" href="#sablon" id="quizTry" style="text-decoration:none">⟪Şablonu dene¦Try the template⟫</a><button class="btn2" type="button" id="quizAgain">⟪Tekrar¦Again⟫</button></div></div>';
-      $('quizTry').addEventListener('click', function(){ tplI = best; drawTpl(); });
-      $('quizAgain').addEventListener('click', function(){ qi = 0; drawQuiz(); }); tick(990);
-    }
-  }
-  drawQuiz();
-  /* Oyuncak: yıl yaprakları (kural: LEAF_EVERY günde yaprak, en fazla LEAF_CAP, dinlenme serbest) */
-  var yc = $('year'), yseed = 11;
-  function yrnd(){ yseed = (yseed*9301+49297)%233280; return yseed/233280; }
-  function drawYear(){
-    var r = yc.getBoundingClientRect(); if(!r.width) return; var dpr = window.devicePixelRatio||1; yc.width = r.width*dpr; yc.height = r.height*dpr;
-    var g = yc.getContext('2d'); g.scale(dpr,dpr); var W = r.width, H = r.height; g.clearRect(0,0,W,H); var s0 = yseed;
-    var pts = []; for(var i=0;i<365;i++){ var t = i/364; pts.push([24+t*(W-48), H/2+Math.sin(t*Math.PI*5)*H*0.26*(0.6+0.4*Math.sin(t*9))]); }
-    g.strokeStyle = 'rgba(166,203,158,.55)'; g.lineWidth = 2; g.beginPath(); pts.forEach(function(p,i){ i ? g.lineTo(p[0],p[1]) : g.moveTo(p[0],p[1]); }); g.stroke();
-    var leaves = 0, streak = 0, prevMiss = false;
-    pts.forEach(function(p,i){
-      var roll = yrnd(), type = roll < 0.05 ? 'rest' : roll < 0.12 ? 'miss' : 'done';
-      if(type === 'done'){ streak++; if(streak % LEAF_EVERY === 0 && leaves < LEAF_CAP) leaves++; prevMiss = false; }
-      else if(type === 'miss'){ if(!prevMiss && leaves > 0){ leaves--; streak++; type = 'leaf'; prevMiss = false; } else { streak = 0; prevMiss = true; } }
-      var col = type === 'done' ? '#8FBF86' : type === 'leaf' ? '#E8C87A' : type === 'rest' ? '#96BEE8' : 'rgba(223,226,236,.18)';
-      var side = i%2 ? 1 : -1, len = 7+yrnd()*4, ang = side*(0.9+yrnd()*0.5);
-      g.save(); g.translate(p[0],p[1]); g.rotate(ang); g.fillStyle = col; g.beginPath(); g.moveTo(0,0); g.quadraticCurveTo(len*0.5,-len*0.45,len,0); g.quadraticCurveTo(len*0.5,len*0.45,0,0); g.fill(); g.restore();
-    });
-    yseed = s0;
-    g.fillStyle = '#DFE2EC'; g.font = '800 14px Nunito, sans-serif'; g.fillText('⟪bir yıl · 365 yaprak¦one year · 365 leaves⟫', 24, 24);
-    g.font = '800 13px Nunito, sans-serif';
-    g.fillStyle = '#8FBF86'; g.fillText('● ⟪yapıldı¦done⟫', 24, H-14); g.fillStyle = '#E8C87A'; g.fillText('● ⟪yaprak¦leaf⟫', 112, H-14); g.fillStyle = '#96BEE8'; g.fillText('● ⟪dinlenme¦rest⟫', 186, H-14);
-  }
-  $('yearBtn').addEventListener('click', function(){ yseed = Math.floor(Math.random()*9999)+1; drawYear(); tick(700); });
-
-  /* ---------- Almanak: gerçek ay evresi ---------- */
-  var SEASON = ['⟪kış¦winter⟫','⟪kış¦winter⟫','⟪ilkbahar¦spring⟫','⟪ilkbahar¦spring⟫','⟪ilkbahar¦spring⟫','⟪yaz¦summer⟫','⟪yaz¦summer⟫','⟪yaz¦summer⟫','⟪sonbahar¦autumn⟫','⟪sonbahar¦autumn⟫','⟪sonbahar¦autumn⟫','⟪kış¦winter⟫'];
-  var QS = ['⟪Bugün ne iyi gitti, neden?¦What went well today, and why?⟫','⟪Yarın için tek bir şey.¦One thing for tomorrow.⟫','⟪Bugün neyi yoluna koydun?¦What did you sort out today?⟫','⟪Her şey olabileceği kadar iyi gitseydi...¦If everything went as well as it could...⟫','⟪Bugün neler yaşadın?¦What happened today?⟫'];
-  var doy = Math.floor((now - new Date(now.getFullYear(),0,0))/864e5);
-  var age = (((now - Date.UTC(2000,0,6,18,14))/864e5) % 29.530588 + 29.530588) % 29.530588;
-  var phase = age<1.8?'⟪yeni ay¦new moon⟫':age<7.4?'⟪hilal¦waxing crescent⟫':age<9.2?'⟪ilk dördün¦first quarter⟫':age<14.8?'⟪büyüyen ay¦waxing gibbous⟫':age<16.6?'⟪dolunay¦full moon⟫':age<22.1?'⟪küçülen ay¦waning gibbous⟫':age<23.9?'⟪son dördün¦last quarter⟫':'⟪son hilal¦waning crescent⟫';
-  $('almDow').textContent = DOW[now.getDay()] + ' · ' + SEASON[now.getMonth()] + (now.getDay() === 1 ? '⟪ · haftaya bakma günü¦ · a day to look back at the week⟫' : '');
-  $('almDay').textContent = now.getDate();
-  $('almMonth').textContent = MON[now.getMonth()] + ' ' + now.getFullYear();
-  $('almMoon').textContent = '⟪gökyüzü: ¦sky: ⟫' + phase + '⟪ · yılın ¦ · day ⟫' + doy + '⟪. günü¦ of the year⟫';
-  $('almQ').textContent = QS[doy % QS.length];
-  var ac = $('almCanvas');
-  function drawAlm(){
-    var r = ac.getBoundingClientRect(); if(!r.width) return; ac.width = r.width; ac.height = r.height;
-    var g = ac.getContext('2d'), W = r.width, H = r.height, sd = now.getFullYear()*1000 + doy;
-    function rr(){ sd = (sd*9301+49297)%233280; return sd/233280; }
-    var grd = g.createLinearGradient(0,0,0,H); grd.addColorStop(0,'#1B1E3A'); grd.addColorStop(1,'#0C0E1F'); g.fillStyle = grd; g.fillRect(0,0,W,H);
-    for(var i=0;i<140;i++){ g.globalAlpha = .25+rr()*.7; g.fillStyle = '#DFE2EC'; g.beginPath(); g.arc(rr()*W, rr()*H, rr()*1.3+.3, 0, 7); g.fill(); }
-    g.globalAlpha = 1; var mx = W*0.8, my = H*0.26, mr = Math.min(W,H)*0.09, lit = age/29.53;
-    g.fillStyle = '#E8E4D0'; g.beginPath(); g.arc(mx,my,mr,0,7); g.fill();
-    var sx = lit < 0.5 ? mx - (lit/0.5)*2*mr : mx + (1-(lit-0.5)/0.5)*2*mr;
-    g.fillStyle = '#16193A'; g.beginPath(); g.arc(sx, my, mr*1.02, 0, 7); g.fill();
-    g.strokeStyle = getComputedStyle(root).getPropertyValue('--season').trim() || '#E8C87A'; g.globalAlpha = .5; g.lineWidth = 2; g.beginPath();
-    for(var x=0;x<=W;x+=8){ var y = H-18 + Math.sin(x/40)*6; x ? g.lineTo(x,y) : g.moveTo(x,y); } g.stroke(); g.globalAlpha = 1;
-  }
-
   /* ---------- Boyuta bağlı çizimler ---------- */
   var lastW = 0; ready = true;
-  function redrawAll(){ if(!ready) return; stDraw(); layoutFlip(); drawVine(); drawStars(); drawYear(); drawAlm(); }
+  function redrawAll(){ if(!ready) return; layoutFlip(); drawVine(); drawStars(); }
   addEventListener('resize', function(){ if(innerWidth === lastW) return; lastW = innerWidth; requestAnimationFrame(redrawAll); });
   lastW = innerWidth; redrawAll();
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layoutFlip(); drawVine(); drawYear(); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layoutFlip(); drawVine(); });
   routeHash();
 
   /* ---------- Dil: düğme tercihi hatırlar ve aynı yerde kalır. Tercih yoksa ve tarayıcı dili
      bu sayfanın dili değilse öteki dile küçük bir öneri gösterilir (yönlendirme YOK). ---------- */
-  var langA = $('langSw'), langH = $('langHint'), saved = store('vyne-site-lang');
-  if(!saved && (navigator.language||'').toLowerCase().indexOf(PAGE_LANG) !== 0) langH.hidden = false;
+  var langA = $('langSw'), langH = $('langHint'), langT = $('langToast'), saved = store('vyne-site-lang');
+  if(!saved && (navigator.language||'').toLowerCase().indexOf(PAGE_LANG) !== 0) langT.hidden = false;
+  $('langClose').addEventListener('click', function(){ langT.hidden = true; store('vyne-site-lang', PAGE_LANG); });
   [langA, langH].forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); store('vyne-site-lang', langA.dataset.lang); location.href = el.getAttribute('href') + location.hash; }); });
 })();

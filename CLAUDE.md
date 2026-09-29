@@ -21,7 +21,9 @@ Statik tanıtım sitesi, iki dilli. **Ana site İngilizce (kök adres), Türkçe
 | `scripts/build-site.mjs` | Kaynaktan `index.html` (EN), `tr/index.html` (TR) ve `en/index.html` (eski adres → köke yönlendirme) üretir |
 | `index.html`, `tr/index.html`, `en/index.html` | **ÜRETİLMİŞ. Elle düzenleme**, `site/`'ı düzenle ve derle |
 | `404.html` | "Bu dal henüz büyümedi"; elle yazılmış, tek başına |
-| `shots/app-*.webp` | 1.4.0 ekranları, 924 px (`scripts/make-app-shots.mjs`) |
+| `shots/tr/*.webp`, `shots/en/*.webp` | Uygulamanın gerçek ekranları, iki dilde, **örnek profille** ("Deniz"), 924×2000. Üretimi: `scripts/app-shots/README.md` |
+| `og-image.png`, `og-image-tr.png` | Paylaşım görselleri (`scripts/app-shots/og.js`) |
+| `site/qr-ios.svg`, `site/qr-play.svg` | İndir bölümündeki QR'lar (bilgisayarda görünür) |
 | `app-icon.png` | Uygulama ikonu (`../vyne/assets/icon-512.png` kopyası) |
 | `fonts/` | Nunito, Caveat, VT323. **Dış CDN yok**, her şey yerel |
 
@@ -46,7 +48,11 @@ Sıra ve adresler (TR ve EN'de aynı, dil düğmesi aynı yerde kalır):
 `#giris` · `#nasil` (düz liste↔sarmaşık, kendi sarmaşığın, `#yaprak` deneme +
 yüz güne iniş, `#gun` sıradan bir gün) · `#ozellikler` (24 kart, `#sablon`,
 `#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
-`#yenilikler` · `#sozler` · `#sorular` · `#indir`.
+`#yenilikler` · `#sozler` · `#sorular` · `#indir`. (`#oyuncaklar` = çark bölümü.)
+Özellik kartları ve "Neden böyle?" telefonda yana kayan sıra (sayaçlı); bilgisayarda ızgara.
+"Sıradan bir gün" telefonda tek ekran: ekran solda, yazı sağda, yana kaydırınca durak değişir.
+Kâğıt sayfalarındaki düğme siteyi o kâğıda geçirir. Dil önerisi ve gece sorusu altta kapatılabilir şerit.
+Kaldırılanlar (2026-09-30, puanı düşüktü): tomurcuk süsü, şablon testi, yıl yaprakları, almanak.
 Şablon denemesi uygulamanın gerçek verisini gösterir (alt dallar, alışkanlık sıklığı, tarihler);
 uygulamada şablon değişirse `node scripts/export-templates.mjs` sonra derle. Çark 2–6 iş alır,
 uygulamanın çizimleriyle dilimler, seçince 2 dakikalık sayaç.
@@ -93,19 +99,13 @@ Türkçe ek: "Vyne'ı / Vyne'da" (okunuşu "vayn").
 
 ## Ekran görüntüleri
 
-- **`shots/app-*.webp` (1.4.0):** Hasan'ın telefonundan İngilizce kareler.
-  Durum çubuğu kırpıldı, 924 px, **ana ekrandaki bütçe tutarı yama ile kapatıldı**
-  (gerçek profil). Yeniden üretmek: `npm install --no-save sharp && node
-  scripts/make-app-shots.mjs <klasör>` (home/stats/notes/wheel/branch).
-- **Türkçe sayfada da İngilizce kareler var; alt yazıda "arayüz şimdilik
-  İngilizce" diyor.** Açık iş: Hasan'ın `screenshots/1.4.0-*` (TR, örnek profil)
-  kareleri gelince `shots/` iki dile ayrılmalı (`shots/tr/`, `shots/en/`, kaynakta
-  `{{P}}shots/⟪tr¦en⟫/…`) ve alt yazıdaki not kalkmalı.
-- "Sıradan bir gün"de 12:40 (düşünce bulutu) ve 22:30 (günlük) gerçek kare
-  değil, uygulamanın çizimleriyle yapılmış sade ekran; altında "Çizim" yazıyor.
-  Gerçek kareleri gelince `app.js` → `STOPS` içinde `scr:` yerine `shot:`.
-- 1.3.0 kareleri (`shot-*.jpg`) ve onları üreten `make-shots.mjs` silindi (git geçmişinde).
-- `scripts/make-images.mjs`: `og-image.png` + favicon'lar. og-image hâlâ eski ikon.
+- **Artık Hasan'ın telefonundan değil, uygulamanın kendisinden.** Vyne'ın kodu web'de
+  derlenip örnek bir profille (Deniz; gerçek veri yok) Türkçe ve İngilizce çekildi:
+  welcome, home, branch, stats, notes, wheel, pick, cloud, inbox, journal, people,
+  templates, search. Uygulama değişince `scripts/app-shots/README.md`'deki adımlar.
+  Uygulamanın deposuna HİÇBİR şey yazılmaz; stub'lar geçici kopyaya konur.
+- Sayfada: `{{P}}shots/⟪tr¦en⟫/<ad>.webp`, JS'te `SHOT('<ad>')`.
+- Eski kareler (Hasan'ın gerçek profili, 1.3.0 jpg'leri) silindi; git geçmişinde.
 
 ## 🧓 Emekli: `scripts/build-scene.mjs`
 
@@ -124,10 +124,8 @@ sürükleyerek açılan site `5fafe7f`'te, ondan önceki site `8e9df97`'de.
 
 ## 📌 Açık işler
 
-- TR + EN 1.4.0 karelerini (örnek profil) al, `shots/`'u iki dile ayır.
-- Düşünce bulutu ve günlük için gerçek kareler.
-- og-image'ı yeni ikonla yenile.
 - Hasan istersen sahneleri kendisi çizebileceğini söyledi; şimdilik uygulamanın çizimleri kullanılıyor.
+- Gerçek kullanıcı yorumu gelirse (izinle) bir "ne dediler" bölümü. Uydurma yorum YOK.
 
 ## ⚠️ Tuzaklar — hepsi burada gerçekten yaşandı
 

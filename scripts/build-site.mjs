@@ -95,7 +95,8 @@ function build(lang) {
   s = s.replaceAll('{{P}}', en ? '' : '../').replaceAll('{{LANG}}', lang)
        .replaceAll('{{PLAY_URL}}', LIVE.playUrl)
        .replaceAll('{{LEAF_EVERY}}', String(LIVE.leafEvery)).replaceAll('{{LEAF_CAP}}', String(LIVE.leafCap)).replaceAll('{{IOS_URL}}', LIVE.iosUrl);
-  s = s.replace('{{TEMPLATES}}', () => templatesFor(lang));
+  s = s.replace('{{TEMPLATES}}', () => templatesFor(lang))
+       .replace('{{QR_IOS}}', () => read('site/qr-ios.svg').trim()).replace('{{QR_PLAY}}', () => read('site/qr-play.svg').trim());
   const left = s.match(/⟪|⟫|¦|\{\{[#^/]?[A-Za-z_]+\}\}|\[\[[gc]:/);
   if (left) throw new Error(`${lang}: çözülmemiş işaret: ${s.slice(left.index - 60, left.index + 60)}`);
   return s.replace(/\n/g, '\r\n');
