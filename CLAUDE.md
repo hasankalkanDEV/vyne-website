@@ -9,166 +9,146 @@ sitesini. İkisi çelişirse **mağaza/sürüm konusunda `vyne/CLAUDE.md` haklı
 
 ## Ne olduğu ve nerede yayınlandığı
 
-Tek dosyalık statik tanıtım sitesi: `index.html` (HTML + CSS + JS hepsi içinde,
-dış CDN yok, fontlar bile yerel). Depo: `hasankalkanDEV/vyne-website`.
+Statik tanıtım sitesi, iki dilli, iki dosya:
 
-**GitHub Pages `main` dalından yayınlıyor.** Yani `main`'e push = canlıya çıkma.
-Deneyimlenen süre: push'tan ~15-30 saniye sonra yayında.
-Canlı adres: https://hasankalkandev.github.io/vyne-website/
+| Dosya | Ne |
+|---|---|
+| `index.html` | Türkçe site (HTML + CSS + JS hepsi içinde) |
+| `en/index.html` | İngilizce site, aynı yapı. Varlık yolları `../` ile başlar |
+| `404.html` | "Bu dal henüz büyümedi"; GitHub Pages bilinmeyen adreste kendisi gösterir |
+| `shots/app-*.webp` | 1.4.0 ekranları (home, stats, notes, wheel, branch) |
+| `shot-*.{tr,en}.jpg` | 1.3.0 kareleri, "Neler var"daki küçük görsellerde hâlâ kullanılıyor |
+| `app-icon.png` | Yeni uygulama ikonu (`../vyne/assets/icon-512.png` kopyası) |
+| `fonts/` | Nunito, Caveat, VT323. **Dış CDN yok**, fontlar dahil her şey yerel |
+
+Depo: `hasankalkanDEV/vyne-website`. **GitHub Pages `main` dalından yayınlıyor.**
+Yani `main`'e push = canlıya çıkma, ~15-30 saniye sonra.
+Canlı: https://hasankalkandev.github.io/vyne-website/ (TR) ve `/en/` (EN).
 
 Önizleme sunucusu `.claude/launch.json`'da tanımlı, adı `vyne-website`, port 4321.
 **Bash ile sunucu başlatma** — `preview_start` aracını kullan.
 
-## 🔴 GÜNCEL DURUM — 2026-08-03
+## 🌿 Site nasıl çalışıyor (2026-09-29'dan beri, "sarmaşık site")
 
-**iOS YAYINDA, Android değil.** Site 2026-08-03'te buna göre güncellendi
-(commit `2ccc9da`). Öncesinde her yerde "kapalı testte" yazıyordu ve indirme
-yerine e-posta istiyordu; uygulama 24 Temmuz'da App Store'a çıktığı için bunun
-tamamı yanlış olmuştu.
+Site uygulama gibi kurulu: ortada **"sen"**, ondan **sağa** doğru 10 dal
+(uygulama da sağa dallanıyor; iki yana dallandırmak yanıltıcı bulundu).
+Her dal bir "oda", `#adres` ile açılır:
 
-- App Store: `https://apps.apple.com/app/id6790837181` (bundle
-  `com.hasankalkan.vyne`, `../vyne/app.json` ile doğrulandı)
-- Play Store: 2026-08-03 itibarıyla **404** — Android gerçekten yayında değil.
-- Mağaza adresi bilerek **bölgesiz** (`/tr/` yok): Apple ziyaretçiyi 301 ile
-  kendi ülkesinin mağazasına yönlendiriyor.
+`mektup` · `dene` · `kuyu` (seri kuyusu) · `gun` (bir günümüz) · `defter` ·
+`neler` (neler var) · `oyun` · `neden` (neden defteri) · `yeni` (neler değişti) ·
+`soz` (sözlerimiz). Gizli: `vyneos` (logoya basılı tut). Olmayan adres → `yok`.
 
-### ⏭️ ANDROID ÇIKINCA TAM OLARAK ŞUNLAR DEĞİŞECEK
+**Akış (Hasan'ın isteği):** ilk ziyarette dallara tıklanmaz. "sen"in yanındaki
+tomurcuk **sağa sürüklenince** dallar sırayla açılır; her odanın sonunda
+sıradakinin tomurcuğu var. Üstte kök çubuğu. 10. daldan sonra harita açılır ve
+site serbest gezilir. İlerleme `localStorage`'da (`vyne-site-grown`,
+`vyne-site-map`). Paylaşılan bir dal bağlantısı o dala kadar açar. Klavyede
+→ / Enter da büyütür (erişilebilirlik; fareyle tek tık sadece kıpırdatır).
 
-Bu, sitedeki tek bilinen zamanlanmış iş. Üç yer:
+Sitenin her yerinde: TR/EN düğmesi (aynı dalda kalır, tercih `vyne-site-lang`),
+öteki dil için öneri şeridi (yönlendirme YOK, Google iki sayfayı da görsün),
+4 tema + 5 kâğıt, gece 22:00 sonrası Galaxy, almanak kartı (gerçek ay evresi),
+mevsim rengi, isteğe bağlı dokunuş sesi, 3+ gün sonra "Tekrar hoş geldin",
+indirme düğmesinde basılı tut → yaprak dolar, Konami kodu → yaprak yağmuru.
 
-1. **Hero + kapanış bandındaki `.alt-link` bağlantıları SİLİNİR.** Şu an
-   Android bekleme listesi bilerek ikinci bir `.btn` değil, sessiz bir metin
-   bağlantısı — iki eşit düğme yan yana ikisi de hazırmış gibi okunuyor ve
-   ziyaretçi Android'e tıklayıp e-posta formuyla karşılaşınca aldatılmış
-   hissediyor. Android çıkınca CTA iki gerçek mağaza düğmesine bölünür.
-2. **SSS `q1` ve `q6`** (TR gövdede, EN sözlükte) — "Android sürümü hâlâ
-   testte" cümleleri kalkar.
-3. **Hero rozeti** `kicker` — "App Store'da yayında" yerine iki platform.
+**Kurallar uygulamanın kodundan:** yaprak `LEAF_EVERY = 7` günde bir, en fazla
+`LEAF_CAP = 2`, sadece bir önceki kaçan günü kurtarır. Dinlenme günleri 🌙🤒✈️
+sınırsız, seri bekler, yaprak harcanmaz. Sitede bu iki sayı JS'in başında tek
+yerde (`var LEAF_EVERY = 7, LEAF_CAP = 2`); uygulamada değişirse orada değiştir.
 
-## Ekran görüntüsü hattı — `scripts/make-shots.mjs`
+**Metinler mağazayla aynı ses:** TR başlık = App Store TR alt başlığı ("Bir
+günü kaçırmak dert değil."), EN başlık = EN alt başlığı ("Habits that forgive
+a bad day."). Mektup ve "Neler değişti" 1.4.0 mağaza metninden
+(`../vyne/docs/store-copy-1.4.0.html`). Mağaza metni değişirse burayı da değiştir.
 
-Sitedeki 5 kare (`home`, `wheel`, `stats`, `themes`, `templates`) bu scriptle
-üretiliyor. Ham kareler **depo dışında**:
-`../appscrenshots/selected ios <dil> <sürüm>/`. Depoyu tek başına klonlarsan
-script çalışmaz; üretilmiş JPEG'ler depoda olduğu için siteyi kurmak yine de
-sorun değil.
+## ⚠️ İki dil = iki dosya, ELLE eşit tut
 
-> **📁 KLASÖR ADI SÜRÜMLÜ, ve bu her sürümde ELLE güncellenir.** 2026-08-09'da
-> kare seti 1.3.0'a yenilendi; eskiler `selected ios <dil> 1.2.0` olarak
-> arşivlendi, silinmedi. Scriptin başındaki `LANGS` sabiti şu an
-> `selected ios turkish 1.3.0` / `selected ios english 1.3.0`'a bakıyor.
-> **Yeni set gelince `LANGS`'i güncellemeyi unutma** — yoksa script eski
-> klasörü okumaya devam eder ve hata bile vermez, sessizce eski kareleri
-> üretir.
->
-> Ham dosyalar telefondan `IMG_XXXX.PNG` diye geliyor; script **kanonik
-> adlarla** arıyor (`01_hero_branches.png`, `02_spin_wheel.png`,
-> `03_stats_overview.png`, `06_themes.png`, `08_templates.png`).
-> **TR ve EN'in çekim sırası aynı olmak zorunda değil** — 1.3.0'da değildi,
-> her kare tek tek açılıp eşlendi. Numarayı sıraya göre tahmin etme.
+Sözlük yok. Bir metni, bir odayı ya da bir JS davranışını değiştirirsen
+**`index.html` ve `en/index.html`'in ikisinde de** değiştir. EN metinler
+uygulamanın `en.json`'undan ve mağaza metninden alındı, uydurma değil.
+Türkçe ek: mağaza "Vyne'ı / Vyne'da" diyor ve site de öyle (okunuşu "vayn").
 
-```bash
-npm install --no-save sharp && node scripts/make-shots.mjs
-```
+## 🔴 GÜNCEL DURUM — 2026-09-29
 
-- **iOS kareleri kullanılıyor, Android değil.** Android kareleri koyu durum
-  çubuğu + 5G/Gmail ikonlarıyla geliyor ve web'de gürültü yapıyor.
-- **Durum çubuğu kırpılıyor** (üstten 141px). `.phone` sarmalayıcısı zaten
-  telefon çerçevesi çiziyor, ikinci bir kabuk fazlalık; üstelik karelerde iOS
-  "SOS" gösteriyor (şebeke yok), pazarlama görselinde bozuk durur. **141 sayısı
-  piksel taramasıyla ÖLÇÜLDÜ, göz kararı değil** — yeni cihazdan kare gelirse
-  yeniden ölç.
-  > ⚠️ Bu kırpma SADECE SİTE İÇİN. **Mağaza yüklemelerinde durum çubuğunu
-  > KIRPMA** — Apple kesin ölçü istiyor (1284×2778) ve kırpmak ölçüyü bozup
-  > reddedilmeye yol açıyor. Ayrıntı: `../vyne/CLAUDE.md`, ekran görüntüsü
-  > sırası tablosu.
-- **Her kare iki dilde.** TR/EN seçicisi metni çevirirken karede "Today's
-  Habits" yazması sitenin kendi vaadini bozuyordu. `<img data-shot="home">` +
-  `apply()` içindeki üç satır `src`'yi `shot-home.<dil>.jpg` olarak kuruyor.
-  **YENİ KARE EKLERSEN İKİ DİLE DE EKLE**, yoksa dil değişince kırık görsel.
-- **Tek en-boy oranı zorunlu**: `index.html`'de `.phone img{aspect-ratio}` TEK
-  bir değer taşıyor (`640/1314`). Script her çalıştığında bütün karelerin aynı
-  oranda olduğunu doğruluyor ve uymayan varsa hata verip duruyor. Kare setini
-  yenilersen scriptin son satırdaki çıktısını CSS'e yaz.
+- iOS yayında (App Store `https://apps.apple.com/app/id6790837181`, bölgesiz adres
+  bilerek). **1.4.0 build bekliyor.** Android Play production'a 1.4.0 ile çıkacak.
+- Site 1.4.0'ın özelliklerini "Neler var"da `yeni` etiketiyle anlatıyor ve
+  "Neler değişti"de 1.4.0'ı "yolda" diye gösteriyor.
 
-`scripts/make-images.mjs` ayrı bir iş yapıyor: `og-image.png` (link paylaşım
-kartı) + favicon'lar. Onun kendi tuzağı başlığında yazılı (librsvg font ağırlığı).
+### ⏭️ ANDROID ÇIKINCA
 
-## 🚫 GÖSTERİLMEYECEK: kilometre taşı kutlamaları
+1. Alt dokta "Android yakında" notu ve SSS'deki "Android ... bir sonraki sürümle"
+   cümlesi (iki dilde) → Play Store düğmesi ve "Google Play'de" cümlesi.
+2. "Neler değişti"de 1.4.0'ın "yolda" etiketi kalkar.
 
-7 / 30 / 66 / 100. gün kutlama ekranları siteye **konmaz**. Hasan'ın kararı
-(2026-08-03): *"sürpriz bunlar, görürse tadı kaçar."*
+## Ekran görüntüleri
 
-Varlıklarını **metinle** söylemek serbest ve isteniyor — `s2` ve `ccap2` bunu
-yapıyor ("7, 30, 66 ve 100. günde küçük kutlamalar bekler"). Beklenti yaratır,
-sürprizi bozmaz. Bozan şey kutlama ekranının GÖRÜNTÜSÜ. `../appscrenshots/`
-altında kutlama kareleri mevcut olsa bile kullanılmaz.
+- **`shots/app-*.webp` (1.4.0):** Hasan'ın telefonundan gelen İngilizce kareler.
+  Üstten 95 px durum çubuğu kırpıldı (924 px genişlikte; 1284 px'te 141 px'e
+  denk), 640 px genişliğe küçültüldü, webp. **Ana ekrandaki bütçe tutarı bir
+  yama ile kapatıldı** (gerçek profil). Türkçe sayfada da şimdilik bu İngilizce
+  kareler var. **Açık iş:** örnek bir profille TR ve EN kareler çekilince
+  `shots/` iki dile ayrılmalı.
+- **`shot-*.{tr,en}.jpg` (1.3.0):** `scripts/make-shots.mjs` üretir
+  (`npm install --no-save sharp && node scripts/make-shots.mjs`). Ham kareler
+  depo dışında: `../appscrenshots/selected ios <dil> <sürüm>/`, `LANGS` sabiti
+  her sürümde ELLE güncellenir. Durum çubuğu kırpma SADECE SİTE İÇİN; mağaza
+  yüklemelerinde kırpma (Apple kesin ölçü ister).
+- `scripts/make-images.mjs`: `og-image.png` + favicon'lar. og-image hâlâ eski
+  tasarım ve eski ikon; yeni ikonla yenilenebilir.
+
+## 🧓 Emekli: `scripts/build-scene.mjs`
+
+Eski sitenin kaydırmalı harita sahnesini `index.html`'deki `<!--SCENE-->`,
+`/*SCENE-CSS*/`, `/*SCENE-JS*/` işaretçilerine yazıyordu. **Yeni sitede bu
+işaretçiler yok. ÇALIŞTIRMA**, eski yapıyı varsayıyor. Eski site git geçmişinde
+(`8e9df97` ve öncesi).
+
+## 🚫 GÖSTERİLMEYECEK
+
+- **Kilometre taşı kutlamaları (7 / 30 / 66 / 100):** ekran görüntüsü asla.
+  Metinle anmak serbest ("burada küçük bir sürpriz var").
+- **Eşi:** sitede eşinden hiç bahsedilmez (Hasan, 2026-09-28). Ses "tek başıma
+  yaptım, ailem ve arkadaşlarım için".
+- **Henüz olmayan özellik vaat edilmez:** ortak alan (eşle paylaşım), imza
+  işaretleme, dal başına emoji/çizim 1.4.0'dan sonra.
+- Sahte kullanıcı yorumu yok. Ziyaretçi defterindeki iki yaprak "örnek"
+  etiketli; ziyaretçinin yaprağı sadece kendi tarayıcısında kalır (sunucu yok).
 
 ## 📌 Açık işler
 
-- **Demo verisi zayıf.** İstatistik karesinde "🔥 1d, Best: 1d", "Bu hafta 1 /
-  Geçen hafta 0", "40 dal başlatılmayı bekliyor" yazıyor. **Sitede zararsız** —
-  kare 190px'te duruyor, rakamlar okunmuyor. **Mağazada sorun** — orada kareler
-  tam ekran ve her rakam okunuyor; "en iyi seri: 1 gün" uygulamayı
-  kullanılmamış gösterir. Sağlıklı verili bir demo profili gerekiyor.
-- **Yaprak (🍃) karesi yok.** Sitenin en büyük iddiası ("bir gün kaçırdın, seri
-  kırılmadı") şu an sadece SVG çizimiyle anlatılıyor, gerçek ekranla değil.
-  **Hasan 2026-08-03'te "geç" dedi** — kendiliğinden gündeme getirme.
-- **Mağaza listeleme kareleri** ayrı bir iş (site değil). `../appscrenshots/`
-  altındaki 4 set (iOS/Android × TR/EN) bunun için hazırlanmış.
-- **Hero→01 geçişi sert kesiliyor.** Sahnenin içi KİLİTLİ; dokunmadan önce
-  Hasan'a sor (`scripts/build-scene.mjs` başlığındaki karar geçmişini oku).
-- **`mailto:` → gerçek form** ve **sosyal kanıt**: bilerek ertelendi.
+- 1.4.0 ekranlarını örnek profille TR + EN çek, `shots/`'u iki dile ayır.
+- "Bir günümüz"ün öğle durağı (düşünce bulutu) hâlâ çizim; gerçek kare yok.
+- og-image'ı yeni ikonla yenile.
+- Ziyaretçi defteri herkese açık olsun istenirse küçük bir sunucu + moderasyon gerekir.
+- `mailto:` yerine gerçek form: bilerek ertelendi.
 
 ## ⚠️ Tuzaklar — hepsi burada gerçekten yaşandı
 
 - **`<style>` ya da `<script>` içine HTML yorumu (`<!-- -->`) KOYMA.** CSS
-  bunları CDO/CDC belirteci sayar, aradaki metin hatalı bir kural başlatır ve
-  KENDİNDEN SONRAKİ kuralı yutar. Bir kez oldu: `.branch{fill:none}` yok olunca
-  bütün dallar siyah kamalara döndü. CSS/JS içinde gerçek yorum sözdizimi kullan.
-- **`.band p` seçici çakışması.** Kapanış bandındaki `<p>`'ler `.band p`
-  (0,0,1,1) ile boyanıyor; oraya sınıflı bir `<p>` koyarsan üst boşluğu ve
-  puntosu eziliyor. `.alt-link` bu yüzden çift yazılı: `.alt-link, .band
-  p.alt-link`. Ölçüldü: önce düğmeyle arası 0px, düzeltince 14px.
-- **Satır sonları.** `index.html` eskiden KARIŞIKTI (CRLF + LF); 2026-08-03'te
-  düzenlemeler onu baştan sona **CRLF**'e normalize etti. O yüzden `b76e048`
-  commit'i 567/535 satır değişmiş görünüyor, gerçek değişiklik 37/5'ti. Artık
-  tutarlı, sonraki diff'ler temiz. Diff şişerse: `git diff --ignore-all-space`.
-- **`overflow-x:hidden` KULLANMA** (body'de) — gerekçesi `index.html` içinde
-  `body{}` bloğunda uzun uzun yazılı, scroll olaylarını tamamen öldürüyor.
-- **`build-scene.mjs` işaretçileri**: `<!--SCENE-->`, `<!--CAL-->`,
-  `/*SCENE-CSS*/`, `/*SCENE-JS*/` blokları ELLE düzenlenmez, script yazar.
+  bunları CDO/CDC belirteci sayar ve sonraki kuralı yutar.
+- **Satır sonları CRLF.** `index.html` ve `en/index.html` baştan sona CRLF.
+  Diff şişerse: `git diff --ignore-all-space`.
+- **`overflow-x:hidden` KULLANMA** (body'de) — scroll olaylarını öldürür. `clip` kullan.
+- **`[hidden]` + sınıf `display`.** `.growstage{display:grid}` gibi bir kural
+  `hidden` özniteliğini ezer; her gizlenen sınıfa `X[hidden]{display:none}` yaz.
+- `Grep` çıktısı CSS yorum açıcısını `/*` yerine `\*` gösteriyor — görüntüleme
+  tuhaflığı, dosyada hata yok.
 
-## ✅ Doğrulama — neye güvenilir, neye güvenilmez
+## ✅ Doğrulama
 
-Değişiklikten sonra `preview_start` + tarayıcı araçlarıyla doğrula. Ama:
+Değişiklikten sonra: iki sayfa da açılıyor mu, konsolda hata var mı, telefon
+genişliğinde (390 px) yatay kaydırma var mı, tomurcuk sürüklenince dal açılıyor
+mu, TR/EN düğmesi aynı dalda kalıyor mu. Geçişli bir şey ölçeceksen önce
+`el.style.transition='none'` (tarayıcı paneli görünmezken geçişler ilerlemiyor).
 
-> **Tarayıcı paneli bu kurulumda çoğu zaman GÖRÜNMÜYOR ve o zaman sayfa kare
-> üretmiyor.** Sonucu: `computer{action:"screenshot"}` çalışmaz VE **CSS
-> geçişleri ilerlemez.** `body`'de 420ms'lik `background-color` geçişi var, bu
-> yüzden tema değiştirip hemen `getComputedStyle` okursan ESKİ değeri alırsın.
-> 2026-08-03'te bu yüzden koyu temada kontrast 2.47 ölçüldü ve neredeyse "site
-> bozuk" diye rapor edildi — gerçek değer 6.38'di.
->
-> **Kural:** animasyonlu/geçişli bir şey ölçeceksen önce
-> `el.style.transition='none'` yap. Statik ölçümler (yerleşim, `naturalWidth`,
-> `src`, metin, sınıf) güvenilir.
-
-Ayrıca `Grep` çıktısı CSS yorum açıcısını `/*` yerine `\*` gösteriyor — bu bir
-görüntüleme tuhaflığı, dosyada hata YOK. İki kez "bozuk yorum buldum" sanıldı;
-şüphelenirsen `Read` ile doğrula.
-
-**Kontrast WCAG AA burada kabul edilmiş kriter** (bkz. hafıza:
-`project-vyne-design-ownership`). Son ölçüm 2026-08-03, dört temada da geçiyor:
-hero bağlantısı 4.83–7.19, kapanış bandı 4.50–4.84.
+**Kontrast WCAG AA kabul kriteri.** Renkler `../vyne/src/tokens.js` ile aynı.
 
 ## Çalışma talimatı
 
-- **Hasan geliştirici değil.** Komutları sen çalıştır, terminal adımlarını sade
-  anlat. Mağaza konsolu, kimlik/vergi formları ve yeni depo açma sadece onda.
-- **Türkçe cevap ver**, kod/tanımlayıcılar İngilizce. Site metni TR birincil
-  (TR sözlüğü HTML gövdesinden toplanıyor), EN `index.html` içindeki `EN`
-  nesnesinde. **İkisini birlikte güncelle**, yoksa dil değişince eski metin çıkar.
-- **`main` üzerindeysen önce dal aç**, sonra commit. Ama unutma: Pages `main`'den
-  yayınlıyor, yani merge edilmeden canlı site değişmez — bunu Hasan'a söyle.
+- **Hasan geliştirici değil.** Komutları sen çalıştır, sade anlat.
+- **Türkçe cevap ver**, kod/tanımlayıcılar İngilizce.
+- **Hasan demeden hiçbir depoyu değiştirme** (Hasan'ın 1. kuralı). Fikirler önce
+  ayrı önizleme olarak gösterilir.
+- **`main` üzerindeysen önce dal aç**, sonra commit. `main`'e geçen her şey canlıdır.
 - Bu dosyayı **iş bittikçe güncelle**. Buraya sadece HÂLÂ GEÇERLİ olan yazılır.

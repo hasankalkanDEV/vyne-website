@@ -1,47 +1,47 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vyne: Alışkanlık ve Günlük · Bir günü kaçırmak dert değil</title>
-<meta name="description" content="Alışkanlıkların, günlüğün ve notların için tek, sakin bir yer. Bir günü kaçırınca serin bozulmaz. Reklamsız, hesapsız, internetsiz çalışır.">
-<link rel="canonical" href="https://hasankalkanDEV.github.io/vyne-website/">
+<title>Vyne: Habit Tracker & Journal · Habits that forgive a bad day</title>
+<meta name="description" content="One calm place for your habits, your journal and your notes. Miss a day and your streak doesn’t break. No ads, no account, works offline.">
+<link rel="canonical" href="https://hasankalkanDEV.github.io/vyne-website/en/">
 <link rel="alternate" hreflang="tr" href="https://hasankalkanDEV.github.io/vyne-website/">
 <link rel="alternate" hreflang="en" href="https://hasankalkanDEV.github.io/vyne-website/en/">
 <link rel="alternate" hreflang="x-default" href="https://hasankalkanDEV.github.io/vyne-website/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.png" sizes="64x64" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta name="theme-color" content="#F8F6F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1C18" media="(prefers-color-scheme: dark)">
 <meta name="apple-itunes-app" content="app-id=6790837181">
-<meta property="og:title" content="Vyne: Alışkanlık ve Günlük · Bir günü kaçırmak dert değil">
-<meta property="og:description" content="Alışkanlıkların, günlüğün ve notların için tek, sakin bir yer. Bir günü kaçırınca serin bozulmaz. Reklamsız, hesapsız, internetsiz çalışır.">
+<meta property="og:title" content="Vyne: Habit Tracker & Journal · Habits that forgive a bad day">
+<meta property="og:description" content="One calm place for your habits, your journal and your notes. Miss a day and your streak doesn’t break. No ads, no account, works offline.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://hasankalkanDEV.github.io/vyne-website/">
-<meta property="og:locale" content="tr_TR">
+<meta property="og:url" content="https://hasankalkanDEV.github.io/vyne-website/en/">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://hasankalkanDEV.github.io/vyne-website/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Vyne: merkezdeki bir baloncuktan hayatın alanlarına dallanan sarmaşık">
+<meta property="og:image:alt" content="Vyne: a vine branching from a central bubble into the areas of your life">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vyne: Alışkanlık ve Günlük · Bir günü kaçırmak dert değil">
-<meta name="twitter:description" content="Alışkanlıkların, günlüğün ve notların için tek, sakin bir yer. Bir günü kaçırınca serin bozulmaz. Reklamsız, hesapsız, internetsiz çalışır.">
+<meta name="twitter:title" content="Vyne: Habit Tracker & Journal · Habits that forgive a bad day">
+<meta name="twitter:description" content="One calm place for your habits, your journal and your notes. Miss a day and your streak doesn’t break. No ads, no account, works offline.">
 <meta name="twitter:image" content="https://hasankalkanDEV.github.io/vyne-website/og-image.png">
-<link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Fontlar yerel: dış CDN yok (site kuralı). */
 @font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;
-  src:url(fonts/nunito-latin-ext.woff2) format('woff2');
+  src:url(../fonts/nunito-latin-ext.woff2) format('woff2');
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:200 1000;font-display:swap;
-  src:url(fonts/nunito-latin.woff2) format('woff2');
+  src:url(../fonts/nunito-latin.woff2) format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
-@font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/caveat-latin-ext-500.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
-@font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/caveat-latin-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
-@font-face{font-family:'Caveat';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/caveat-latin-ext-700.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
-@font-face{font-family:'Caveat';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/caveat-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
-@font-face{font-family:'VT323';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vt323-latin-400.woff2) format('woff2');}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/caveat-latin-ext-500.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/caveat-latin-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/caveat-latin-ext-700.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/caveat-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'VT323';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/vt323-latin-400.woff2) format('woff2');}
 
 /* ============================================================
    TOKENS — vyne/src/tokens.js ile aynı değerler.
@@ -530,36 +530,36 @@ footer a{color:var(--slate)}
 
 <header class="top">
   <div class="top-in">
-    <a class="brand" id="brand" href="#sen" aria-label="Vyne ana sayfa"><b>vyne<i>.</i></b><small>site</small></a>
-    <nav class="crumbs" id="crumbs" aria-label="Neredesin"></nav>
+    <a class="brand" id="brand" href="#sen" aria-label="Vyne home"><b>vyne<i>.</i></b><small>site</small></a>
+    <nav class="crumbs" id="crumbs" aria-label="Where you are"></nav>
     <div class="top-right">
-      <a class="lang-sw" id="langSw" href="en/" data-lang="en" hreflang="en" aria-label="English">EN</a>
-      <button class="look-btn" id="lookBtn" aria-expanded="false" aria-controls="look"><span class="sw"></span><span class="t">Görünüm</span></button>
+      <a class="lang-sw" id="langSw" href="../" data-lang="tr" hreflang="tr" aria-label="Türkçe">TR</a>
+      <button class="look-btn" id="lookBtn" aria-expanded="false" aria-controls="look"><span class="sw"></span><span class="t">Look</span></button>
     </div>
   </div>
-  <div class="stembar" id="stembar"><svg id="stemSvg" aria-hidden="true"></svg><nav class="stations" id="stations" aria-label="Büyüttüğün dallar"></nav></div>
+  <div class="stembar" id="stembar"><svg id="stemSvg" aria-hidden="true"></svg><nav class="stations" id="stations" aria-label="Branches you have grown"></nav></div>
   <div class="look" id="look" hidden>
-    <h4>Tema</h4>
-    <div class="chips" role="group" aria-label="Tema">
-      <button class="chip" data-vt="light" aria-pressed="false"><span class="dot" style="background:#F8F6F0"></span>Açık</button>
-      <button class="chip" data-vt="warm" aria-pressed="false"><span class="dot" style="background:#F5EFE0"></span>Sıcak</button>
-      <button class="chip" data-vt="dark" aria-pressed="false"><span class="dot" style="background:#1E1C18"></span>Koyu</button>
-      <button class="chip" data-vt="midnight" aria-pressed="false"><span class="dot" style="background:#0F0F0F"></span>Gece Yarısı</button>
+    <h4>Theme</h4>
+    <div class="chips" role="group" aria-label="Theme">
+      <button class="chip" data-vt="light" aria-pressed="false"><span class="dot" style="background:#F8F6F0"></span>Light</button>
+      <button class="chip" data-vt="warm" aria-pressed="false"><span class="dot" style="background:#F5EFE0"></span>Warm</button>
+      <button class="chip" data-vt="dark" aria-pressed="false"><span class="dot" style="background:#1E1C18"></span>Dark</button>
+      <button class="chip" data-vt="midnight" aria-pressed="false"><span class="dot" style="background:#0F0F0F"></span>Midnight</button>
     </div>
-    <h4>Kâğıt</h4>
-    <div class="chips" role="group" aria-label="Kâğıt">
-      <button class="chip" data-paper="none" aria-pressed="true"><span class="dot" style="background:var(--bg)"></span>Yok</button>
+    <h4>Paper</h4>
+    <div class="chips" role="group" aria-label="Paper">
+      <button class="chip" data-paper="none" aria-pressed="true"><span class="dot" style="background:var(--bg)"></span>None</button>
       <button class="chip" data-paper="matcha" aria-pressed="false"><span class="dot" style="background:#F3F1DE"></span>Matcha</button>
       <button class="chip" data-paper="bloom" aria-pressed="false"><span class="dot" style="background:linear-gradient(135deg,#E7B8DE,#B9C7F2)"></span>Bloom</button>
       <button class="chip" data-paper="space" aria-pressed="false"><span class="dot" style="background:#16202E"></span>Space</button>
       <button class="chip" data-paper="galaxy" aria-pressed="false"><span class="dot" style="background:#12142A"></span>Galaxy</button>
     </div>
-    <div class="switch"><span>Dokunuş sesi</span><button id="soundBtn" aria-pressed="false">Kapalı</button></div>
-    <p>Uygulamada da tam olarak böyle: tema ve kâğıt senin.</p>
+    <div class="switch"><span>Tap sound</span><button id="soundBtn" aria-pressed="false">Off</button></div>
+    <p>Exactly like the app: the theme and the paper are yours.</p>
   </div>
 </header>
-<a class="lang-hint" id="langHint" href="en/" hidden>Read this page in English →</a>
-<div class="night-chip" id="nightChip" hidden>🌙 Gece oldu, site Galaxy kâğıdına geçti <button id="nightOff">Gündüze dön</button></div>
+<a class="lang-hint" id="langHint" href="../" hidden>Bu sayfayı Türkçe oku →</a>
+<div class="night-chip" id="nightChip" hidden>🌙 It's night, so the site switched to Galaxy paper <button id="nightOff">Back to day</button></div>
 
 <main id="main">
 
@@ -567,36 +567,36 @@ footer a{color:var(--slate)}
 <section class="room" data-room="sen">
   <div class="wrap">
     <div class="hero">
-      <img src="app-icon.png" alt="Vyne simgesi" width="72" height="72" style="border-radius:18px; box-shadow:var(--shadow)">
-      <span class="kicker">🌿 App Store'da · ücretsiz · reklamsız</span>
-      <h1 tabindex="-1">Bir günü kaçırmak dert değil.</h1>
-      <p class="lede">Alışkanlıkların, günlüğün ve notların için tek, sakin bir yer: hayatının dallanan haritası. Hepsi tek bir noktadan, senden, sağa doğru büyüyor. Bu site de öyle: sen büyüttükçe açılıyor.</p>
-      <p class="sign">tek başıma yaptım, ailem ve arkadaşlarım için · Hasan</p>
+      <img src="../app-icon.png" alt="Vyne icon" width="72" height="72" style="border-radius:18px; box-shadow:var(--shadow)">
+      <span class="kicker">🌿 On the App Store · free · no ads</span>
+      <h1 tabindex="-1">Habits that forgive a bad day.</h1>
+      <p class="lede">One calm place for your habits, your journal and your notes: a branching map of your life. It all grows from one point, you, out to the right. This site works the same way: it opens as you grow it.</p>
+      <p class="sign">made by just me, for my family and friends · Hasan</p>
       <div class="return-card" id="returnCard" hidden>
-        <b>Tekrar hoş geldin 🌿</b>
-        <span class="muted">Yetişmen gereken bir şey yok. Son geldiğinden beri değişenler "Neler değişti" dalında.</span>
-        <button type="button" id="returnClose">Kapat</button>
+        <b>Welcome back 🌿</b>
+        <span class="muted">Nothing to catch up on. What changed since your last visit is in the "What's new" branch.</span>
+        <button type="button" id="returnClose">Close</button>
       </div>
     </div>
 
     <div class="growstage" id="growStage">
-      <p class="eyebrow" id="gsEyebrow">Bu site sen büyüttükçe açılır</p>
-      <div class="gs-row"><div class="bubble" aria-hidden="true">sen</div><div class="gs-track" id="homeTrack"></div></div>
-      <p class="gs-hint" id="gsHint">tomurcuğu sağa sürükle →</p>
-      <p class="muted" style="max-width:56ch">On dal var. Her birini sen büyütüyorsun; hepsi açılınca haritan ortaya çıkıyor. Uygulama da tam olarak böyle: sen soldasın, hayatın sağa doğru büyüyor.</p>
+      <p class="eyebrow" id="gsEyebrow">This site opens as you grow it</p>
+      <div class="gs-row"><div class="bubble" aria-hidden="true">you</div><div class="gs-track" id="homeTrack"></div></div>
+      <p class="gs-hint" id="gsHint">drag the bud to the right →</p>
+      <p class="muted" style="max-width:56ch">There are ten branches. You grow each one yourself; when they're all open, your map appears. The app works exactly like this: you're on the left, your life grows to the right.</p>
     </div>
     <div class="finale" id="finale" hidden>
-      <b>Bu sarmaşığı sen büyüttün 🌿</b>
-      <span>On dalın hepsi açık. Artık istediğine dokunabilirsin; üstteki çubuk da senin yolun.</span>
+      <b>You grew this vine 🌿</b>
+      <span>All ten branches are open. Tap any of them now; the bar at the top is your path.</span>
     </div>
     <div class="vinehub" id="hub" hidden>
       <svg class="links" id="hubLinks" aria-hidden="true"></svg>
-      <div class="hubcol"><div class="bubble" aria-hidden="true">sen</div><small>buradasın</small></div>
-      <nav class="nodes" id="nodes" aria-label="Dallar"></nav>
+      <div class="hubcol"><div class="bubble" aria-hidden="true">you</div><small>you are here</small></div>
+      <nav class="nodes" id="nodes" aria-label="Branches"></nav>
     </div>
 
     <div class="home-cards">
-      <div class="almanac" aria-label="Bugünün almanağı">
+      <div class="almanac" aria-label="Today's almanac">
         <canvas id="almCanvas" aria-hidden="true"></canvas>
         <div class="alm-in">
           <span class="eyebrow" style="color:#E8C87A" id="almDow"></span>
@@ -607,10 +607,10 @@ footer a{color:var(--slate)}
         </div>
       </div>
       <div class="qcard">
-        <p class="eyebrow">Günde bir kez</p>
-        <p style="font-size:clamp(20px,2.6vw,26px); font-weight:900; letter-spacing:-.02em">Bugün seni bir kez rahatsız edeceğiz.</p>
-        <div class="notif"><div class="ic">🌿</div><div><b>Vyne</b><span>Bugün için üç dalın var. Acelesi yok.</span></div></div>
-        <p class="muted" style="font-size:14px">Suçluluk kelimesi yok, "serini kaybedeceksin" yok. İstemezsen o da yok.</p>
+        <p class="eyebrow">Once a day</p>
+        <p style="font-size:clamp(20px,2.6vw,26px); font-weight:900; letter-spacing:-.02em">We'll interrupt you once today.</p>
+        <div class="notif"><div class="ic">🌿</div><div><b>Vyne</b><span>Three branches for today. No rush.</span></div></div>
+        <p class="muted" style="font-size:14px">No guilt words, no "you'll lose your streak". Or none at all, if you'd rather.</p>
       </div>
     </div>
   </div>
@@ -619,24 +619,24 @@ footer a{color:var(--slate)}
 <!-- ======================= MEKTUP ======================= -->
 <section class="room" data-room="mektup" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Mektup</p><h1 tabindex="-1">Bunu bir şirket değil, bir insan yapıyor</h1>
-      <p class="lede">Masayı karıştırabilirsin, yapışkan notlar yerinden oynuyor. Her not bir dert ve onun çözümü.</p></div>
+    <div class="room-head"><p class="eyebrow">Letter</p><h1 tabindex="-1">Made by a person, not a company</h1>
+      <p class="lede">Feel free to mess up the desk; the sticky notes move. Each note is a problem and its fix.</p></div>
     <div class="desk" id="desk">
       <div class="letter"><span class="tape" aria-hidden="true"></span>
-        <p>Merhaba,</p>
-        <p>Ben Hasan. Vyne'ı bir şirket değil, tek başıma ben yaptım; ailem ve arkadaşlarım için. Denediğimiz her uygulama ya bir günü kaçırınca bizi azarlıyordu ya da hayatımızı on farklı yere dağıtıyordu.</p>
-        <p>Reklam yok, hesap açman gerekmiyor. Bir şey tuhaf gelirse bana yaz; her mesajı okuyorum.</p>
+        <p>Hi,</p>
+        <p>I'm Hasan, and Vyne is made by just me, not a company. I built it for my family and friends, because every app we tried either scolded us for missing a day or scattered our life across ten different places.</p>
+        <p>No ads, no account needed. If something feels off, write to me. I read every message.</p>
         <p class="sig">— Hasan</p>
       </div>
-      <figure class="polaroid" style="right:6%; top:40px; transform:rotate(4deg)"><img src="shots/app-home.webp" alt="Vyne ana ekranı, 1.4.0"><figcaption>ana ekran</figcaption></figure>
-      <figure class="polaroid" style="right:22%; top:260px; transform:rotate(-5deg)"><img src="shots/app-wheel.webp" alt="Karar çarkı, 1.4.0"><figcaption>kararsız günler</figcaption></figure>
-      <figure class="polaroid d-hide" style="right:4%; top:350px; transform:rotate(2deg)"><img src="shots/app-branch.webp" alt="Dal sayfası, 1.4.0"><figcaption>dal sayfası</figcaption></figure>
-      <span class="stamp" style="left:8%; top:480px">reklamsız · hesapsız</span>
-      <div class="sticky s-y" style="left:36%; top:430px; transform:rotate(-3deg)"><small>dert</small>Aklıma gelen şey, yerini bulana kadar uçup gidiyor.</div>
-      <div class="sticky s-g" style="left:52%; top:40px; transform:rotate(3deg)"><small>çözüm</small>Profil balonunun yanındaki bulut: dokun, yaz, Gelen Kutusu'na düşsün.</div>
-      <div class="sticky s-p" style="left:10%; top:550px; transform:rotate(2deg)"><small>dert</small>Hasta oldum, seri gitti, bıraktım.</div>
-      <div class="sticky s-b" style="left:58%; top:510px; transform:rotate(-2deg)"><small>çözüm</small>O günü 🤒 hasta işaretle. Serin seni bekler: ne uzar, ne bozulur.</div>
-      <span class="desk-hint">notları taşıyabilirsin</span>
+      <figure class="polaroid" style="right:6%; top:40px; transform:rotate(4deg)"><img src="../shots/app-home.webp" alt="Vyne home screen, 1.4.0"><figcaption>home</figcaption></figure>
+      <figure class="polaroid" style="right:22%; top:260px; transform:rotate(-5deg)"><img src="../shots/app-wheel.webp" alt="The wheel, 1.4.0"><figcaption>undecided days</figcaption></figure>
+      <figure class="polaroid d-hide" style="right:4%; top:350px; transform:rotate(2deg)"><img src="../shots/app-branch.webp" alt="Branch page, 1.4.0"><figcaption>branch page</figcaption></figure>
+      <span class="stamp" style="left:8%; top:480px">no ads · no account</span>
+      <div class="sticky s-y" style="left:36%; top:430px; transform:rotate(-3deg)"><small>problem</small>A thought flies away before I find the right place for it.</div>
+      <div class="sticky s-g" style="left:52%; top:40px; transform:rotate(3deg)"><small>fix</small>The cloud next to your profile bubble: tap, write, it lands in your Inbox.</div>
+      <div class="sticky s-p" style="left:10%; top:550px; transform:rotate(2deg)"><small>problem</small>I got sick, lost my streak, and gave up.</div>
+      <div class="sticky s-b" style="left:58%; top:510px; transform:rotate(-2deg)"><small>fix</small>Mark that day 🤒 Sick. Your streak waits: it doesn't grow, it doesn't break.</div>
+      <span class="desk-hint">you can move the notes</span>
     </div>
     <div class="next" data-next="dene kuyu neden"></div>
   </div>
@@ -645,29 +645,29 @@ footer a{color:var(--slate)}
 <!-- ======================= DENE ======================= -->
 <section class="room" data-room="dene" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Dene</p><h1 tabindex="-1">İndirmeden önce, iki dakika</h1>
-      <p class="lede">Önce düz bir listenin nasıl dağıldığını gör. Sonra kendi hayatının dallarını seç; uygulamadaki gibi sağa doğru büyüsün.</p></div>
+    <div class="room-head"><p class="eyebrow">Try it</p><h1 tabindex="-1">Two minutes before you download</h1>
+      <p class="lede">First watch a flat list fall apart. Then pick the branches of your own life and let them grow to the right, just like in the app.</p></div>
 
     <div class="sub" style="margin-top:0">
-      <h2>Düz liste mi, sarmaşık mı?</h2>
-      <div class="flat"><button class="flip-btn" id="flipBtn">Sarmaşığa çevir</button><div class="flipbox" id="flipbox"><svg id="flipSvg" aria-hidden="true"></svg></div></div>
+      <h2>A flat list, or a vine?</h2>
+      <div class="flat"><button class="flip-btn" id="flipBtn">Turn it into a vine</button><div class="flipbox" id="flipbox"><svg id="flipSvg" aria-hidden="true"></svg></div></div>
     </div>
 
     <div class="sub">
-      <h2>Senin sarmaşığın</h2>
+      <h2>Your vine</h2>
       <div class="panel">
         <div class="toy-grid">
           <div class="stack">
-            <p class="muted">Dokun ya da kendin yaz. En fazla altı dal. Her dalın ucunda iki küçük dal çıkıyor.</p>
+            <p class="muted">Tap one or type your own. Up to six branches. Each one grows two small twigs.</p>
             <div class="pick" id="bPick"></div>
-            <form class="addrow" id="bForm"><label for="bInput" class="vh">Yeni dal adı</label><input id="bInput" maxlength="14" placeholder="Örn. Ev işleri" autocomplete="off"><button class="btn2 primary" type="submit">Dal ekle</button></form>
-            <div class="poster-row"><button class="btn2" id="posterBtn" type="button">Posterini hazırla</button><span class="muted" id="posterNote" style="font-size:13.5px"></span></div>
+            <form class="addrow" id="bForm"><label for="bInput" class="vh">New branch name</label><input id="bInput" maxlength="14" placeholder="e.g. Chores" autocomplete="off"><button class="btn2 primary" type="submit">Add branch</button></form>
+            <div class="poster-row"><button class="btn2" id="posterBtn" type="button">Make your poster</button><span class="muted" id="posterNote" style="font-size:13.5px"></span></div>
           </div>
-          <svg class="vine" id="bVine" viewBox="0 0 560 380" role="img" aria-label="Seçtiğin alanlardan sağa dallanan harita"></svg>
+          <svg class="vine" id="bVine" viewBox="0 0 560 380" role="img" aria-label="A map branching to the right from the areas you picked"></svg>
         </div>
       </div>
     </div>
-    <p class="hand" style="font-size:24px; margin-top:22px">Sırada: yaprağın nasıl kazanıldığı → Seri kuyusu</p>
+    <p class="hand" style="font-size:24px; margin-top:22px">Next: how a leaf is earned → The streak well</p>
     <div class="next" data-next="kuyu gun neler"></div>
   </div>
 </section>
@@ -675,27 +675,27 @@ footer a{color:var(--slate)}
 <!-- ======================= SERİ KUYUSU ======================= -->
 <section class="room" data-room="kuyu" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Seri kuyusu</p><h1 tabindex="-1">Yaprak kazanılır. Dinlenmek serbest.</h1>
-      <p class="lede">Uygulamadaki kurallarla çalışan küçük bir deneme. Önce günleri işaretle, sonra aşağıdaki kuyuya in.</p></div>
+    <div class="room-head"><p class="eyebrow">The streak well</p><h1 tabindex="-1">Leaves are earned. Rest is free.</h1>
+      <p class="lede">A small simulator running the app's own rules. Mark some days first, then go down the well below.</p></div>
 
     <div class="panel sim">
-      <p><b>Günlere dokun.</b> Bir mod seç, sonra günü işaretle. Yaprak <b id="leafEveryTxt">7</b> gün üst üste yapınca kazanılır, en fazla <b>2</b> birikir ve sadece <b>bir önceki</b> kaçan günü kurtarır.</p>
-      <div class="mode" role="group" aria-label="İşaretleme modu">
-        <button data-mode="done" aria-pressed="true">✓ Yaptım</button>
-        <button data-mode="rest" aria-pressed="false">🌙 Dinlenme</button>
-        <button data-mode="sick" aria-pressed="false">🤒 Hasta</button>
-        <button data-mode="travel" aria-pressed="false">✈️ Yolculuk</button>
-        <button data-mode="miss" aria-pressed="false">Boş bırak</button>
+      <p><b>Tap the days.</b> Pick a mode, then mark a day. You earn a leaf after <b id="leafEveryTxt">7</b> days in a row, you can hold at most <b>2</b>, and a leaf only saves <b>the day before</b>.</p>
+      <div class="mode" role="group" aria-label="Marking mode">
+        <button data-mode="done" aria-pressed="true">✓ Done</button>
+        <button data-mode="rest" aria-pressed="false">🌙 Rest</button>
+        <button data-mode="sick" aria-pressed="false">🤒 Sick</button>
+        <button data-mode="travel" aria-pressed="false">✈️ Travel</button>
+        <button data-mode="miss" aria-pressed="false">Leave empty</button>
       </div>
       <div class="days" id="kDays"></div>
-      <div class="status" aria-live="polite"><span class="num" id="kStreak">0</span><span class="lv" id="kLeaves" aria-label="Yaprak"><span>🍃</span><span>🍃</span></span><span class="msg" id="kMsg"></span></div>
-      <div class="legend"><span><i style="background:#6E9468"></i>yapıldı</span><span><i style="background:#E8C87A"></i>yaprak korudu</span><span><i style="background:#DCE6F5;border:1.5px solid #96BEE8"></i>dinlenme (seri bekler)</span><span><i style="border:1.5px dashed #C9716F"></i>seri burada koptu</span></div>
-      <div class="poster-row"><button class="btn2" id="kReset" type="button">Baştan başla</button><button class="btn2" id="kDemo" type="button">Örnek iki hafta</button></div>
+      <div class="status" aria-live="polite"><span class="num" id="kStreak">0</span><span class="lv" id="kLeaves" aria-label="Leaves"><span>🍃</span><span>🍃</span></span><span class="msg" id="kMsg"></span></div>
+      <div class="legend"><span><i style="background:#6E9468"></i>done</span><span><i style="background:#E8C87A"></i>leaf kept</span><span><i style="background:#DCE6F5;border:1.5px solid #96BEE8"></i>rest (streak waits)</span><span><i style="border:1.5px dashed #C9716F"></i>streak broke here</span></div>
+      <div class="poster-row"><button class="btn2" id="kReset" type="button">Start over</button><button class="btn2" id="kDemo" type="button">Sample two weeks</button></div>
     </div>
 
     <div class="sub">
-      <h2>Yüz güne iniş</h2>
-      <div class="well"><div class="well-scroll" id="well" tabindex="0" aria-label="Seri kuyusu, kaydırılabilir"><span class="depth" id="depth">Gün 1</span><div class="well-inner" id="wellInner"><div class="rope"></div></div></div></div>
+      <h2>Down to day 100</h2>
+      <div class="well"><div class="well-scroll" id="well" tabindex="0" aria-label="The streak well, scrollable"><span class="depth" id="depth">Day 1</span><div class="well-inner" id="wellInner"><div class="rope"></div></div></div></div>
     </div>
     <div class="next" data-next="gun neden neler"></div>
   </div>
@@ -704,12 +704,12 @@ footer a{color:var(--slate)}
 <!-- ======================= BİR GÜNÜMÜZ ======================= -->
 <section class="room" data-room="gun" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Bir günümüz</p><h1 tabindex="-1">Sıradan bir gün, yedi durak</h1>
-      <p class="lede">Özellik listesi yerine bir gün. Her durakta önce dert, sonra uygulamada nasıl çözüldüğü. Saate dokun ya da ok tuşlarını kullan.</p></div>
+    <div class="room-head"><p class="eyebrow">A day with Vyne</p><h1 tabindex="-1">An ordinary day, seven stops</h1>
+      <p class="lede">A day instead of a feature list. At each stop, first the problem, then how the app handles it. Tap a time or use the arrow keys.</p></div>
     <div class="day" id="day" tabindex="0">
       <div class="day-copy">
-        <div class="stops" id="dStops" role="group" aria-label="Günün durakları"></div>
-        <div class="clock" aria-live="polite"><span id="dClock">07:30</span><small id="dPart">sabah</small></div>
+        <div class="stops" id="dStops" role="group" aria-label="Stops of the day"></div>
+        <div class="clock" aria-live="polite"><span id="dClock">07:30</span><small id="dPart">morning</small></div>
         <h2 id="dTitle"></h2>
         <p class="dert" id="dDert"></p>
         <p class="how" id="dHow"></p>
@@ -724,39 +724,39 @@ footer a{color:var(--slate)}
 <!-- ======================= DEFTER ======================= -->
 <section class="room" data-room="defter" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Defter</p><h1 tabindex="-1">Uygulamanın kâğıtlarına yazılmış beş sayfa</h1>
-      <p class="lede">Her sayfa uygulamadaki gerçek bir kâğıt: Cotton, Matcha, Bloom, Space, Galaxy. Sağ üstteki "Görünüm"den bütün siteyi de bu kâğıtlara geçirebilirsin.</p></div>
+    <div class="room-head"><p class="eyebrow">Notebook</p><h1 tabindex="-1">Five pages written on the app's own papers</h1>
+      <p class="lede">Each page is a real paper from the app: Cotton, Matcha, Bloom, Space, Galaxy. Use "Look" at the top right to put the whole site on one of them.</p></div>
     <div class="book">
       <div class="page" id="cPage">
-        <div class="pg cotton" data-paper="Cotton"><span class="no">1</span><h3>Neden yaptım</h3>
-          <p>Hayatım düz bir yapılacaklar listesine sığmıyordu. İşin teslim tarihi "süt al"ın yanında duruyordu, doğum günleri bir uygulamada, günlük bir başkasında.</p>
-          <p>Hepsini tek bir yerde, kendi yerlerinde görmek istedim. Vyne öyle başladı.</p>
-          <p class="margin">— Cotton artık dört temaya da uyuyor</p></div>
-        <div class="pg matcha" data-paper="Matcha"><span class="no">2</span><h3>Her şey bir dal, sağa doğru</h3>
+        <div class="pg cotton" data-paper="Cotton"><span class="no">1</span><h3>Why I made it</h3>
+          <p>My life didn't fit in a flat to-do list. A work deadline sat right next to "buy milk", birthdays lived in one app, the journal in another.</p>
+          <p>I wanted all of it in one place, each thing in its own spot. That's how Vyne began.</p>
+          <p class="margin">— Cotton now follows all four themes</p></div>
+        <div class="pg matcha" data-paper="Matcha"><span class="no">2</span><h3>Everything is a branch, to the right</h3>
           <svg viewBox="0 0 360 170" style="max-width:360px" aria-hidden="true">
             <circle cx="30" cy="85" r="20" fill="#6E9468"/>
             <path d="M50 85 C 100 85, 110 30, 160 30" fill="none" stroke="#BEA8EE" stroke-width="4" stroke-linecap="round"/>
             <path d="M50 85 C 100 85, 110 85, 160 85" fill="none" stroke="#96BEE8" stroke-width="4" stroke-linecap="round"/>
             <path d="M50 85 C 100 85, 110 140, 160 140" fill="none" stroke="#EE96BA" stroke-width="4" stroke-linecap="round"/>
             <path d="M205 30 C 240 30, 250 14, 280 14" fill="none" stroke="#BEA8EE" stroke-width="2.5"/><path d="M205 30 C 240 30, 250 46, 280 46" fill="none" stroke="#BEA8EE" stroke-width="2.5"/>
-            <g font-family="Caveat,cursive" font-size="22" font-weight="700" fill="#3B4322"><text x="166" y="36">iş</text><text x="166" y="91">sağlık</text><text x="166" y="146">ev</text><text x="286" y="19" font-size="18">rapor</text><text x="286" y="51" font-size="18">toplantı</text></g>
+            <g font-family="Caveat,cursive" font-size="22" font-weight="700" fill="#3B4322"><text x="166" y="36">work</text><text x="166" y="91">health</text><text x="166" y="146">home</text><text x="286" y="19" font-size="18">report</text><text x="286" y="51" font-size="18">meeting</text></g>
           </svg>
-          <p>Ortada sen varsın. Önemli olan her şey sağa doğru bir sütun açıyor, dallar da kendi sütunlarını açıyor. Üstteki yol hep nerede olduğunu söylüyor.</p>
-          <p class="margin">sen › iş › rapor</p></div>
-        <div class="pg bloom" data-paper="Bloom"><span class="no">3</span><h3>Hasta oldun. Serin bekliyor.</h3>
+          <p>You're in the middle. Everything that matters opens a column to the right, and branches open columns of their own. The path at the top always tells you where you are.</p>
+          <p class="margin">you › work › report</p></div>
+        <div class="pg bloom" data-paper="Bloom"><span class="no">3</span><h3>You got sick. Your streak waits.</h3>
           <div class="mini-cal" id="miniCal" aria-hidden="true"></div>
-          <p>Otuz günün içinde bir gün unuttun: kazandığın yaprak onu kurtardı. İki gün de hastaydın: 🤒 işaretledin, seri ne uzadı ne bozuldu.</p>
-          <p class="margin">yaprak kazanılır, dinlenmek serbest</p></div>
-        <div class="pg space" data-paper="Space"><canvas class="stars" data-seed="3" aria-hidden="true"></canvas><span class="no">4</span><h3>Klasörler baloncuk gibi açılır</h3>
-          <div class="folders" aria-hidden="true"><div>Ev</div><div>Okul</div><div>Tarifler</div><div>Market</div><div>Fikirler</div><div>Tatil</div></div>
-          <p>Logonun altındaki "notes" yazısına dokun, Notlar açılsın. Bir klasöre dokununca içindekiler o baloncuktan çıkıyor, geri dönünce yine ona kapanıyor.</p>
+          <p>In thirty days you forgot one: a leaf you'd earned saved it. You were also sick for two days: you marked them 🤒, and the streak neither grew nor broke.</p>
+          <p class="margin">leaves are earned, rest is free</p></div>
+        <div class="pg space" data-paper="Space"><canvas class="stars" data-seed="3" aria-hidden="true"></canvas><span class="no">4</span><h3>Folders open like bubbles</h3>
+          <div class="folders" aria-hidden="true"><div>Home</div><div>School</div><div>Recipes</div><div>Groceries</div><div>Ideas</div><div>Holiday</div></div>
+          <p>Tap "notes" under the logo and Notes opens. Tap a folder and its contents come out of that bubble; go back and they fold into it again.</p>
           <p class="margin">vyne / notes</p></div>
-        <div class="pg galaxy" data-paper="Galaxy"><canvas class="stars" data-seed="7" aria-hidden="true"></canvas><span class="no">5</span><h3>Gece, bir soru</h3>
-          <p>Günlük her gün için bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir: <b>"Bugün ne iyi gitti, neden?"</b> Pazartesileri üç soru daha gelir: haftaya bakmak için.</p>
-          <p>Galaxy kâğıdı her zaman gece. Bu sayfa da öyle.</p>
-          <p class="margin">iyi geceler</p></div>
+        <div class="pg galaxy" data-paper="Galaxy"><canvas class="stars" data-seed="7" aria-hidden="true"></canvas><span class="no">5</span><h3>Night, and one question</h3>
+          <p>The journal is one page a day. If you don't know what to write, it offers a question: <b>"What went well today, and why?"</b> On Mondays three more come, to look back at the week.</p>
+          <p>Galaxy paper is always night. So is this page.</p>
+          <p class="margin">good night</p></div>
       </div>
-      <div class="book-nav"><button type="button" id="cPrev" aria-label="Önceki sayfa">‹</button><span class="pn" id="cNo">1 / 5 · Cotton</span><button type="button" id="cNext" aria-label="Sonraki sayfa">›</button></div>
+      <div class="book-nav"><button type="button" id="cPrev" aria-label="Previous page">‹</button><span class="pn" id="cNo">1 / 5 · Cotton</span><button type="button" id="cNext" aria-label="Next page">›</button></div>
     </div>
     <div class="next" data-next="neler gun soz"></div>
   </div>
@@ -765,18 +765,18 @@ footer a{color:var(--slate)}
 <!-- ======================= NELER VAR ======================= -->
 <section class="room" data-room="neler" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Neler var</p><h1 tabindex="-1">Her parça, ve nasıl kullanılır</h1>
-      <p class="lede">Uygulamadaki gibi üç büyük dal. Bir karta dokun, nasıl kullanıldığı açılsın. <span style="background:var(--leaf);color:#4A3A10;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:900">YENİ</span> işaretliler 1.4.0 ile geliyor.</p></div>
+    <div class="room-head"><p class="eyebrow">What's inside</p><h1 tabindex="-1">Every piece, and how to use it</h1>
+      <p class="lede">Three big branches, just like the app. Tap a card to see how it works. Pieces marked <span style="background:var(--leaf);color:#4A3A10;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:900">NEW</span> arrive with 1.4.0.</p></div>
     <div id="feats"></div>
     <div class="sub">
-      <h2>Şablon denemesi</h2>
+      <h2>Try a template</h2>
       <div class="panel tpl">
         <div class="stack">
-          <label for="tplSel" class="muted" style="font-size:14px; font-weight:800">Hayatında ne oluyor?</label>
+          <label for="tplSel" class="muted" style="font-size:14px; font-weight:800">What's happening in your life?</label>
           <select id="tplSel"></select>
-          <label for="tplDate" class="muted" style="font-size:14px; font-weight:800" id="tplQ">Ne zaman?</label>
+          <label for="tplDate" class="muted" style="font-size:14px; font-weight:800" id="tplQ">When?</label>
           <input id="tplDate" type="date">
-          <p class="muted" style="font-size:13.5px">Uygulamada "Oluştur" deyince bu dallar senin sarmaşığına eklenir.</p>
+          <p class="muted" style="font-size:13.5px">In the app, tap "Create" and these branches join your vine.</p>
         </div>
         <div class="tpl-out" id="tplOut" aria-live="polite"></div>
       </div>
@@ -788,25 +788,25 @@ footer a{color:var(--slate)}
 <!-- ======================= OYUN KÖŞESİ ======================= -->
 <section class="room" data-room="oyun" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Oyun köşesi</p><h1 tabindex="-1">Üç küçük oyuncak</h1>
-      <p class="lede">Hepsi uygulamada bir şeyi anlatıyor. Ama önce eğlence.</p></div>
+    <div class="room-head"><p class="eyebrow">Play corner</p><h1 tabindex="-1">Three small toys</h1>
+      <p class="lede">Each one explains something in the app. But fun comes first.</p></div>
     <div class="games">
       <article class="game">
-        <div class="gc"><h2>Kararsız mısın? Çarkı çevir</h2><p class="muted">Aklındaki üç işi yaz. Çark seçsin, sonra sadece 2 dakika başla. Uygulamadaki çark da böyle çalışıyor.</p></div>
-        <div class="gs wheelstage"><div class="pointer" aria-hidden="true"></div><div class="wheel" id="wheel" role="img" aria-label="Seçim çarkı"></div>
-          <div class="wrow"><input id="w1" value="10 dk yürüyüş" aria-label="Birinci iş"><input id="w2" value="Mutfağı topla" aria-label="İkinci iş"><input id="w3" value="Bir sayfa oku" aria-label="Üçüncü iş"></div>
-          <button class="spin" id="spinBtn">Çevir</button><p class="timer" id="timer" aria-live="polite"></p></div>
+        <div class="gc"><h2>Can't decide? Spin the wheel</h2><p class="muted">Write three things on your mind. Let the wheel pick, then just start for 2 minutes. The wheel in the app works the same way.</p></div>
+        <div class="gs wheelstage"><div class="pointer" aria-hidden="true"></div><div class="wheel" id="wheel" role="img" aria-label="The wheel"></div>
+          <div class="wrow"><input id="w1" value="10 min walk" aria-label="First task"><input id="w2" value="Tidy the kitchen" aria-label="Second task"><input id="w3" value="Read one page" aria-label="Third task"></div>
+          <button class="spin" id="spinBtn">Spin</button><p class="timer" id="timer" aria-live="polite"></p></div>
       </article>
       <article class="game">
-        <div class="gc"><h2>Hangi şablon sensin?</h2><p class="muted">Üç soru. Sonunda sana uyan şablon ve ilk üç dalın.</p></div>
+        <div class="gc"><h2>Which template are you?</h2><p class="muted">Three questions. At the end, the template that fits you and your first three branches.</p></div>
         <div class="gs quiz" id="quiz"></div>
       </article>
       <article class="game">
-        <div class="gc"><h2>Yıl yaprakları</h2><p class="muted">Bir yıl, bir sarmaşıkta 365 yaprak. Yeşil yapılan, altın yaprağın koruduğu, mavi dinlenme günü. Kaçan günler solgun, ceza yok. Öne çıkan büyüyen sarmaşık.</p></div>
-        <div class="gs yearstage"><canvas id="year" role="img" aria-label="Bir yılın yapraklardan çizimi"></canvas><button class="btn2" id="yearBtn">Başka bir yıl çiz</button></div>
+        <div class="gc"><h2>A year in leaves</h2><p class="muted">One year, 365 leaves on a vine. Green is done, gold is kept by a leaf, blue is a rest day. Missed days are faint, never punished. What stands out is the vine that grew.</p></div>
+        <div class="gs yearstage"><canvas id="year" role="img" aria-label="A year drawn as leaves"></canvas><button class="btn2" id="yearBtn">Draw another year</button></div>
       </article>
     </div>
-    <p class="muted" style="margin-top:18px; font-size:14px">Gizli bir oyuncak daha var: logoya basılı tut.</p>
+    <p class="muted" style="margin-top:18px; font-size:14px">There's one more hidden toy: press and hold the logo.</p>
     <div class="next" data-next="neden yeni dene"></div>
   </div>
 </section>
@@ -814,8 +814,8 @@ footer a{color:var(--slate)}
 <!-- ======================= NEDEN DEFTERİ ======================= -->
 <section class="room" data-room="neden" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Neden defteri</p><h1 tabindex="-1">Her kararın arkasında bir neden var</h1>
-      <p class="lede">Uygulamayı yaparken tuttuğum notlardan. Bazıları hâlâ filiz, bazıları artık ağaç.</p></div>
+    <div class="room-head"><p class="eyebrow">Why notes</p><h1 tabindex="-1">Every decision has a reason</h1>
+      <p class="lede">From the notes I kept while building the app. Some are still sprouts, some are trees by now.</p></div>
     <div class="garden" id="garden"></div>
     <div class="next" data-next="yeni soz mektup"></div>
   </div>
@@ -824,8 +824,8 @@ footer a{color:var(--slate)}
 <!-- ======================= NELER DEĞİŞTİ ======================= -->
 <section class="room" data-room="yeni" hidden>
   <div class="narrow">
-    <div class="room-head"><p class="eyebrow">Neler değişti</p><h1 tabindex="-1">Sürüm defteri</h1>
-      <p class="lede">Uygulama yaşıyor. Her sürümde neler değiştiği, kenar notu gibi.</p></div>
+    <div class="room-head"><p class="eyebrow">What's new</p><h1 tabindex="-1">Release notes</h1>
+      <p class="lede">The app is alive. What changed in each version, written like margin notes.</p></div>
     <div class="log" id="log"></div>
     <div class="next" data-next="neler neden soz"></div>
   </div>
@@ -834,43 +834,43 @@ footer a{color:var(--slate)}
 <!-- ======================= SÖZLERİMİZ ======================= -->
 <section class="room" data-room="soz" hidden>
   <div class="narrow">
-    <div class="room-head"><p class="eyebrow">Sözlerimiz</p><h1 tabindex="-1">Kuralları sen koyarsın</h1>
-      <p class="lede">Söz vermek kolay. Aşağıdakiler uygulamada bugün nasıl çalıştığı.</p></div>
+    <div class="room-head"><p class="eyebrow">Promises</p><h1 tabindex="-1">You set the rules</h1>
+      <p class="lede">Promises are easy. Here is how the app actually works today.</p></div>
     <div class="vows">
-      <div class="vow"><span class="vow-ic">📴</span><h3>İnternet olmasa da çalışır.</h3><p>Verin cihazında kalır. Bulut yedeklemeyi sen açmadıkça hiçbir yere gitmez.</p></div>
-      <div class="vow"><span class="vow-ic">🔓</span><h3>Hesap istemiyoruz.</h3><p>Kayıt yok, e-posta yok. Aç ve başla. Hesap sadece istersen, cihazlar arası yedek için.</p></div>
-      <div class="vow"><span class="vow-ic">🔔</span><h3>Günde bir kez. En fazla.</h3><p>Tek, nazik bir hatırlatma, seçtiğin saatte. Alışkanlığa özel saat de seçebilirsin. İstemezsen hiçbiri yok.</p></div>
-      <div class="vow"><span class="vow-ic">🚫</span><h3>Dikkatin satılık değil.</h3><p>Reklam yok. Bu değişirse açıkça söyleriz; var olan özellikler sessizce ücretli olmaz.</p></div>
+      <div class="vow"><span class="vow-ic">📴</span><h3>It works without a connection.</h3><p>Your data stays on your device. It goes nowhere unless you turn on cloud backup yourself.</p></div>
+      <div class="vow"><span class="vow-ic">🔓</span><h3>No account needed.</h3><p>No sign-up, no email. Open it and start. An account is only for optional backup across devices.</p></div>
+      <div class="vow"><span class="vow-ic">🔔</span><h3>Once a day. At most.</h3><p>One gentle evening check-in, at a time you choose. You can also give a habit its own time. Or none at all.</p></div>
+      <div class="vow"><span class="vow-ic">🚫</span><h3>Your attention isn't for sale.</h3><p>No ads. If that ever changes we'll say so plainly, and existing features won't quietly get paywalled.</p></div>
     </div>
-    <div class="sub"><h2>Bilerek yapmadıklarımız</h2>
+    <div class="sub"><h2>Things we chose not to build</h2>
       <div class="nots">
-        <div><s>Sosyal akış</s><br>Kimse ne yaptığını görmez.</div>
-        <div><s>Puan, rozet dükkânı</s><br>Alışkanlık oyun değil.</div>
-        <div><s>"Serini kaybedeceksin!"</s><br>Bildirimlerde suçluluk kelimesi yok.</div>
-        <div><s>Solan, üzülen evcil hayvan</s><br>Kaçırdığın gün cezalandırılmaz.</div>
-        <div><s>Zorunlu hesap</s><br>Açmak isteğe bağlı.</div>
-        <div><s>Gizli şifreleme vaadi</s><br>Bulut yedeği uçtan uca şifreli değil; bunu açıkça yazıyoruz.</div>
+        <div><s>A social feed</s><br>Nobody sees what you do.</div>
+        <div><s>Points and a badge shop</s><br>Habits aren't a game.</div>
+        <div><s>"You'll lose your streak!"</s><br>No guilt words in notifications.</div>
+        <div><s>A pet that wilts or cries</s><br>A missed day is never punished.</div>
+        <div><s>A required account</s><br>It's optional.</div>
+        <div><s>A vague encryption promise</s><br>Cloud backup is not end-to-end encrypted, and we say so plainly.</div>
       </div></div>
-    <div class="sub"><h2>Sorular</h2>
+    <div class="sub"><h2>Questions</h2>
       <div class="faq">
-        <details><summary>Vyne'ı şimdi indirebilir miyim?</summary><p>iPhone'daysan evet: App Store'da, ücretsiz. Android sürümü bir sonraki sürümle Play Store'da.</p></details>
-        <details><summary>Ücretsiz mi?</summary><p>Evet, ve reklamsız. İleride değişirse açıkça söyleriz; var olan özellikler sessizce ücretli hale getirilmez.</p></details>
-        <details><summary>Hesap oluşturmam gerekiyor mu?</summary><p>Hayır. Vyne kayıt olmadan, tamamen çevrimdışı çalışır. Hesap sadece isteğe bağlı bulut yedeği için.</p></details>
-        <details><summary>Verilerimi silebilir miyim?</summary><p>Evet, istediğin zaman, doğrudan uygulamanın içinden. Hem cihazdaki veri hem varsa bulut yedeği.</p></details>
-        <details><summary>Telefonumu değiştirirsem?</summary><p>Dosyaya aktarıp yeni telefonda içe alabilirsin; ikinci kez alırsan kopya oluşmaz, eksikleri ekler. Ya da bulut yedeğiyle geri yüklersin.</p></details>
-        <details><summary>Bunu kim yapıyor?</summary><p>Tek kişi. Arkasında ekip ya da şirket yok. Her gün kendim kullanıyorum.</p></details>
+        <details><summary>Can I download Vyne now?</summary><p>On iPhone, yes: it's on the App Store, free. Android arrives on Google Play with the next release.</p></details>
+        <details><summary>Is it free?</summary><p>Yes, with no ads. If that ever changes we'll be upfront about it, and existing features won't quietly get paywalled.</p></details>
+        <details><summary>Do I need an account?</summary><p>No. Vyne works fully offline with no sign-up. An account is only for optional cloud backup.</p></details>
+        <details><summary>Can I delete my data?</summary><p>Yes, any time, right inside the app. Both the data on your device and any cloud backup.</p></details>
+        <details><summary>What if I change phones?</summary><p>Export to a file and import it on the new phone; importing twice makes no duplicates, it only adds what's missing. Or restore from cloud backup.</p></details>
+        <details><summary>Who makes this?</summary><p>One person. No team, no company behind it. I use it every day myself.</p></details>
       </div></div>
-    <div class="sub"><h2>Bir yaprak bırak</h2>
+    <div class="sub"><h2>Leave a leaf</h2>
       <div class="guest">
         <form class="stack" id="guestForm">
-          <label for="guestIn" class="muted" style="font-size:14px">Tek cümle. Bir teşekkür, bir dilek, bir fikir.</label>
+          <label for="guestIn" class="muted" style="font-size:14px">One sentence. A thank-you, a wish, an idea.</label>
           <input id="guestIn" maxlength="90" autocomplete="off" style="font:inherit; font-size:15px; padding:10px 14px; border-radius:12px; border:1.5px solid var(--border); background:var(--bg); color:var(--ink)">
-          <button class="btn2 primary" type="submit" style="justify-self:start">Yaprağı as</button>
-          <p class="draftnote">Yaprağın sadece bu tarayıcıda kalır, bana ulaşmaz. Bana ulaşsın istersen aşağıdaki adrese yaz.</p>
+          <button class="btn2 primary" type="submit" style="justify-self:start">Hang your leaf</button>
+          <p class="draftnote">Your leaf stays in this browser only; it doesn't reach me. To reach me, write to the address below.</p>
         </form>
         <div class="guest-vine" id="guestVine"></div>
       </div></div>
-    <div class="sub"><div class="contact"><p class="eyebrow">Bana yaz</p><p>Bir sorun, bir fikir, bir teşekkür. Hepsini ben okuyorum.</p><code>vyneapp.help@gmail.com</code></div></div>
+    <div class="sub"><div class="contact"><p class="eyebrow">Write to me</p><p>A problem, an idea, a thank-you. I read all of them.</p><code>vyneapp.help@gmail.com</code></div></div>
     <div class="next" data-next="mektup neden yeni"></div>
   </div>
 </section>
@@ -878,19 +878,19 @@ footer a{color:var(--slate)}
 <!-- ======================= VyneOS (gizli) ======================= -->
 <section class="room" data-room="vyneos" hidden>
   <div class="wrap">
-    <div class="room-head"><p class="eyebrow">Gizli dal</p><h1 tabindex="-1">VyneOS · Vyne 1998'de olsaydı</h1>
-      <p class="lede">Logoya basılı tuttun, buradasın. Uygulamada da Notlar'ın eski gizli kapısı buydu. Simgelere dokun, pencereleri sürükle.</p></div>
+    <div class="room-head"><p class="eyebrow">Hidden branch</p><h1 tabindex="-1">VyneOS · if Vyne were from 1998</h1>
+      <p class="lede">You held the logo, so here you are. In the app, that used to be the secret door to Notes. Tap the icons, drag the windows.</p></div>
     <div class="os">
-      <div class="menubar"><span>🌿</span><span>Dosya</span><span>Düzen</span><span>Görünüm</span><span style="margin-left:auto" id="osClock">09:41</span></div>
+      <div class="menubar"><span>🌿</span><span>File</span><span>Edit</span><span>View</span><span style="margin-left:auto" id="osClock">09:41</span></div>
       <div class="desktop" id="desktop">
-        <button class="icon" data-w="wNotes" style="left:12px; top:12px"><span>📁</span>Notlar</button>
-        <button class="icon" data-w="wList" style="left:12px; top:100px"><span>🛒</span>Market</button>
-        <button class="icon" data-w="wJournal" style="left:12px; top:188px"><span>📓</span>Günlük</button>
-        <button class="icon" data-w="wCircle" style="left:12px; top:276px"><span>👥</span>Çevre</button>
-        <div class="win" id="wNotes" style="left:110px; top:20px"><div class="tb"><button aria-label="Kapat"></button><b>Notlar</b></div><div class="bd">📁 Ev<br>📁 Okul<br>📁 Tarifler<br>📝 Tatil fikirleri</div></div>
-        <div class="win" id="wList" style="left:210px; top:120px" hidden><div class="tb"><button aria-label="Kapat"></button><b>Market · s.1</b></div><div class="bd">[x] Süt<br>[x] Yumurta<br>[ ] Domates<br>[ ] Kahve</div></div>
-        <div class="win" id="wJournal" style="left:160px; top:190px" hidden><div class="tb"><button aria-label="Kapat"></button><b>Günlük · bugün</b></div><div class="bd">Bugün ne iyi gitti, neden?<br>&gt; Yağmurda yürüdük._</div></div>
-        <div class="win" id="wCircle" style="left:260px; top:60px" hidden><div class="tb"><button aria-label="Kapat"></button><b>Çevre</b></div><div class="bd">Annem · 🎂 3 gün<br>Can · "yeni iş"<br>Ece · "kitap"</div></div>
+        <button class="icon" data-w="wNotes" style="left:12px; top:12px"><span>📁</span>Notes</button>
+        <button class="icon" data-w="wList" style="left:12px; top:100px"><span>🛒</span>Groceries</button>
+        <button class="icon" data-w="wJournal" style="left:12px; top:188px"><span>📓</span>Journal</button>
+        <button class="icon" data-w="wCircle" style="left:12px; top:276px"><span>👥</span>People</button>
+        <div class="win" id="wNotes" style="left:110px; top:20px"><div class="tb"><button aria-label="Close"></button><b>Notes</b></div><div class="bd">📁 Home<br>📁 School<br>📁 Recipes<br>📝 Holiday ideas</div></div>
+        <div class="win" id="wList" style="left:210px; top:120px" hidden><div class="tb"><button aria-label="Close"></button><b>Groceries · p.1</b></div><div class="bd">[x] Milk<br>[x] Eggs<br>[ ] Tomatoes<br>[ ] Coffee</div></div>
+        <div class="win" id="wJournal" style="left:160px; top:190px" hidden><div class="tb"><button aria-label="Close"></button><b>Journal · today</b></div><div class="bd">What went well today, and why?<br>&gt; A walk in the rain._</div></div>
+        <div class="win" id="wCircle" style="left:260px; top:60px" hidden><div class="tb"><button aria-label="Close"></button><b>People</b></div><div class="bd">Mom · 🎂 in 3 days<br>Sam · "new job"<br>Ella · "the book"</div></div>
       </div>
     </div>
     <div class="next" data-next="oyun dene sen"></div>
@@ -901,9 +901,9 @@ footer a{color:var(--slate)}
 <section class="room" data-room="yok" hidden>
   <div class="narrow cut">
     <svg viewBox="0 0 220 120" width="220" aria-hidden="true"><circle cx="24" cy="60" r="16" fill="var(--green)"/><path d="M40 60 C 90 60, 100 30, 150 30" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/><path d="M150 30 l 14 -8 M150 30 l 12 10" stroke="#C9716F" stroke-width="3" stroke-linecap="round"/></svg>
-    <h1 tabindex="-1" style="font-size:clamp(28px,5vw,44px)">Bu dal henüz büyümedi</h1>
-    <p class="muted">Aradığın sayfa yok ya da henüz yazılmadı.</p>
-    <a class="btn2 primary" href="#sen" style="text-decoration:none">‹ sen'e dön</a>
+    <h1 tabindex="-1" style="font-size:clamp(28px,5vw,44px)">This branch hasn't grown yet</h1>
+    <p class="muted">The page you're looking for doesn't exist, or hasn't been written yet.</p>
+    <a class="btn2 primary" href="#sen" style="text-decoration:none">‹ back to you</a>
   </div>
 </section>
 
@@ -912,16 +912,16 @@ footer a{color:var(--slate)}
 </main>
 
 <div class="dock"><div class="dock-in">
-  <button class="back" id="dockBack" aria-label="Merkeze dön" hidden>‹</button>
-  <a class="btn" id="dlBtn" href="https://apps.apple.com/app/id6790837181" target="_blank" rel="noopener"><span class="ink"></span><span>iPhone için indir</span></a>
-  <span class="note" id="dockNote">basılı tut, yaprak dolsun</span>
+  <button class="back" id="dockBack" aria-label="Back to the center" hidden>‹</button>
+  <a class="btn" id="dlBtn" href="https://apps.apple.com/app/id6790837181" target="_blank" rel="noopener"><span class="ink"></span><span>Download for iPhone</span></a>
+  <span class="note" id="dockNote">press and hold, fill the leaf</span>
 </div></div>
 
 <div class="wrap"><footer>
-  <span>vyne 🌿 · tek kişinin elinden</span>
-  <a href="https://hasankalkanDEV.github.io/vyne-legal/" target="_blank" rel="noopener">Gizlilik</a>
-  <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html" target="_blank" rel="noopener">Kullanım Şartları</a>
-  <a href="#yeni">Neler değişti</a>
+  <span>vyne 🌿 · made by one person</span>
+  <a href="https://hasankalkanDEV.github.io/vyne-legal/" target="_blank" rel="noopener">Privacy</a>
+  <a href="https://hasankalkanDEV.github.io/vyne-legal/terms.html" target="_blank" rel="noopener">Terms</a>
+  <a href="#yeni">What's new</a>
 </footer></div>
 
 <script>
@@ -929,8 +929,8 @@ footer a{color:var(--slate)}
   'use strict';
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
-  var SHOTS = {home:'shot-home.tr.jpg', wheel:'shot-wheel.tr.jpg', stats:'shot-stats.tr.jpg', themes:'shot-themes.tr.jpg', templates:'shot-templates.tr.jpg',
-    a_home:'shots/app-home.webp', a_stats:'shots/app-stats.webp', a_notes:'shots/app-notes.webp', a_wheel:'shots/app-wheel.webp', a_branch:'shots/app-branch.webp'};
+  var SHOTS = {home:'../shot-home.en.jpg', wheel:'../shot-wheel.en.jpg', stats:'../shot-stats.en.jpg', themes:'../shot-themes.en.jpg', templates:'../shot-templates.en.jpg',
+    a_home:'../shots/app-home.webp', a_stats:'../shots/app-stats.webp', a_notes:'../shots/app-notes.webp', a_wheel:'../shots/app-wheel.webp', a_branch:'../shots/app-branch.webp'};
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function store(k,v){ try{ if(v === undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){ return null; } }
 
@@ -950,7 +950,7 @@ footer a{color:var(--slate)}
     }catch(e){}
   }
   var soundBtn = document.getElementById('soundBtn');
-  soundBtn.addEventListener('click', function(){ soundOn = !soundOn; soundBtn.setAttribute('aria-pressed', String(soundOn)); soundBtn.textContent = soundOn ? 'Açık' : 'Kapalı'; tick(880); });
+  soundBtn.addEventListener('click', function(){ soundOn = !soundOn; soundBtn.setAttribute('aria-pressed', String(soundOn)); soundBtn.textContent = soundOn ? 'On' : 'Off'; tick(880); });
 
   /* ---------- Görünüm: tema + kâğıt + gece ---------- */
   var lookBtn = document.getElementById('lookBtn'), look = document.getElementById('look');
@@ -985,18 +985,18 @@ footer a{color:var(--slate)}
 
   /* ---------- Dallar ---------- */
   var ROOMS = [
-    {id:'mektup', t:'Mektup', s:'Neden yaptık, kim yapıyor', c:'#BEA8EE', tw:['el yazısı','masa']},
-    {id:'dene', t:'Dene', s:'İki dakikada kendi sarmaşığın', c:'#96BEE8', tw:['düz liste ↔ sarmaşık','poster']},
-    {id:'kuyu', t:'Seri kuyusu', s:'Yaprak kazanılır, dinlenmek serbest', c:'#E8C87A', tw:['🍃 yaprak','🌙 🤒 ✈️'], fresh:true},
-    {id:'gun', t:'Bir günümüz', s:'Sabahtan pazara yedi durak', c:'#EE96BA', tw:['düşünce bulutu','günlük']},
-    {id:'defter', t:'Defter', s:'Beş kâğıt, beş sayfa', c:'#EEE096', tw:['Cotton','Galaxy']},
-    {id:'neler', t:'Neler var', s:'Her parça ve nasıl kullanılır', c:'#96EEC8', tw:['harita','defterler','şablon denemesi']},
-    {id:'oyun', t:'Oyun köşesi', s:'Çark, şablon testi, yıl yaprakları', c:'#F0B8A8', tw:['çark','test','yıl']},
-    {id:'neden', t:'Neden defteri', s:'Kararların arkasındaki notlar', c:'#B8D4A8', tw:['neden 66?','neden tek bildirim?']},
-    {id:'yeni', t:'Neler değişti', s:'Sürüm defteri', c:'#A8C8E8', tw:['1.4.0 yolda'], fresh:true},
-    {id:'soz', t:'Sözlerimiz', s:'Yapmadıklarımız, sorular, bir yaprak bırak', c:'#F0D8A8', tw:['SSS','ziyaretçi defteri']}
+    {id:'mektup', t:'Letter', s:'Why it exists, who makes it', c:'#BEA8EE', tw:['handwritten','the desk']},
+    {id:'dene', t:'Try it', s:'Your own vine in two minutes', c:'#96BEE8', tw:['flat list ↔ vine','poster']},
+    {id:'kuyu', t:'The streak well', s:'Leaves are earned, rest is free', c:'#E8C87A', tw:['🍃 leaves','🌙 🤒 ✈️'], fresh:true},
+    {id:'gun', t:'A day with Vyne', s:'Seven stops, morning to Monday', c:'#EE96BA', tw:['thought cloud','journal']},
+    {id:'defter', t:'Notebook', s:'Five papers, five pages', c:'#EEE096', tw:['Cotton','Galaxy']},
+    {id:'neler', t:'What\'s inside', s:'Every piece and how to use it', c:'#96EEC8', tw:['the map','notebooks','try a template']},
+    {id:'oyun', t:'Play corner', s:'The wheel, a template quiz, a year in leaves', c:'#F0B8A8', tw:['wheel','quiz','year']},
+    {id:'neden', t:'Why notes', s:'The notes behind each decision', c:'#B8D4A8', tw:['why 66?','why one notification?']},
+    {id:'yeni', t:'What\'s new', s:'Release notes', c:'#A8C8E8', tw:['1.4.0 on the way'], fresh:true},
+    {id:'soz', t:'Promises', s:'What we left out, questions, leave a leaf', c:'#F0D8A8', tw:['FAQ','guestbook']}
   ];
-  var TITLES = {sen:'sen', vyneos:'VyneOS', yok:'Bulunamadı', atolye:'Bu önizleme'};
+  var TITLES = {sen:'you', vyneos:'VyneOS', yok:'Not found', atolye:'This preview'};
   ROOMS.forEach(function(r){ TITLES[r.id] = r.t; });
   document.getElementById('nodes').innerHTML = ROOMS.map(function(r){
     return '<a class="node'+(r.fresh?' fresh':'')+'" href="#'+r.id+'" style="--c:'+r.c+'"><i class="nd"></i><b>'+esc(r.t)+'</b><span class="s">'+esc(r.s)+'</span><span class="twigs">'+r.tw.map(function(x){ return '<i>'+esc(x)+'</i>'; }).join('')+'</span></a>';
@@ -1027,11 +1027,11 @@ footer a{color:var(--slate)}
   document.addEventListener('click', function(e){ var a = e.target.closest && e.target.closest('a[href^="#"]'); if(a){ lastClick = {x:e.clientX, y:e.clientY}; if(a.closest('.vinehub') || a.closest('.next')) direction = 'map'; } }, true);
   function fillNext(){
     [].forEach.call(document.querySelectorAll('.next[data-next]'), function(n){
-      n.innerHTML = '<p class="eyebrow">Sıradaki dallar</p><div class="next-grid">' + n.dataset.next.split(' ').map(function(id){
+      n.innerHTML = '<p class="eyebrow">Next branches</p><div class="next-grid">' + n.dataset.next.split(' ').map(function(id){
         if(id === 'sen') return '';
         var r = ROOMS.filter(function(x){ return x.id === id; })[0];
         return '<a class="twig-card" href="#'+id+'" style="--c:'+r.c+'"><b>'+esc(r.t)+'</b><span>'+esc(r.s)+'</span></a>';
-      }).join('') + '<a class="twig-card" href="#sen" style="--c:#6E9468"><b>‹ sen</b><span>Merkeze dön</span></a></div>';
+      }).join('') + '<a class="twig-card" href="#sen" style="--c:#6E9468"><b>‹ you</b><span>Back to the center</span></a></div>';
     });
   }
   var onEnter = {};
@@ -1052,9 +1052,9 @@ footer a{color:var(--slate)}
     current = id;
     if(toHome) renderHome();
     renderStem();
-    crumbs.innerHTML = toHome ? '<b>sen</b>' : '<a href="#sen">sen</a><span class="sep">›</span><b>'+esc(TITLES[id])+'</b>';
+    crumbs.innerHTML = toHome ? '<b>you</b>' : '<a href="#sen">you</a><span class="sep">›</span><b>'+esc(TITLES[id])+'</b>';
     back.hidden = toHome;
-    document.title = toHome ? 'Vyne Sarmaşık Site' : TITLES[id] + ' · Vyne';
+    document.title = toHome ? 'Vyne Vine Site' : TITLES[id] + ' · Vyne';
     window.scrollTo(0,0);
     var h = el.querySelector('h1'); if(h && !initial){ try{ h.focus({preventScroll:true}); }catch(e){} }
     if(toHome) requestAnimationFrame(drawHub);
@@ -1077,7 +1077,7 @@ footer a{color:var(--slate)}
   dl.addEventListener('pointerdown', function(){
     if(reduce) return; dlDone = false; dlStart = performance.now();
     (function step(t){ var p = Math.min(1, (t - dlStart)/900); dl.style.setProperty('--fill', p);
-      if(p < 1) dlT = requestAnimationFrame(step); else { dlDone = true; tick(990); if(navigator.vibrate) navigator.vibrate(20); document.getElementById('dockNote').textContent = 'yaprak doldu 🍃'; }
+      if(p < 1) dlT = requestAnimationFrame(step); else { dlDone = true; tick(990); if(navigator.vibrate) navigator.vibrate(20); document.getElementById('dockNote').textContent = 'leaf filled 🍃'; }
     })(dlStart);
   });
   ['pointerup','pointerleave','pointercancel'].forEach(function(ev){ dl.addEventListener(ev, dlStop); });
@@ -1095,16 +1095,16 @@ footer a{color:var(--slate)}
   }
 
   /* ---------- Almanak ---------- */
-  var now = new Date(), DOW = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'], MON = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
-  var SEASON = ['kış','kış','ilkbahar','ilkbahar','ilkbahar','yaz','yaz','yaz','sonbahar','sonbahar','sonbahar','kış'];
-  var QS = ['Bugün ne iyi gitti, neden?','Yarın için tek bir şey.','Bugün neyi yoluna koydun?','Her şey olabileceği kadar iyi gitseydi...','Bugün neler yaşadı?'];
+  var now = new Date(), DOW = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var SEASON = ['winter','winter','spring','spring','spring','summer','summer','summer','autumn','autumn','autumn','winter'];
+  var QS = ['What went well today, and why?','One thing for tomorrow.','What did you sort out today?','If everything had gone as well as it possibly could...','What did you get up to today?'];
   var doy = Math.floor((now - new Date(now.getFullYear(),0,0))/864e5);
   var age = (((now - Date.UTC(2000,0,6,18,14))/864e5) % 29.530588 + 29.530588) % 29.530588;
-  var phase = age<1.8?'yeni ay':age<7.4?'hilal':age<9.2?'ilk dördün':age<14.8?'büyüyen ay':age<16.6?'dolunay':age<22.1?'küçülen ay':age<23.9?'son dördün':'son hilal';
-  document.getElementById('almDow').textContent = DOW[now.getDay()] + ' · ' + SEASON[now.getMonth()] + (now.getDay() === 1 ? ' · haftaya bakma günü' : '');
+  var phase = age<1.8?'new moon':age<7.4?'waxing crescent':age<9.2?'first quarter':age<14.8?'waxing gibbous':age<16.6?'full moon':age<22.1?'waning gibbous':age<23.9?'last quarter':'waning crescent';
+  document.getElementById('almDow').textContent = DOW[now.getDay()] + ' · ' + SEASON[now.getMonth()] + (now.getDay() === 1 ? ' · look back at the week' : '');
   document.getElementById('almDay').textContent = now.getDate();
   document.getElementById('almMonth').textContent = MON[now.getMonth()] + ' ' + now.getFullYear();
-  document.getElementById('almMoon').textContent = 'gökyüzü: ' + phase + ' · yılın ' + doy + '. günü';
+  document.getElementById('almMoon').textContent = 'sky: ' + phase + ' · day ' + doy + ' of the year';
   document.getElementById('almQ').textContent = QS[doy % QS.length];
   var ac = document.getElementById('almCanvas');
   function drawAlm(){
@@ -1145,7 +1145,7 @@ footer a{color:var(--slate)}
   };
 
   /* ---------- Dene: düz liste ↔ sarmaşık (sağa) ---------- */
-  var ITEMS = [['İş','#BEA8EE',1],['Sağlık','#96BEE8',1],['Ev','#EE96BA',1],['Rapor teslim','#BEA8EE'],['Süt al','#EE96BA'],['Su içmek','#96BEE8'],['Toplantı notu','#BEA8EE'],['Kira','#EE96BA'],['10 dk yürüyüş','#96BEE8'],['Dişçi','#96BEE8'],['Çamaşır','#EE96BA'],['Sunum','#BEA8EE']];
+  var ITEMS = [['Work','#BEA8EE',1],['Health','#96BEE8',1],['Home','#EE96BA',1],['Report due','#BEA8EE'],['Buy milk','#EE96BA'],['Drink water','#96BEE8'],['Meeting notes','#BEA8EE'],['Rent','#EE96BA'],['10 min walk','#96BEE8'],['Dentist','#96BEE8'],['Laundry','#EE96BA'],['Slides','#BEA8EE']];
   var box = document.getElementById('flipbox'), fsvg = document.getElementById('flipSvg'), itEls = [], vineMode = false;
   ITEMS.forEach(function(it){ var d = document.createElement('div'); d.className = 'it'; d.style.setProperty('--c', it[1]); d.innerHTML = '<i></i>'+esc(it[0]); box.appendChild(d); itEls.push(d); });
   function layoutFlip(){
@@ -1158,14 +1158,14 @@ footer a{color:var(--slate)}
       paths += '<path d="M '+(colX+78)+' '+h.y+' C '+(colX+120)+' '+h.y+', '+(leafX-30)+' '+y+', '+leafX+' '+y+'" stroke="'+it[1]+'" stroke-width="2" fill="none" opacity=".8"/>'; });
     paths += '<circle cx="'+hubX+'" cy="'+hubY+'" r="14" fill="#6E9468"/>'; fsvg.setAttribute('viewBox','0 0 '+W+' '+H); fsvg.innerHTML = paths;
   }
-  document.getElementById('flipBtn').addEventListener('click', function(){ vineMode = !vineMode; box.classList.toggle('vine', vineMode); this.textContent = vineMode ? 'Düz listeye döndür' : 'Sarmaşığa çevir'; layoutFlip(); tick(vineMode?760:420); });
+  document.getElementById('flipBtn').addEventListener('click', function(){ vineMode = !vineMode; box.classList.toggle('vine', vineMode); this.textContent = vineMode ? 'Back to a flat list' : 'Turn it into a vine'; layoutFlip(); tick(vineMode?760:420); });
   addEventListener('resize', layoutFlip);
 
   /* ---------- Dene: kendi sarmaşığın (sağa, uygulamadaki sütunlar gibi) ---------- */
   var COLORS = ['#BEA8EE','#96BEE8','#EE96BA','#EEE096','#96EEC8','#F0D8A8'];
-  var SUGG = ['Sağlık','İş','Ev','Para','Okul','Spor','Aile','Hobi'];
-  var TWIGS = {'Sağlık':['Su içmek','Uyku'],'İş':['Rapor','Toplantı'],'Ev':['Çamaşır','Kira'],'Para':['Bütçe','Birikim'],'Okul':['Sınav','Tekrar'],'Spor':['Yürüyüş','Antrenman'],'Aile':['Annemi ara','Doğum günü'],'Hobi':['Okumak','Gitar']};
-  var branches = ['Sağlık','İş','Ev'], pick = document.getElementById('bPick'), bvine = document.getElementById('bVine');
+  var SUGG = ['Health','Work','Home','Money','School','Sports','Family','Hobby'];
+  var TWIGS = {'Health':['Drink water','Sleep'],'Work':['Report','Meeting'],'Home':['Laundry','Rent'],'Money':['Budget','Savings'],'School':['Exam','Review'],'Sports':['Walk','Training'],'Family':['Call mom','Birthday'],'Hobby':['Reading','Guitar']};
+  var branches = ['Health','Work','Home'], pick = document.getElementById('bPick'), bvine = document.getElementById('bVine');
   function drawVine(grown){
     var n = branches.length, hubX = 40, hubY = 190, colX = 170, twX = 380, out = '', gap = 340/Math.max(n,1);
     branches.forEach(function(b,i){
@@ -1175,7 +1175,7 @@ footer a{color:var(--slate)}
       tw.forEach(function(t,k){ var ty = y + (k ? 16 : -16); out += '<path class="tw" stroke="'+c+'" d="M '+(colX+150)+' '+y+' C '+(colX+180)+' '+y+', '+(twX-30)+' '+ty+', '+twX+' '+ty+'"/><text x="'+(twX+6)+'" y="'+(ty+5)+'" style="font-size:13.5px;font-weight:700;fill:var(--slate)">'+esc(t)+'</text>'; });
       out += '<g><rect class="nb" x="'+colX+'" y="'+(y-18)+'" width="150" height="36" rx="12"/><circle cx="'+(colX+16)+'" cy="'+y+'" r="6" fill="'+c+'"/><text x="'+(colX+29)+'" y="'+(y+5)+'">'+esc(b)+'</text></g>';
     });
-    out += '<circle cx="'+hubX+'" cy="'+hubY+'" r="32" fill="none" stroke="#6E9468" stroke-width="2.5" opacity=".4"/><circle cx="'+hubX+'" cy="'+hubY+'" r="24" fill="#6E9468"/><text x="'+hubX+'" y="'+(hubY+52)+'" text-anchor="middle" style="fill:var(--slate);font-size:14px">sen</text>';
+    out += '<circle cx="'+hubX+'" cy="'+hubY+'" r="32" fill="none" stroke="#6E9468" stroke-width="2.5" opacity=".4"/><circle cx="'+hubX+'" cy="'+hubY+'" r="24" fill="#6E9468"/><text x="'+hubX+'" y="'+(hubY+52)+'" text-anchor="middle" style="fill:var(--slate);font-size:14px">you</text>';
     bvine.innerHTML = out;
   }
   function drawPick(){ pick.innerHTML = ''; SUGG.forEach(function(s){ var b = document.createElement('button'); b.type = 'button'; b.textContent = s; b.setAttribute('aria-pressed', String(branches.indexOf(s)>-1)); b.addEventListener('click', function(){ toggleB(s); }); pick.appendChild(b); }); }
@@ -1194,9 +1194,9 @@ footer a{color:var(--slate)}
       var c = document.createElement('canvas'); c.width = 1200; c.height = 900; var g = c.getContext('2d');
       g.fillStyle = v('--bg'); g.fillRect(0,0,1200,900);
       g.fillStyle = v('--ink'); g.font = '900 44px Nunito, system-ui, sans-serif'; g.fillText('vyne.', 60, 88);
-      g.fillStyle = v('--slate'); g.font = '700 26px Caveat, cursive'; g.fillText('hayatımın haritası', 190, 86);
+      g.fillStyle = v('--slate'); g.font = '700 26px Caveat, cursive'; g.fillText('the map of my life', 190, 86);
       g.drawImage(img, 40, 110, 1120, 760);
-      c.toBlob(function(b){ if(!b) return; var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'vyne-haritam.png'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000); document.getElementById('posterNote').textContent = 'İndirildi: vyne-haritam.png'; tick(880); });
+      c.toBlob(function(b){ if(!b) return; var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'vyne-my-map.png'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000); document.getElementById('posterNote').textContent = 'Downloaded: vyne-my-map.png'; tick(880); });
     };
     img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(svg));
   });
@@ -1236,17 +1236,17 @@ footer a{color:var(--slate)}
       var cls = s === 'done' ? 'done' : s === 'leaf' ? 'leaf' : (s === 'rest' || s === 'sick' || s === 'travel') ? 'rest' : s === 'broken' ? 'broken' : '';
       b.className = 'dy ' + cls + (i === N-1 ? ' today' : '');
       b.textContent = EMO[s] || (r.earnedAt.indexOf(i) > -1 ? '+🍃' : (i+1));
-      b.setAttribute('aria-label', (i+1)+'. gün: '+({done:'yapıldı', leaf:'yaprak korudu', rest:'dinlenme', sick:'hasta', travel:'yolculuk', broken:'seri koptu'}[s] || 'işaretsiz'));
+      b.setAttribute('aria-label', 'Day '+(i+1)+': '+({done:'done', leaf:'kept by a leaf', rest:'rest', sick:'sick', travel:'travel', broken:'streak broke'}[s] || 'unmarked'));
       b.addEventListener('click', function(){ kdays[i] = (kdays[i] === mode) ? null : mode; drawK(); tick(s === 'done' ? 520 : 680); });
       kDaysEl.appendChild(b);
     });
     document.getElementById('kStreak').textContent = r.streak;
     [].forEach.call(document.getElementById('kLeaves').children, function(sp,k){ sp.classList.toggle('on', k < r.leaves); });
     var msg, last = r.out.filter(function(x){ return x; }).slice(-1)[0];
-    if(r.out.indexOf('broken') > -1 && last !== 'done' && last !== 'leaf') msg = 'Seri koptu. Ya yaprağın yoktu ya da iki gün üst üste boş kaldı. Yeniden başlamak serbest.';
-    else if(r.out.indexOf('leaf') > -1) msg = r.streak+' günlük seri. Kaçan bir günü yaprak kurtardı: "Bir Yaprak Düştü".';
-    else if(r.out.some(function(x){ return x === 'rest' || x === 'sick' || x === 'travel'; })) msg = r.streak+' günlük seri. Dinlenme günlerinde serin bekledi: ne uzadı, ne bozuldu.';
-    else msg = r.streak+' günlük seri. '+LEAF_EVERY+' gün üst üste yapınca ilk yaprak gelir.';
+    if(r.out.indexOf('broken') > -1 && last !== 'done' && last !== 'leaf') msg = 'The streak broke. Either you had no leaf, or two days in a row were empty. Starting again is always allowed.';
+    else if(r.out.indexOf('leaf') > -1) msg = r.streak+'-day streak. A leaf saved a missed day: "A Leaf Fell".';
+    else if(r.out.some(function(x){ return x === 'rest' || x === 'sick' || x === 'travel'; })) msg = r.streak+'-day streak. On rest days your streak waited: it didn\'t grow, it didn\'t break.';
+    else msg = r.streak+'-day streak. '+LEAF_EVERY+' days in a row earns your first leaf.';
     document.getElementById('kMsg').textContent = msg;
   }
   [].forEach.call(document.querySelectorAll('.mode button'), function(b){ b.addEventListener('click', function(){ mode = b.dataset.mode; [].forEach.call(b.parentNode.children, function(o){ o.setAttribute('aria-pressed', String(o === b)); }); }); });
@@ -1255,17 +1255,17 @@ footer a{color:var(--slate)}
   document.getElementById('leafEveryTxt').textContent = LEAF_EVERY;
   drawK();
   var MARKS = [
-    {d:1, t:'Gün 1', s:'Kolay. İkincisi de kolay.'},
-    {d:4, t:'Gün 4 · bir hasta günü', s:'🤒 işaretledin. Serin seni bekler: ne uzar, ne bozulur. Yaprak harcanmaz.', k:'rest'},
-    {d:LEAF_EVERY, t:'Gün '+LEAF_EVERY+' · ilk yaprak', s:LEAF_EVERY+' gün üst üste yaptın; alışkanlık artık alışkanlık. Bir de burada küçük bir sürpriz var, uygulamada görürsün.', k:'leaf'},
-    {d:LEAF_EVERY*2, t:'Gün '+(LEAF_EVERY*2)+' · ikinci yaprak', s:'Artık iki yaprağın var. Daha fazlası birikmez.', k:'leaf'},
-    {d:18, t:'Gün 18 · dün unuttun', s:'Bugün açtığında bir yaprak dünü kurtarmış: "Bir Yaprak Düştü." Seri sürüyor.', k:'leaf'},
-    {d:20, t:'Gün 20 · "aslında yapmıştım"', s:'Dünü ya da önceki günü sonradan düzeltebilirsin. Yaprak geri gelir.'},
-    {d:30, t:'Gün 30', s:'Otuzuncu gün zor gün. Buraya geldin. Bir sürpriz daha.'},
-    {d:41, t:'Gün 41 · yolculuk', s:'✈️ yoldasın. Seri bekler, dönünce devam.', k:'rest'},
-    {d:52, t:'Gün 52 · üç gündür yoksun', s:'Uygulamayı açınca "Tekrar hoş geldin 🌿 Yetişmen gereken bir şey yok."'},
-    {d:66, t:'Gün 66 · gerçek eşik', s:'Uydurma değil: Phillippa Lally\'nin (UCL) çalışmasında bir alışkanlığın kendiliğinden olmaya başladığı ortanca süre.'},
-    {d:100, t:'Gün 100', s:'Dibe geldin. Kurallar hep aynıydı: yaprak kazanılır, sadece dünü kurtarır, dinlenmek serbest.'}
+    {d:1, t:'Day 1', s:'Easy. So is day two.'},
+    {d:4, t:'Day 4 · a sick day', s:'You marked it 🤒. Your streak waits: it doesn\'t grow, it doesn\'t break. No leaf is spent.', k:'rest'},
+    {d:LEAF_EVERY, t:'Day '+LEAF_EVERY+' · first leaf', s:LEAF_EVERY+' days in a row; the habit is a habit now. There\'s also a small surprise here. You\'ll see it in the app.', k:'leaf'},
+    {d:LEAF_EVERY*2, t:'Day '+(LEAF_EVERY*2)+' · second leaf', s:'Now you hold two leaves. You can\'t hold more.', k:'leaf'},
+    {d:18, t:'Day 18 · you forgot yesterday', s:'When you open the app today, a leaf has saved yesterday: "A Leaf Fell." The streak goes on.', k:'leaf'},
+    {d:20, t:'Day 20 · "I actually did it"', s:'You can fix yesterday and the day before. The leaf comes back.'},
+    {d:30, t:'Day 30', s:'Day thirty is the hard one. You got here. Another surprise.'},
+    {d:41, t:'Day 41 · travel', s:'✈️ You\'re on the road. The streak waits and carries on when you\'re back.', k:'rest'},
+    {d:52, t:'Day 52 · three days away', s:'Open the app and it says "Welcome back. Nothing to catch up on."'},
+    {d:66, t:'Day 66 · a real threshold', s:'Not made up: in Phillippa Lally\'s study at UCL, the median time for a habit to become automatic.'},
+    {d:100, t:'Day 100', s:'You reached the bottom. The rules never changed: leaves are earned, a leaf only saves yesterday, rest is free.'}
   ];
   var wellInner = document.getElementById('wellInner'), well = document.getElementById('well'), depth = document.getElementById('depth'), prevY = -999, WH = 2700, pad = 60;
   MARKS.sort(function(a,b){ return a.d-b.d; }).forEach(function(m){
@@ -1273,23 +1273,23 @@ footer a{color:var(--slate)}
     var el = document.createElement('div'); el.className = 'mark'+(m.k?' '+m.k:'')+(m.d >= 41 ? ' deep' : ''); el.style.top = y+'px';
     el.innerHTML = '<span class="dotm"></span><span>'+esc(m.t)+'<small>'+esc(m.s)+'</small></span>'; wellInner.appendChild(el);
   });
-  well.addEventListener('scroll', function(){ var p = well.scrollTop/(well.scrollHeight - well.clientHeight); depth.textContent = 'Gün ' + Math.max(1, Math.round(1 + p*99)); }, {passive:true});
+  well.addEventListener('scroll', function(){ var p = well.scrollTop/(well.scrollHeight - well.clientHeight); depth.textContent = 'Day ' + Math.max(1, Math.round(1 + p*99)); }, {passive:true});
 
   /* ---------- Bir günümüz ---------- */
   var STOPS = [
-    {t:'07:30', part:'sabah', sky:['#F6E2BE','#F8F6F0'], title:'Güne bakmak, beş uygulama açmadan', dert:'"Bugün ne yapacaktım?" derken telefonu elimden bırakamıyordum.', how:'Bugünün alışkanlıkları en üstte, hepsi bitince "All done!". Altında hayatın sağa doğru dal dal duruyor.', shot:'a_home'},
-    {t:'12:40', part:'öğle', sky:['#CFE3F2','#F8F6F0'], title:'Aklına geleni buluta yaz', dert:'Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.', how:'Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.', scr:'cloud'},
-    {t:'17:15', part:'akşamüstü', sky:['#F2D2B5','#F5EFE0'], title:'Liste de hatırlatıcı da dalın ucunda', dert:'Market listesi bir yerde, kira hatırlatıcısı başka yerde.', how:'Logonun altındaki "notes"a dokun, Ekle: klasör, not, liste, hatırlatıcı, çevre, haftalık defter, günlük. Kâğıdını da orada seçersin.', shot:'a_notes'},
-    {t:'19:00', part:'akşam', sky:['#E6C7D8','#F7F2F6'], title:'Karar veremeyince çarkı çevir', dert:'Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.', how:'Başlıktaki "Karar veremiyor musun?"a dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.', shot:'a_wheel'},
-    {t:'21:00', part:'hasta akşam', sky:['#DCE6F5','#F2F4F8'], title:'Bugün hastayım, seri ne olacak?', dert:'Hasta olunca seri gidiyor, sonra hepsini bırakıyorum.', how:'Dalın sayfasını aç: takvimde günü seç, "ya da bugün ara ver" → 🤒 Hasta. Serin seni bekler: ne uzar, ne bozulur. Dünü ve önceki günü sonradan da düzeltebilirsin.', shot:'a_branch'},
-    {t:'22:30', part:'gece', sky:['#1B1E3A','#12142A'], night:true, title:'Günlük, istersen bir soruyla', dert:'Günlük tutmak istiyorum ama boş sayfa korkutuyor.', how:'Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.', scr:'journal'},
-    {t:'Pazartesi', part:'hafta', sky:['#DCE9D4','#F3F1DE'], title:'Haftaya bir bakış', dert:'Hafta nasıl geçti, hiç düşünmüyorum.', how:'İstatistik günleri, haftanın şeklini ve son 12 haftayı gösterir. Gri kare sadece "o gün bir şey olmadı" demek, fazlası değil. Pazartesileri günlükte haftaya bakan üç soru daha çıkar.', shot:'a_stats'}
+    {t:'7:30', part:'morning', sky:['#F6E2BE','#F8F6F0'], title:'See the day without opening five apps', dert:'"What was I supposed to do today?" and I couldn\'t put the phone down.', how:'Today\'s habits sit at the top; when they\'re all ticked it says "All done!". Below, your life branches out to the right.', shot:'a_home'},
+    {t:'12:40', part:'midday', sky:['#CFE3F2','#F8F6F0'], title:'Write it on the cloud', dert:'A thought hits me in a meeting and flies away before I find the right place for it.', how:'Tap the little cloud rising from your profile bubble and write. It lands in your Inbox; in the evening, "Send to…" puts it in the right folder.', scr:'cloud'},
+    {t:'17:15', part:'late afternoon', sky:['#F2D2B5','#F5EFE0'], title:'Lists and reminders, right where they belong', dert:'The grocery list lives in one app, the rent reminder in another.', how:'Tap "notes" under the logo, then Add: folder, note, list, reminders, circle, weekly diary, daily journal. You pick the paper right there.', shot:'a_notes'},
+    {t:'19:00', part:'evening', sky:['#E6C7D8','#F7F2F6'], title:'Can\'t decide? Spin for one', dert:'I\'m tired and don\'t know where to start. So I start nothing.', how:'Tap "Can\'t decide? Spin for one" in the header and the wheel picks one of today\'s habits. Just 2 minutes: that\'s the whole rule.', shot:'a_wheel'},
+    {t:'21:00', part:'a sick evening', sky:['#DCE6F5','#F2F4F8'], title:'I\'m sick today. What about my streak?', dert:'When I get sick the streak goes, and then I drop everything.', how:'Open the branch page, pick the day, "or take a break today" → 🤒 Sick. Your streak waits: it doesn\'t grow, it doesn\'t break. You can also fix yesterday and the day before.', shot:'a_branch'},
+    {t:'22:30', part:'night', sky:['#1B1E3A','#12142A'], night:true, title:'A journal, with a question if you want one', dert:'I want to keep a journal, but the blank page scares me.', how:'One page a day. If you don\'t know what to write, it offers a question. It also shows what you wrote a year ago today.', scr:'journal'},
+    {t:'Monday', part:'the week', sky:['#DCE9D4','#F3F1DE'], title:'A look back at the week', dert:'I never stop to think about how the week went.', how:'Stats shows your days, your week\'s shape and the last 12 weeks. Grey means nothing happened. Nothing more. On Mondays the journal adds three questions about the week.', shot:'a_stats'}
   ];
   var SCR = {
-    cloud:'<div class="scr" style="background:#F8F6F0"><div style="display:flex;align-items:center;gap:10px"><span style="width:52px;height:52px;border-radius:50%;background:#6E9468;display:block"></span><div class="cloud">Aklında ne var?</div></div><div class="field"><b>Pazartesi rapor at</b></div><h4 style="margin-top:6px">Gelen Kutusu</h4><div class="row">Salı dişçi randevusu<span class="tagx">Gönder…</span></div><div class="row">Kitap önerisi</div><span class="draft">çizim</span></div>',
-    list:'<div class="scr" style="background:#F9F7F3"><div style="line-height:1"><b style="font-size:18px">vyne<span style="color:#4A6E45">.</span></b><br><span style="font-family:Caveat,cursive;font-size:15px;color:#6C6860;margin-left:12px">notes</span></div><h4>Market · Sayfa 1</h4><div class="row"><span class="cb x"></span><s>Süt</s></div><div class="row"><span class="cb x"></span><s>Yumurta</s></div><div class="row"><span class="cb"></span>Domates</div><h4 style="margin-top:6px">Hatırlat</h4><div class="row">Kira ödemesi<span class="tagx">yarın 09:00</span></div><span class="draft">çizim</span></div>',
-    rest:'<div class="scr" style="background:#F8F6F0"><h4>O gün nasıldı?</h4><div class="row" style="justify-content:center;background:#6E9468;color:#fff;font-weight:800">✓ Yaptım</div><span style="color:#6C6860">ya da bugün ara ver:</span><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="row">🌙 Dinlenme</span><span class="row" style="outline:2px solid #96BEE8">🤒 Hasta</span><span class="row">✈️ Yolculuk</span></div><p style="color:#4A6E45;font-weight:800">Serin seni bekler: ne uzar, ne bozulur.</p><span class="draft">çizim</span></div>',
-    journal:'<div class="scr" style="background:radial-gradient(120% 60% at 70% 10%,#2A2F55,transparent 60%),#12142A;color:#DFE2EC"><span style="font-size:44px;font-weight:900;letter-spacing:-.04em;line-height:1">28</span><span style="opacity:.8">Eylül · Pazartesi</span><p style="font-weight:800;color:#E8C87A">Bugün ne iyi gitti, neden?</p><p style="font-family:Caveat,cursive;font-size:20px;line-height:1.2">Sabah yürüyüşü. Yağmur vardı ama yine de çıktık.</p><p style="opacity:.7;font-size:12px">1 yıl önce bugün</p><span class="draft" style="color:#B39AC0">çizim</span></div>'
+    cloud:'<div class="scr" style="background:#F8F6F0"><div style="display:flex;align-items:center;gap:10px"><span style="width:52px;height:52px;border-radius:50%;background:#6E9468;display:block"></span><div class="cloud">What\'s on your mind?</div></div><div class="field"><b>Send the report Monday</b></div><h4 style="margin-top:6px">Inbox</h4><div class="row">Dentist on Tuesday<span class="tagx">Send to…</span></div><div class="row">Book tip</div><span class="draft">illustration</span></div>',
+    list:'<div class="scr" style="background:#F9F7F3"><div style="line-height:1"><b style="font-size:18px">vyne<span style="color:#4A6E45">.</span></b><br><span style="font-family:Caveat,cursive;font-size:15px;color:#6C6860;margin-left:12px">notes</span></div><h4>Groceries · Page 1</h4><div class="row"><span class="cb x"></span><s>Milk</s></div><div class="row"><span class="cb x"></span><s>Eggs</s></div><div class="row"><span class="cb"></span>Tomatoes</div><h4 style="margin-top:6px">Remind</h4><div class="row">Pay rent<span class="tagx">tomorrow 9:00</span></div><span class="draft">illustration</span></div>',
+    rest:'<div class="scr" style="background:#F8F6F0"><h4>How was that day?</h4><div class="row" style="justify-content:center;background:#6E9468;color:#fff;font-weight:800">✓ Done</div><span style="color:#6C6860">or take a break today:</span><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="row">🌙 Rest</span><span class="row" style="outline:2px solid #96BEE8">🤒 Sick</span><span class="row">✈️ Travel</span></div><p style="color:#4A6E45;font-weight:800">Your streak waits: it doesn\'t grow, it doesn\'t break.</p><span class="draft">illustration</span></div>',
+    journal:'<div class="scr" style="background:radial-gradient(120% 60% at 70% 10%,#2A2F55,transparent 60%),#12142A;color:#DFE2EC"><span style="font-size:44px;font-weight:900;letter-spacing:-.04em;line-height:1">28</span><span style="opacity:.8">September · Monday</span><p style="font-weight:800;color:#E8C87A">What went well today, and why?</p><p style="font-family:Caveat,cursive;font-size:20px;line-height:1.2">A morning walk. It was raining, and we went anyway.</p><p style="opacity:.7;font-size:12px">a year ago today</p><span class="draft" style="color:#B39AC0">illustration</span></div>'
   };
   var day = document.getElementById('day'), stopsEl = document.getElementById('dStops'), dscr = document.getElementById('dScreen'), di = 0;
   STOPS.forEach(function(s,i){ var b = document.createElement('button'); b.type = 'button'; b.textContent = s.t; b.addEventListener('click', function(){ showDay(i); }); stopsEl.appendChild(b); });
@@ -1298,7 +1298,7 @@ footer a{color:var(--slate)}
     day.style.setProperty('--sky1', s.sky[0]); day.style.setProperty('--sky2', s.sky[1]); day.classList.toggle('night', !!s.night);
     document.getElementById('dClock').textContent = s.t; document.getElementById('dPart').textContent = s.part;
     document.getElementById('dTitle').textContent = s.title; document.getElementById('dDert').textContent = s.dert; document.getElementById('dHow').textContent = s.how;
-    dscr.innerHTML = s.shot ? '<img alt="Vyne ekranı" src="'+SHOTS[s.shot]+'">' : SCR[s.scr];
+    dscr.innerHTML = s.shot ? '<img alt="Vyne screen" src="'+SHOTS[s.shot]+'">' : SCR[s.scr];
     [].forEach.call(stopsEl.children, function(b,k){ b.setAttribute('aria-current', String(k === di)); });
     tick(460 + di*40);
   }
@@ -1317,54 +1317,54 @@ footer a{color:var(--slate)}
 
   /* ---------- Neler var ---------- */
   var GROUPS = [
-    {h:'Harita', sub:'Hayatının yapısı', c:'#BEA8EE', items:[
-      {t:'Karşılama', n:1, d:'Yeni bir uygulama açınca nereden başlayacağımı bilemiyorum.', s:['İlk açılışta tek bir sarmaşık büyür: adın, ilk dalın.','Altı tomurcuk sırayla açılır: Notlar, Günlük, Hatırlatıcılar, Çevre, Düşünce bulutu, İstatistik.','İstersen günlük hatırlatma saatini seçersin; sonra ilk yaprağın.']},
-      {t:'Dallar ve yol', d:'Hayatım düz bir listeye sığmıyor.', s:['Ortadaki profilden bir dal aç: İş, Sağlık, Ev…','Her dal sağa doğru kendi sütununu açar; "+ Ekle" ile alt dal ekle.','Üstteki yol hep nerede olduğunu söyler; bir adımına dokun, oraya dön.'], shot:'a_home'},
-      {t:'Dal sayfası', n:1, d:'Bir alışkanlığın bütün hikâyesini tek yerde görmek istiyorum.', s:['Karta dokun, dalın sayfası açılsın.','Büyük seri: korunan, en uzun, toplam gün.','Takvimde dünü ve önceki günü düzeltebilirsin; alt dallar, not ve para da burada.'], shot:'a_branch'},
-      {t:'Alışkanlık, ipucu ve saat', n:1, d:'Yapmak istiyorum ama ne zaman yapacağımı unutuyorum.', s:['Bir dalı alışkanlık yap; bugünküler en üstte.','📍 "Ne zaman / nerede": "Akşam çayından sonra · salondaki koltuk".','⏰ İstersen o alışkanlığa özel bir hatırlatma saati.']},
-      {t:'Yaprak', d:'Bir gün kaçırınca bütün seri gidiyor.', s:['Üst üste '+LEAF_EVERY+' gün yapınca bir yaprak kazanırsın, en fazla '+LEAF_CAP+'.','Bir gün kaçırırsan yaprak o günü kurtarır: "Bir Yaprak Düştü".','Sadece bir önceki günü kurtarır; iki gün üst üste boş kalırsa seri kopar.']},
-      {t:'Dinlenme günleri', n:1, d:'Hasta oldum, tatildeyim; serim bozulsun istemiyorum.', s:['Güne dokun: "ya da bugün ara ver".','🌙 Dinlenme, 🤒 Hasta, ✈️ Yolculuk. Sınırsız.','Serin seni bekler: ne uzar, ne bozulur. Yaprak harcanmaz.']},
-      {t:'Tekrar hoş geldin', n:1, d:'Birkaç gün açmadım, şimdi her şey kırmızı olacak.', s:['3 gün ya da daha uzun aradan sonra nazik bir kart.','"Yetişmen gereken bir şey yok. Bugün için birini seç."','Kaçanları görmek istersen tek dokunuş; istemezsen kapat.']},
-      {t:'Çark', d:'Karar veremiyorum, hiçbirine başlamıyorum.', s:['Çarkı çevir, bir alışkanlık seçsin.','Sadece 2 dakika: süreyi başlat.','Beğenmezsen sınırlı sayıda tekrar çevirebilirsin.'], shot:'a_wheel'},
-      {t:'Şablonlar', d:'Büyük bir döneme nereden başlayacağımı bilmiyorum.', s:['Dokuz hazır başlangıç: Sınav Dönemi, Taşınma, Yeni İş ve diğerleri.','Tarihi seç, dallar ve adımlar hazır gelir.','Aşağıdaki "Şablon denemesi"nde hemen dene.'], shot:'templates'},
-      {t:'İstatistik merceği', n:1, d:'Gerçekten ilerliyor muyum, bilmiyorum.', s:['Hafta, ay ya da yıl seç.','En üstte tek cümle: "Her zamanki gibi." ya da "Her zamankinden 3 fazla."','Günlere göre, haftanın şekli, son 12 hafta; gri sadece "bir şey olmadı" demek.'], shot:'a_stats'},
-      {t:'Arşiv', n:1, d:'Biten işler sarmaşığı kalabalıklaştırıyor.', s:['Biten bir dalda ⋯ → Arşivle.','Sarmaşıktan kalkar, istatistik değişmez.','Aramada "Arşiv" bölümünde hep bulunur.']}
+    {h:'The map', sub:'The shape of your life', c:'#BEA8EE', items:[
+      {t:'A new first run', n:1, d:'I open a new app and don\'t know where to begin.', s:['On first launch a single vine grows: your name, your first branch.','Six buds open one by one: Notes, Journal, Reminders, People, Thought cloud, Stats.','Pick a daily check-in time if you like; then your first leaf.']},
+      {t:'Branches and the path', d:'My life doesn\'t fit in a flat list.', s:['Grow a branch from your profile: Work, Health, Home…','Each branch opens its own column to the right; "+ Add" makes a sub-branch.','The path at the top always shows where you are; tap any step to jump back.'], shot:'a_home'},
+      {t:'Branch page', n:1, d:'I want a habit\'s whole story in one place.', s:['Tap a card and its page opens.','A big streak: days in a row, longest, total.','Fix yesterday and the day before in the calendar; sub-branches, a note and money live here too.'], shot:'a_branch'},
+      {t:'Habits, cues and times', n:1, d:'I mean to do it, then forget when.', s:['Turn a branch into a habit; today\'s are at the top.','📍 "When / where": "After evening tea · the living-room chair".','⏰ Give that habit its own reminder time, if you like.']},
+      {t:'Leaves', d:'Miss one day and the whole streak is gone.', s:['Do it '+LEAF_EVERY+' days in a row and you earn a leaf; you can hold up to '+LEAF_CAP+'.','Miss a day and a leaf saves it: "A Leaf Fell".','A leaf only saves the day before; two empty days in a row break the streak.']},
+      {t:'Rest days', n:1, d:'I\'m sick, or away; I don\'t want my streak to break.', s:['Tap the day: "or take a break today".','🌙 Rest, 🤒 Sick, ✈️ Travel. As many as you need.','Your streak waits: it doesn\'t grow, it doesn\'t break. No leaf is spent.']},
+      {t:'Welcome back', n:1, d:'I haven\'t opened it for days; everything will be red now.', s:['After 3 or more days away, a gentle card.','"Nothing to catch up on. Pick one for today."','One tap shows what you missed, or just close it.']},
+      {t:'The wheel', d:'I can\'t decide, so I start nothing.', s:['Spin the wheel and let it pick a habit.','Just 2 minutes: start the timer.','Don\'t like the pick? You get a few re-spins.'], shot:'a_wheel'},
+      {t:'Templates', d:'A big change is coming and I don\'t know where to start.', s:['Nine one-tap starts: Exam Period, Moving House, New Job and more.','Pick the date; branches and steps come ready.','Try one right now in "Try a template" below.'], shot:'templates'},
+      {t:'Stats as a lens', n:1, d:'Am I actually getting anywhere?', s:['Pick a week, a month or a year.','One plain sentence on top: "About the same as your usual."','Done per day, your week\'s shape, the last 12 weeks. Grey means nothing happened. Nothing more.'], shot:'a_stats'},
+      {t:'Archive', n:1, d:'Finished things crowd the vine.', s:['On a finished branch: ⋯ → Archive.','It leaves the vine; your stats stay the same.','Always findable under "Archived" in Search.']}
     ]},
-    {h:'Defterler', sub:'Aklındaki her şey', c:'#96EEC8', items:[
-      {t:'Düşünce bulutu', n:1, d:'Aklıma gelen şey yerini bulana kadar uçuyor.', s:['Profil balonunun yanında küçük bir bulut yükselir.','Dokun, yaz: Gelen Kutusu\'na düşer.','Sonra "Gönder…" ile doğru klasöre. İstemezsen bulutu saklarsın.']},
-      {t:'vyne / notes', n:1, d:'Notlara nasıl gidiyordum?', s:['Logonun altında kurşun kalemle "notes" yazar.','Tek dokunuş Notlar\'ı açar.','Notlar\'ın içinde aynası seni sarmaşığa geri götürür.']},
-      {t:'Notlar ve klasörler', d:'Notlarım her yere dağılmış.', s:['Sınırsız klasör; içine not, liste ya da hatırlatıcı.','Klasörler baloncuk gibi açılıp kapanır.','Beş kâğıt; Cotton artık dört temaya da uyuyor.'], shot:'a_notes'},
-      {t:'Listeler', d:'Market listesi uzayınca kayboluyorum.', s:['Listeyi adlı sayfalara böl.','Maddeleri işaretle, sayfalar arasında taşı.','Yanlış sildiysen geri al.']},
-      {t:'Hatırlatıcılar', d:'Kira, fatura, randevu: hep son gün.', s:['Tarih, saat ve tekrar seç.','İstersen önceden haber al.','Bildirim gelince "15 dk ertele" ya da "Yarın".']},
-      {t:'Günlük', d:'Günlük tutmak istiyorum ama boş sayfa korkutuyor.', s:['Her gün bir sayfa; istersen bir soru önerir.','Pazartesileri haftaya bakan üç soru daha.','"1 yıl önce bugün" ve takvimle eski günler.']},
-      {t:'Haftalık defter', d:'Uzun yazacak vaktim yok.', s:['Hafta tek sayfa.','Her gün için bir satır yeter.','Haftalar listesinden geçmişe bak.']},
-      {t:'Çevre', d:'Sevdiklerimin doğum gününü, ne anlattıklarını unutuyorum.', s:['Kişi ekle, doğum gününü yaz.','İstersen bir gün önce akşam tek bildirim.','"Ne dediler?" diye kısa notlar düş.']}
+    {h:'Notebooks', sub:'Everything on your mind', c:'#96EEC8', items:[
+      {t:'Thought cloud', n:1, d:'A thought flies away before it finds its place.', s:['A little cloud rises next to your profile bubble.','Tap, write: it lands in your Inbox.','Later, "Send to…" the right folder. Don\'t want it? Hide the cloud.']},
+      {t:'vyne / notes', n:1, d:'How do I get to my notes again?', s:['"notes" is pencilled under the logo.','One tap opens Notes.','Inside Notes, its mirror takes you back to the vine.']},
+      {t:'Notes and folders', d:'My notes are scattered everywhere.', s:['Unlimited folders; put notes, lists or reminders inside.','Folders open and close like bubbles.','Five papers; Cotton now follows all four themes.'], shot:'a_notes'},
+      {t:'Lists', d:'My grocery list gets too long to follow.', s:['Split a list into named pages.','Tick items, move them between pages.','Deleted by mistake? Undo.']},
+      {t:'Reminders', d:'Rent, bills, appointments: always the last minute.', s:['Pick a date, a time and a repeat.','Get an early heads-up if you want one.','When it rings: "Snooze 15 min" or "Tomorrow".']},
+      {t:'Journal', d:'I want to journal, but the blank page scares me.', s:['One page a day; a question if you want one.','On Mondays, three more questions about the week.','"A year ago today" and a calendar of past days.']},
+      {t:'Weekly diary', d:'I don\'t have time to write much.', s:['A whole week on one page.','One line a day is enough.','Look back through the list of weeks.']},
+      {t:'People', d:'I forget birthdays, and what the people I love told me.', s:['Add a person and their birthday.','If you like, one notice the evening before.','Jot short notes: "What did they say?"']}
     ]},
-    {h:'Senin', sub:'Görünüm ve verin', c:'#F0D8A8', items:[
-      {t:'Temalar ve kâğıtlar', d:'Uygulama gözümü yormasın, bana benzesin.', s:['Dört tema: Açık, Sıcak, Koyu, Gece Yarısı.','Beş kâğıt: Bloom, Matcha, Cotton, Space, Galaxy.','Bu sitenin sağ üstündeki "Görünüm" de aynısı.'], shot:'themes'},
-      {t:'Vyne için çizildi', n:1, d:'Emojiler her telefonda başka görünüyor.', s:['Uygulamadaki her ikon ve karakter Vyne için özel çizildi, boyuta göre dört tarzda.','Profilin için 36 karakter; istersen yine kendi emojin.','Kayıtlı emojin değişmez, sadece görünüşü.']},
-      {t:'Her şeyde arama', n:1, d:'O notu nereye yazmıştım?', s:['Arama dallarda, notlarda, listelerde, günlük günlerinde ve kişilerde bulur.','ş, ğ, ı, ö, ü farkını dert etmez: "ogrenci" yazsan da bulur.','Sonuca dokun, doğrudan açılsın.']},
-      {t:'Nazik bildirimler', n:1, d:'Uygulamalar bana suçluluk hissettiriyor.', s:['Akşam hatırlatması tek, sakin bir cümle.','"Serini kaybedeceksin" gibi kelimeler yasak; bir test bunu bekliyor.','Günde en fazla bir kez.']},
-      {t:'Yedek, taşıma, içe aktarma', n:1, d:'Telefon değişince her şey gider mi?', s:['Verin cihazında durur; istersen dosyaya aktar.','İçe alırken kopya oluşmaz: "Ekle" ya da "Değiştir", son 3 işlem geri alınır.','"Eksikleri ekle" silinenleri geri getirir; bulut yedeğinin durumu tek satırda.']}
+    {h:'Yours', sub:'How it looks, and your data', c:'#F0D8A8', items:[
+      {t:'Themes and papers', d:'I want it easy on the eyes, and to feel like mine.', s:['Four themes: Light, Warm, Dark, Midnight.','Five papers: Bloom, Matcha, Cotton, Space, Galaxy.','The "Look" button at the top right of this site does the same.'], shot:'themes'},
+      {t:'Drawn for Vyne', n:1, d:'Emoji look different on every phone.', s:['Every icon and character in the app was drawn just for Vyne, in four styles by size.','36 characters for your profile, or your own emoji.','Your saved emoji never change, only how they look.']},
+      {t:'Search everything', n:1, d:'Where did I write that down?', s:['Search finds branches, notes, lists, journal days and people.','It ignores accents: "cafe" finds "café".','Tap a result and it opens right there.']},
+      {t:'Kind notifications', n:1, d:'Apps keep making me feel guilty.', s:['The evening check-in is one calm sentence.','Words like "you\'ll lose your streak" are banned, and a test guards it.','At most once a day.']},
+      {t:'Backup, moving and import', n:1, d:'Will I lose everything when I change phones?', s:['Your data stays on your device; export to a file if you like.','Importing never duplicates: "Add" or "Replace", and the last 3 imports can be undone.','"Add what\'s missing" brings deleted items back; your cloud backup status fits in one line.']}
     ]}
   ];
   document.getElementById('feats').innerHTML = GROUPS.map(function(g){
-    return '<div class="group"><div class="group-head"><h2>'+g.h+'</h2><span class="muted">'+g.sub+' · '+g.items.length+' parça</span></div><div class="feats">'+g.items.map(function(f){
-      return '<details class="feat" style="--c:'+g.c+'"><summary><i class="fd"></i><b>'+esc(f.t)+(f.n?'<em>yeni</em>':'')+'</b><span class="fdert">'+esc(f.d)+'</span></summary><div class="body"><ol>'+f.s.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ol>'+(f.shot?'<img class="thumb" loading="lazy" alt="'+esc(f.t)+' ekranı (1.3.0)" src="'+SHOTS[f.shot]+'">':'')+'</div></details>';
+    return '<div class="group"><div class="group-head"><h2>'+g.h+'</h2><span class="muted">'+g.sub+' · '+g.items.length+' pieces</span></div><div class="feats">'+g.items.map(function(f){
+      return '<details class="feat" style="--c:'+g.c+'"><summary><i class="fd"></i><b>'+esc(f.t)+(f.n?'<em>new</em>':'')+'</b><span class="fdert">'+esc(f.d)+'</span></summary><div class="body"><ol>'+f.s.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ol>'+(f.shot?'<img class="thumb" loading="lazy" alt="'+esc(f.t)+' screen" src="'+SHOTS[f.shot]+'">':'')+'</div></details>';
     }).join('')+'</div></div>';
   }).join('');
 
   /* Şablon denemesi: uygulamanın 9 şablonunun adları gerçek; dallar temsili. */
   var TPL = [
-    {n:'Sınav Dönemi', q:'Sınav ne zaman?', b:[['Günlük tekrar',['Her gün 1 konu','Hafta sonu genel tekrar']],['Pratik sorular',['Çıkmış sorular','Yanlış defteri']],['Dinlenme',['Uyku düzeni']]]},
-    {n:'Taşınma', q:'Taşınma ne zaman?', b:[['Hazırlık',['Kutu ve bant','Eşya ayıklama']],['Evrak',['Adres değişikliği','Abonelikler']],['Taşınma günü',['Nakliye','Anahtar teslimi']]]},
-    {n:'Yeni İş', q:'İlk gün ne zaman?', b:[['İlk hafta',['İnsanlarla tanış','Araçları kur']],['Öğrenme',['Notlar','Sorular listesi']],['Kendin',['Aylık bir değerlendirme']]]},
-    {n:'Bütçe', q:'Hangi aydan başlasın?', b:[['Gelir',['Maaş']],['Giderler',['Kira','Market','Faturalar']],['Birikim',['Aylık hedef']]]},
-    {n:'Yeni Bebek', q:'Tahmini tarih?', b:[['Hazırlık',['Hastane çantası','Oda']],['Sağlık',['Kontroller']],['Destek',['Kimden ne yardım']]]},
-    {n:'Yeni Başlangıç', q:'Ne zaman başlıyorsun?', b:[['Bırakılacaklar',['Bir alışkanlık']],['Eklenecekler',['Küçük bir rutin']],['Hatırlatma',['Neden başladım?']]]},
-    {n:'Bırakıyorum', q:'Bırakma günü?', b:[['Tetikleyiciler',['Ne zaman, nerede']],['Yerine',['Kısa bir yürüyüş']],['Destek',['Kime söyleyeceğim']]]},
-    {n:'Düğün', q:'Düğün ne zaman?', b:[['Mekân',['Görüşmeler','Kapora']],['Davetliler',['Liste','Davetiye']],['Gün',['Program','Müzik']]]},
-    {n:'Yeni Dönem', q:'Dönem ne zaman başlıyor?', b:[['Dersler',['Program','Kaynaklar']],['Düzen',['Haftalık plan']],['Sosyal',['Kulüpler']]]}
+    {n:'Exam Period', q:'When is the exam?', b:[['Daily review',['One topic a day','Weekend recap']],['Practice',['Past papers','Mistakes notebook']],['Rest',['Sleep routine']]]},
+    {n:'Moving House', q:'When do you move?', b:[['Getting ready',['Boxes and tape','Declutter']],['Paperwork',['Change of address','Subscriptions']],['Moving day',['Movers','Hand over keys']]]},
+    {n:'New Job', q:'When is your first day?', b:[['First week',['Meet people','Set up your tools']],['Learning',['Notes','Questions list']],['You',['A monthly check-in']]]},
+    {n:'Budget', q:'Which month does it start?', b:[['Income',['Salary']],['Expenses',['Rent','Groceries','Bills']],['Savings',['Monthly goal']]]},
+    {n:'New Baby', q:'Due date?', b:[['Getting ready',['Hospital bag','The room']],['Health',['Check-ups']],['Support',['Who helps with what']]]},
+    {n:'Fresh Start', q:'When do you start?', b:[['Let go of',['One habit']],['Add',['A small routine']],['Reminder',['Why did I start?']]]},
+    {n:'Quitting', q:'Quit day?', b:[['Triggers',['When and where']],['Instead',['A short walk']],['Support',['Who I\'ll tell']]]},
+    {n:'Wedding', q:'When is the wedding?', b:[['Venue',['Visits','Deposit']],['Guests',['List','Invitations']],['The day',['Schedule','Music']]]},
+    {n:'New Semester', q:'When does the semester start?', b:[['Classes',['Timetable','Materials']],['Routine',['Weekly plan']],['Social',['Clubs']]]}
   ];
   var tplSel = document.getElementById('tplSel'), tplDate = document.getElementById('tplDate'), tplOut = document.getElementById('tplOut');
   tplSel.innerHTML = TPL.map(function(t,i){ return '<option value="'+i+'">'+esc(t.n)+'</option>'; }).join('');
@@ -1372,9 +1372,9 @@ footer a{color:var(--slate)}
   function drawTpl(){
     var t = TPL[+tplSel.value]; document.getElementById('tplQ').textContent = t.q;
     var dd = tplDate.value ? new Date(tplDate.value+'T12:00:00') : null, days = dd ? Math.round((dd - new Date())/864e5) : null;
-    tplOut.innerHTML = '<p class="eyebrow">Bunlar oluşturulacak</p><div class="lvl" style="--c:#6E9468"><i></i><b>'+esc(t.n)+'</b>'+(days!=null?'<small style="margin-left:6px">'+(days>0?days+' gün kaldı':'bugün')+'</small>':'')+'</div>'+
+    tplOut.innerHTML = '<p class="eyebrow">This will be created</p><div class="lvl" style="--c:#6E9468"><i></i><b>'+esc(t.n)+'</b>'+(days!=null?'<small style="margin-left:6px">'+(days>0?days+' days to go':'today')+'</small>':'')+'</div>'+
       t.b.map(function(b,i){ return '<div class="lvl d2" style="--c:'+COLORS[i]+'"><i></i><span><b>'+esc(b[0])+'</b><br><small>'+b[1].map(esc).join(' · ')+'</small></span></div>'; }).join('')+
-      '<p class="draftnote">Şablon adları uygulamadan; içindeki dallar örnek.</p>';
+      '<p class="draftnote">Template names are from the app; the branches inside are examples.</p>';
   }
   tplSel.addEventListener('change', drawTpl); tplDate.addEventListener('change', drawTpl); drawTpl();
 
@@ -1382,16 +1382,16 @@ footer a{color:var(--slate)}
   var wheel = document.getElementById('wheel'), rot = 0, tInt = null;
   wheel.style.background = 'conic-gradient(#BEA8EE 0 120deg,#96BEE8 120deg 240deg,#EE96BA 240deg 360deg)';
   document.getElementById('spinBtn').addEventListener('click', function(){
-    var opts = ['w1','w2','w3'].map(function(id){ return document.getElementById(id).value.trim() || 'Bir iş'; }), pickI = Math.floor(Math.random()*3);
+    var opts = ['w1','w2','w3'].map(function(id){ return document.getElementById(id).value.trim() || 'Something'; }), pickI = Math.floor(Math.random()*3);
     var target = 360 - (pickI*120 + 60); rot += 360*4 + ((target - rot%360) + 360) % 360; wheel.style.transform = 'rotate('+rot+'deg)';
-    var tEl = document.getElementById('timer'); clearInterval(tInt); tEl.textContent = 'Dönüyor…'; tick(400);
-    setTimeout(function(){ var left = 120; function tk(){ var m = Math.floor(left/60), s = left%60; tEl.textContent = '"'+opts[pickI]+'" · sadece 2 dakika: '+m+':'+(s<10?'0':'')+s; if(left-- <= 0){ clearInterval(tInt); tEl.textContent = 'Güzel, başladın.'; } } tk(); tick(880); tInt = setInterval(tk, 1000); }, reduce ? 0 : 3200);
+    var tEl = document.getElementById('timer'); clearInterval(tInt); tEl.textContent = 'Spinning…'; tick(400);
+    setTimeout(function(){ var left = 120; function tk(){ var m = Math.floor(left/60), s = left%60; tEl.textContent = '"'+opts[pickI]+'" · just 2 minutes: '+m+':'+(s<10?'0':'')+s; if(left-- <= 0){ clearInterval(tInt); tEl.textContent = 'Nice, you started.'; } } tk(); tick(880); tInt = setInterval(tk, 1000); }, reduce ? 0 : 3200);
   });
   /* Oyun: hangi şablon sensin */
   var QUIZ = [
-    {q:'Bu ay hayatında en çok ne değişiyor?', a:[['Okul ya da sınav',[0,8]],['İş ya da ev',[1,2]],['Ailem büyüyor',[4,7]],['Kendim',[5,6]]]},
-    {q:'En çok neye ihtiyacın var?', a:[['Düzen',[0,3]],['Hazırlık listesi',[1,4,7]],['Sakin bir başlangıç',[2,5,8]],['Bir alışkanlığı bırakmak',[6]]]},
-    {q:'Sence iyi bir gün nasıl biter?', a:[['Tekrarımı bitirmişim',[0,8]],['Kutular azalmış',[1]],['Hesabım tutmuş',[3]],['İçim rahat',[4,5,6,7,2]]]}
+    {q:'What\'s changing most in your life this month?', a:[['School or exams',[0,8]],['Work or home',[1,2]],['My family is growing',[4,7]],['Me',[5,6]]]},
+    {q:'What do you need most?', a:[['Some order',[0,3]],['A to-do list for getting ready',[1,4,7]],['A calm start',[2,5,8]],['To quit a habit',[6]]]},
+    {q:'How does a good day end?', a:[['My revision is done',[0,8]],['Fewer boxes left',[1]],['The numbers add up',[3]],['I feel at peace',[4,5,6,7,2]]]}
   ];
   var quiz = document.getElementById('quiz'), qi = 0, score = [];
   function drawQuiz(){
@@ -1401,7 +1401,7 @@ footer a{color:var(--slate)}
       [].forEach.call(quiz.querySelectorAll('.qa button'), function(b){ b.addEventListener('click', function(){ q.a[+b.dataset.i][1].forEach(function(t){ score[t]++; }); qi++; tick(600); drawQuiz(); }); });
     } else {
       var best = score.indexOf(Math.max.apply(null, score)), t = TPL[best];
-      quiz.innerHTML = '<div class="res"><span class="eyebrow" style="color:#4A6E45">Sana uyan şablon</span><b>'+esc(t.n)+'</b><p>İlk üç dalın: '+t.b.map(function(b){ return esc(b[0]); }).join(', ')+'.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn2 primary" href="#neler" style="text-decoration:none">Şablonu dene</a><button class="btn2" type="button" id="quizAgain">Tekrar</button></div></div>';
+      quiz.innerHTML = '<div class="res"><span class="eyebrow" style="color:#4A6E45">Your template</span><b>'+esc(t.n)+'</b><p>Your first three branches: '+t.b.map(function(b){ return esc(b[0]); }).join(', ')+'.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn2 primary" href="#neler" style="text-decoration:none">Try the template</a><button class="btn2" type="button" id="quizAgain">Again</button></div></div>';
       document.getElementById('quizAgain').addEventListener('click', function(){ qi = 0; drawQuiz(); }); tick(990);
     }
   }
@@ -1424,39 +1424,39 @@ footer a{color:var(--slate)}
       g.save(); g.translate(p[0],p[1]); g.rotate(ang); g.fillStyle = col; g.beginPath(); g.moveTo(0,0); g.quadraticCurveTo(len*0.5,-len*0.45,len,0); g.quadraticCurveTo(len*0.5,len*0.45,0,0); g.fill(); g.restore();
     });
     yseed = s0;
-    g.fillStyle = '#DFE2EC'; g.font = '800 13px Nunito, sans-serif'; g.fillText('bir yıl · 365 yaprak', 24, 22);
-    g.fillStyle = '#8FBF86'; g.fillText('● yapıldı', 24, H-14); g.fillStyle = '#E8C87A'; g.fillText('● yaprak', 110, H-14); g.fillStyle = '#96BEE8'; g.fillText('● dinlenme', 186, H-14);
+    g.fillStyle = '#DFE2EC'; g.font = '800 13px Nunito, sans-serif'; g.fillText('one year · 365 leaves', 24, 22);
+    g.fillStyle = '#8FBF86'; g.fillText('● done', 24, H-14); g.fillStyle = '#E8C87A'; g.fillText('● leaf', 94, H-14); g.fillStyle = '#96BEE8'; g.fillText('● rest', 156, H-14);
   }
   document.getElementById('yearBtn').addEventListener('click', function(){ yseed = Math.floor(Math.random()*9999)+1; drawYear(); tick(700); });
   onEnter.oyun = drawYear; addEventListener('resize', function(){ if(!rooms.oyun.hidden) drawYear(); });
 
   /* ---------- Neden defteri ---------- */
   var NOTES = [
-    {st:'ağaç 🌳', t:'Neden 66. gün?', p:'Rastgele bir sayı değil. Phillippa Lally\'nin UCL\'deki çalışmasında bir davranışın kendiliğinden olmaya başladığı ortanca süre 66 gün çıktı. Kişiden kişiye çok değişiyor; o yüzden 66 bir eşik, bitiş çizgisi değil.'},
-    {st:'ağaç 🌳', t:'Neden yaprak kazanılıyor?', p:'Hiç kaçırmamayı değil, "iki kez üst üste kaçırmamayı" hedefliyoruz. Ama yaprak bedava olsaydı seri bir anlam taşımazdı. Önce alışkanlık alışkanlık olsun, sonra seni korusun.'},
-    {st:'tomurcuk 🌱', t:'Neden dinlenme günleri sınırsız?', p:'Hastalık ve yolculuk senin seçimin değil. Onları "kaçırılan gün" saymak insanı cezalandırmak olurdu. Serin bekler: ne uzar, ne bozulur.'},
-    {st:'ağaç 🌳', t:'Neden günde tek bildirim?', p:'Amacımız seni uygulamaya bağlamak değil, hayatına bir şey katmak. Bildirim yağmuru ilgi toplar ama güveni yer. Bir tane, senin saatinde.'},
-    {st:'ağaç 🌳', t:'Neden kutlamalar sürpriz?', p:'7, 30, 66 ve 100. günde bir şey oluyor. Ne olduğunu burada göstermiyoruz: görürsen tadı kaçar.'},
-    {st:'tomurcuk 🌱', t:'Neden kurulumdan sonra sarmaşık boş?', p:'Hazır şablonla açmayı denedik ama o zaman sarmaşık bizim olurdu. Boş bir sarmaşık senindir; şablonlar istediğinde bir dokunuş uzakta.'},
-    {st:'ağaç 🌳', t:'Neden hesap yok?', p:'Bir alışkanlık uygulaması e-postanı bilmek zorunda değil. Her şey telefonunda çalışıyor. Hesap sadece yedek istersen.'},
-    {st:'filiz 🌿', t:'Neden bulut yedeği şifreli değil (henüz)?', p:'Açık konuşalım: bulut yedeğini teknik olarak okuyabiliriz. Okumuyoruz, ama "kimse okuyamaz" demek yanlış olurdu. Uçtan uca şifreleme planda; unutulan anahtarın veriyi kaybettirmemesi asıl zor kısım.'},
-    {st:'ağaç 🌳', t:'Neden şablon galerisi yok?', p:'Herkesin şablon paylaştığı bir galeri, denetlenmesi gereken bir sosyal ağ demek. Hesapsız, çevrimdışı bir uygulamaya uymuyor. Paylaşmak istersen dosyayla paylaşırsın.'},
-    {st:'filiz 🌿', t:'Neden sağa dallanıyor?', p:'Okuma yönümüz soldan sağa. Sen soldasın, hayatın sağa doğru açılıyor, her dal bir sütun daha. Üstteki yol da aynı yönde okunuyor: sen › iş › rapor.'}
+    {st:'tree 🌳', t:'Why day 66?', p:'Not a random number. In Phillippa Lally\'s study at UCL, the median time for a behaviour to become automatic was 66 days. It varies a lot from person to person, so 66 is a threshold, not a finish line.'},
+    {st:'tree 🌳', t:'Why are leaves earned?', p:'The goal isn\'t never missing, it\'s never missing twice in a row. But if leaves were free, a streak would mean nothing. First the habit becomes a habit, then it protects you.'},
+    {st:'bud 🌱', t:'Why are rest days unlimited?', p:'You don\'t choose to get sick or to travel. Counting those as missed days would punish you. Your streak waits: it doesn\'t grow, it doesn\'t break.'},
+    {st:'tree 🌳', t:'Why only one notification a day?', p:'The point isn\'t to hook you on the app, it\'s to add something to your life. A flood of notifications grabs attention but eats trust. One, at your time.'},
+    {st:'tree 🌳', t:'Why are the celebrations a surprise?', p:'Something happens on day 7, 30, 66 and 100. We won\'t show it here: seeing it early would spoil it.'},
+    {st:'bud 🌱', t:'Why is the vine empty after setup?', p:'We tried starting with a ready-made template, but then the vine would be ours. An empty vine is yours; templates are one tap away when you want them.'},
+    {st:'tree 🌳', t:'Why no account?', p:'A habit app doesn\'t need your email. Everything runs on your phone. An account is only for backup, if you want it.'},
+    {st:'sprout 🌿', t:'Why isn\'t cloud backup encrypted (yet)?', p:'Plainly: we could technically read your cloud backup. We don\'t, but saying "nobody can" would be false. End-to-end encryption is planned; the hard part is making sure a forgotten key doesn\'t lose your data.'},
+    {st:'tree 🌳', t:'Why no template gallery?', p:'A gallery where everyone shares templates is a social network that needs moderating. That doesn\'t fit an offline app with no account. To share, send a file.'},
+    {st:'sprout 🌿', t:'Why does it branch to the right?', p:'We read left to right. You\'re on the left, your life opens to the right, each branch one more column. The path at the top reads the same way: you › work › report.'}
   ];
-  document.getElementById('garden').innerHTML = NOTES.map(function(n){ return '<article class="gnote"><span class="stage">'+esc(n.st)+'</span><h3>'+esc(n.t)+'</h3><p>'+esc(n.p)+'</p><span class="by">— H.</span></article>'; }).join('') ;
+  document.getElementById('garden').innerHTML = NOTES.map(function(n){ return '<article class="gnote"><span class="stage">'+esc(n.st)+'</span><h3>'+esc(n.t)+'</h3><p>'+esc(n.p)+'</p><span class="by">— H.</span></article>'; }).join('') + '';
 
   /* ---------- Neler değişti (board + git geçmişinden) ---------- */
   var LOG = [
-    {v:'1.4.0', d:'yolda · Vyne başladığından beri en büyük güncelleme', soon:true, l:['Sevdiğin kâğıtta günlük ve haftalık defter','Notlar, klasörler, listeler ve hatırlatıcılar, hepsi aranabilir','Sevdiklerin için bir sayfa','Aklındakiler için bir düşünce bulutu','Dinlenme günleri: hastaysan ya da yoldaysan serin seni bekler','Birkaç gün uzak kalınca suçlamayan bir "tekrar hoş geldin" kartı','Hafta, ay ve yıl olarak, sade bir dille istatistikler','Her alışkanlık için kendi hatırlatma saatin ve "ne zaman, nerede" ipucu','Bitirdiğin dalları arşivleme','Yeni bir ilk açılış, yeni bir ikon ve Vyne için özel çizilmiş ikonlar ile 36 karakter','Ve Android: Google Play\'deki ilk sürüm']},
-    {v:'1.3.0', d:'Ağustos 2026', l:['Şablonlar 4\'ten 9\'a çıktı','Bir alışkanlık bitince sıradaki kendiliğinden öne gelir','Kart yoğunluğu: Tam, Sade, Yalın, Özel','Dallar arası çoklu seçim ve not klasörleri','Profil: 16 renk, 60 avatar, kendi emojin']},
-    {v:'1.1 – 1.2', d:'Temmuz – Ağustos 2026', l:['İlk App Store sürümü','Yaprak, çark ve kutlamalar','Bütçe şablonu ve tutar takibi']}
+    {v:'1.4.0', d:'on the way · the biggest update since Vyne began', soon:true, l:['A daily journal and a weekly diary, on the paper you like','Notes, folders, lists and reminders, all searchable','A page for the people you love','A thought cloud for whatever is on your mind','Rest days: sick or travelling, your streak waits','A welcome-back card after a few days away, with no guilt','Stats by week, month and year, in plain words','Your own reminder time and a "when and where" cue for each habit','Archive branches you\'ve finished','A new first run, a new icon, and icons and 36 characters drawn just for Vyne','And Android: the first release on Google Play']},
+    {v:'1.3.0', d:'August 2026', l:['Templates went from 4 to 9','Finish a habit and the next one steps forward','Card density: Full, Simple, Minimal, Custom','Multi-select across branches, and note folders','Profile: 16 colours, 60 avatars, your own emoji']},
+    {v:'1.1 – 1.2', d:'July – August 2026', l:['First App Store release','Leaves, the wheel and celebrations','Budget template and amount tracking']}
   ];
   document.getElementById('log').innerHTML = LOG.map(function(x){ return '<div class="ver'+(x.soon?' soon':'')+'"><h3>'+x.v+'<small>'+esc(x.d)+'</small></h3><ul>'+x.l.map(function(i){ return '<li>'+esc(i)+'</li>'; }).join('')+'</ul></div>'; }).join('');
 
   /* ---------- Ziyaretçi defteri (yerel: sunucu yok, yaprak bu tarayıcıda kalır) ---------- */
   var gv = document.getElementById('guestVine'), GUEST = [];
   try{ GUEST = JSON.parse(store('vyne-site-guest') || '[]'); }catch(e){ GUEST = []; }
-  function drawGuest(){ var base = [{t:'Serimi hastayken kaybetmemek çok iyi hissettirdi.', s:'örnek'},{t:'Keşke Android de olsa!', s:'örnek'}]; gv.innerHTML = base.concat(GUEST).map(function(g){ return '<span class="gleaf">🍃 '+esc(g.t)+(g.s?' <small style="font-family:var(--sans);font-size:11px;opacity:.6">'+g.s+'</small>':'')+'</span>'; }).join(''); }
+  function drawGuest(){ var base = [{t:'Not losing my streak while I was sick felt so good.', s:'example'},{t:'Wish it was on Android too!', s:'example'}]; gv.innerHTML = base.concat(GUEST).map(function(g){ return '<span class="gleaf">🍃 '+esc(g.t)+(g.s?' <small style="font-family:var(--sans);font-size:11px;opacity:.6">'+g.s+'</small>':'')+'</span>'; }).join(''); }
   document.getElementById('guestForm').addEventListener('submit', function(e){ e.preventDefault(); var v = document.getElementById('guestIn').value.trim(); if(!v) return; GUEST.push({t:v}); store('vyne-site-guest', JSON.stringify(GUEST.slice(-20))); document.getElementById('guestIn').value = ''; drawGuest(); tick(820); });
   drawGuest();
 
@@ -1494,8 +1494,8 @@ footer a{color:var(--slate)}
   function makeTrack(track, target, onDone){
     var c = target ? target.c : '#6E9468';
     track.style.setProperty('--c', c);
-    track.innerHTML = '<div class="gs-fill"></div><button class="bud idle" type="button" aria-label="'+esc(target ? target.t+' dalını büyüt' : 'Haritanı aç')+'"><span>🌱</span></button>'+
-      '<span class="gs-target"><b>'+esc(target ? target.t : 'Haritan')+'</b>'+(target ? ' · '+esc(target.s) : ' · on dalın hepsi')+'</span>';
+    track.innerHTML = '<div class="gs-fill"></div><button class="bud idle" type="button" aria-label="'+esc(target ? 'Grow the '+target.t+' branch' : 'Open your map')+'"><span>🌱</span></button>'+
+      '<span class="gs-target"><b>'+esc(target ? target.t : 'Your map')+'</b>'+(target ? ' · '+esc(target.s) : ' · all ten branches')+'</span>';
     var bud = track.querySelector('.bud'), fill = track.querySelector('.gs-fill'), tgt = track.querySelector('.gs-target');
     var sx = 0, dx = 0, dragging = false, moved = false, fired = false;
     function max(){ return Math.max(40, track.clientWidth - tgt.offsetWidth - bud.offsetWidth - 8); }
@@ -1526,7 +1526,7 @@ footer a{color:var(--slate)}
     document.getElementById('finale').hidden = !(mapOpen && finaleFlag);
     if(!mapOpen){
       var nxt = Math.min(grown, ORDER.length-1);
-      document.getElementById('gsEyebrow').textContent = grown ? 'Kaldığın yerden · '+grown+' / '+ORDER.length+' dal büyüdü' : 'Bu site sen büyüttükçe açılır';
+      document.getElementById('gsEyebrow').textContent = grown ? 'Where you left off · '+grown+' / '+ORDER.length+' branches grown' : 'This site opens as you grow it';
       makeTrack(document.getElementById('homeTrack'), roomOf(ORDER[nxt]), function(){ growTo(nxt); });
     } else if(finaleFlag){
       hub.classList.remove('draw'); void hub.offsetWidth; hub.classList.add('draw');
@@ -1543,7 +1543,7 @@ footer a{color:var(--slate)}
       if(!box){ box = document.createElement('div'); box.className = 'grow'; next.parentNode.insertBefore(box, next); }
       var isLast = idx === ORDER.length - 1, target = isLast ? null : roomOf(ORDER[idx+1]);
       var nextOpen = mapOpen || grown > idx+1;
-      box.innerHTML = '<p class="eyebrow">'+(isLast ? (mapOpen ? 'Haritan açık' : 'Son dal') : (nextOpen ? 'Sıradaki dal (açık)' : 'Sıradaki dal'))+'</p><div class="gs-track"></div><p class="gs-hint">sağa sürükle →</p>';
+      box.innerHTML = '<p class="eyebrow">'+(isLast ? (mapOpen ? 'Your map is open' : 'Last branch') : (nextOpen ? 'Next branch (open)' : 'Next branch'))+'</p><div class="gs-track"></div><p class="gs-hint">drag to the right →</p>';
       makeTrack(box.querySelector('.gs-track'), target, function(){ growTo(idx+1); });
       next.hidden = !mapOpen;
     });
@@ -1551,10 +1551,10 @@ footer a{color:var(--slate)}
 
   var stationsEl = document.getElementById('stations'), stemSvg = document.getElementById('stemSvg');
   function renderStem(){
-    var html = '<button class="st root'+(current === 'sen' ? ' cur' : '')+'" data-go="sen" aria-label="sen" style="--c:#6E9468"><i></i><span>sen</span></button>';
+    var html = '<button class="st root'+(current === 'sen' ? ' cur' : '')+'" data-go="sen" aria-label="you" style="--c:#6E9468"><i></i><span>you</span></button>';
     ROOMS.forEach(function(r,i){
       var open = mapOpen || i < grown, tip = !mapOpen && i === grown;
-      html += '<button class="st'+(open ? '' : ' locked')+(tip ? ' tip' : '')+(current === r.id ? ' cur' : '')+'" '+(open ? 'data-go="'+r.id+'"' : 'aria-disabled="true"')+' aria-label="'+esc(r.t)+(open ? '' : ', henüz büyümedi')+'" style="--c:'+r.c+'"><i></i><span>'+esc(r.t)+'</span></button>';
+      html += '<button class="st'+(open ? '' : ' locked')+(tip ? ' tip' : '')+(current === r.id ? ' cur' : '')+'" '+(open ? 'data-go="'+r.id+'"' : 'aria-disabled="true"')+' aria-label="'+esc(r.t)+(open ? '' : ', not grown yet')+'" style="--c:'+r.c+'"><i></i><span>'+esc(r.t)+'</span></button>';
     });
     stationsEl.innerHTML = html;
     requestAnimationFrame(drawStem);
@@ -1586,7 +1586,7 @@ footer a{color:var(--slate)}
 (function(){
   var a = document.getElementById('langSw'), h = document.getElementById('langHint'), saved = null;
   try{ saved = localStorage.getItem('vyne-site-lang'); }catch(e){}
-  if(!saved && (navigator.language||'').toLowerCase().indexOf('tr') !== 0) h.hidden = false;
+  if(!saved && (navigator.language||'').toLowerCase().indexOf('tr') === 0) h.hidden = false;
   [a, h].forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); try{ localStorage.setItem('vyne-site-lang', a.dataset.lang); }catch(err){} location.href = el.getAttribute('href') + location.hash; }); });
 })();
 </script>
