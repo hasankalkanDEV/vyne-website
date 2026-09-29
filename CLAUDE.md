@@ -9,15 +9,17 @@ sitesini. İkisi çelişirse **mağaza/sürüm konusunda `vyne/CLAUDE.md` haklı
 
 ## Ne olduğu ve nerede yayınlandığı
 
-Statik tanıtım sitesi, iki dilli. **İki sayfa tek kaynaktan üretiliyor:**
+Statik tanıtım sitesi, iki dilli. **Ana site İngilizce (kök adres), Türkçe `/tr/`**
+(Hasan, 2026-09-29). İki sayfa tek kaynaktan üretiliyor:
 
 | Dosya | Ne |
 |---|---|
 | `site/head.html`, `site/style.css`, `site/body.html`, `site/app.js` | **KAYNAK.** Metinler `⟪Türkçe¦English⟫` biçiminde |
 | `site/live.json` | Mağaza durumu bayrakları + yaprak kuralı (aşağıda) |
 | `site/glyphs.json` | Uygulamanın çizimleri (`scripts/export-glyphs.mjs` üretir) |
-| `scripts/build-site.mjs` | Kaynaktan `index.html` (TR) ve `en/index.html` (EN) üretir |
-| `index.html`, `en/index.html` | **ÜRETİLMİŞ. Elle düzenleme**, `site/`'ı düzenle ve derle |
+| `site/templates.json` | Uygulamanın 9 şablonu, bütün dallarıyla (`scripts/export-templates.mjs` üretir) |
+| `scripts/build-site.mjs` | Kaynaktan `index.html` (EN), `tr/index.html` (TR) ve `en/index.html` (eski adres → köke yönlendirme) üretir |
+| `index.html`, `tr/index.html`, `en/index.html` | **ÜRETİLMİŞ. Elle düzenleme**, `site/`'ı düzenle ve derle |
 | `404.html` | "Bu dal henüz büyümedi"; elle yazılmış, tek başına |
 | `shots/app-*.webp` | 1.4.0 ekranları, 924 px (`scripts/make-app-shots.mjs`) |
 | `app-icon.png` | Uygulama ikonu (`../vyne/assets/icon-512.png` kopyası) |
@@ -29,7 +31,8 @@ kalırsa durur. Kaynaktaki diğer işaretler betiğin başında anlatılıyor
 
 Depo: `hasankalkanDEV/vyne-website`. **GitHub Pages `main` dalından yayınlıyor.**
 Yani `main`'e push = canlıya çıkma, ~1 dakika sonra.
-Canlı: https://hasankalkandev.github.io/vyne-website/ (TR) ve `/en/` (EN).
+Canlı: https://hasankalkandev.github.io/vyne-website/ (EN) ve `/tr/` (TR). Eski `/en/` köke yönlenir.
+Kökteki İngilizce sayfa Türkçe tarayıcıya "Bu sayfayı Türkçe oku →" şeridi gösterir; kendiliğinden yönlendirme YOK.
 
 Önizleme: `cd /home/user && python3 -m http.server 8766` → `localhost:8766/vyne-website/`.
 
@@ -44,6 +47,9 @@ Sıra ve adresler (TR ve EN'de aynı, dil düğmesi aynı yerde kalır):
 yüz güne iniş, `#gun` sıradan bir gün) · `#ozellikler` (24 kart, `#sablon`,
 `#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
 `#yenilikler` · `#sozler` · `#sorular` · `#indir`.
+Şablon denemesi uygulamanın gerçek verisini gösterir (alt dallar, alışkanlık sıklığı, tarihler);
+uygulamada şablon değişirse `node scripts/export-templates.mjs` sonra derle. Çark 2–6 iş alır,
+uygulamanın çizimleriyle dilimler, seçince 2 dakikalık sayaç.
 Üst menü: Nasıl çalışır · Özellikler · Sorular + İndir. Eski dal adresleri
 (`#kuyu`, `#mektup`…) JS'te yeni bölümlere yönlenir; paylaşılmış linkler kırılmaz.
 
@@ -135,6 +141,8 @@ sürükleyerek açılan site `5fafe7f`'te, ondan önceki site `8e9df97`'de.
 - `transform` + `rotate` özelliği birlikte: `rotate:` önce uygulanır, tomurcuğu
   `translate` ile taşı (yoksa çapraz gider).
 - Görsellerde `width`/`height` özniteliği varsa CSS'te `height:auto` şart (yoksa ezilir).
+- Grid içinde uzun içerik (input, çark) telefonda taşarsa: `grid-template-columns:minmax(0,1fr)`,
+  flex içindeki input'a `width:0`.
 - `Grep` çıktısı CSS yorum açıcısını `/*` yerine `\*` gösteriyor — görüntüleme
   tuhaflığı, dosyada hata yok.
 

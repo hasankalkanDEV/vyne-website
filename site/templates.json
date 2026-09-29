@@ -1,0 +1,564 @@
+[
+ {
+  "id": "examPeriod",
+  "g": "gradcap",
+  "name": {
+   "tr": "Sınav Dönemi",
+   "en": "Exam Period"
+  },
+  "desc": {
+   "tr": "Son ana sıkıştırmak yerine günlük tekrar ve pratik sorular, sakin ve yayılmış bir hazırlık.",
+   "en": "Daily review and practice questions instead of cramming, a calm and spaced-out prep."
+  },
+  "q": {
+   "tr": "Sınav ne zaman?",
+   "en": "When's the exam?"
+  },
+  "children": [
+   {
+    "en": "Daily Review",
+    "tr": "Günlük Tekrar",
+    "g": "repeat",
+    "kind": "habit",
+    "rec": "daily"
+   },
+   {
+    "en": "Practice Questions",
+    "tr": "Pratik Sorular",
+    "g": "question",
+    "kind": "habit",
+    "rec": "daily"
+   },
+   {
+    "en": "Mock Exam",
+    "tr": "Deneme Sınavı",
+    "g": "note",
+    "kind": "habit",
+    "rec": "weekly",
+    "days": [
+     6
+    ]
+   },
+   {
+    "en": "Rest Day",
+    "tr": "Dinlenme Günü",
+    "g": "sprig",
+    "kind": "habit",
+    "rec": "weekly",
+    "days": [
+     0
+    ]
+   },
+   {
+    "en": "Exam Date",
+    "tr": "Sınav Tarihi",
+    "g": "calendar",
+    "kind": "due",
+    "off": 0
+   }
+  ]
+ },
+ {
+  "id": "movingHouse",
+  "g": "box",
+  "name": {
+   "tr": "Taşınma",
+   "en": "Moving House"
+  },
+  "desc": {
+   "tr": "Taşınmayı net adımlara böler, her şey birden oluyormuş hissi azalır.",
+   "en": "Breaks the move into clear steps, so it stops feeling like everything at once."
+  },
+  "q": {
+   "tr": "Taşınma günü ne zaman?",
+   "en": "When's moving day?"
+  },
+  "children": [
+   {
+    "en": "Declutter & Pack",
+    "tr": "Ayıkla & Paketle",
+    "g": "box",
+    "kind": "plain"
+   },
+   {
+    "en": "Utility Transfer",
+    "tr": "Abonelik & Fatura Devri",
+    "g": "plug",
+    "kind": "plain"
+   },
+   {
+    "en": "Address Change",
+    "tr": "Adres Değişikliği",
+    "g": "mail",
+    "kind": "plain"
+   },
+   {
+    "en": "Moving Day",
+    "tr": "Taşınma Günü",
+    "g": "truck",
+    "kind": "due",
+    "off": 0
+   }
+  ]
+ },
+ {
+  "id": "newJob",
+  "g": "briefcase",
+  "name": {
+   "tr": "Yeni İş",
+   "en": "New Job"
+  },
+  "desc": {
+   "tr": "İlk 90 gün için bir yapı, bir de yeni iş kaygısını gerçekten azaltan tek şey: gerçek bir bağlantı.",
+   "en": "A structured first 90 days, plus the one thing that actually eases new-job nerves: one real connection."
+  },
+  "q": {
+   "tr": "İşe ne zaman başlıyorsun?",
+   "en": "When do you start?"
+  },
+  "children": [
+   {
+    "en": "90-Day Plan",
+    "tr": "90 Günlük Plan",
+    "g": "calendar",
+    "kind": "due",
+    "off": 90,
+    "children": [
+     {
+      "en": "30-Day Milestone",
+      "tr": "30 Günlük Kilometre Taşı",
+      "g": "sprout",
+      "kind": "due",
+      "off": 30
+     },
+     {
+      "en": "60-Day Milestone",
+      "tr": "60 Günlük Kilometre Taşı",
+      "g": "sprig",
+      "kind": "due",
+      "off": 60
+     },
+     {
+      "en": "90-Day Milestone",
+      "tr": "90 Günlük Kilometre Taşı",
+      "g": "tree",
+      "kind": "due",
+      "off": 90
+     }
+    ]
+   },
+   {
+    "en": "Grab a Coffee",
+    "tr": "Biriyle Kahve İç",
+    "g": "coffee",
+    "kind": "due",
+    "off": 5
+   },
+   {
+    "en": "Paperwork & Setup",
+    "tr": "Evrak & Kurulum",
+    "g": "clipboard",
+    "kind": "due",
+    "off": 0
+   },
+   {
+    "en": "Monthly Check-in",
+    "tr": "Aylık Değerlendirme",
+    "g": "speech",
+    "kind": "habit",
+    "rec": "monthly",
+    "dom": 1
+   }
+  ]
+ },
+ {
+  "id": "budget",
+  "g": "moneybag",
+  "name": {
+   "tr": "Bütçe",
+   "en": "Budget"
+  },
+  "desc": {
+   "tr": "Kira, market, faturalar ve borç tek bir yerde; böylece Birikim büyürken diğerleri küçülür.",
+   "en": "Rent, groceries, bills and debt in one place, so Savings can grow while the others shrink."
+  },
+  "q": null,
+  "children": [
+   {
+    "en": "Income",
+    "tr": "Gelir",
+    "g": "trend",
+    "kind": "plain",
+    "children": [
+     {
+      "en": "Salary",
+      "tr": "Maaş",
+      "g": "briefcase",
+      "kind": "plain"
+     },
+     {
+      "en": "Freelance",
+      "tr": "Serbest Çalışma",
+      "g": "laptop",
+      "kind": "plain"
+     }
+    ]
+   },
+   {
+    "en": "Rent",
+    "tr": "Kira",
+    "g": "house",
+    "kind": "plain"
+   },
+   {
+    "en": "Groceries",
+    "tr": "Market Alışverişi",
+    "g": "cart",
+    "kind": "plain",
+    "children": [
+     {
+      "en": "Weekly",
+      "tr": "Haftalık",
+      "g": "calendar",
+      "kind": "plain"
+     },
+     {
+      "en": "Monthly",
+      "tr": "Aylık",
+      "g": "calendar",
+      "kind": "plain"
+     }
+    ]
+   },
+   {
+    "en": "Restaurant",
+    "tr": "Restoran",
+    "g": "plate",
+    "kind": "plain"
+   },
+   {
+    "en": "Debt",
+    "tr": "Borç",
+    "g": "chartDown",
+    "kind": "plain",
+    "children": [
+     {
+      "en": "Credit Card",
+      "tr": "Kredi Kartı",
+      "g": "ccard",
+      "kind": "plain"
+     }
+    ]
+   },
+   {
+    "en": "Bills",
+    "tr": "Faturalar",
+    "g": "receipt",
+    "kind": "plain",
+    "children": [
+     {
+      "en": "Monthly",
+      "tr": "Aylık",
+      "g": "calendar",
+      "kind": "plain"
+     },
+     {
+      "en": "Yearly",
+      "tr": "Yıllık",
+      "g": "calendar",
+      "kind": "plain"
+     }
+    ]
+   },
+   {
+    "en": "Other Expenses",
+    "tr": "Diğer Giderler",
+    "g": "cash",
+    "kind": "plain"
+   },
+   {
+    "en": "Savings",
+    "tr": "Birikim",
+    "g": "columns",
+    "kind": "plain"
+   }
+  ]
+ },
+ {
+  "id": "newBaby",
+  "g": "stroller",
+  "name": {
+   "tr": "Yeni Bebek",
+   "en": "New Baby"
+  },
+  "desc": {
+   "tr": "İlk haftalar bebek gelmeden hazır: çanta, ev, evrak ve her gün bir nefes hava.",
+   "en": "The first weeks, ready before baby arrives: bag, home, paperwork, and a daily breath of air."
+  },
+  "q": {
+   "tr": "Bebek ne zaman bekleniyor?",
+   "en": "When's the due date?"
+  },
+  "children": [
+   {
+    "en": "Hospital Bag",
+    "tr": "Hastane Çantası",
+    "g": "backpack",
+    "kind": "due",
+    "off": -14
+   },
+   {
+    "en": "Home Setup",
+    "tr": "Ev Hazırlığı",
+    "g": "bed",
+    "kind": "plain"
+   },
+   {
+    "en": "Paperwork & Insurance",
+    "tr": "Evrak ve Sigorta",
+    "g": "clipboard",
+    "kind": "plain"
+   },
+   {
+    "en": "Baby's Due Date",
+    "tr": "Doğum Tarihi",
+    "g": "calendar",
+    "kind": "due",
+    "off": 0
+   },
+   {
+    "en": "Daily Walk",
+    "tr": "Günlük Yürüyüş",
+    "g": "walk",
+    "kind": "habit",
+    "rec": "daily"
+   }
+  ]
+ },
+ {
+  "id": "freshStart",
+  "g": "sprout",
+  "name": {
+   "tr": "Yeni Başlangıç",
+   "en": "Fresh Start"
+  },
+  "desc": {
+   "tr": "Zor dönemler için nazik bir sıfırlama: küçük günlük kazanımlar, bir arkadaş, bir ferah köşe.",
+   "en": "A gentle reset for hard seasons: small daily wins, one friend, one clear corner."
+  },
+  "q": {
+   "tr": "Ne zaman başlıyor?",
+   "en": "When does it begin?"
+  },
+  "children": [
+   {
+    "en": "Morning Walk",
+    "tr": "Sabah Yürüyüşü",
+    "g": "walk",
+    "kind": "habit",
+    "rec": "daily"
+   },
+   {
+    "en": "Call a Friend",
+    "tr": "Bir Arkadaşı Ara",
+    "g": "phone",
+    "kind": "habit",
+    "rec": "weekly",
+    "days": [
+     6
+    ]
+   },
+   {
+    "en": "Declutter One Corner",
+    "tr": "Bir Köşeyi Topla",
+    "g": "broom",
+    "kind": "plain"
+   },
+   {
+    "en": "One Small Joy",
+    "tr": "Küçük Bir Keyif",
+    "g": "palette",
+    "kind": "habit",
+    "rec": "weekly",
+    "days": [
+     3
+    ]
+   },
+   {
+    "en": "30-Day Check-in",
+    "tr": "30 Gün Kontrolü",
+    "g": "sprig",
+    "kind": "due",
+    "off": 30
+   }
+  ]
+ },
+ {
+  "id": "quitting",
+  "g": "no",
+  "name": {
+   "tr": "Bırakıyorum",
+   "en": "Quitting"
+  },
+  "desc": {
+   "tr": "Her temiz gün sayılır ve uygulama seninle sayar: seri, biriken para, 30. günde ödül.",
+   "en": "Every clean day counts, and the app counts with you: a streak, real savings, a day-30 reward."
+  },
+  "q": {
+   "tr": "İlk gün ne zaman?",
+   "en": "When's day one?"
+  },
+  "children": [
+   {
+    "en": "Clean Day",
+    "tr": "Temiz Gün",
+    "g": "check",
+    "kind": "habit",
+    "rec": "daily"
+   },
+   {
+    "en": "Replace the Urge",
+    "tr": "İsteği Değiştir",
+    "g": "lungs",
+    "kind": "habit",
+    "rec": "daily"
+   },
+   {
+    "en": "Tell Someone",
+    "tr": "Birine Söyle",
+    "g": "speech",
+    "kind": "plain"
+   },
+   {
+    "en": "Savings Jar",
+    "tr": "Birikim Kavanozu",
+    "g": "moneybag",
+    "kind": "plain"
+   },
+   {
+    "en": "30-Day Reward",
+    "tr": "30 Gün Ödülü",
+    "g": "gift",
+    "kind": "due",
+    "off": 30
+   }
+  ]
+ },
+ {
+  "id": "wedding",
+  "g": "ring",
+  "name": {
+   "tr": "Düğün",
+   "en": "Wedding"
+  },
+  "desc": {
+   "tr": "Büyük gün net dallarda: mekan, davetliler, tedarikçiler, kıyafet, hepsi tek tarihe bakar.",
+   "en": "The big day in clear branches: venue, guests, vendors, attire, all pointing to one date."
+  },
+  "q": {
+   "tr": "Düğün ne zaman?",
+   "en": "When's the wedding?"
+  },
+  "children": [
+   {
+    "en": "Venue & Date",
+    "tr": "Mekan ve Tarih",
+    "g": "columns",
+    "kind": "plain"
+   },
+   {
+    "en": "Guest List",
+    "tr": "Davetli Listesi",
+    "g": "clipboard",
+    "kind": "plain"
+   },
+   {
+    "en": "Vendors",
+    "tr": "Tedarikçiler",
+    "g": "camera",
+    "kind": "plain",
+    "children": [
+     {
+      "en": "Photographer",
+      "tr": "Fotoğrafçı",
+      "g": "camera",
+      "kind": "plain"
+     },
+     {
+      "en": "Music",
+      "tr": "Müzik",
+      "g": "music",
+      "kind": "plain"
+     }
+    ]
+   },
+   {
+    "en": "Attire",
+    "tr": "Kıyafet",
+    "g": "dress",
+    "kind": "plain"
+   },
+   {
+    "en": "Wedding Day",
+    "tr": "Düğün Günü",
+    "g": "calendar",
+    "kind": "due",
+    "off": 0
+   }
+  ]
+ },
+ {
+  "id": "newSemester",
+  "g": "backpack",
+  "name": {
+   "tr": "Yeni Dönem",
+   "en": "New Semester"
+  },
+  "desc": {
+   "tr": "Dönem seni kurmadan sen dönemi kur: dersler, haftalık gözden geçirme, günlük okuma ritmi.",
+   "en": "Set up the semester before it sets you up: classes, a weekly review, a daily reading rhythm."
+  },
+  "q": {
+   "tr": "Dönem ne zaman başlıyor?",
+   "en": "When does the semester start?"
+  },
+  "children": [
+   {
+    "en": "Classes",
+    "tr": "Dersler",
+    "g": "books",
+    "kind": "plain"
+   },
+   {
+    "en": "Weekly Review",
+    "tr": "Haftalık Gözden Geçirme",
+    "g": "repeat",
+    "kind": "habit",
+    "rec": "weekly",
+    "days": [
+     0
+    ]
+   },
+   {
+    "en": "Daily Reading",
+    "tr": "Günlük Okuma",
+    "g": "openbook",
+    "kind": "habit",
+    "rec": "daily"
+   },
+   {
+    "en": "Assignments",
+    "tr": "Ödevler",
+    "g": "note",
+    "kind": "plain"
+   },
+   {
+    "en": "First Day",
+    "tr": "İlk Gün",
+    "g": "calendar",
+    "kind": "due",
+    "off": 0
+   }
+  ]
+ }
+]

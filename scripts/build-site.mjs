@@ -1,11 +1,12 @@
 // Siteyi tek kaynaktan iki dile üretir:  node scripts/build-site.mjs
 //
-// Kaynak site/ klasöründe:  head.html + style.css + body.html + app.js  →  index.html (TR) ve en/index.html (EN)
-// index.html ile en/index.html'i ELLE DÜZENLEME; site/ içindekini düzenle, sonra bu betiği çalıştır.
+// Kaynak site/ klasöründe:  head.html + style.css + body.html + app.js  →  index.html (EN, ana site) ve tr/index.html (TR)
+// index.html ile tr/index.html'i ELLE DÜZENLEME; site/ içindekini düzenle, sonra bu betiği çalıştır.
 //
 // Kaynaktaki işaretler:
 //   ⟪Türkçe¦English⟫        iki dilli metin (içinde ⟫ olmasın; JS dizesindeyse ' yerine \' yaz)
-//   {{P}}                   varlık yolu öneki: TR'de boş, EN'de ../
+//   {{P}}                   varlık yolu öneki: EN'de (kök) boş, TR'de ../
+//   {{TEMPLATES}}           uygulamanın şablonları, sayfanın dilinde (site/templates.json)
 //   {{LANG}}                tr ya da en
 //   [[g:leaf]]              uygulamanın çizimi (site/glyphs.json), baskı tarzı (B)
 //   [[g:leaf:C]]            aynı çizim, düz kâğıt tarzı (C)
@@ -15,7 +16,7 @@
 //   {{LEAF_EVERY}} {{LEAF_CAP}}  uygulamanın yaprak kuralı (site/live.json'da; uygulamada değişirse orada değiştir)
 //
 // Mağaza durumu değişince SADECE site/live.json'u değiştir ve betiği çalıştır.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -91,13 +92,32 @@ function build(lang) {
   }
   s = s.replace(/⟪([\s\S]*?)¦([\s\S]*?)⟫/g, (_, tr, e) => (en ? e : tr));
   s = s.replace(/\[\[(g|c):([A-Za-z]+)(?::([BC]))?\]\]/g, (_, k, n, m) => glyph(k, n, m));
-  s = s.replaceAll('{{P}}', en ? '../' : '').replaceAll('{{LANG}}', lang)
+  s = s.replaceAll('{{P}}', en ? '' : '../').replaceAll('{{LANG}}', lang)
        .replaceAll('{{PLAY_URL}}', LIVE.playUrl)
        .replaceAll('{{LEAF_EVERY}}', String(LIVE.leafEvery)).replaceAll('{{LEAF_CAP}}', String(LIVE.leafCap)).replaceAll('{{IOS_URL}}', LIVE.iosUrl);
+  s = s.replace('{{TEMPLATES}}', () => templatesFor(lang));
   const left = s.match(/⟪|⟫|¦|\{\{[#^/]?[A-Za-z_]+\}\}|\[\[[gc]:/);
   if (left) throw new Error(`${lang}: çözülmemiş işaret: ${s.slice(left.index - 60, left.index + 60)}`);
   return s.replace(/\n/g, '\r\n');
 }
-writeFileSync(join(root, 'index.html'), build('tr'));
-writeFileSync(join(root, 'en/index.html'), build('en'));
-console.log('index.html + en/index.html yazıldı ·', used.size, 'çizim ·', JSON.stringify(LIVE));
+/* Uygulamanın gerçek şablonları (site/templates.json) sayfanın diline göre JS'e yazılır; çizimleri bir kez. */
+function templatesFor(lang) {
+  const T = JSON.parse(read('site/templates.json')), gl = {};
+  const node = (n) => { if (n.g) gl[n.g] = 1; const o = { t: n[lang], g: n.g, k: n.kind };
+    for (const f of ['rec', 'days', 'dom', 'off']) if (n[f] !== undefined) o[f] = n[f];
+    if (n.children) o.c = n.children.map(node); return o; };
+  const list = T.map((t) => { if (t.g) gl[t.g] = 1; return { id: t.id, g: t.g, n: t.name[lang], d: t.desc[lang], q: t.q ? t.q[lang] : null, c: t.children.map(node) }; });
+  const G2 = {}; for (const n of Object.keys(gl)) G2[n] = glyph('g', n);
+  return JSON.stringify({ list, glyphs: G2 }).replace(/<\//g, '<\\/');
+}
+
+// İngilizce ana site (kök), Türkçe /tr/. Eski /en/ adresi köke yönlenir (paylaşılmış bağlantılar kırılmasın).
+mkdirSync(join(root, 'tr'), { recursive: true });
+writeFileSync(join(root, 'index.html'), build('en'));
+writeFileSync(join(root, 'tr/index.html'), build('tr'));
+writeFileSync(join(root, 'en/index.html'), ['<!doctype html>', '<html lang="en"><head><meta charset="utf-8">',
+  '<title>Vyne</title><link rel="canonical" href="https://hasankalkandev.github.io/vyne-website/">',
+  '<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../">',
+  '<script>location.replace("../" + location.hash);</script></head>',
+  '<body><a href="../">Vyne</a></body></html>', ''].join('\r\n'));
+console.log('index.html (EN) + tr/index.html (TR) + en/ yönlendirmesi yazıldı ·', used.size, 'çizim ·', JSON.stringify(LIVE));

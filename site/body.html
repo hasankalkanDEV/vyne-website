@@ -9,7 +9,7 @@
       <a href="#sorular">⟪Sorular¦Questions⟫</a>
     </nav>
     <div class="top-right">
-      <a class="lang-sw" id="langSw" href="⟪en/¦../⟫" data-lang="⟪en¦tr⟫" hreflang="⟪en¦tr⟫" lang="⟪en¦tr⟫" aria-label="⟪English¦Türkçe⟫">⟪EN¦TR⟫</a>
+      <a class="lang-sw" id="langSw" href="⟪../¦tr/⟫" data-lang="⟪en¦tr⟫" hreflang="⟪en¦tr⟫" lang="⟪en¦tr⟫" aria-label="⟪English¦Türkçe⟫">⟪EN¦TR⟫</a>
       <button class="look-btn" id="lookBtn" type="button" aria-expanded="false" aria-controls="look">[[g:palette]]<span class="t">⟪Görünüm¦Look⟫</span></button>
       <a class="nav-dl" href="#indir">⟪İndir¦Download⟫</a>
     </div>
@@ -34,7 +34,7 @@
     <p>⟪Uygulamada da tam olarak böyle: tema ve kâğıt senin.¦It works exactly like this in the app: the theme and paper are yours.⟫</p>
   </div>
 </header>
-<a class="lang-hint" id="langHint" href="⟪en/¦../⟫" hidden>⟪Read this page in English →¦Bu sayfayı Türkçe oku →⟫</a>
+<a class="lang-hint" id="langHint" href="⟪../¦tr/⟫" hidden>⟪Read this page in English →¦Bu sayfayı Türkçe oku →⟫</a>
 <div class="night-chip" id="nightChip" hidden>[[g:moon]]<span>⟪Gece oldu. Siteyi uygulamadaki Galaxy kâğıdına geçirelim mi?¦It's night. Switch the site to the app's Galaxy paper?⟫</span><button type="button" id="nightYes">⟪Geçir¦Switch⟫</button><button type="button" id="nightNo">⟪Kalsın¦No thanks⟫</button></div>
 
 <main id="main">
@@ -269,13 +269,13 @@
 
   <div class="sub" id="sablon">
     <h3>⟪Şablon denemesi¦Try a template⟫</h3>
+    <p class="muted">⟪Uygulamadaki dokuz şablonun hepsi, içindeki dallarla birlikte. Birini seç, tarihi değiştir: uygulamada "Oluştur" deyince tam olarak bunlar sarmaşığına eklenir.¦All nine templates from the app, with every branch inside. Pick one and change the date: tap "Create" in the app and exactly these join your vine.⟫</p>
     <div class="panel tpl">
       <div class="stack">
-        <label for="tplSel" class="muted" style="font-size:14.5px; font-weight:800">⟪Hayatında ne oluyor?¦What's happening in your life?⟫</label>
-        <select id="tplSel"></select>
-        <label for="tplDate" class="muted" style="font-size:14.5px; font-weight:800" id="tplQ">⟪Ne zaman?¦When?⟫</label>
-        <input id="tplDate" type="date">
-        <p class="muted" style="font-size:14px">⟪Uygulamada "Oluştur" deyince bu dallar senin sarmaşığına eklenir.¦In the app, tap "Create" and these branches join your vine.⟫</p>
+        <div class="tpl-pick" id="tplPick" role="group" aria-label="⟪Şablonlar¦Templates⟫"></div>
+        <p class="tpl-desc" id="tplDesc"></p>
+        <div class="stack" id="tplDateBox" style="gap:6px"><label for="tplDate" class="muted" style="font-size:14.5px; font-weight:800" id="tplQ">⟪Ne zaman?¦When?⟫</label>
+        <input id="tplDate" type="date"></div>
       </div>
       <div class="tpl-out" id="tplOut" aria-live="polite"></div>
     </div>
@@ -373,10 +373,13 @@
   </div>
   <div class="games">
     <article class="game">
-      <div class="gc"><h4>⟪Kararsız mısın? Çarkı çevir¦Can't decide? Spin the wheel⟫</h4><p class="muted">⟪Aklındaki üç işi yaz. Çark seçsin, sonra sadece 2 dakika başla. Uygulamadaki çark da böyle çalışıyor.¦Write three things on your mind. Let the wheel pick, then just start for 2 minutes. The wheel in the app works the same way.⟫</p></div>
-      <div class="gs wheelstage"><div class="pointer" aria-hidden="true"></div><div class="wheel" id="wheel" role="img" aria-label="⟪Seçim çarkı¦The wheel⟫"></div>
-        <div class="wrow"><input id="w1" value="⟪10 dk yürüyüş¦10 min walk⟫" aria-label="⟪Birinci iş¦First task⟫"><input id="w2" value="⟪Mutfağı topla¦Tidy the kitchen⟫" aria-label="⟪İkinci iş¦Second task⟫"><input id="w3" value="⟪Bir sayfa oku¦Read one page⟫" aria-label="⟪Üçüncü iş¦Third task⟫"></div>
-        <button class="spin" id="spinBtn" type="button">⟪Çevir¦Spin⟫</button><p class="timer" id="timer" aria-live="polite"></p></div>
+      <div class="gc"><h4>⟪Kararsız mısın? Çarkı çevir¦Can't decide? Spin the wheel⟫</h4><p class="muted">⟪Aklındaki işleri yaz (ikiden altıya kadar). Çark birini seçsin, sonra sadece 2 dakika başla. Uygulamadaki çark da böyle: bugünün alışkanlıklarından birini seçer.¦Write down what's on your mind (two to six things). Let the wheel pick one, then just start for 2 minutes. The wheel in the app works the same way: it picks one of today's habits.⟫</p></div>
+      <div class="gs wheelstage">
+        <div class="wheel-wrap"><svg class="wheel" id="wheel" viewBox="-170 -170 340 340" role="img" aria-label="⟪Seçim çarkı¦The wheel⟫"></svg><div class="pointer" id="wPointer" aria-hidden="true"></div></div>
+        <div class="wlist" id="wList"></div>
+        <div class="row-btns" style="justify-content:center"><button class="btn2" type="button" id="wAdd">+ ⟪Ekle¦Add⟫</button><button class="spin" id="spinBtn" type="button">⟪Çevir¦Spin⟫</button></div>
+        <div class="wres" id="wRes" hidden aria-live="polite"></div>
+      </div>
     </article>
     <article class="game">
       <div class="gc"><h4>⟪Hangi şablon sensin?¦Which template are you?⟫</h4><p class="muted">⟪Üç soru. Sonunda sana uyan şablon ve ilk üç dalın.¦Three questions. At the end, the template that fits you and your first three branches.⟫</p></div>
@@ -537,5 +540,5 @@
 </div>
 
 <!-- JS'in kullandığı çizimler -->
-<div hidden id="glyphs"><span data-g="leaf">[[g:leaf]]</span><span data-g="moon">[[g:moon]]</span><span data-g="thermo">[[g:thermo]]</span><span data-g="plane">[[g:plane]]</span><span data-g="leafC">[[g:leaf:C]]</span><span data-g="sprig">[[g:sprig:C]]</span></div>
+<div hidden id="glyphs"><span data-g="leaf">[[g:leaf]]</span><span data-g="moon">[[g:moon]]</span><span data-g="thermo">[[g:thermo]]</span><span data-g="plane">[[g:plane]]</span><span data-g="leafC">[[g:leaf:C]]</span><span data-g="sprig">[[g:sprig:C]]</span><span data-g="runner">[[g:runner]]</span><span data-g="openbook">[[g:openbook]]</span><span data-g="broom">[[g:broom]]</span><span data-g="drop">[[g:drop]]</span><span data-g="phone">[[g:phone]]</span><span data-g="pencil">[[g:pencil]]</span><span data-g="dumbbell">[[g:dumbbell]]</span><span data-g="music">[[g:music]]</span><span data-g="coffee">[[g:coffee]]</span><span data-g="bed">[[g:bed]]</span><span data-g="sprout">[[g:sprout]]</span><span data-g="star">[[g:star]]</span><span data-g="heart">[[g:heart]]</span><span data-g="sun">[[g:sun]]</span><span data-g="bulb">[[g:bulb]]</span><span data-g="leafB">[[g:leaf]]</span></div>
 

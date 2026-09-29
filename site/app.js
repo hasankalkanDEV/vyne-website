@@ -317,6 +317,8 @@
     var el = document.createElement('div'); el.className = 'mark'+(m.k?' '+m.k:'')+(y/WH > 0.57 ? ' deep' : ''); el.style.top = y+'px';
     el.innerHTML = '<span class="dotm"></span><span>'+esc(m.t)+'<small>'+esc(m.s)+'</small></span>'; wellInner.appendChild(el);
   });
+  /* Son durak (Gün 100) yazısıyla birlikte tam görünsün: kuyu en alttaki notun altında biter. */
+  wellInner.style.height = (prevY + wellInner.lastElementChild.offsetHeight + 90) + 'px';
   well.addEventListener('scroll', function(){ var p = well.scrollTop/(well.scrollHeight - well.clientHeight); depth.textContent = '⟪Gün ¦Day ⟫' + Math.max(1, Math.round(1 + p*99)); }, {passive:true});
 
   /* ---------- Sıradan bir gün ---------- */
@@ -358,29 +360,41 @@
   $('dNext').addEventListener('click', function(){ showDay(di+1); });
   showDay(0);
 
-  /* ---------- Şablon denemesi: uygulamanın 9 şablonunun adları gerçek, dallar temsili ---------- */
-  var TPL = [
-    {n:'⟪Sınav Dönemi¦Exam Period⟫', q:'⟪Sınav ne zaman?¦When is the exam?⟫', b:[['⟪Günlük tekrar¦Daily review⟫',['⟪Her gün 1 konu¦One topic a day⟫','⟪Hafta sonu genel tekrar¦Weekend recap⟫']],['⟪Pratik sorular¦Practice⟫',['⟪Çıkmış sorular¦Past papers⟫','⟪Yanlış defteri¦Mistakes notebook⟫']],['⟪Dinlenme¦Rest⟫',['⟪Uyku düzeni¦Sleep routine⟫']]]},
-    {n:'⟪Taşınma¦Moving House⟫', q:'⟪Taşınma ne zaman?¦When do you move?⟫', b:[['⟪Hazırlık¦Getting ready⟫',['⟪Kutu ve bant¦Boxes and tape⟫','⟪Eşya ayıklama¦Declutter⟫']],['⟪Evrak¦Paperwork⟫',['⟪Adres değişikliği¦Change of address⟫','⟪Abonelikler¦Subscriptions⟫']],['⟪Taşınma günü¦Moving day⟫',['⟪Nakliye¦Movers⟫','⟪Anahtar teslimi¦Hand over keys⟫']]]},
-    {n:'⟪Yeni İş¦New Job⟫', q:'⟪İlk gün ne zaman?¦When is your first day?⟫', b:[['⟪İlk hafta¦First week⟫',['⟪İnsanlarla tanış¦Meet people⟫','⟪Araçları kur¦Set up your tools⟫']],['⟪Öğrenme¦Learning⟫',['⟪Notlar¦Notes⟫','⟪Sorular listesi¦Questions list⟫']],['⟪Kendin¦You⟫',['⟪Aylık bir değerlendirme¦A monthly check-in⟫']]]},
-    {n:'⟪Bütçe¦Budget⟫', q:'⟪Hangi aydan başlasın?¦Which month does it start?⟫', b:[['⟪Gelir¦Income⟫',['⟪Maaş¦Salary⟫']],['⟪Giderler¦Expenses⟫',['⟪Kira¦Rent⟫','⟪Market¦Groceries⟫','⟪Faturalar¦Bills⟫']],['⟪Birikim¦Savings⟫',['⟪Aylık hedef¦Monthly goal⟫']]]},
-    {n:'⟪Yeni Bebek¦New Baby⟫', q:'⟪Tahmini tarih?¦Due date?⟫', b:[['⟪Hazırlık¦Getting ready⟫',['⟪Hastane çantası¦Hospital bag⟫','⟪Oda¦The room⟫']],['⟪Sağlık¦Health⟫',['⟪Kontroller¦Check-ups⟫']],['⟪Destek¦Support⟫',['⟪Kimden ne yardım¦Who helps with what⟫']]]},
-    {n:'⟪Yeni Başlangıç¦Fresh Start⟫', q:'⟪Ne zaman başlıyorsun?¦When do you start?⟫', b:[['⟪Bırakılacaklar¦Let go of⟫',['⟪Bir alışkanlık¦One habit⟫']],['⟪Eklenecekler¦Add⟫',['⟪Küçük bir rutin¦A small routine⟫']],['⟪Hatırlatma¦Reminder⟫',['⟪Neden başladım?¦Why did I start?⟫']]]},
-    {n:'⟪Bırakıyorum¦Quitting⟫', q:'⟪Bırakma günü?¦Quit day?⟫', b:[['⟪Tetikleyiciler¦Triggers⟫',['⟪Ne zaman, nerede¦When and where⟫']],['⟪Yerine¦Instead⟫',['⟪Kısa bir yürüyüş¦A short walk⟫']],['⟪Destek¦Support⟫',['⟪Kime söyleyeceğim¦Who I\'ll tell⟫']]]},
-    {n:'⟪Düğün¦Wedding⟫', q:'⟪Düğün ne zaman?¦When is the wedding?⟫', b:[['⟪Mekân¦Venue⟫',['⟪Görüşmeler¦Visits⟫','⟪Kapora¦Deposit⟫']],['⟪Davetliler¦Guests⟫',['⟪Liste¦List⟫','⟪Davetiye¦Invitations⟫']],['⟪Gün¦The day⟫',['⟪Program¦Schedule⟫','⟪Müzik¦Music⟫']]]},
-    {n:'⟪Yeni Dönem¦New Semester⟫', q:'⟪Dönem ne zaman başlıyor?¦When does the semester start?⟫', b:[['⟪Dersler¦Classes⟫',['⟪Program¦Timetable⟫','⟪Kaynaklar¦Materials⟫']],['⟪Düzen¦Routine⟫',['⟪Haftalık plan¦Weekly plan⟫']],['⟪Sosyal¦Social⟫',['⟪Kulüpler¦Clubs⟫']]]}
-  ];
-  var tplSel = $('tplSel'), tplDate = $('tplDate'), tplOut = $('tplOut');
-  tplSel.innerHTML = TPL.map(function(t,i){ return '<option value="'+i+'">'+esc(t.n)+'</option>'; }).join('');
+  /* ---------- Şablon denemesi: uygulamanın 9 şablonu, bütün dallarıyla (vyne/src/constants.js → site/templates.json) ---------- */
+  var TD = {{TEMPLATES}}, TPL = TD.list, TG = TD.glyphs, tplI = 0;
+  var tplPick = $('tplPick'), tplDate = $('tplDate'), tplOut = $('tplOut');
+  var WDAY = ['⟪Pazar¦Sunday⟫','⟪Pazartesi¦Monday⟫','⟪Salı¦Tuesday⟫','⟪Çarşamba¦Wednesday⟫','⟪Perşembe¦Thursday⟫','⟪Cuma¦Friday⟫','⟪Cumartesi¦Saturday⟫'];
+  var MSHORT = ['⟪Oca¦Jan⟫','⟪Şub¦Feb⟫','⟪Mar¦Mar⟫','⟪Nis¦Apr⟫','⟪May¦May⟫','⟪Haz¦Jun⟫','⟪Tem¦Jul⟫','⟪Ağu¦Aug⟫','⟪Eyl¦Sep⟫','⟪Eki¦Oct⟫','⟪Kas¦Nov⟫','⟪Ara¦Dec⟫'];
+  var TCOL = ['#E7DFFA','#DDF3E8','#DCE6F5','#F7EFC9','#F7DCE8','#F4E4CF','#E4F4E0','#EDE3F2'];
+  TPL.forEach(function(t,i){ var b = document.createElement('button'); b.type = 'button'; b.innerHTML = (TG[t.g] || '') + esc(t.n); b.addEventListener('click', function(){ tplI = i; drawTpl(); tick(560); }); tplPick.appendChild(b); });
   var d0 = new Date(Date.now() + 30*864e5); tplDate.value = d0.getFullYear()+'-'+String(d0.getMonth()+1).padStart(2,'0')+'-'+String(d0.getDate()).padStart(2,'0');
-  function drawTpl(){
-    var t = TPL[+tplSel.value]; $('tplQ').textContent = t.q;
-    var dd = tplDate.value ? new Date(tplDate.value+'T12:00:00') : null, days = dd ? Math.round((dd - new Date())/864e5) : null;
-    tplOut.innerHTML = '<p class="eyebrow">⟪Bunlar oluşturulacak¦This will be created⟫</p><div class="lvl" style="--c:#6E9468"><i></i><b>'+esc(t.n)+'</b>'+(days!=null?'<small style="margin-left:6px">'+(days>0?days+'⟪ gün kaldı¦ days to go⟫':'⟪bugün¦today⟫')+'</small>':'')+'</div>'+
-      t.b.map(function(b,i){ return '<div class="lvl d2" style="--c:'+COLORS[i]+'"><i></i><span><b>'+esc(b[0])+'</b><br><small>'+b[1].map(esc).join(' · ')+'</small></span></div>'; }).join('')+
-      '<p class="draftnote">⟪Şablon adları uygulamadan; içindeki dallar örnek.¦Template names are from the app; the branches inside are examples.⟫</p>';
+  function tagOf(n, anchor){
+    if(n.k === 'habit'){
+      var txt = n.rec === 'daily' ? '⟪her gün¦every day⟫' : n.rec === 'weekly' ? '⟪her ¦every ⟫'+(n.days||[]).map(function(d){ return WDAY[d]; }).join(', ') : n.rec === 'monthly' ? '⟪ayda bir¦monthly⟫' : '⟪alışkanlık¦habit⟫';
+      return '<span class="tag h">'+esc(txt)+'</span>';
+    }
+    if(n.k === 'due' && anchor){ var dd = new Date(anchor.getTime() + (n.off||0)*864e5); return '<span class="tag d">'+dd.getDate()+' '+MSHORT[dd.getMonth()]+'</span>'; }
+    return '';
   }
-  tplSel.addEventListener('change', drawTpl); tplDate.addEventListener('change', drawTpl); drawTpl();
+  function drawTpl(){
+    var t = TPL[tplI], anchor = tplDate.value ? new Date(tplDate.value+'T12:00:00') : null, count = {all:0, habit:0, due:0};
+    [].forEach.call(tplPick.children, function(b,k){ b.setAttribute('aria-pressed', String(k === tplI)); });
+    $('tplDesc').textContent = t.d;
+    $('tplDateBox').hidden = !t.q; if(t.q) $('tplQ').textContent = t.q;
+    if(!t.q) anchor = null;
+    function row(n, i, depth){
+      count.all++; if(n.k === 'habit') count.habit++; if(n.k === 'due') count.due++;
+      var h = '<div class="tn" style="--c:'+TCOL[i % TCOL.length]+'"><span class="gi">'+(TG[n.g]||'')+'</span><b>'+esc(n.t)+'</b>'+tagOf(n, anchor)+'</div>';
+      if(n.c) h += '<div class="kids">'+n.c.map(function(x,k){ return row(x, i+k+1, depth+1); }).join('')+'</div>';
+      return h;
+    }
+    var kids = t.c.map(function(n,i){ return row(n, i, 1); }).join('');
+    var days = anchor ? Math.round((anchor - new Date())/864e5) : null;
+    tplOut.innerHTML = '<p class="eyebrow">⟪Bunlar oluşturulacak¦This will be created⟫</p>' +
+      '<div class="tree"><div class="tn root"><span class="gi" style="--c:#fff">'+(TG[t.g]||'')+'</span><b>'+esc(t.n)+'</b>'+(days!=null?'<span class="tag">'+(days>0?days+'⟪ gün kaldı¦ days to go⟫':'⟪bugün¦today⟫')+'</span>':'')+'</div><div class="kids">'+kids+'</div></div>' +
+      '<p class="tpl-sum">'+count.all+'⟪ dal¦ branches⟫'+(count.habit?' · '+count.habit+(count.habit === 1 ? '⟪ alışkanlık¦ habit⟫' : '⟪ alışkanlık¦ habits⟫'):'')+(count.due?' · '+count.due+(count.due === 1 ? '⟪ tarihli iş¦ dated step⟫' : '⟪ tarihli iş¦ dated steps⟫'):'')+'</p>';
+  }
+  tplDate.addEventListener('change', drawTpl); drawTpl();
 
   /* ---------- Beş kâğıt: parmakla kaydırılan sayfalar ---------- */
   var pagesEl = $('pages'), pgs = [].slice.call(pagesEl.children), cur = 0, mc = $('miniCal');
@@ -412,15 +426,70 @@
     });
   });
 
-  /* ---------- Oyuncak: çark ---------- */
-  var wheel = $('wheel'), rot = 0, tInt = null;
-  wheel.style.background = 'conic-gradient(#BEA8EE 0 120deg,#96BEE8 120deg 240deg,#EE96BA 240deg 360deg)';
-  $('spinBtn').addEventListener('click', function(){
-    var opts = ['w1','w2','w3'].map(function(id){ return $(id).value.trim() || '⟪Bir iş¦Something⟫'; }), pickI = Math.floor(Math.random()*3);
-    var target = 360 - (pickI*120 + 60); rot += 360*4 + ((target - rot%360) + 360) % 360; wheel.style.transform = 'rotate('+rot+'deg)';
-    var tEl = $('timer'); clearInterval(tInt); tEl.textContent = '⟪Dönüyor…¦Spinning…⟫'; tick(400);
-    setTimeout(function(){ var left = 120; function tk(){ var m = Math.floor(left/60), s = left%60; tEl.textContent = '"'+opts[pickI]+'⟪" · sadece 2 dakika: ¦" · just 2 minutes: ⟫'+m+':'+(s<10?'0':'')+s; if(left-- <= 0){ clearInterval(tInt); tEl.textContent = '⟪Güzel, başladın.¦Nice, you started.⟫'; } } tk(); tick(880); tInt = setInterval(tk, 1000); }, reduce ? 0 : 3200);
-  });
+  /* ---------- Oyuncak: çark (uygulamadaki gibi: dilimler, çizimler, sadece 2 dakika) ---------- */
+  var WCOL = ['#BEA8EE','#A8E6C8','#96BEE8','#EEE096','#CDBDF2','#F2C4A6'];
+  var WKEY = [[/yürü|koş|walk|run|jog/i,'runner'],[/oku|kitap|sayfa|read|book|page/i,'openbook'],[/mutfak|topla|temiz|tidy|clean|kitchen|dust/i,'broom'],[/\bsu\b|water|drink/i,'drop'],[/ara\b|call|phone|telefon/i,'phone'],[/yaz|günlük|write|journal|note/i,'pencil'],[/spor|antrenman|gym|workout|egzersiz/i,'dumbbell'],[/müzik|gitar|piyano|music|guitar|piano/i,'music'],[/kahve|çay|coffee|tea/i,'coffee'],[/uyku|yat|sleep|nap/i,'bed']];
+  var WFALL = ['sprout','star','heart','sun','bulb','leafB'];
+  var wItems = ['⟪10 dk yürüyüş¦10 min walk⟫','⟪Mutfağı topla¦Tidy the kitchen⟫','⟪Bir sayfa oku¦Read one page⟫','⟪Annemi ara¦Call mom⟫'];
+  var wheelSvg = $('wheel'), wList = $('wList'), wRes = $('wRes'), wPointer = $('wPointer'), wRot = 0, wSpinning = false, wInt = null;
+  function wGlyph(t, i){ for(var k=0;k<WKEY.length;k++) if(WKEY[k][0].test(t)) return WKEY[k][1]; return WFALL[i % WFALL.length]; }
+  function inSvg(name, x, y, s){ return (G[name] || '').replace('<svg class="g"', '<svg x="'+(x-s/2)+'" y="'+(y-s/2)+'" width="'+s+'" height="'+s+'" class="gw"'); }
+  function drawWheel(win){
+    var n = wItems.length, R = 140, s = 360/n, out = '<circle r="162" fill="none" stroke="#E9D9B4" stroke-width="10" opacity=".7"/><g id="wRot" transform="rotate('+wRot+')">';
+    wItems.forEach(function(t,i){
+      var a0 = (i*s - 90)*Math.PI/180, a1 = ((i+1)*s - 90)*Math.PI/180, am = (a0+a1)/2;
+      out += '<path class="sl'+(i === win ? ' win' : '')+'" fill="'+WCOL[i % WCOL.length]+'" d="M0 0 L'+(R*Math.cos(a0)).toFixed(2)+' '+(R*Math.sin(a0)).toFixed(2)+' A'+R+' '+R+' 0 '+(s > 180 ? 1 : 0)+' 1 '+(R*Math.cos(a1)).toFixed(2)+' '+(R*Math.sin(a1)).toFixed(2)+' Z"/>';
+      out += '<g transform="rotate('+((i+0.5)*s)+')">'+inSvg(wGlyph(t,i), 0, -R*0.62, 38)+'</g>';
+      out += '<circle cx="'+(152*Math.cos(a0)).toFixed(2)+'" cy="'+(152*Math.sin(a0)).toFixed(2)+'" r="4" fill="#fff" stroke="#D9C392" stroke-width="1.5"/>';
+    });
+    out += '</g><circle r="22" fill="#fff" stroke="#E8E4DC" stroke-width="2"/>'+inSvg('sprout', 0, 0, 28);
+    wheelSvg.innerHTML = out; wheelSvg.classList.toggle('picked', win != null);
+  }
+  function drawWList(){
+    wList.innerHTML = '';
+    wItems.forEach(function(t,i){
+      var r = document.createElement('div'); r.className = 'wrow2';
+      r.innerHTML = '<span class="sw" style="background:'+WCOL[i % WCOL.length]+'">'+(G[wGlyph(t,i)]||'')+'</span><input maxlength="28" aria-label="⟪İş ¦Task ⟫'+(i+1)+'"><button type="button" aria-label="⟪Sil¦Remove⟫">×</button>';
+      var inp = r.querySelector('input'); inp.value = t;
+      inp.addEventListener('input', function(){ wItems[i] = inp.value; r.querySelector('.sw').innerHTML = G[wGlyph(inp.value,i)] || ''; drawWheel(); });
+      var del = r.querySelector('button'); del.disabled = wItems.length <= 2; del.style.visibility = wItems.length <= 2 ? 'hidden' : 'visible';
+      del.addEventListener('click', function(){ wItems.splice(i,1); drawWList(); drawWheel(); });
+      wList.appendChild(r);
+    });
+    $('wAdd').disabled = wItems.length >= 6; $('wAdd').style.display = wItems.length >= 6 ? 'none' : '';
+  }
+  $('wAdd').addEventListener('click', function(){ if(wItems.length >= 6) return; wItems.push(''); drawWList(); drawWheel(); var ins = wList.querySelectorAll('input'); ins[ins.length-1].focus(); });
+  function underPointer(){ var n = wItems.length, s = 360/n; return Math.floor((((360 - wRot) % 360) + 360) % 360 / s) % n; }
+  function showResult(i){
+    var t = (wItems[i] || '').trim() || '⟪Bir iş¦Something⟫', total = 120, left = total, C = 2*Math.PI*24;
+    wRes.hidden = false;
+    wRes.innerHTML = '<span class="ic" style="background:'+WCOL[i % WCOL.length]+'">'+(G[wGlyph(t,i)]||'')+'</span><b>'+esc(t)+'</b><span>⟪Sadece 2 dakika. Başla, gerisi gelir.¦Just 2 minutes. Start, the rest follows.⟫</span>' +
+      '<span class="ring"><svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="24" fill="none" stroke="#EFE9DA" stroke-width="6"/><circle id="wArc" cx="29" cy="29" r="24" fill="none" stroke="#6E9468" stroke-width="6" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="0"/></svg><em id="wT">2:00</em></span>' +
+      '<span class="acts"><button type="button" id="wDone">⟪Başladım¦I started⟫</button><button type="button" id="wAgain">⟪Tekrar çevir¦Spin again⟫</button></span>';
+    clearInterval(wInt);
+    wInt = setInterval(function(){ left--; var m = Math.floor(left/60), s = left%60, el = $('wT'), arc = $('wArc'); if(!el){ clearInterval(wInt); return; }
+      el.textContent = m+':'+(s<10?'0':'')+s; arc.setAttribute('stroke-dashoffset', (C*(1 - left/total)).toFixed(1));
+      if(left <= 0){ clearInterval(wInt); el.textContent = '✓'; tick(990); } }, 1000);
+    $('wDone').addEventListener('click', function(){ clearInterval(wInt); wRes.innerHTML = '<span class="ic" style="background:#E4F4E0">'+G.leafB+'</span><b>⟪Güzel, başladın.¦Nice, you started.⟫</b><span>⟪Uygulamada bu, günün yaprağına sayılır.¦In the app, this counts for today.⟫</span>'; tick(880); });
+    $('wAgain').addEventListener('click', spin);
+  }
+  function spin(){
+    if(wSpinning) return;
+    wItems = wItems.map(function(t){ return t.trim(); }).filter(Boolean); while(wItems.length < 2) wItems.push('⟪Bir iş¦Something⟫');
+    drawWList(); clearInterval(wInt); wRes.hidden = true;
+    var n = wItems.length, s = 360/n, win = Math.floor(Math.random()*n), jitter = (Math.random()-0.5)*s*0.6;
+    var target = ((360 - (win+0.5)*s - jitter) % 360 + 360) % 360, from = wRot, to = from + 360*5 + ((target - from % 360) + 360) % 360;
+    var dur = reduce ? 0 : 4200, t0 = performance.now(), last = underPointer(); wSpinning = true; $('spinBtn').disabled = true; drawWheel();
+    (function step(t){
+      var k = dur ? Math.min(1, (t - t0)/dur) : 1; wRot = from + (to - from)*(1 - Math.pow(1-k, 4));
+      var g = $('wRot'); if(g) g.setAttribute('transform', 'rotate('+wRot+')');
+      var u = underPointer(); if(u !== last){ last = u; wPointer.classList.remove('flick'); void wPointer.offsetWidth; wPointer.classList.add('flick'); tick(1200); }
+      if(k < 1) requestAnimationFrame(step);
+      else { wRot = to % 360; wSpinning = false; $('spinBtn').disabled = false; drawWheel(win); showResult(win); if(navigator.vibrate) navigator.vibrate(20); tick(880); }
+    })(t0);
+  }
+  $('spinBtn').addEventListener('click', spin);
+  drawWList(); drawWheel();
   /* Oyuncak: hangi şablon sensin */
   var QUIZ = [
     {q:'⟪Bu ay hayatında en çok ne değişiyor?¦What\'s changing most in your life this month?⟫', a:[['⟪Okul ya da sınav¦School or exams⟫',[0,8]],['⟪İş ya da ev¦Work or home⟫',[1,2]],['⟪Ailem büyüyor¦My family is growing⟫',[4,7]],['⟪Kendim¦Me⟫',[5,6]]]},
@@ -435,8 +504,8 @@
       [].forEach.call(quiz.querySelectorAll('.qa button'), function(b){ b.addEventListener('click', function(){ q.a[+b.dataset.i][1].forEach(function(t){ score[t]++; }); qi++; tick(600); drawQuiz(); }); });
     } else {
       var best = score.indexOf(Math.max.apply(null, score)), t = TPL[best];
-      quiz.innerHTML = '<div class="res"><span class="eyebrow" style="color:#4A6E45">⟪Sana uyan şablon¦The template for you⟫</span><b>'+esc(t.n)+'</b><p>⟪İlk üç dalın: ¦Your first three branches: ⟫'+t.b.map(function(b){ return esc(b[0]); }).join(', ')+'.</p><div class="row-btns"><a class="btn2 primary" href="#sablon" id="quizTry" style="text-decoration:none">⟪Şablonu dene¦Try the template⟫</a><button class="btn2" type="button" id="quizAgain">⟪Tekrar¦Again⟫</button></div></div>';
-      $('quizTry').addEventListener('click', function(){ tplSel.value = best; drawTpl(); });
+      quiz.innerHTML = '<div class="res"><span class="eyebrow" style="color:#4A6E45">⟪Sana uyan şablon¦The template for you⟫</span><b>'+esc(t.n)+'</b><p>⟪İlk üç dalın: ¦Your first three branches: ⟫'+t.c.slice(0,3).map(function(b){ return esc(b.t); }).join(', ')+'.</p><div class="row-btns"><a class="btn2 primary" href="#sablon" id="quizTry" style="text-decoration:none">⟪Şablonu dene¦Try the template⟫</a><button class="btn2" type="button" id="quizAgain">⟪Tekrar¦Again⟫</button></div></div>';
+      $('quizTry').addEventListener('click', function(){ tplI = best; drawTpl(); });
       $('quizAgain').addEventListener('click', function(){ qi = 0; drawQuiz(); }); tick(990);
     }
   }

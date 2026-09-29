@@ -31,7 +31,7 @@ const base = process.env.BASE || 'http://localhost:8766/vyne-website/';
     console.log(label, w, JSON.stringify(r), errs.length ? 'ERR '+errs.join(' | ') : 'no errors');
     await ctx.close();
   }
-  for (const u of [base, base+'en/']) {
+  for (const u of [base, base+'tr/', base+'en/']) {
     await check(u, 390, IOS, 'ios'); await check(u, 390, AND, 'android'); await check(u, 768, undefined, 'tablet'); await check(u, 1280, undefined, 'desk'); await check(u, 320, IOS, 'small');
   }
   // old hash → new section, lang switch keeps hash, VyneOS
