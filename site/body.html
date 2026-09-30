@@ -177,7 +177,7 @@
   <div class="sec-head">
     <p class="eyebrow">⟪Özellikler¦Features⟫</p>
     <h2>⟪Bütün parçalar ve nasıl kullanıldıkları¦Every piece, and how to use it⟫</h2>
-    <p class="lede">⟪Uygulamadaki gibi üç büyük dal. Her kartın altında "Nasıl kullanılır" var.¦Three big branches, just like the app. Every card has a "How to use it" underneath.⟫ {{^v140}}⟪<b>Yeni</b> işaretliler 1.4.0 ile geliyor; sürüm şu an App Store ve Google Play incelemesinde.¦Pieces marked <b>new</b> arrive with 1.4.0, which is in App Store and Google Play review right now.⟫{{/v140}}{{#v140}}⟪<b>Yeni</b> işaretliler 1.4.0 ile geldi.¦Pieces marked <b>new</b> arrived with 1.4.0.⟫{{/v140}}</p>
+    <p class="lede">⟪Uygulamadaki gibi üç büyük dal. Her kartın altında "Nasıl kullanılır" var.¦Three big branches, just like the app. Every card has a "How to use it" underneath.⟫ {{^v140}}{{#android}}⟪<b>Yeni</b> işaretliler 1.4.0 ile geldi: Android'de yayında, iPhone sürümü App Store incelemesinde.¦Pieces marked <b>new</b> came with 1.4.0: it's out on Android, and the iPhone version is in App Store review.⟫{{/android}}{{^android}}⟪<b>Yeni</b> işaretliler 1.4.0 ile geliyor; sürüm şu an App Store ve Google Play incelemesinde.¦Pieces marked <b>new</b> arrive with 1.4.0, which is in App Store and Google Play review right now.⟫{{/android}}{{/v140}}{{#v140}}⟪<b>Yeni</b> işaretliler 1.4.0 ile geldi.¦Pieces marked <b>new</b> arrived with 1.4.0.⟫{{/v140}}</p>
   </div>
 
   <div class="group" style="margin-top:0">
@@ -428,7 +428,7 @@
     <p class="lede">⟪Uygulama büyümeye devam ediyor. Her sürümde neler değişti, kısa kısa.¦The app keeps growing. What changed in each version, in short.⟫</p>
   </div>
   <div class="log">
-    <div class="ver{{^v140}} review{{/v140}}"><h4>1.4.0<small>{{^v140}}⟪Eylül 2026 · App Store ve Google Play incelemesinde¦September 2026 · in App Store and Google Play review⟫{{/v140}}{{#v140}}⟪Eylül 2026¦September 2026⟫{{/v140}}</small></h4>
+    <div class="ver{{^v140}} review{{/v140}}"><h4>1.4.0<small>{{^v140}}{{#android}}⟪Eylül 2026 · Android'de yayında, App Store incelemesinde¦September 2026 · out on Android, in App Store review⟫{{/android}}{{^android}}⟪Eylül 2026 · App Store ve Google Play incelemesinde¦September 2026 · in App Store and Google Play review⟫{{/android}}{{/v140}}{{#v140}}⟪Eylül 2026¦September 2026⟫{{/v140}}</small></h4>
       <p class="muted" style="font-size:15px">⟪Vyne başladığından beri en büyük güncelleme.¦The biggest update since Vyne began.⟫</p>
       <ul>
         <li>⟪Sevdiğin kâğıtta günlük ve haftalık defter¦A daily journal and a weekly diary, on the paper you like⟫</li>
@@ -500,7 +500,7 @@
     <details><summary>⟪Verilerimi silebilir miyim?¦Can I delete my data?⟫</summary><p>⟪Evet, istediğin zaman, doğrudan uygulamanın içinden. Hem cihazdaki veri hem varsa bulut yedeği.¦Yes, any time, right inside the app. Both the data on your device and any cloud backup.⟫</p></details>
     <details><summary>⟪Telefonumu değiştirirsem?¦What if I change phones?⟫</summary><p>⟪Dosyaya aktarıp yeni telefonda içe alabilirsin; ikinci kez alırsan kopya oluşmaz, eksikleri ekler. Ya da bulut yedeğiyle geri yüklersin.¦Export to a file and import it on the new phone; importing twice makes no duplicates, it only adds what's missing. Or restore from cloud backup.⟫</p></details>
     <details><summary>⟪Hangi dillerde?¦Which languages?⟫</summary><p>⟪Türkçe ve İngilizce. Uygulama telefonunun dilini izler; istersen ayarlardan değiştirirsin.¦English and Turkish. The app follows your phone's language, and you can switch it in settings.⟫</p></details>
-    <details><summary>⟪iPad'de ya da bilgisayarda çalışır mı?¦Does it work on iPad or a computer?⟫</summary><p>⟪Şimdilik telefon için: iPhone, ve incelemesi bitince Android. iPad sürümü yok.¦For now it's made for phones: iPhone, and Android once its review is done. There's no iPad version.⟫</p></details>
+    <details><summary>⟪iPad'de ya da bilgisayarda çalışır mı?¦Does it work on iPad or a computer?⟫</summary><p>{{#android}}⟪Şimdilik telefon için: iPhone ve Android. iPad sürümü yok.¦For now it's made for phones: iPhone and Android. There's no iPad version.⟫{{/android}}{{^android}}⟪Şimdilik telefon için: iPhone, ve incelemesi bitince Android. iPad sürümü yok.¦For now it's made for phones: iPhone, and Android once its review is done. There's no iPad version.⟫{{/android}}</p></details>
     <details><summary>⟪İnternet olmadan çalışır mı?¦Does it work offline?⟫</summary><p>⟪Evet, tamamen. Her şey telefonunda. İnternet sadece istersen açtığın bulut yedeği için.¦Yes, fully. Everything lives on your phone. The internet is only for cloud backup, if you turn it on.⟫</p></details>
     <details><summary>⟪Bunu kim yapıyor?¦Who makes this?⟫</summary><p>⟪Tek kişi: ben, Hasan. Arkasında ekip ya da şirket yok. Her gün kullanıyorum, en çok da alışkanlıkları. <a href="#hikaye">Mektubu oku.</a>¦Just one person: me, Hasan. No team, no company behind it. I use it every day, mostly for habits. <a href="#hikaye">Read the letter.</a>⟫</p></details>
   </div>

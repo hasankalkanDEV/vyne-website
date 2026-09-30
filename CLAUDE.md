@@ -75,20 +75,17 @@ uygulamanın çizimleriyle dilimler, seçince 2 dakikalık sayaç.
   `vyne-site-last` (3+ gün sonra "Tekrar hoş geldin"). Ziyaretçi defteri kaldırıldı
   (yaprak Hasan'a ulaşmıyordu); yerine `mailto:` bağlantısı.
 
-## 🔴 GÜNCEL DURUM — 2026-09-29 — ve `site/live.json`
+## 🔴 GÜNCEL DURUM — 2026-09-30 — ve `site/live.json`
 
-- 1.4.0 gönderildi: iOS App Review'da (onayda kendiliğinden yayın), Android
-  versionCode 11 Play production incelemesinde (ilk Play sürümü, managed
-  publishing açık: onaydan sonra Hasan yayınla der).
-- `live.json` şu an `"android": false, "v140": false`:
-  Play rozeti "çok yakında" (bağlantısız), SSS "Google Play incelemesinde",
-  Yenilikler'de 1.4.0 "Eylül 2026 · incelemede", özellikler "1.4.0 ile geliyor".
+- **Android Google Play'de yayında** (Hasan, 2026-09-30): `"android": true`. Rozet, QR, alt çubuk
+  ve SSS Play'e bağlı; Android cihazda Play önce, alt çubuk doğrudan Play'e gider.
+- iOS 1.4.0 hâlâ `"v140": false` (Hasan "yayında" demedi). Bu durumda metinler:
+  "Android'de yayında, iPhone sürümü App Store incelemesinde".
 
 ### ⏭️ MAĞAZA DEĞİŞİNCE (Hasan haber verince)
 
-1. iOS 1.4.0 yayında → `"v140": true`. 2. Play'de yayında → `"android": true`
-   (rozet, SSS, alt çubuk kendiliğinden bağlantılı olur).
-3. `node scripts/build-site.mjs`, kontrol, commit, `main`.
+1. iOS 1.4.0 yayında → `"v140": true` (1.4.0 "incelemede" yazıları kendiliğinden kalkar).
+2. `node scripts/build-site.mjs`, kontrol, commit, `main`.
 
 **Yaprak kuralı** uygulamanın kodundan: `leafEvery: 7`, `leafCap: 2` (live.json);
 yaprak sadece bir önceki kaçan günü kurtarır. Dinlenme günleri (Dinlenme / Hasta /

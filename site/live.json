@@ -1,5 +1,5 @@
 {
-  "android": false,
+  "android": true,
   "v140": false,
   "leafEvery": 7,
   "leafCap": 2,
