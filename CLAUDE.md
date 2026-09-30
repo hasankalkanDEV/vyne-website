@@ -46,11 +46,12 @@ kaydırarak okunuyor.** Sürükleme sadece süs: girişteki "tomurcuğu sağa ç
 
 Sıra ve adresler (TR ve EN'de aynı, dil düğmesi aynı yerde kalır):
 `#giris` · `#nasil` (düz liste↔sarmaşık, kendi sarmaşığın, `#yaprak` deneme +
-yüz güne iniş, `#gun` sıradan bir gün) · `#ozellikler` (24 kart, `#sablon`,
+yüz güne iniş, `#gun` örnek bir gün) · `#ozellikler` (24 kart, `#sablon`,
 `#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
 `#yenilikler` · `#sozler` · `#sorular` · `#indir`. (`#oyuncaklar` = çark bölümü.)
 Özellik kartları ve "Neden böyle?" her yerde yana kayan sıra: telefonda 1, tablette 2, bilgisayarda 3 kart; sayaç ve ‹ › okları.
-"Sıradan bir gün" telefonda tek ekran (saat+başlık, çizim, dert, açıklama); yana kaydırınca durak değişir.
+"Örnek bir gün" telefonda tek ekran (saat+başlık, çizim, dert, açıklama); yana kaydırınca durak değişir.
+Telefonda: dört kısa madde tek sütun; şablon ağacında alt dallar katlı ("+3"); Yenilikler ilk 5 madde + "Tümünü gör". Bilgisayarda: yüz güne iniş iki sütun (ipin iki yanı), düz liste 780 px ortada.
 Kâğıt sayfalarındaki düğme siteyi o kâğıda geçirir. Dil önerisi ve gece sorusu altta kapatılabilir şerit.
 Kaldırılanlar (2026-09-30, puanı düşüktü): tomurcuk süsü, şablon testi, yıl yaprakları, almanak.
 Şablon denemesi uygulamanın gerçek verisini gösterir (alt dallar, alışkanlık sıklığı, tarihler);
@@ -97,6 +98,27 @@ a bad day."). Mektup mağaza açıklamasından; Hasan'a göre mağazada artık
 EN metinler uygulamanın `en.json`'undan ve mağaza metninden, uydurma değil.
 Türkçe ek: "Vyne'ı / Vyne'da" (okunuşu "vayn").
 
+### ✍️ Ses ve gerçekler (Hasan'ın cevapları, 2026-09-30)
+
+- **Ses tekil birinci şahıs: "ben / I".** "Biz / we" hiçbir yerde yok (tek kişi).
+- **Bildirimler:** "günde en fazla bir" YANLIŞ, yazma. Doğrusu: günlük hatırlatma
+  kişinin SEÇTİĞİ saatte (akşam değil), alışkanlığa özel saat, hatırlatıcılar,
+  doğum günleri. Suçluluk kelimesi yok, istemeyen kapatır.
+- **Bulut yedeği:** uçtan uca şifreli değil; "okumak kolay değil ama zorlarsam okuyabilirim,
+  okumuyorum". Şifreleme planından bahsetme.
+- **Ücret:** söz verme ("değişirse söyleriz" yok). Amaç: ücretsiz, sade, Hasan'ın da
+  ömür boyu kullanacağı uygulama; ancak bulut masrafı zorlarsa düşünülür.
+- **Gerçek hikâye:** hayatının farklı dalları vardı, bazılarını unuttukça geride kalmış
+  hissediyordu, her şeyi büyük resimde görmek istedi → dallanan yapı. Çark: yapacak çok
+  şey varken hiçbir şey yapası gelmediği günler için. 2 dakika kuralı okuduğu bir kitaptan
+  (kitap adı bilinmiyor, yazma). Notlar/günlük "not ve liste yazmayı sevenler için" (eşi
+  için yaptı ama eşi ANILMAZ). Her gün kullanıyor, en çok alışkanlıkları.
+- Şablonla açılmaması: "hazır şablon gerçek gelmedi, herkesin hayatı farklı".
+- Kendini tanıtma yok: soyad, şehir, memleket YAZILMAZ. Mail'e süre sözü yok, "mutlaka dönüyorum".
+- **Örnek isimler: Hasan ve Hannah** (çizimlerde profil Hasan). Başka isim gerekirse Hasan'a sor.
+- "Sıradan bir gün" = **örnek bir gün**, "sen" diliyle; Hasan'ın kendi anısı değil.
+- **EN metin Amerikan yazımı** (traveling, color, gray, behavior, vacation).
+
 ## Görseller: ekran görüntüsü YOK, çizim var (Hasan, 2026-09-30)
 
 - Hasan: "birebir ss kullanmak yerine kendin görsel oluştur, sadece anahtar kısmı göster."
@@ -123,7 +145,7 @@ sürükleyerek açılan site `5fafe7f`'te, ondan önceki site `8e9df97`'de.
   yaptım, ailem ve arkadaşlarım için".
 - **Henüz olmayan özellik vaat edilmez:** ortak alan (eşle paylaşım), imza
   işaretleme, dal başına emoji/çizim 1.4.0'dan sonra.
-- Sahte kullanıcı yorumu yok.
+- Sahte kullanıcı yorumu yok. Eşinin beğenisi de paylaşılmaz (eşi anılmaz).
 
 ## 📌 Açık işler
 
