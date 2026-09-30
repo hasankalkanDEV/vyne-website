@@ -13,7 +13,7 @@
 //   [[c:plagueDoctor]]      uygulamanın karakterlerinden biri
 //   {{#android}}…{{/android}}   sadece site/live.json'da android: true ise
 //   {{^android}}…{{/android}}   sadece android: false ise   (v140 için de aynısı)
-//   {{#appview}}…{{/appview}}   "Uygulama görünümü" düğmesi; şimdilik sadece önizlemede (onizleme/) açık
+//   {{#appview}}…{{/appview}}   "Uygulama görünümü" (site uygulamanın ana ekranı gibi); açık. Kapatmak için aşağıda false yap
 //   {{LEAF_EVERY}} {{LEAF_CAP}}  uygulamanın yaprak kuralı (site/live.json'da; uygulamada değişirse orada değiştir)
 //
 // Mağaza durumu değişince SADECE site/live.json'u değiştir ve betiği çalıştır.
@@ -84,7 +84,7 @@ function glyph(kind, name, mode) {
 /* ---------- Şablon ---------- */
 function build(lang, opt = {}) {
   const en = lang === 'en', P = opt.P ?? (en ? '' : '../');
-  const FLAGS = { appview: false, ...LIVE, ...(opt.flags || {}) };
+  const FLAGS = { appview: true, ...LIVE, ...(opt.flags || {}) };
   let s = read('site/head.html') + '<style>\n' + read('site/style.css') + '</style>\n</head>\n' +
     read('site/body.html') + read('site/mocks.html') + '<script>\n' + read('site/app.js') + '</script>\n</body>\n</html>\n';
   for (const [flag, on] of Object.entries(FLAGS)) {
@@ -124,8 +124,4 @@ writeFileSync(join(root, 'en/index.html'), ['<!doctype html>', '<html lang="en">
   '<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../">',
   '<script>location.replace("../" + location.hash);</script></head>',
   '<body><a href="../">Vyne</a></body></html>', ''].join('\r\n'));
-// Önizleme: aynı site, "Uygulama görünümü" açık. Bağlantısız, arama motorlarına kapalı.
-mkdirSync(join(root, 'onizleme/tr'), { recursive: true });
-writeFileSync(join(root, 'onizleme/index.html'), build('en', { P: '../', flags: { appview: true }, noindex: true }));
-writeFileSync(join(root, 'onizleme/tr/index.html'), build('tr', { P: '../../', flags: { appview: true }, noindex: true }));
 console.log('index.html (EN) + tr/index.html (TR) + en/ yönlendirmesi yazıldı ·', used.size, 'çizim ·', JSON.stringify(LIVE));

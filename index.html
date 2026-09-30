@@ -29,7 +29,7 @@
 <meta name="twitter:description" content="One calm place for your habits, your journal and your notes. Miss a day and your streak doesn't break.">
 <meta name="twitter:image" content="https://hasankalkandev.github.io/vyne-website/og-image.png">
 <script>if(/Android/i.test(navigator.userAgent))document.documentElement.classList.add('is-android');</script>
-
+<script>try{if(localStorage.getItem('vyne-site-view')==='app')document.documentElement.classList.add('app-pre')}catch(e){}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Vyne","alternateName":"Vyne: Habit Tracker & Journal","operatingSystem":"iOS","applicationCategory":"LifestyleApplication","inLanguage":["en","tr"],"description":"One calm place for your habits, your journal and your notes. Miss a day and your streak doesn't break.","url":"https://hasankalkandev.github.io/vyne-website/","downloadUrl":"https://apps.apple.com/app/id6790837181","image":"https://hasankalkandev.github.io/vyne-website/app-icon.png","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -840,6 +840,73 @@ footer a{color:var(--slate)}
 @media (min-width:900px){ .flat{width:100%; max-width:780px; margin-inline:auto} }
 @media (max-width:620px){ .tn.has{padding-right:58px} .tn.has .tk{position:absolute; right:8px; top:50%; translate:0 -50%; margin:0} }
 
+/* ===== Uygulama görünümü: site uygulamanın ana ekranı gibi (ortada sen, sağda dallar) ===== */
+html.app-pre main{visibility:hidden}
+.view-btn[aria-pressed="true"]{background:var(--green-soft); border-color:var(--green); color:var(--green-text)}
+.to-app{justify-self:start; display:inline-flex; align-items:center; gap:10px; margin-top:14px; font:inherit; font-size:15.5px; font-weight:900; color:var(--green-text); background:var(--green-soft); border:1.5px solid color-mix(in srgb,var(--green) 40%,transparent); border-radius:999px; padding:8px 16px 8px 10px; cursor:pointer; min-height:44px}
+.to-app svg.g{font-size:26px}
+.to-app i{font-style:normal; transition:translate .2s}
+.to-app:hover i{translate:4px 0}
+html.appmode #giris,html.appmode .quick,html.appmode main .sec:not(.open){display:none}
+html.appmode main .sec.open{padding-top:18px; animation:apIn .32s ease both}
+@keyframes apIn{from{opacity:0; translate:18px 0}to{opacity:1; translate:0 0}}
+
+.apphome{padding:22px 0 34px; max-width:760px; margin:0 auto}
+.ah-hello{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center}
+.ah-hello img{border-radius:14px; box-shadow:var(--shadow)}
+.ah-hello h1{font-size:clamp(24px,4.6vw,34px)}
+.ah-hello p{color:var(--slate); font-size:15.5px; margin:4px 0 0}
+.ah-today{margin-top:18px; background:var(--card); border:1px solid var(--border); border-radius:18px; padding:10px 12px}
+.ah-th{display:flex; justify-content:space-between; font-size:12.5px; font-weight:900; letter-spacing:.08em; color:var(--slate)}
+.ah-th b{color:var(--green-text)}
+.ah-hcs{display:flex; gap:8px; margin-top:8px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
+.ah-hcs::-webkit-scrollbar{display:none}
+.ah-hcs span{flex:none; display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:800; padding:5px 10px 5px 7px; border-radius:999px; background:var(--green-soft); color:var(--green-text); border:1.5px solid color-mix(in srgb,var(--green) 35%,transparent)}
+.ah-hcs svg.g{font-size:20px}
+.ah-hcs i{width:12px; height:12px; border-radius:50%; background:var(--green)}
+.ah-vine{position:relative; display:grid; grid-template-columns:92px minmax(0,1fr); gap:0 64px; align-items:center; margin-top:22px}
+.ah-lines{position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none}
+.ah-lines path{fill:none; stroke-width:3.5; stroke-linecap:round}
+html.appmode .dock{display:none!important}
+html.appmode{scroll-padding-top:calc(var(--hh,64px) + var(--ph,100px) + 12px)}
+@media (max-width:760px){ html.appmode #nav{display:none} }
+.ah-lines.grow path{stroke-dasharray:var(--len); stroke-dashoffset:var(--len); animation:ahGrow .7s ease-out forwards}
+@keyframes ahGrow{to{stroke-dashoffset:0}}
+.ah-me{position:relative; display:grid; justify-items:center; gap:4px; text-align:center}
+.ah-bub{width:84px; height:84px; border-radius:50%; background:#6E9468; display:grid; place-items:center; box-shadow:0 0 0 4px var(--bg),0 0 0 6px color-mix(in srgb,var(--green) 55%,transparent)}
+.ah-bub svg.g{font-size:62px}
+.ah-me b{font-size:15px}
+.ah-bcs{position:relative; display:grid; gap:10px}
+.ah-bc{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--border); border-radius:18px; padding:9px 12px 9px 9px; box-shadow:0 2px 0 color-mix(in srgb,var(--cb) 55%,transparent); transition:translate .15s, box-shadow .15s; min-height:60px}
+.ah-bc:hover{translate:3px 0; box-shadow:0 2px 0 var(--cb)}
+.ah-bc:active{translate:1px 1px}
+.ah-bc:focus-visible{outline:3px solid var(--green); outline-offset:2px}
+.ah-ic{flex:none; width:44px; height:44px; border-radius:13px; background:var(--cb); display:grid; place-items:center}
+.ah-ic svg.g{font-size:30px; color:#2C2A26} .ah-ic svg.g .gf{opacity:1}
+.ah-bt{display:grid; gap:3px; min-width:0}
+.ah-bt b{font-size:16.5px; line-height:1.2}
+.ah-chip{justify-self:start; font-size:13px; font-weight:800; color:var(--slate); background:color-mix(in srgb,var(--cb) 22%,var(--card)); border-radius:999px; padding:2px 9px}
+.ah-go{margin-left:auto; font-size:24px; font-weight:900; color:var(--slate)}
+.ah-foot{text-align:center; margin-top:24px}
+.ah-foot button{font:inherit; font-size:15px; font-weight:800; color:var(--slate); background:none; border:0; text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:8px}
+@media (max-width:420px){ .ah-vine{grid-template-columns:66px minmax(0,1fr); column-gap:34px} .ah-bub{width:64px; height:64px} .ah-bub svg.g{font-size:48px} .ah-bt b{font-size:15.5px} }
+
+.apppath{position:sticky; top:var(--hh,64px); z-index:30; margin:0 -20px; padding:8px 20px 8px; background:color-mix(in srgb,var(--bg) 92%,transparent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--border)}
+.ap-row{display:flex; align-items:center; gap:10px; max-width:1100px; margin:0 auto}
+.ap-back{flex:none; width:40px; height:40px; display:grid; place-items:center; border-radius:50%; border:1.5px solid var(--border); background:var(--card); color:var(--ink); text-decoration:none; font-size:24px; font-weight:900; line-height:1}
+.ap-ic{flex:none; width:34px; height:34px; border-radius:10px; background:var(--cb,#A8E6C8); display:grid; place-items:center}
+.ap-ic svg.g{font-size:24px; color:#2C2A26} .ap-ic svg.g .gf{opacity:1}
+.ap-crumb{font-size:15px; font-weight:800; color:var(--slate); min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ap-crumb a{color:var(--green-text)}
+.ap-crumb b{color:var(--ink)}
+.ap-subs{display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; max-width:1100px; margin:8px auto 0; padding-bottom:2px}
+.ap-subs:empty{display:none}
+.ap-subs::-webkit-scrollbar{display:none}
+.ap-subs button{flex:none; font:inherit; font-size:14px; font-weight:800; color:var(--ink); background:var(--card); border:1.5px solid var(--border); border-radius:999px; padding:6px 12px; min-height:36px; cursor:pointer}
+.ap-subs button:hover{border-color:var(--cb,var(--green))}
+
+@media (prefers-reduced-motion:reduce){ .ah-lines.grow path{animation:none; stroke-dashoffset:0} }
+
 </style>
 </head>
 <body>
@@ -855,7 +922,7 @@ footer a{color:var(--slate)}
     <div class="top-right">
       <a class="lang-sw" id="langSw" href="tr/" data-lang="tr" hreflang="tr" lang="tr" aria-label="Türkçe">TR</a>
       <button class="look-btn" id="lookBtn" type="button" aria-expanded="false" aria-controls="look"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 4 C9 4 4 9 4 15.5 C4 22 9 27.5 15 27.5 C17.5 27.5 18 25.5 17 24 C16 22.5 17 20.5 19 20.5 H22 C25.5 20.5 28 18 28 14.5 C28 8.5 22.5 4 16 4 Z" fill="#EEC896"/><circle cx="10" cy="13.5" r="2" fill="#E0564F"/><circle cx="13.5" cy="8.8" r="2" fill="#F2C66B"/><circle cx="19.5" cy="8.5" r="2" fill="#6F98C4"/><circle cx="23.5" cy="13" r="2" fill="#7FAE76"/></g><path d="M16 4 C9 4 4 9 4 15.5 C4 22 9 27.5 15 27.5 C17.5 27.5 18 25.5 17 24 C16 22.5 17 20.5 19 20.5 H22 C25.5 20.5 28 18 28 14.5 C28 8.5 22.5 4 16 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="13.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="13.5" cy="8.8" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="19.5" cy="8.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="23.5" cy="13" r="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="t">Look</span></button>
-      
+      <button class="look-btn view-btn" id="viewBtn" type="button" aria-pressed="false" aria-label="App view"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="t" id="viewT">App view</span></button>
       <a class="nav-dl" href="#indir">Download</a>
     </div>
   </div>
@@ -886,6 +953,36 @@ footer a{color:var(--slate)}
 <main id="main">
 <div class="wrap">
 
+<!-- ============ UYGULAMA GÖRÜNÜMÜ: sarmaşık ana sayfa ============ -->
+<section class="apphome" id="sarmasik" hidden aria-labelledby="ahTitle">
+  <div class="ah-hello">
+    <img src="app-icon.png" alt="" width="52" height="52">
+    <div><h1 id="ahTitle">Habits that forgive a bad day.</h1>
+    <p>This site now works like the app: you in the middle, branches to the right. Tap a branch.</p></div>
+  </div>
+  <div class="ah-today"><div class="ah-th"><span>TODAY</span><b>4/4</b></div>
+    <div class="ah-hcs"><span><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="16" cy="16" r="11" fill="#F2C66B"/><path d="M16 9.5 V22.5" fill="none" stroke="#B98A3C" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M19.5 12.5 C18 11 13 11 13 13.8 C13 17 19 15.5 19 18.5 C19 21 14 21 12.5 19.5" fill="none" stroke="#B98A3C" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></g><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 9.5 V22.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M19.5 12.5 C18 11 13 11 13 13.8 C13 17 19 15.5 19 18.5 C19 21 14 21 12.5 19.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Free<i></i></span><span><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 5 A11 11 0 1 1 15.99 5" fill="none" stroke="#E0564F" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M8.2 8.2 L23.8 23.8" fill="none" stroke="#E0564F" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 5 A11 11 0 1 1 15.99 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M8.2 8.2 L23.8 23.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>No ads<i></i></span><span><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M10.5 14 V10.5 A5.5 5.5 0 0 1 21.5 10.5 V14" fill="none" stroke="#8F99A3" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="7" y="14" width="18" height="13" rx="3" fill="#F2C66B"/><circle cx="16" cy="19.5" r="1.8" fill="#8A6440"/><path d="M16 20.5 V23.5" fill="none" stroke="#8A6440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M10.5 14 V10.5 A5.5 5.5 0 0 1 21.5 10.5 V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="7" y="14" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="19.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 20.5 V23.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>No account<i></i></span><span><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="9" y="3" width="14" height="26" rx="3" fill="#5A5A66"/><rect x="11" y="6" width="10" height="18" rx="1" fill="#96CEEE"/><circle cx="16" cy="26.5" r="1" fill="#BFC6CF"/></g><rect x="9" y="3" width="14" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="11" y="6" width="10" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="26.5" r="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>Offline<i></i></span></div></div>
+  <div class="ah-vine" id="ahVine">
+    <svg class="ah-lines" id="ahLines" aria-hidden="true"></svg>
+    <div class="ah-me" id="ahMe"><span class="ah-bub"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><path d="M4 34 C4 26 9 22.5 16 22.5 C23 22.5 28 26 28 34 Z" fill="#6E9468"/><path d="M11 23.5 V30" fill="none" stroke="#4A6E45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 23.5 V30" fill="none" stroke="#4A6E45" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="16" r="6.5" fill="#D9A57B"/><path d="M11 11.5 C11 7.5 13 6 16 6 C19 6 21 7.5 21 11.5 Z" fill="#E8D3A2"/><ellipse cx="16" cy="11.8" rx="11" ry="2.2" fill="#E8C170"/><path d="M11.2 10.4 H20.8" fill="none" stroke="#6E9468" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 7 C19 5 20.5 4 22.5 4 C22.5 6 21 7 19 7 Z" fill="#8DB585"/><circle cx="13.5" cy="16.8" r="1.1" fill="#2C2A26"/><circle cx="18.5" cy="16.8" r="1.1" fill="#2C2A26"/></svg></span><b>You</b></div>
+    <nav class="ah-bcs" aria-label="Branches">
+      <a class="ah-bc" href="#nasil" style="--cb:#A8E6C8"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 28 V14" fill="none" stroke="#6E9468" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="#8DB585"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="#A9CB93"/><path d="M9 28.5 H23" fill="none" stroke="#B98A5E" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 28 V14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 18 C16 13 12 10 6 10 C6 15 10 18 16 18 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 15 C16 9 20 6 26 6 C26 12 22 15 16 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M9 28.5 H23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>How it works</b><span class="ah-chip">3 ideas to try</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#ozellikler" style="--cb:#EE96BA"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14 4 C14.8 10 16 11.2 22 12 C16 12.8 14.8 14 14 20 C13.2 14 12 12.8 6 12 C12 11.2 13.2 10 14 4 Z" fill="#F2C66B"/><path d="M23 17 C23.4 20 24 20.6 27 21 C24 21.4 23.4 22 23 25 C22.6 22 22 21.4 19 21 C22 20.6 22.6 20 23 17 Z" fill="#F6D98A"/><circle cx="8" cy="24" r="1.6" fill="#F6D98A"/></g><path d="M14 4 C14.8 10 16 11.2 22 12 C16 12.8 14.8 14 14 20 C13.2 14 12 12.8 6 12 C12 11.2 13.2 10 14 4 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M23 17 C23.4 20 24 20.6 27 21 C24 21.4 23.4 22 23 25 C22.6 22 22 21.4 19 21 C22 20.6 22.6 20 23 17 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="8" cy="24" r="1.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>Features</b><span class="ah-chip"><span data-count="#ozellikler .feat"></span> features</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#hikaye" style="--cb:#F0D8A8"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="3" y="8" width="26" height="17" rx="3" fill="#F3E9D2"/><path d="M3.5 9 L16 18.5 L28.5 9" fill="none" stroke="#B98A5E" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="3" y="8" width="26" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M3.5 9 L16 18.5 L28.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>The story</b><span class="ah-chip">a letter</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#oyuncaklar" style="--cb:#BEA8EE"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M11 29 L16 15 L21 29" fill="none" stroke="#8F877A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="15" r="11" fill="#DCD0F6"/><path d="M16 4 V26" fill="none" stroke="#6B5BA8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 15 H27" fill="none" stroke="#6B5BA8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M8.2 7.2 L23.8 22.8" fill="none" stroke="#6B5BA8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M23.8 7.2 L8.2 22.8" fill="none" stroke="#6B5BA8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="15" r="3" fill="#6B5BA8"/><circle cx="16" cy="4" r="2.2" fill="#E97A8C"/><circle cx="27" cy="15" r="2.2" fill="#F2C66B"/><circle cx="16" cy="26" r="2.2" fill="#96BEE8"/><circle cx="5" cy="15" r="2.2" fill="#A9CB93"/></g><path d="M11 29 L16 15 L21 29" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="15" r="11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M16 4 V26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M5 15 H27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M8.2 7.2 L23.8 22.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M23.8 7.2 L8.2 22.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="15" r="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="4" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="27" cy="15" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="26" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="5" cy="15" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>The wheel</b><span class="ah-chip">spin, start</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#yenilikler" style="--cb:#96BEE8"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="2" y="9" width="28" height="14" rx="3" fill="#6F98C4"/><path d="M6 19.5 V12.5 L10.5 19.5 V12.5" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M17 12.5 H13.5 V19.5 H17 M13.5 16 H16.5" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 12.5 L20.5 19.5 L22.3 14.5 L24 19.5 L25.8 12.5" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="2" y="9" width="28" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M6 19.5 V12.5 L10.5 19.5 V12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M17 12.5 H13.5 V19.5 H17 M13.5 16 H16.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M19 12.5 L20.5 19.5 L22.3 14.5 L24 19.5 L25.8 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>What's new</b><span class="ah-chip">1.4.0 · <span data-count=".log > .ver li"></span> changes</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#sozler" style="--cb:#EEE096"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M16 3 L27 7 V15 C27 22 22 27 16 29 C10 27 5 22 5 15 V7 Z" fill="#6F98C4"/><path d="M11 16 L14.5 19.5 L21 12.5" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M16 3 L27 7 V15 C27 22 22 27 16 29 C10 27 5 22 5 15 V7 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 16 L14.5 19.5 L21 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>Promises</b><span class="ah-chip"><span data-count="#sozler .vow"></span> promises</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#sorular" style="--cb:#F2C4A6"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><circle cx="16" cy="16" r="12" fill="#BEA8EE"/><path d="M12 12.5 C12 9.8 14 8.5 16 8.5 C18.2 8.5 20 10 20 12.2 C20 15 16 15.5 16 18.5" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="23" r="1.7" fill="#FFFFFF"/></g><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 12.5 C12 9.8 14 8.5 16 8.5 C18.2 8.5 20 10 20 12.2 C20 15 16 15.5 16 18.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="23" r="1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>Questions</b><span class="ah-chip"><span data-count="#sorular details"></span> questions</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#indir" style="--cb:#6E9468"><span class="ah-ic"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><rect x="9" y="3" width="14" height="26" rx="3" fill="#5A5A66"/><rect x="11" y="6" width="10" height="18" rx="1" fill="#96CEEE"/><circle cx="16" cy="26.5" r="1" fill="#BFC6CF"/></g><rect x="9" y="3" width="14" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><rect x="11" y="6" width="10" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="26.5" r="1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><span class="ah-bt"><b>Download</b><span class="ah-chip">free</span></span><span class="ah-go">›</span></a>
+    </nav>
+  </div>
+  <p class="ah-foot"><button type="button" id="toPage">Back to the page view</button></p>
+</section>
+<div class="apppath" id="appPath" hidden>
+  <div class="ap-row"><a class="ap-back" href="#sarmasik" aria-label="Back to the vine">‹</a><span class="ap-ic" id="apIc"></span><span class="ap-crumb"><a href="#sarmasik">you</a><span aria-hidden="true"> › </span><b id="apName"></b></span></div>
+  <div class="ap-subs" id="apSubs"></div>
+</div>
+
 
 <!-- ============ GİRİŞ ============ -->
 <section class="hero" id="giris">
@@ -901,7 +998,7 @@ footer a{color:var(--slate)}
       <p class="store-note">The Android version is in Google Play review right now; this button goes live once it's approved.</p>
     </div>
     <p class="sign">made by just me, for my family and friends · Hasan</p>
-    
+    <button class="to-app" id="toApp" type="button"><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M14.5 28 V19 H17.5 V28 Z" fill="#B98A5E"/><circle cx="16" cy="13" r="9" fill="#8DB585"/></g><path d="M14.5 28 V19 H17.5 V28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Turn this site into the app</span><i aria-hidden="true">→</i></button>
     <div class="return-card" id="returnCard" hidden>
       <b><svg class="g" viewBox="-1 -1 35 35" aria-hidden="true" focusable="false"><g class="gf" transform="translate(1.4 1.4)"><path d="M8 27 C12 20 16 13 25 5" fill="none" stroke="#6E9468" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M12.5 20 C9 19 6.5 16 6.5 12.5 C10 13 12.5 16 12.5 20 Z" fill="#8DB585"/><path d="M13 19.5 C16.5 19.5 19.5 21.5 20.5 25 C17 25 14 23 13 19.5 Z" fill="#A9CB93"/><path d="M17.5 13 C14.5 11.5 13 8.5 13.5 5.5 C16.5 7 18 10 17.5 13 Z" fill="#8DB585"/><path d="M18 12.5 C21 12 24.5 13.5 26 16.5 C22.5 17 19.5 15.5 18 12.5 Z" fill="#A9CB93"/></g><path d="M8 27 C12 20 16 13 25 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M12.5 20 C9 19 6.5 16 6.5 12.5 C10 13 12.5 16 12.5 20 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M13 19.5 C16.5 19.5 19.5 21.5 20.5 25 C17 25 14 23 13 19.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M17.5 13 C14.5 11.5 13 8.5 13.5 5.5 C16.5 7 18 10 17.5 13 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M18 12.5 C21 12 24.5 13.5 26 16.5 C22.5 17 19.5 15.5 18 12.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg> Welcome back</b>
       <span class="muted">Nothing to catch up on. What changed since your last visit is under <a href="#yenilikler">What's new</a>.</span>
@@ -2078,6 +2175,84 @@ footer a{color:var(--slate)}
   $('langClose').addEventListener('click', function(){ langT.hidden = true; store('vyne-site-lang', PAGE_LANG); });
   [langA, langH].forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); store('vyne-site-lang', langA.dataset.lang); location.href = el.getAttribute('href') + location.hash; }); });
 
+  
+  /* ---------- Uygulama görünümü: site, uygulamanın ana ekranı gibi dallara ayrılır ----------
+     Ortada "sen", sağda dallar (bölümler). Dala dokununca sadece o bölüm açılır, üstte yol: sen › Özellikler.
+     İçerik aynı bölümler; kopya yok. Seçim vyne-site-view'da hatırlanır. */
+  (function(){
+    var home = $('sarmasik'), path = $('appPath'), viewBtn = $('viewBtn'), lines = $('ahLines'), vine = $('ahVine'), me = $('ahMe');
+    var cards = [].slice.call(home.querySelectorAll('.ah-bc')), SECS = {}, app = false, grown = false, growT;
+    cards.forEach(function(c){ SECS[c.getAttribute('href').slice(1)] = c; });
+    [].forEach.call(home.querySelectorAll('[data-count]'), function(el){ el.textContent = document.querySelectorAll(el.dataset.count).length; });
+    function setHH(){ root.style.setProperty('--hh', $('top').offsetHeight + 'px'); if(!path.hidden) root.style.setProperty('--ph', path.offsetHeight + 'px'); }
+    function drawLines(){
+      if(home.hidden) return;
+      var vr = vine.getBoundingClientRect(), mr = me.querySelector('.ah-bub').getBoundingClientRect();
+      var x0 = mr.right - vr.left - 4, y0 = mr.top + mr.height/2 - vr.top, h = '';
+      lines.setAttribute('viewBox', '0 0 '+vr.width+' '+vr.height);
+      cards.forEach(function(c){
+        var r = c.getBoundingClientRect(), x1 = r.left - vr.left, y1 = r.top + r.height/2 - vr.top, mx = (x0 + x1)/2;
+        var d = 'M'+x0+' '+y0+' C '+mx+' '+y0+', '+mx+' '+y1+', '+x1+' '+y1;
+        h += '<path d="'+d+'" stroke="'+getComputedStyle(c).getPropertyValue('--cb').trim()+'" style="--len:'+Math.ceil(Math.abs(x1-x0) + Math.abs(y1-y0) + 20)+'"/>';
+      });
+      lines.innerHTML = h;
+      if(!grown && !reduce){ grown = true; lines.classList.remove('grow'); void lines.offsetWidth; lines.classList.add('grow'); clearTimeout(growT); growT = setTimeout(function(){ lines.classList.remove('grow'); }, 900); }
+    }
+    function secOf(id){
+      var el = id && document.getElementById(id); if(!el) return null;
+      var sec = el.closest('main .sec'); return sec && SECS[sec.id] ? {sec: sec, el: el} : null;
+    }
+    function showHome(){
+      home.hidden = false; path.hidden = true;
+      Object.keys(SECS).forEach(function(k){ $(k).classList.remove('open'); });
+      scrollTo({top: 0, behavior: 'instant'}); grown = false; drawLines();
+    }
+    function openSec(t){
+      var card = SECS[t.sec.id];
+      home.hidden = true; path.hidden = false;
+      Object.keys(SECS).forEach(function(k){ $(k).classList.toggle('open', k === t.sec.id); });
+      path.style.setProperty('--cb', getComputedStyle(card).getPropertyValue('--cb'));
+      $('apIc').innerHTML = card.querySelector('.ah-ic').innerHTML;
+      $('apName').textContent = card.querySelector('b').textContent;
+      var subs = $('apSubs'); subs.innerHTML = '';
+      [].forEach.call(t.sec.querySelectorAll('.sub > h3, .group-head > h3'), function(h3){
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = h3.textContent;
+        b.addEventListener('click', function(){ (h3.closest('.sub, .group') || h3).scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'}); tick(700); });
+        subs.appendChild(b);
+      });
+      setHH(); dispatchEvent(new Event('resize'));
+      scrollTo({top: 0, behavior: 'instant'});
+      if(t.el !== t.sec) requestAnimationFrame(function(){ t.el.scrollIntoView({block: 'start'}); });
+    }
+    function route(){
+      if(!app) return;
+      var h = location.hash.slice(1); if(h === 'vyneos') return;
+      var t = secOf(h); if(t) openSec(t); else showHome();
+    }
+    function setView(on, keepHash){
+      app = on; root.classList.toggle('appmode', on); root.classList.remove('app-pre');
+      viewBtn.setAttribute('aria-pressed', String(on));
+      $('viewT').textContent = on ? 'Page view' : 'App view';
+      viewBtn.setAttribute('aria-label', on ? 'Back to the page view' : 'App view');
+      store('vyne-site-view', on ? 'app' : 'page');
+      if(on){ setHH(); route(); return; }
+      home.hidden = true; path.hidden = true;
+      Object.keys(SECS).forEach(function(k){ $(k).classList.remove('open'); });
+      dispatchEvent(new Event('resize'));
+      var el = keepHash && location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+      if(el && el !== home) el.scrollIntoView({block: 'start'}); else scrollTo({top: 0, behavior: 'instant'});
+    }
+    function toApp(){ if(location.hash && secOf(location.hash.slice(1))) setView(true); else { setView(true); if(location.hash !== '#sarmasik') location.hash = 'sarmasik'; } tick(660); }
+    viewBtn.addEventListener('click', function(){ if(app) setView(false, true); else toApp(); });
+    $('toApp').addEventListener('click', toApp);
+    $('toPage').addEventListener('click', function(){ setView(false); try{ history.replaceState(null, '', location.pathname); }catch(e){} });
+    cards.forEach(function(c){ c.addEventListener('click', function(){ tick(560); }); });
+    $('brand').addEventListener('click', function(){ if(app && location.hash !== '#sarmasik') location.hash = 'sarmasik'; });
+    addEventListener('hashchange', route);
+    addEventListener('resize', function(){ setHH(); drawLines(); });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawLines);
+    if(store('vyne-site-view') === 'app') setView(true); else root.classList.remove('app-pre');
+  })();
   
 })();
 </script>
