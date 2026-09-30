@@ -15,10 +15,10 @@ const base = process.env.BASE || 'http://localhost:8766/vyne-website/';
     const r = await p.evaluate(() => {
       const cw = document.documentElement.clientWidth; let small = 0, wide = [];
       document.querySelectorAll('body *').forEach(el => {
-        if (el.closest('[hidden]') || el.closest('svg')) return;
+        if (el.closest('[hidden]') || el.closest('svg') || el.closest('.mk')) return;
         const cs = getComputedStyle(el), rc = el.getBoundingClientRect(); if (!rc.width || cs.display==='none') return;
         if ([...el.childNodes].some(n => n.nodeType===3 && n.textContent.trim()) && parseFloat(cs.fontSize) < 13) small++;
-        if (rc.right > cw + 1 && !el.closest('.pages') && !el.closest('.dock') && !el.closest('.feats') && !el.closest('.garden') && !el.closest('.stops')) wide.push(el.className||el.tagName);
+        if (rc.right > cw + 1 && !el.closest('.pages') && !el.closest('.dock') && !el.closest('.feats') && !el.closest('.garden') && !el.closest('.stops') && !el.closest('.mock')) wide.push(el.className||el.tagName);
       });
       const stores = [...document.querySelectorAll('#heroStores .store')].map(s => s.className + '@' + Math.round(s.getBoundingClientRect().left) + ',' + Math.round(s.getBoundingClientRect().top));
       return { sw: document.documentElement.scrollWidth, cw, small, wide: wide.slice(0,5), stores, dock: document.getElementById('dockBtn').getAttribute('href') };

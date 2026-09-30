@@ -21,8 +21,8 @@ Statik tanıtım sitesi, iki dilli. **Ana site İngilizce (kök adres), Türkçe
 | `scripts/build-site.mjs` | Kaynaktan `index.html` (EN), `tr/index.html` (TR) ve `en/index.html` (eski adres → köke yönlendirme) üretir |
 | `index.html`, `tr/index.html`, `en/index.html` | **ÜRETİLMİŞ. Elle düzenleme**, `site/`'ı düzenle ve derle |
 | `404.html` | "Bu dal henüz büyümedi"; elle yazılmış, tek başına |
-| `shots/tr/*.webp`, `shots/en/*.webp` | Uygulamanın gerçek ekranları, iki dilde, **örnek profille** ("Deniz"), 924×2000. Üretimi: `scripts/app-shots/README.md` |
-| `og-image.png`, `og-image-tr.png` | Paylaşım görselleri (`scripts/app-shots/og.js`) |
+| `site/mocks.html` | **Uygulama ekranlarının çizimleri** (ekran görüntüsü değil): her özelliğin sadece anahtar kısmı, 300 px'te tasarlanmış HTML/CSS, iki dilli. `app.js` kutusuna sığdırır |
+| `og-image.png`, `og-image-tr.png` | Paylaşım görselleri; sayfadaki çizilmiş telefondan (`scripts/app-shots/og.js`, sunucu açıkken) |
 | `site/qr-ios.svg`, `site/qr-play.svg` | İndir bölümündeki QR'lar (bilgisayarda görünür) |
 | `app-icon.png` | Uygulama ikonu (`../vyne/assets/icon-512.png` kopyası) |
 | `fonts/` | Nunito, Caveat, VT323. **Dış CDN yok**, her şey yerel |
@@ -49,8 +49,8 @@ Sıra ve adresler (TR ve EN'de aynı, dil düğmesi aynı yerde kalır):
 yüz güne iniş, `#gun` sıradan bir gün) · `#ozellikler` (24 kart, `#sablon`,
 `#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
 `#yenilikler` · `#sozler` · `#sorular` · `#indir`. (`#oyuncaklar` = çark bölümü.)
-Özellik kartları ve "Neden böyle?" telefonda yana kayan sıra (sayaçlı); bilgisayarda ızgara.
-"Sıradan bir gün" telefonda tek ekran: ekran solda, yazı sağda, yana kaydırınca durak değişir.
+Özellik kartları ve "Neden böyle?" her yerde yana kayan sıra: telefonda 1, tablette 2, bilgisayarda 3 kart; sayaç ve ‹ › okları.
+"Sıradan bir gün" telefonda tek ekran (saat+başlık, çizim, dert, açıklama); yana kaydırınca durak değişir.
 Kâğıt sayfalarındaki düğme siteyi o kâğıda geçirir. Dil önerisi ve gece sorusu altta kapatılabilir şerit.
 Kaldırılanlar (2026-09-30, puanı düşüktü): tomurcuk süsü, şablon testi, yıl yaprakları, almanak.
 Şablon denemesi uygulamanın gerçek verisini gösterir (alt dallar, alışkanlık sıklığı, tarihler);
@@ -59,8 +59,8 @@ uygulamanın çizimleriyle dilimler, seçince 2 dakikalık sayaç.
 Üst menü: Nasıl çalışır · Özellikler · Sorular + İndir. Eski dal adresleri
 (`#kuyu`, `#mektup`…) JS'te yeni bölümlere yönlenir; paylaşılmış linkler kırılmaz.
 
-- **Her özellik kartında bir görsel var:** ya gerçek kare ya uygulamanın kendi
-  çizimleriyle (glyph) küçük bir sahne. Emoji yok; ikonlar uygulamanın çizimleri.
+- **Her özellik kartında bir görsel var:** uygulama ekranının çizilmiş anahtar kısmı ya da
+  uygulamanın çizimleriyle (glyph) küçük bir sahne. Emoji yok; ekran görüntüsü yok.
 - **İndir:** iki mağaza rozeti yan yana; Android cihazda Play önce. Telefonda
   alttaki çubuk ve üstteki "İndir" doğrudan mağazaya gider (tek dokunuş).
   Android'de Play henüz yokken alt çubuk hiç çıkmaz.
@@ -97,15 +97,18 @@ a bad day."). Mektup mağaza açıklamasından; Hasan'a göre mağazada artık
 EN metinler uygulamanın `en.json`'undan ve mağaza metninden, uydurma değil.
 Türkçe ek: "Vyne'ı / Vyne'da" (okunuşu "vayn").
 
-## Ekran görüntüleri
+## Görseller: ekran görüntüsü YOK, çizim var (Hasan, 2026-09-30)
 
-- **Artık Hasan'ın telefonundan değil, uygulamanın kendisinden.** Vyne'ın kodu web'de
-  derlenip örnek bir profille (Deniz; gerçek veri yok) Türkçe ve İngilizce çekildi:
-  welcome, home, branch, stats, notes, wheel, pick, cloud, inbox, journal, people,
-  templates, search. Uygulama değişince `scripts/app-shots/README.md`'deki adımlar.
-  Uygulamanın deposuna HİÇBİR şey yazılmaz; stub'lar geçici kopyaya konur.
-- Sayfada: `{{P}}shots/⟪tr¦en⟫/<ad>.webp`, JS'te `SHOT('<ad>')`.
-- Eski kareler (Hasan'ın gerçek profili, 1.3.0 jpg'leri) silindi; git geçmişinde.
+- Hasan: "birebir ss kullanmak yerine kendin görsel oluştur, sadece anahtar kısmı göster."
+  Sitedeki bütün uygulama görselleri `site/mocks.html`'deki çizimler: homefull (giriş
+  telefonu), home, vine, branch, stats, notes, wheel, pick, cloud, journal, people,
+  templates, search, welcome. Uygulamanın renkleri (`CAT`), çizimleri (glyph) ve metinleri.
+- Kullanım: `<div class="mock" data-mock="branch"></div>`; JS'te `mountMock(el, 'branch')`.
+  Her çizim 300 px genişlikte; kutuya göre ölçeklenir. Kartlarda `.mk-top` (uygulama çubuğu)
+  ve bazı ayrıntılar gizli (style.css sonu), sahne yüksekliği 270 px.
+- Uygulamanın ekranı değişirse çizimi de güncelle. Gerçek ekranlara bakmak için
+  `scripts/app-shots/` hâlâ çalışıyor (uygulamayı web'de örnek profille açıp çeker);
+  çıkan kareler REFERANS içindir, siteye konmaz.
 
 ## 🧓 Emekli: `scripts/build-scene.mjs`
 

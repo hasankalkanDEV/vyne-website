@@ -84,7 +84,7 @@ function glyph(kind, name, mode) {
 function build(lang) {
   const en = lang === 'en';
   let s = read('site/head.html') + '<style>\n' + read('site/style.css') + '</style>\n</head>\n' +
-    read('site/body.html') + '<script>\n' + read('site/app.js') + '</script>\n</body>\n</html>\n';
+    read('site/body.html') + read('site/mocks.html') + '<script>\n' + read('site/app.js') + '</script>\n</body>\n</html>\n';
   for (const [flag, on] of Object.entries(LIVE)) {
     if (typeof on !== 'boolean') continue;
     s = s.replace(new RegExp(`\\{\\{#${flag}\\}\\}([\\s\\S]*?)\\{\\{/${flag}\\}\\}`, 'g'), on ? '$1' : '')

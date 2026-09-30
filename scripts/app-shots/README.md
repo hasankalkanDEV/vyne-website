@@ -1,6 +1,7 @@
-# Sitenin ekran görüntüleri: uygulamanın kendisinden, örnek profille
+# Uygulamanın gerçek ekranları (REFERANS, siteye konmaz)
 
-`shots/tr/*.webp` ve `shots/en/*.webp` elle çekilmedi. Vyne'ın kendi kodu web'de
+Site 2026-09-30'dan beri ekran görüntüsü değil çizim kullanıyor (`site/mocks.html`).
+Bu araç çizimleri güncellerken gerçek ekrana bakmak için. Kareler elle çekilmez: Vyne'ın kendi kodu web'de
 çalıştırılıp **örnek bir profille** ("Deniz", gerçek kişi değil) Playwright ile çekildi.
 Gerçek kullanıcı verisi yok. Uygulama değişince aynı adımlarla yeniden üret.
 
@@ -20,7 +21,7 @@ Gerçek kullanıcı verisi yok. Uygulama değişince aynı adımlarla yeniden ü
 
 2. Çek: `S=<çalışma klasörü> NODE_PATH=$(npm root -g) node capture.js`
    (`raw-<dil>-<ekran>.png`, 924×2000). `ONLY=home,stats` ile tek tek, `LANGS=tr` ile tek dil.
-3. webp'ye çevir: `sharp raw-tr-home.png → shots/tr/home.webp` (kalite 80).
+3. Çıkan PNG'lere bakıp `site/mocks.html`'deki çizimi güncelle.
 
 Ekranlar: welcome (karşılama), home, branch (dal sayfası, yaprak + hasta günü), stats,
 notes, wheel (dönerken), pick (çarkın seçimi), cloud (düşünce bulutu), inbox, journal

@@ -7,8 +7,29 @@
   var LEAF_EVERY = {{LEAF_EVERY}}, LEAF_CAP = {{LEAF_CAP}};
   var ANDROID_LIVE = {{#android}}true{{/android}}{{^android}}false{{/android}};
   var IOS_URL = '{{IOS_URL}}', PLAY_URL = '{{PLAY_URL}}';
-  /* Ekranlar uygulamanın kendisinden, örnek profille (scripts/app-shots). */
-  function SHOT(n){ return '{{P}}shots/⟪tr¦en⟫/' + n + '.webp'; }
+  /* ---------- Uygulamanın ekranlarının çizimleri (site/mocks.html) ----------
+     Her çizim 300 px genişlikte; kutusuna sığacak kadar büyütülür/küçültülür. */
+  var MOCKS = {}; [].forEach.call(document.querySelectorAll('#mocks template'), function(t){ MOCKS[t.dataset.mock] = t; });
+  function fitMock(m){
+    var k = m.firstElementChild; if(!k) return;
+    var cw = m.clientWidth, ch = m.clientHeight, ih = k.offsetHeight; if(!cw || !ih) return;
+    var s = Math.min(cw / 300, ch ? ch / ih : 9, +(m.dataset.max || 1.35));
+    k.style.transform = 'translateX(-50%) scale(' + s + ')';
+    k.style.top = Math.max(0, (ch - ih * s) / 2) + 'px';
+  }
+  var mockRO = 'ResizeObserver' in window ? new ResizeObserver(function(es){ es.forEach(function(e){ fitMock(e.target); }); }) : null;
+  function mountMock(m, name){
+    var t = MOCKS[name || m.dataset.mock]; if(!t) return;
+    m.innerHTML = ''; m.appendChild(t.content.cloneNode(true)); m.setAttribute('aria-hidden', m.getAttribute('role') ? 'false' : 'true');
+    fillToday(m); fitMock(m); if(mockRO) mockRO.observe(m);
+  }
+  function fillToday(root){
+    var d = new Date();
+    [].forEach.call(root.querySelectorAll('[data-today="d"]'), function(e){ e.textContent = d.getDate(); });
+    [].forEach.call(root.querySelectorAll('[data-today="label"]'), function(e){ e.textContent = ['⟪Pazar¦Sunday⟫','⟪Pazartesi¦Monday⟫','⟪Salı¦Tuesday⟫','⟪Çarşamba¦Wednesday⟫','⟪Perşembe¦Thursday⟫','⟪Cuma¦Friday⟫','⟪Cumartesi¦Saturday⟫'][d.getDay()] + ' · ' + ['⟪Ocak¦January⟫','⟪Şubat¦February⟫','⟪Mart¦March⟫','⟪Nisan¦April⟫','⟪Mayıs¦May⟫','⟪Haziran¦June⟫','⟪Temmuz¦July⟫','⟪Ağustos¦August⟫','⟪Eylül¦September⟫','⟪Ekim¦October⟫','⟪Kasım¦November⟫','⟪Aralık¦December⟫'][d.getMonth()]; });
+  }
+  [].forEach.call(document.querySelectorAll('.mock[data-mock]'), function(m){ mountMock(m); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ [].forEach.call(document.querySelectorAll('.mock'), fitMock); });
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function store(k,v){ try{ if(v === undefined) return localStorage.getItem(k); if(v === null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){ return null; } }
   function $(id){ return document.getElementById(id); }
@@ -300,13 +321,13 @@
   var DOW = ['⟪Pazar¦Sunday⟫','⟪Pazartesi¦Monday⟫','⟪Salı¦Tuesday⟫','⟪Çarşamba¦Wednesday⟫','⟪Perşembe¦Thursday⟫','⟪Cuma¦Friday⟫','⟪Cumartesi¦Saturday⟫'];
   var MON = ['⟪Ocak¦January⟫','⟪Şubat¦February⟫','⟪Mart¦March⟫','⟪Nisan¦April⟫','⟪Mayıs¦May⟫','⟪Haziran¦June⟫','⟪Temmuz¦July⟫','⟪Ağustos¦August⟫','⟪Eylül¦September⟫','⟪Ekim¦October⟫','⟪Kasım¦November⟫','⟪Aralık¦December⟫'];
   var STOPS = [
-    {t:'⟪07:30¦7:30⟫', part:'⟪sabah¦morning⟫', sky:['#F6E2BE','#F8F6F0'], title:'⟪Güne bakmak, beş uygulama açmadan¦See the day without opening five apps⟫', dert:'⟪"Bugün ne yapacaktım?" derken telefonu elimden bırakamıyordum.¦"What was I supposed to do today?" and I couldn\'t put the phone down.⟫', how:'⟪Bugünün alışkanlıkları en üstte; hepsi bitince küçük bir kutlama. Altında hayatın sağa doğru dal dal duruyor.¦Today\'s habits sit at the top; when they\'re all ticked it says "All done!". Below, your life branches out to the right.⟫', shot:'home'},
-    {t:'12:40', part:'⟪öğle¦midday⟫', sky:['#CFE3F2','#F8F6F0'], title:'⟪Aklına geleni buluta yaz¦Write it on the cloud⟫', dert:'⟪Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.¦A thought hits me in a meeting and flies away before I find the right place for it.⟫', how:'⟪Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.¦Tap the little cloud rising from your profile bubble and write. It lands in your Inbox; in the evening, "Send to…" puts it in the right folder.⟫', shot:'cloud'},
-    {t:'17:15', part:'⟪akşamüstü¦late afternoon⟫', sky:['#F2D2B5','#F5EFE0'], title:'⟪Liste de hatırlatıcı da tek yerde¦Lists and reminders, in one place⟫', dert:'⟪Market listesi bir yerde, kira hatırlatıcısı başka yerde.¦The grocery list lives in one app, the rent reminder in another.⟫', how:'⟪Logonun altındaki "notes"a dokun, sonra Ekle: klasör, not, liste, hatırlatıcı, çevre, haftalık defter, günlük. Kâğıdını da orada seçersin.¦Tap "notes" under the logo, then Add: folder, note, list, reminders, people, weekly diary, daily journal. You pick the paper right there.⟫', shot:'notes'},
-    {t:'19:00', part:'⟪akşam¦evening⟫', sky:['#E6C7D8','#F7F2F6'], title:'⟪Karar veremeyince çarkı çevir¦Can\'t decide? Spin for one⟫', dert:'⟪Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.¦I\'m tired and don\'t know where to start. So I start nothing.⟫', how:'⟪Başlıktaki çark düğmesine dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.¦Tap "Can\'t decide? Spin for one" in the header and the wheel picks one of today\'s habits. Just 2 minutes: that\'s the whole rule.⟫', shot:'pick'},
-    {t:'21:00', part:'⟪hasta bir akşam¦a sick evening⟫', sky:['#DCE6F5','#F2F4F8'], title:'⟪Bugün hastayım, seri ne olacak?¦I\'m sick today. What about my streak?⟫', dert:'⟪Hasta olunca seri gidiyor, sonra hepsini bırakıyorum.¦When I get sick the streak goes, and then I drop everything.⟫', how:'⟪Dalın sayfasını aç, takvimde günü seç, "ya da bugün ara ver" → Hasta. Serin seni bekler: ne uzar, ne bozulur. Dünü ve önceki günü sonradan da düzeltebilirsin.¦Open the branch page, pick the day, "or take a break today" → Sick. Your streak waits: it doesn\'t grow, it doesn\'t break. You can also fix yesterday and the day before.⟫', shot:'branch'},
-    {t:'22:30', part:'⟪gece¦night⟫', sky:['#1B1E3A','#12142A'], night:true, title:'⟪Günlük, istersen bir soruyla¦A journal, with a question if you want one⟫', dert:'⟪Günlük tutmak istiyorum ama boş sayfa korkutuyor.¦I want to keep a journal, but the blank page scares me.⟫', how:'⟪Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.¦One page a day. If you don\'t know what to write, it offers a question. It also shows what you wrote a year ago today.⟫', shot:'journal'},
-    {t:'⟪Pazartesi¦Monday⟫', part:'⟪hafta¦the week⟫', sky:['#DCE9D4','#F3F1DE'], title:'⟪Haftaya bir bakış¦A look back at the week⟫', dert:'⟪Hafta nasıl geçti, hiç düşünmüyorum.¦I never stop to think about how the week went.⟫', how:'⟪İstatistik günleri, haftanın şeklini ve son 12 haftayı gösterir. Gri kare sadece "o gün bir şey olmadı" demek, fazlası değil. Pazartesileri günlükte haftaya bakan üç soru daha çıkar.¦Stats shows your days, your week\'s shape and the last 12 weeks. Grey means nothing happened. Nothing more. On Mondays the journal adds three questions about the week.⟫', shot:'stats'}
+    {t:'⟪07:30¦7:30⟫', part:'⟪sabah¦morning⟫', sky:['#F6E2BE','#F8F6F0'], title:'⟪Güne bakmak, beş uygulama açmadan¦See the day without opening five apps⟫', dert:'⟪"Bugün ne yapacaktım?" derken telefonu elimden bırakamıyordum.¦"What was I supposed to do today?" and I couldn\'t put the phone down.⟫', how:'⟪Bugünün alışkanlıkları en üstte; hepsi bitince küçük bir kutlama. Altında hayatın sağa doğru dal dal duruyor.¦Today\'s habits sit at the top; when they\'re all ticked it says "All done!". Below, your life branches out to the right.⟫', mock:'home'},
+    {t:'12:40', part:'⟪öğle¦midday⟫', sky:['#CFE3F2','#F8F6F0'], title:'⟪Aklına geleni buluta yaz¦Write it on the cloud⟫', dert:'⟪Toplantıda aklıma bir şey geliyor, doğru yeri bulana kadar uçup gidiyor.¦A thought hits me in a meeting and flies away before I find the right place for it.⟫', how:'⟪Profil balonundan yükselen küçük buluta dokun, yaz. Gelen Kutusu\'na düşer; akşam "Gönder…" ile doğru klasöre yollarsın.¦Tap the little cloud rising from your profile bubble and write. It lands in your Inbox; in the evening, "Send to…" puts it in the right folder.⟫', mock:'cloud'},
+    {t:'17:15', part:'⟪akşamüstü¦late afternoon⟫', sky:['#F2D2B5','#F5EFE0'], title:'⟪Liste de hatırlatıcı da tek yerde¦Lists and reminders, in one place⟫', dert:'⟪Market listesi bir yerde, kira hatırlatıcısı başka yerde.¦The grocery list lives in one app, the rent reminder in another.⟫', how:'⟪Logonun altındaki "notes"a dokun, sonra Ekle: klasör, not, liste, hatırlatıcı, çevre, haftalık defter, günlük. Kâğıdını da orada seçersin.¦Tap "notes" under the logo, then Add: folder, note, list, reminders, people, weekly diary, daily journal. You pick the paper right there.⟫', mock:'notes'},
+    {t:'19:00', part:'⟪akşam¦evening⟫', sky:['#E6C7D8','#F7F2F6'], title:'⟪Karar veremeyince çarkı çevir¦Can\'t decide? Spin for one⟫', dert:'⟪Yorgunum, nereden başlayacağımı bilmiyorum. Sonuç: hiçbiri.¦I\'m tired and don\'t know where to start. So I start nothing.⟫', how:'⟪Başlıktaki çark düğmesine dokun, çark bugünün alışkanlıklarından birini seçer. Tek kural: sadece 2 dakika başla.¦Tap "Can\'t decide? Spin for one" in the header and the wheel picks one of today\'s habits. Just 2 minutes: that\'s the whole rule.⟫', mock:'wheel'},
+    {t:'21:00', part:'⟪hasta bir akşam¦a sick evening⟫', sky:['#DCE6F5','#F2F4F8'], title:'⟪Bugün hastayım, seri ne olacak?¦I\'m sick today. What about my streak?⟫', dert:'⟪Hasta olunca seri gidiyor, sonra hepsini bırakıyorum.¦When I get sick the streak goes, and then I drop everything.⟫', how:'⟪Dalın sayfasını aç, takvimde günü seç, "ya da bugün ara ver" → Hasta. Serin seni bekler: ne uzar, ne bozulur. Dünü ve önceki günü sonradan da düzeltebilirsin.¦Open the branch page, pick the day, "or take a break today" → Sick. Your streak waits: it doesn\'t grow, it doesn\'t break. You can also fix yesterday and the day before.⟫', mock:'branch'},
+    {t:'22:30', part:'⟪gece¦night⟫', sky:['#1B1E3A','#12142A'], night:true, title:'⟪Günlük, istersen bir soruyla¦A journal, with a question if you want one⟫', dert:'⟪Günlük tutmak istiyorum ama boş sayfa korkutuyor.¦I want to keep a journal, but the blank page scares me.⟫', how:'⟪Her gün bir sayfa. Ne yazacağını bilmiyorsan bir soru önerir. "1 yıl önce bugün" ne yazdığını da gösterir.¦One page a day. If you don\'t know what to write, it offers a question. It also shows what you wrote a year ago today.⟫', mock:'journal'},
+    {t:'⟪Pazartesi¦Monday⟫', part:'⟪hafta¦the week⟫', sky:['#DCE9D4','#F3F1DE'], title:'⟪Haftaya bir bakış¦A look back at the week⟫', dert:'⟪Hafta nasıl geçti, hiç düşünmüyorum.¦I never stop to think about how the week went.⟫', how:'⟪İstatistik günleri, haftanın şeklini ve son 12 haftayı gösterir. Gri kare sadece "o gün bir şey olmadı" demek, fazlası değil. Pazartesileri günlükte haftaya bakan üç soru daha çıkar.¦Stats shows your days, your week\'s shape and the last 12 weeks. Grey means nothing happened. Nothing more. On Mondays the journal adds three questions about the week.⟫', mock:'stats'}
   ];
   var day = $('day'), stopsEl = $('dStops'), dscr = $('dScreen'), di = 0;
   STOPS.forEach(function(s,i){ var b = document.createElement('button'); b.type = 'button'; b.textContent = s.t; b.addEventListener('click', function(){ showDay(i); }); stopsEl.appendChild(b); });
@@ -315,7 +336,7 @@
     day.style.setProperty('--sky1', s.sky[0]); day.style.setProperty('--sky2', s.sky[1]); day.classList.toggle('night', !!s.night);
     $('dClock').textContent = s.t; $('dPart').textContent = s.part;
     $('dTitle').textContent = s.title; $('dDert').textContent = s.dert; $('dHow').textContent = s.how;
-    dscr.innerHTML = '<img alt="'+esc(s.title)+'" src="'+SHOT(s.shot)+'" width="924" height="2000">';
+    mountMock($('dMock'), s.mock); $('dScreen').setAttribute('aria-label', s.title);
     $('dCount').textContent = (di+1)+' / '+STOPS.length;
     [].forEach.call(stopsEl.children, function(b,k){ b.setAttribute('aria-current', String(k === di)); });
     var cur = stopsEl.children[di]; stopsEl.scrollTo({ left: cur.offsetLeft - (stopsEl.clientWidth - cur.offsetWidth)/2, behavior: reduce ? 'auto' : 'smooth' });
@@ -325,8 +346,6 @@
   var dsx = null, dsy = 0;
   day.addEventListener('touchstart', function(e){ if(e.target.closest('.stops')) return; dsx = e.touches[0].clientX; dsy = e.touches[0].clientY; }, {passive:true});
   day.addEventListener('touchend', function(e){ if(dsx === null) return; var dx = e.changedTouches[0].clientX - dsx, dy = e.changedTouches[0].clientY - dsy; dsx = null; if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)*1.5) showDay(di + (dx < 0 ? 1 : -1)); }, {passive:true});
-  /* Her durağın ekranı önceden yüklensin, geçişte boş kalmasın */
-  STOPS.forEach(function(s){ var im = new Image(); im.src = SHOT(s.shot); });
   day.addEventListener('keydown', function(e){ if(e.key === 'ArrowRight'){ e.preventDefault(); showDay(di+1); } if(e.key === 'ArrowLeft'){ e.preventDefault(); showDay(di-1); } });
   $('dPrev').addEventListener('click', function(){ showDay(di-1); });
   $('dNext').addEventListener('click', function(){ showDay(di+1); });
@@ -388,11 +407,21 @@
 
   /* ---------- Telefonda yana kayan sıralar: "3 / 11" sayacı ---------- */
   [].forEach.call(document.querySelectorAll('.feats, .garden'), function(sc){
-    var hint = sc.classList.contains('feats') ? sc.closest('.group').querySelector('.swipehint') : sc.previousElementSibling;
+    var hint = sc.classList.contains('feats') ? sc.closest('.group').querySelector('.swipehint') : sc.previousElementSibling && sc.previousElementSibling.querySelector('.swipehint');
     if(!hint || !hint.classList.contains('swipehint')) return;
     var n = sc.children.length;
-    function upd(){ var w = sc.children[0].getBoundingClientRect().width + 14, k = Math.min(n, Math.round(sc.scrollLeft / w) + 1); hint.textContent = k + ' / ' + n + (k < n ? ' →' : ''); }
-    sc.addEventListener('scroll', function(){ requestAnimationFrame(upd); }, {passive:true}); upd();
+    var nav = document.createElement('span'); nav.className = 'rownav';
+    nav.innerHTML = '<button type="button" aria-label="⟪Önceki¦Previous⟫">‹</button><button type="button" aria-label="⟪Sonraki¦Next⟫">›</button>';
+    hint.after(nav);
+    var bp = nav.children[0], bn = nav.children[1];
+    function step(){ return sc.children[0].getBoundingClientRect().width + parseFloat(getComputedStyle(sc).columnGap || 14); }
+    function perView(){ return Math.max(1, Math.round(sc.clientWidth / step())); }
+    function upd(){ var k = Math.round(sc.scrollLeft / step()), pv = perView(), last = Math.min(n, k + pv);
+      hint.textContent = (pv > 1 ? (k + 1) + '–' + last : last) + ' / ' + n;
+      bp.disabled = sc.scrollLeft < 4; bn.disabled = sc.scrollLeft + sc.clientWidth >= sc.scrollWidth - 4; }
+    bp.addEventListener('click', function(){ sc.scrollBy({left: -step() * perView(), behavior: reduce ? 'auto' : 'smooth'}); });
+    bn.addEventListener('click', function(){ sc.scrollBy({left: step() * perView(), behavior: reduce ? 'auto' : 'smooth'}); });
+    sc.addEventListener('scroll', function(){ requestAnimationFrame(upd); }, {passive:true}); addEventListener('resize', upd); upd();
   });
 
   /* ---------- Masa: bilgisayarda notlar taşınır, telefonda düz sütun ---------- */

@@ -1,0 +1,163 @@
+<!-- Uygulamanın ekranlarının çizimleri (ekran görüntüsü değil). Her biri 300 px genişlikte tasarlandı;
+     app.js bunları .mock[data-mock] kutularına kopyalayıp kutuya sığacak kadar büyütür/küçültür.
+     Sadece o özelliği anlatan kısım çizilir; uygulamanın renkleri, çizimleri ve yazıları. -->
+<div hidden id="mocks">
+
+<template data-mock="homefull"><div class="mk mk-home mk-full">
+  <div class="mk-top"><span class="mk-logo">vyne<em>notes</em></span><span class="mk-pill">⟪Karar veremiyor musun? Çarkı çevir¦Can't decide? Spin for one⟫</span><span class="mk-av">[[c:gardener]]</span></div>
+  <div class="mk-today"><div class="mk-th"><span>⟪BUGÜNÜN HABİTLERİ¦TODAY'S HABITS⟫</span><b>2/4</b></div><div class="mk-hcs"><span class="mk-hc">[[g:runner]]⟪Koşu¦Running⟫<i></i></span><span class="mk-hc on">[[g:drop]]<s>⟪Su içmek¦Water⟫</s><i></i></span><span class="mk-hc on">[[g:openbook]]<s>⟪Okuma¦Reading⟫</s><i></i></span></div></div>
+  <div class="mk-vine">
+    <svg class="mk-lines" viewBox="0 0 300 250" aria-hidden="true"><path d="M70 122 C 92 122, 88 31, 110 31" stroke="#EE96BA"/><path d="M70 122 C 92 122, 88 91, 110 91" stroke="#96BEE8"/><path d="M70 122 C 92 122, 88 151, 110 151" stroke="#BEA8EE"/><path d="M70 122 C 92 122, 88 211, 110 211" stroke="#F0D8A8"/></svg>
+    <div class="mk-me"><span class="mk-bub">[[c:gardener]]</span><b>Deniz</b><small>⟪Sen¦You⟫</small></div>
+    <div class="mk-bcs">
+      <div class="mk-bc mk-card" style="--cb:#EE96BA"><span class="mk-ic">[[g:heart]]</span><span class="mk-bt"><b>⟪Sağlık¦Health⟫</b><span><span class="mk-chip g">[[g:repeat]]⟪2 alışkanlık¦2 habits⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#96BEE8"><span class="mk-ic">[[g:briefcase]]</span><span class="mk-bt"><b>⟪İş¦Work⟫</b><span><span class="mk-chip b">[[g:calendar]]⟪Cuma sunum¦Slides Fri⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#BEA8EE"><span class="mk-ic">[[g:books]]</span><span class="mk-bt"><b>⟪Öğrenme¦Learning⟫</b><span><span class="mk-chip o">[[g:flame]]⟪9 gün¦9d⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#F0D8A8"><span class="mk-ic">[[g:house]]</span><span class="mk-bt"><b>⟪Ev¦Home⟫</b><span><span class="mk-chip n">⟪Kira 5 gün sonra¦Rent in 5 days⟫</span></span></span><span class="mk-go">›</span></div>
+    </div>
+  </div>
+  <div class="mk-add"><span class="mk-btn o">+ ⟪Ekle¦Add⟫</span><span class="mk-link">⟪Şablon kullan¦Use a template⟫</span></div>
+  <div class="mk-tabs"><span class="on">[[g:house]]<small>⟪Ana Sayfa¦Home⟫</small></span><span>[[g:search]]<small>⟪Ara¦Search⟫</small></span><span>[[g:bars]]<small>⟪İstatistik¦Stats⟫</small></span><span>[[g:sliders]]<small>⟪Daha Fazla¦More⟫</small></span></div>
+</div></template>
+
+<template data-mock="home"><div class="mk mk-home">
+  <div class="mk-top"><span class="mk-logo">vyne<em>notes</em></span><span class="mk-pill">⟪Karar veremiyor musun? Çarkı çevir¦Can't decide? Spin for one⟫</span><span class="mk-av">[[c:gardener]]</span></div>
+  <div class="mk-today"><div class="mk-th"><span>⟪BUGÜNÜN HABİTLERİ¦TODAY'S HABITS⟫</span><b>2/4</b></div><div class="mk-hcs"><span class="mk-hc">[[g:runner]]⟪Koşu¦Running⟫<i></i></span><span class="mk-hc on">[[g:drop]]<s>⟪Su içmek¦Water⟫</s><i></i></span><span class="mk-hc on">[[g:openbook]]<s>⟪Okuma¦Reading⟫</s><i></i></span></div></div>
+  <div class="mk-vine">
+    <svg class="mk-lines" viewBox="0 0 300 250" aria-hidden="true"><path d="M70 122 C 92 122, 88 31, 110 31" stroke="#EE96BA"/><path d="M70 122 C 92 122, 88 91, 110 91" stroke="#96BEE8"/><path d="M70 122 C 92 122, 88 151, 110 151" stroke="#BEA8EE"/><path d="M70 122 C 92 122, 88 211, 110 211" stroke="#F0D8A8"/></svg>
+    <div class="mk-me"><span class="mk-bub">[[c:gardener]]</span><b>Deniz</b><small>⟪Sen¦You⟫</small></div>
+    <div class="mk-bcs">
+      <div class="mk-bc mk-card" style="--cb:#EE96BA"><span class="mk-ic">[[g:heart]]</span><span class="mk-bt"><b>⟪Sağlık¦Health⟫</b><span><span class="mk-chip g">[[g:repeat]]⟪2 alışkanlık¦2 habits⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#96BEE8"><span class="mk-ic">[[g:briefcase]]</span><span class="mk-bt"><b>⟪İş¦Work⟫</b><span><span class="mk-chip b">[[g:calendar]]⟪Cuma sunum¦Slides Fri⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#BEA8EE"><span class="mk-ic">[[g:books]]</span><span class="mk-bt"><b>⟪Öğrenme¦Learning⟫</b><span><span class="mk-chip o">[[g:flame]]⟪9 gün¦9d⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#F0D8A8"><span class="mk-ic">[[g:house]]</span><span class="mk-bt"><b>⟪Ev¦Home⟫</b><span><span class="mk-chip n">⟪Kira 5 gün sonra¦Rent in 5 days⟫</span></span></span><span class="mk-go">›</span></div>
+    </div>
+  </div>
+</div></template>
+
+<template data-mock="vine"><div class="mk mk-home">
+  <div class="mk-vine">
+    <svg class="mk-lines" viewBox="0 0 300 250" aria-hidden="true"><path d="M70 122 C 92 122, 88 31, 110 31" stroke="#EE96BA"/><path d="M70 122 C 92 122, 88 91, 110 91" stroke="#96BEE8"/><path d="M70 122 C 92 122, 88 151, 110 151" stroke="#BEA8EE"/><path d="M70 122 C 92 122, 88 211, 110 211" stroke="#F0D8A8"/></svg>
+    <div class="mk-me"><span class="mk-bub">[[c:gardener]]</span><b>Deniz</b><small>⟪Sen¦You⟫</small></div>
+    <div class="mk-bcs">
+      <div class="mk-bc mk-card" style="--cb:#EE96BA"><span class="mk-ic">[[g:heart]]</span><span class="mk-bt"><b>⟪Sağlık¦Health⟫</b><span><span class="mk-chip g">[[g:repeat]]⟪2 alışkanlık¦2 habits⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#96BEE8"><span class="mk-ic">[[g:briefcase]]</span><span class="mk-bt"><b>⟪İş¦Work⟫</b><span><span class="mk-chip b">[[g:calendar]]⟪Cuma sunum¦Slides Fri⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#BEA8EE"><span class="mk-ic">[[g:books]]</span><span class="mk-bt"><b>⟪Öğrenme¦Learning⟫</b><span><span class="mk-chip o">[[g:flame]]⟪9 gün¦9d⟫</span></span></span><span class="mk-go">›</span></div>
+      <div class="mk-bc mk-card" style="--cb:#F0D8A8"><span class="mk-ic">[[g:house]]</span><span class="mk-bt"><b>⟪Ev¦Home⟫</b><span><span class="mk-chip n">⟪Kira 5 gün sonra¦Rent in 5 days⟫</span></span></span><span class="mk-go">›</span></div>
+    </div>
+  </div>
+</div></template>
+
+<template data-mock="branch"><div class="mk mk-branch">
+  <div class="mk-bh"><span class="mk-ic" style="--cb:#EE96BA">[[g:runner]]</span><span><small>‹ ⟪Sağlık¦Health⟫</small><b>⟪Koşu¦Running⟫</b></span></div>
+  <div class="mk-streak"><b>13</b><span>⟪gün üst üste¦days in a row⟫<small>⟪1 gün kurtarıldı · en uzun 13¦1 day saved · longest 13⟫</small></span></div>
+  <div class="mk-cal mk-card">
+    <span class="h">⟪Pt¦Mo⟫</span><span class="h">⟪Sa¦Tu⟫</span><span class="h">⟪Ça¦We⟫</span><span class="h">⟪Pe¦Th⟫</span><span class="h">⟪Cu¦Fr⟫</span><span class="h">⟪Ct¦Sa⟫</span><span class="h">⟪Pz¦Su⟫</span>
+    <i>8</i><i>9</i><i>10</i><i>11</i><i>12</i><i class="d">13</i><i class="d">14</i>
+    <i class="d">15</i><i class="d">16</i><i class="d">17</i><i class="r">[[g:thermo]]</i><i class="d">19</i><i class="l">[[g:leaf]]</i><i class="d">21</i>
+    <i class="d">22</i><i class="d">23</i><i class="d">24</i><i class="d">25</i><i class="d">26</i><i class="d">27</i><i class="t">28</i>
+  </div>
+  <div class="mk-leg"><span><i class="d"></i>⟪yapıldı¦done⟫</span><span><i class="l"></i>⟪yaprak korudu¦leaf kept⟫</span><span><i class="r"></i>⟪hasta¦sick⟫</span></div>
+  <div class="mk-leaves">[[g:leaf]]<b>⟪Yapraklar 1/2¦Leaves 1/2⟫</b><span>⟪1 gün daha, bir yaprak daha¦1 more day for another leaf⟫</span></div>
+</div></template>
+
+<template data-mock="stats"><div class="mk mk-stats">
+  <div class="mk-seg"><span class="on">⟪Hafta¦Week⟫</span><span>⟪Ay¦Month⟫</span><span>⟪Yıl¦Year⟫</span></div>
+  <div class="mk-card mk-week">
+    <b>⟪Haftan¦Your week⟫</b>
+    <p>⟪Bu hafta 5 gün işaretledin, en sık: Su içmek.¦You checked in on 5 days, most often Drink water.⟫</p>
+    <p class="u">⟪Her zamanki gibi.¦About the same as your usual.⟫</p>
+    <div class="mk-days"><span class="on">[[g:leaf]]<small>⟪Pt¦Mo⟫</small></span><span class="on">[[g:leaf]]<small>⟪Sa¦Tu⟫</small></span><span class="on">[[g:leaf]]<small>⟪Ça¦We⟫</small></span><span>[[g:leaf]]<small>⟪Pe¦Th⟫</small></span><span class="on">[[g:leaf]]<small>⟪Cu¦Fr⟫</small></span><span class="on">[[g:leaf]]<small>⟪Ct¦Sa⟫</small></span><span>[[g:leaf]]<small>⟪Pz¦Su⟫</small></span></div>
+  </div>
+  <div class="mk-card mk-habits">
+    <div><span class="mk-ic" style="--cb:#EE96BA">[[g:runner]]</span><b>⟪Koşu¦Running⟫</b><span class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i></span><span class="mk-chip o">[[g:flame]]13</span></div>
+    <div><span class="mk-ic" style="--cb:#96CEEE">[[g:drop]]</span><b>⟪Su içmek¦Water⟫</b><span class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="mk-chip o">[[g:flame]]22</span></div>
+  </div>
+</div></template>
+
+<template data-mock="notes"><div class="mk mk-notes">
+  <div class="mk-nh"><span class="mk-logo">vyne<em>notes</em></span><span class="c"><b>6</b><small>⟪NOTLAR¦NOTES⟫</small></span></div>
+  <div class="mk-inbox">[[g:mail]]<b>⟪Gelen Kutusu¦Inbox⟫</b><small>⟪3 not¦3 notes⟫</small></div>
+  <div class="mk-bubs">
+    <span><i style="--cb:#F0D8A8">[[g:folder]]</i><b>⟪Ev¦Home⟫</b><small>⟪İçinde 2¦2 inside⟫</small></span>
+    <span><i style="--cb:#BEA8EE">[[g:folder]]</i><b>⟪Okul¦School⟫</b><small>⟪İçinde 3¦3 inside⟫</small></span>
+    <span><i style="--cb:#F0B8C8">[[g:openbook]]</i><b>⟪Tatil fikirleri¦Holiday ideas⟫</b><small>⟪1 sayfa¦1 page⟫</small></span>
+    <span><i style="--cb:#2A2F55" class="dk">[[g:journal]]</i><b>⟪Günlük¦Journal⟫</b><small>⟪12 gün¦12 days⟫</small></span>
+    <span><i style="--cb:#EEE096">[[g:calendar]]</i><b>⟪Haftalık defter¦Weekly diary⟫</b><small>⟪4 hafta¦4 weeks⟫</small></span>
+    <span><i style="--cb:#A8E8C8">[[g:people]]</i><b>⟪Çevre¦People⟫</b><small>⟪3 kişi¦3 people⟫</small></span>
+  </div>
+</div></template>
+
+<template data-mock="wheel"><div class="mk mk-wheel">
+  <b class="t">⟪Birini seç¦Spin for one⟫</b><small class="s">⟪Nereden başlayacağına karar veremiyor musun? Çark seçsin.¦Can't decide where to start? Let the wheel pick.⟫</small>
+  <div class="mk-wh"><span class="ptr"></span><span class="disc"></span><span class="gi" style="left:67%;top:27%">[[g:runner]]</span><span class="gi" style="left:67%;top:67%">[[g:drop]]</span><span class="gi" style="left:27%;top:67%">[[g:openbook]]</span><span class="gi" style="left:27%;top:27%">[[g:speech]]</span><span class="hub"></span></div>
+  <span class="mk-btn g">⟪Çevir¦Spin⟫</span>
+</div></template>
+
+<template data-mock="pick"><div class="mk mk-pick">
+  <span class="mk-ic big" style="--cb:#C8B8F0">[[g:speech]]</span>
+  <b>⟪İspanyolca¦Spanish⟫</b>
+  <small>⟪Sadece 2 dakika: tek kural bu. Şimdi başla.¦Just 2 minutes: that's the whole rule. Start now.⟫</small>
+  <span class="mk-btn g">⟪2 dakikalık süreyi başlat¦Start the 2-minute timer⟫</span>
+  <span class="mk-link">⟪Tekrar çevir (9 hak kaldı)¦Spin again (9 left)⟫</span>
+</div></template>
+
+<template data-mock="cloud"><div class="mk mk-cloud">
+  <div class="mk-cl"><span class="mk-bub">[[c:gardener]]</span><span class="cl">[[g:cloud]]<em>…</em></span></div>
+  <div class="mk-card mk-cap"><span>⟪Pazartesi raporu at¦Send the report on Monday⟫</span><i>↑</i></div>
+  <small class="mk-cap2">⟪Gelen Kutusu'na gider.¦Goes to your Inbox.⟫</small>
+  <div class="mk-card mk-list"><b>[[g:mail]]⟪Gelen Kutusu¦Inbox⟫</b><span>⟪Salı dişçi¦Dentist on Tuesday⟫<em>⟪Gönder…¦Send to…⟫</em></span><span>⟪Balkona saksı¦Pots for the balcony⟫</span></div>
+</div></template>
+
+<template data-mock="journal"><div class="mk mk-journal">
+  <div class="jh"><b data-today="d">30</b><span>[[g:moon]]<small data-today="label">⟪Salı · Eylül 2026¦Tuesday · September 2026⟫</small></span></div>
+  <p class="q">[[g:thought]]⟪Bugün ne iyi gitti, neden?¦What went well today, and why?⟫</p>
+  <p class="w">⟪Sabah yürüyüşü. Yağmur vardı ama yine de çıktık. Dönüşte simit.¦A morning walk. It rained and we went anyway. Warm bread on the way back.⟫</p>
+  <span class="band"></span>
+  <p class="ago">[[g:calendar]]⟪1 yıl önce bugün ne yazdığını da gösterir¦It also shows what you wrote a year ago today⟫</p>
+</div></template>
+
+<template data-mock="people"><div class="mk mk-people">
+  <div class="mk-card mk-srch">[[g:search]]<span>⟪Kişi ara¦Search people⟫</span></div>
+  <div class="bday">[[g:cake]]<b>⟪Annem · 3 gün sonra doğum günü¦Mom · birthday in 3 days⟫</b></div>
+  <div class="mk-card rows">
+    <span><i style="--cb:#F0B8C8">[[g:blossom]]</i><b>⟪Annem¦Mom⟫<small>⟪Bahçeye domates ekmiş.¦Planted tomatoes in the garden.⟫</small></b><em>⟪3 gün¦3 days⟫</em></span>
+    <span><i style="--cb:#96BEE8">[[g:guitar]]</i><b>Can<small>⟪Yeni işe başladı.¦Started a new job.⟫</small></b></span>
+    <span><i style="--cb:#EEE096">[[g:books]]</i><b>Ece<small>⟪Kitabı bitirince haber verecek.¦Will tell me when she finishes the book.⟫</small></b></span>
+  </div>
+</div></template>
+
+<template data-mock="templates"><div class="mk mk-tpl">
+  <div class="mk-card head"><span class="mk-ic" style="--cb:#E4F0FB">[[g:briefcase]]</span><span><b>⟪Yeni İş¦New Job⟫</b><small>⟪İlk 90 gün için bir yapı, bir de gerçek bir bağlantı.¦A structured first 90 days, plus one real connection.⟫</small></span></div>
+  <small class="lbl">⟪BUNLAR OLUŞTURULACAK¦THIS WILL BE CREATED⟫</small>
+  <div class="mk-card list">
+    <span>[[g:calendar]]⟪90 Günlük Plan¦90-Day Plan⟫</span>
+    <span class="k">[[g:sprout]]⟪30. gün¦Day 30⟫</span><span class="k">[[g:sprig]]⟪60. gün¦Day 60⟫</span><span class="k">[[g:tree]]⟪90. gün¦Day 90⟫</span>
+    <span>[[g:coffee]]⟪Biriyle Kahve İç¦Grab a Coffee⟫</span>
+    <span>[[g:clipboard]]⟪Evrak & Kurulum¦Paperwork & Setup⟫</span>
+    <span>[[g:speech]]⟪Aylık Değerlendirme¦Monthly Check-in⟫<em>[[g:repeat]]</em></span>
+  </div>
+  <span class="mk-btn g">⟪Oluştur¦Create⟫</span>
+</div></template>
+
+<template data-mock="search"><div class="mk mk-search">
+  <div class="mk-card mk-srch on">[[g:search]]<span>⟪ogrenci¦cafe⟫</span><i>×</i></div>
+  <small class="lbl">⟪DALLAR¦BRANCHES⟫</small>
+  <div class="mk-card res"><span class="mk-ic" style="--cb:#BEA8EE">[[g:books]]</span><b>⟪Öğrenci işleri¦Café book club⟫<small>⟪Öğrenme¦Learning⟫</small></b></div>
+  <small class="lbl">⟪NOTLAR¦NOTES⟫</small>
+  <div class="mk-card res"><span class="mk-ic" style="--cb:#F0EDE8">[[g:openbook]]</span><b>⟪Öğrenci kartı yenile¦Café list⟫<small>⟪Okul¦Home⟫</small></b></div>
+  <div class="mk-card res"><span class="mk-ic" style="--cb:#2A2F55" data-dk>[[g:journal]]</span><b>⟪12 Mart · Günlük¦March 12 · Journal⟫<small>⟪"…öğrenci kafesinde çalıştık"¦"…worked at the little café"⟫</small></b></div>
+</div></template>
+
+<template data-mock="welcome"><div class="mk mk-welcome">
+  <div class="rad">
+    <svg viewBox="0 0 300 230" aria-hidden="true"><path d="M150 140 C 140 110, 110 90, 88 62" stroke="#6E9468" stroke-width="5" fill="none" stroke-linecap="round"/><g stroke="#6E9468" stroke-width="2" stroke-dasharray="3 5" fill="none"><path d="M150 140 L 180 40"/><path d="M150 140 L 238 70"/><path d="M150 140 L 262 128"/><path d="M150 140 L 238 188"/><path d="M150 140 L 58 190"/><path d="M150 140 L 42 118"/></g></svg>
+    <span class="me">D</span>
+    <span class="first">[[g:heart]]</span><b class="fl">⟪Sağlık¦Health⟫</b>
+    <span class="bud" style="left:180px;top:40px">[[g:note]]</span><span class="bud" style="left:238px;top:70px">[[g:journal]]</span><span class="bud" style="left:262px;top:128px">[[g:alarm]]</span><span class="bud" style="left:238px;top:188px">[[g:people]]</span><span class="bud" style="left:58px;top:190px">[[g:cloud]]</span><span class="bud" style="left:42px;top:118px">[[g:bars]]</span>
+  </div>
+  <b class="t">⟪Sarmaşığın daha fazlasını taşır¦Your vine holds more⟫</b>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</div></template>
+
+</div>
