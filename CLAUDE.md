@@ -52,6 +52,11 @@ yüz güne iniş, `#gun` örnek bir gün) · `#ozellikler` (24 kart, `#sablon`,
 Özellik kartları ve "Neden böyle?" her yerde yana kayan sıra: telefonda 1, tablette 2, bilgisayarda 3 kart; sayaç ve ‹ › okları.
 "Örnek bir gün" telefonda tek ekran (saat+başlık, çizim, dert, açıklama); yana kaydırınca durak değişir.
 Telefonda: dört kısa madde tek sütun; şablon ağacında alt dallar katlı ("+3"); Yenilikler ilk 5 madde + "Tümünü gör". Bilgisayarda: yüz güne iniş iki sütun (ipin iki yanı), düz liste 780 px ortada.
+**🌿 Uygulama görünümü (ÖNİZLEMEDE, 2026-09-30):** `{{#appview}}` bayrağıyla; ana sayfalarda KAPALI,
+sadece `onizleme/` (EN) ve `onizleme/tr/` (TR, noindex, bağlantısız) derlemesinde açık. Üstte "Uygulama gibi"
+düğmesi + girişte "Siteyi uygulamaya çevir": ortada sen, sağda 8 dal kartı (`#sarmasik`); dala dokununca sadece o
+bölüm açılır, üstte `sen › Özellikler` yolu ve alt dal düğmeleri. İçerik aynı bölümler (kopya yok), seçim
+`vyne-site-view`'da. Hasan onaylarsa: `build-site.mjs`'te ana derlemeye `appview: true` ver, onizleme/'yi kaldır.
 Kâğıt sayfalarındaki düğme siteyi o kâğıda geçirir. Dil önerisi ve gece sorusu altta kapatılabilir şerit.
 Kaldırılanlar (2026-09-30, puanı düşüktü): tomurcuk süsü, şablon testi, yıl yaprakları, almanak.
 Şablon denemesi uygulamanın gerçek verisini gösterir (alt dallar, alışkanlık sıklığı, tarihler);

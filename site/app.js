@@ -533,4 +533,84 @@
   if(!saved && (navigator.language||'').toLowerCase().indexOf(PAGE_LANG) !== 0) langT.hidden = false;
   $('langClose').addEventListener('click', function(){ langT.hidden = true; store('vyne-site-lang', PAGE_LANG); });
   [langA, langH].forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); store('vyne-site-lang', langA.dataset.lang); location.href = el.getAttribute('href') + location.hash; }); });
+
+  {{#appview}}
+  /* ---------- Uygulama görünümü: site, uygulamanın ana ekranı gibi dallara ayrılır ----------
+     Ortada "sen", sağda dallar (bölümler). Dala dokununca sadece o bölüm açılır, üstte yol: sen › Özellikler.
+     İçerik aynı bölümler; kopya yok. Seçim vyne-site-view'da hatırlanır. */
+  (function(){
+    var home = $('sarmasik'), path = $('appPath'), viewBtn = $('viewBtn'), lines = $('ahLines'), vine = $('ahVine'), me = $('ahMe');
+    var cards = [].slice.call(home.querySelectorAll('.ah-bc')), SECS = {}, app = false, grown = false, growT;
+    cards.forEach(function(c){ SECS[c.getAttribute('href').slice(1)] = c; });
+    [].forEach.call(home.querySelectorAll('[data-count]'), function(el){ el.textContent = document.querySelectorAll(el.dataset.count).length; });
+    function setHH(){ root.style.setProperty('--hh', $('top').offsetHeight + 'px'); if(!path.hidden) root.style.setProperty('--ph', path.offsetHeight + 'px'); }
+    function drawLines(){
+      if(home.hidden) return;
+      var vr = vine.getBoundingClientRect(), mr = me.querySelector('.ah-bub').getBoundingClientRect();
+      var x0 = mr.right - vr.left - 4, y0 = mr.top + mr.height/2 - vr.top, h = '';
+      lines.setAttribute('viewBox', '0 0 '+vr.width+' '+vr.height);
+      cards.forEach(function(c){
+        var r = c.getBoundingClientRect(), x1 = r.left - vr.left, y1 = r.top + r.height/2 - vr.top, mx = (x0 + x1)/2;
+        var d = 'M'+x0+' '+y0+' C '+mx+' '+y0+', '+mx+' '+y1+', '+x1+' '+y1;
+        h += '<path d="'+d+'" stroke="'+getComputedStyle(c).getPropertyValue('--cb').trim()+'" style="--len:'+Math.ceil(Math.abs(x1-x0) + Math.abs(y1-y0) + 20)+'"/>';
+      });
+      lines.innerHTML = h;
+      if(!grown && !reduce){ grown = true; lines.classList.remove('grow'); void lines.offsetWidth; lines.classList.add('grow'); clearTimeout(growT); growT = setTimeout(function(){ lines.classList.remove('grow'); }, 900); }
+    }
+    function secOf(id){
+      var el = id && document.getElementById(id); if(!el) return null;
+      var sec = el.closest('main .sec'); return sec && SECS[sec.id] ? {sec: sec, el: el} : null;
+    }
+    function showHome(){
+      home.hidden = false; path.hidden = true;
+      Object.keys(SECS).forEach(function(k){ $(k).classList.remove('open'); });
+      scrollTo({top: 0, behavior: 'instant'}); grown = false; drawLines();
+    }
+    function openSec(t){
+      var card = SECS[t.sec.id];
+      home.hidden = true; path.hidden = false;
+      Object.keys(SECS).forEach(function(k){ $(k).classList.toggle('open', k === t.sec.id); });
+      path.style.setProperty('--cb', getComputedStyle(card).getPropertyValue('--cb'));
+      $('apIc').innerHTML = card.querySelector('.ah-ic').innerHTML;
+      $('apName').textContent = card.querySelector('b').textContent;
+      var subs = $('apSubs'); subs.innerHTML = '';
+      [].forEach.call(t.sec.querySelectorAll('.sub > h3, .group-head > h3'), function(h3){
+        var b = document.createElement('button'); b.type = 'button'; b.textContent = h3.textContent;
+        b.addEventListener('click', function(){ (h3.closest('.sub, .group') || h3).scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'}); tick(700); });
+        subs.appendChild(b);
+      });
+      setHH(); dispatchEvent(new Event('resize'));
+      scrollTo({top: 0, behavior: 'instant'});
+      if(t.el !== t.sec) requestAnimationFrame(function(){ t.el.scrollIntoView({block: 'start'}); });
+    }
+    function route(){
+      if(!app) return;
+      var h = location.hash.slice(1); if(h === 'vyneos') return;
+      var t = secOf(h); if(t) openSec(t); else showHome();
+    }
+    function setView(on, keepHash){
+      app = on; root.classList.toggle('appmode', on); root.classList.remove('app-pre');
+      viewBtn.setAttribute('aria-pressed', String(on));
+      $('viewT').textContent = on ? '⟪Sayfa gibi¦Page view⟫' : '⟪Uygulama gibi¦App view⟫';
+      viewBtn.setAttribute('aria-label', on ? '⟪Sayfa görünümüne dön¦Back to the page view⟫' : '⟪Uygulama görünümü¦App view⟫');
+      store('vyne-site-view', on ? 'app' : 'page');
+      if(on){ setHH(); route(); return; }
+      home.hidden = true; path.hidden = true;
+      Object.keys(SECS).forEach(function(k){ $(k).classList.remove('open'); });
+      dispatchEvent(new Event('resize'));
+      var el = keepHash && location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+      if(el && el !== home) el.scrollIntoView({block: 'start'}); else scrollTo({top: 0, behavior: 'instant'});
+    }
+    function toApp(){ if(location.hash && secOf(location.hash.slice(1))) setView(true); else { setView(true); if(location.hash !== '#sarmasik') location.hash = 'sarmasik'; } tick(660); }
+    viewBtn.addEventListener('click', function(){ if(app) setView(false, true); else toApp(); });
+    $('toApp').addEventListener('click', toApp);
+    $('toPage').addEventListener('click', function(){ setView(false); try{ history.replaceState(null, '', location.pathname); }catch(e){} });
+    cards.forEach(function(c){ c.addEventListener('click', function(){ tick(560); }); });
+    $('brand').addEventListener('click', function(){ if(app && location.hash !== '#sarmasik') location.hash = 'sarmasik'; });
+    addEventListener('hashchange', route);
+    addEventListener('resize', function(){ setHH(); drawLines(); });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(drawLines);
+    if(store('vyne-site-view') === 'app') setView(true); else root.classList.remove('app-pre');
+  })();
+  {{/appview}}
 })();

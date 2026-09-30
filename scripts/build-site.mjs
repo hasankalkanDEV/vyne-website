@@ -13,6 +13,7 @@
 //   [[c:plagueDoctor]]      uygulamanın karakterlerinden biri
 //   {{#android}}…{{/android}}   sadece site/live.json'da android: true ise
 //   {{^android}}…{{/android}}   sadece android: false ise   (v140 için de aynısı)
+//   {{#appview}}…{{/appview}}   "Uygulama görünümü" düğmesi; şimdilik sadece önizlemede (onizleme/) açık
 //   {{LEAF_EVERY}} {{LEAF_CAP}}  uygulamanın yaprak kuralı (site/live.json'da; uygulamada değişirse orada değiştir)
 //
 // Mağaza durumu değişince SADECE site/live.json'u değiştir ve betiği çalıştır.
@@ -81,24 +82,26 @@ function glyph(kind, name, mode) {
 }
 
 /* ---------- Şablon ---------- */
-function build(lang) {
-  const en = lang === 'en';
+function build(lang, opt = {}) {
+  const en = lang === 'en', P = opt.P ?? (en ? '' : '../');
+  const FLAGS = { appview: false, ...LIVE, ...(opt.flags || {}) };
   let s = read('site/head.html') + '<style>\n' + read('site/style.css') + '</style>\n</head>\n' +
     read('site/body.html') + read('site/mocks.html') + '<script>\n' + read('site/app.js') + '</script>\n</body>\n</html>\n';
-  for (const [flag, on] of Object.entries(LIVE)) {
+  for (const [flag, on] of Object.entries(FLAGS)) {
     if (typeof on !== 'boolean') continue;
     s = s.replace(new RegExp(`\\{\\{#${flag}\\}\\}([\\s\\S]*?)\\{\\{/${flag}\\}\\}`, 'g'), on ? '$1' : '')
          .replace(new RegExp(`\\{\\{\\^${flag}\\}\\}([\\s\\S]*?)\\{\\{/${flag}\\}\\}`, 'g'), on ? '' : '$1');
   }
   s = s.replace(/⟪([\s\S]*?)¦([\s\S]*?)⟫/g, (_, tr, e) => (en ? e : tr));
   s = s.replace(/\[\[(g|c):([A-Za-z]+)(?::([BC]))?\]\]/g, (_, k, n, m) => glyph(k, n, m));
-  s = s.replaceAll('{{P}}', en ? '' : '../').replaceAll('{{LANG}}', lang)
+  s = s.replaceAll('{{P}}', P).replaceAll('{{LANG}}', lang)
        .replaceAll('{{PLAY_URL}}', LIVE.playUrl)
        .replaceAll('{{LEAF_EVERY}}', String(LIVE.leafEvery)).replaceAll('{{LEAF_CAP}}', String(LIVE.leafCap)).replaceAll('{{IOS_URL}}', LIVE.iosUrl);
   s = s.replace('{{TEMPLATES}}', () => templatesFor(lang))
        .replace('{{QR_IOS}}', () => read('site/qr-ios.svg').trim()).replace('{{QR_PLAY}}', () => read('site/qr-play.svg').trim());
   const left = s.match(/⟪|⟫|¦|\{\{[#^/]?[A-Za-z_]+\}\}|\[\[[gc]:/);
   if (left) throw new Error(`${lang}: çözülmemiş işaret: ${s.slice(left.index - 60, left.index + 60)}`);
+  if (opt.noindex) s = s.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">');
   return s.replace(/\n/g, '\r\n');
 }
 /* Uygulamanın gerçek şablonları (site/templates.json) sayfanın diline göre JS'e yazılır; çizimleri bir kez. */
@@ -121,4 +124,8 @@ writeFileSync(join(root, 'en/index.html'), ['<!doctype html>', '<html lang="en">
   '<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../">',
   '<script>location.replace("../" + location.hash);</script></head>',
   '<body><a href="../">Vyne</a></body></html>', ''].join('\r\n'));
+// Önizleme: aynı site, "Uygulama görünümü" açık. Bağlantısız, arama motorlarına kapalı.
+mkdirSync(join(root, 'onizleme/tr'), { recursive: true });
+writeFileSync(join(root, 'onizleme/index.html'), build('en', { P: '../', flags: { appview: true }, noindex: true }));
+writeFileSync(join(root, 'onizleme/tr/index.html'), build('tr', { P: '../../', flags: { appview: true }, noindex: true }));
 console.log('index.html (EN) + tr/index.html (TR) + en/ yönlendirmesi yazıldı ·', used.size, 'çizim ·', JSON.stringify(LIVE));

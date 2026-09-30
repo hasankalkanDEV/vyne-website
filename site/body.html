@@ -11,6 +11,7 @@
     <div class="top-right">
       <a class="lang-sw" id="langSw" href="⟪../¦tr/⟫" data-lang="⟪en¦tr⟫" hreflang="⟪en¦tr⟫" lang="⟪en¦tr⟫" aria-label="⟪English¦Türkçe⟫">⟪EN¦TR⟫</a>
       <button class="look-btn" id="lookBtn" type="button" aria-expanded="false" aria-controls="look">[[g:palette]]<span class="t">⟪Görünüm¦Look⟫</span></button>
+      {{#appview}}<button class="look-btn view-btn" id="viewBtn" type="button" aria-pressed="false" aria-label="⟪Uygulama görünümü¦App view⟫">[[g:tree]]<span class="t" id="viewT">⟪Uygulama gibi¦App view⟫</span></button>{{/appview}}
       <a class="nav-dl" href="#indir">⟪İndir¦Download⟫</a>
     </div>
   </div>
@@ -40,6 +41,37 @@
 
 <main id="main">
 <div class="wrap">
+{{#appview}}
+<!-- ============ UYGULAMA GÖRÜNÜMÜ: sarmaşık ana sayfa ============ -->
+<section class="apphome" id="sarmasik" hidden aria-labelledby="ahTitle">
+  <div class="ah-hello">
+    <img src="{{P}}app-icon.png" alt="" width="52" height="52">
+    <div><h1 id="ahTitle">⟪Bir günü kaçırmak dert değil.¦Habits that forgive a bad day.⟫</h1>
+    <p>⟪Bu site şimdi uygulama gibi: ortada sen, sağda dallar. Bir dala dokun.¦This site now works like the app: you in the middle, branches to the right. Tap a branch.⟫</p></div>
+  </div>
+  <div class="ah-today"><div class="ah-th"><span>⟪BUGÜN¦TODAY⟫</span><b>4/4</b></div>
+    <div class="ah-hcs"><span>[[g:coin]]⟪Ücretsiz¦Free⟫<i></i></span><span>[[g:no]]⟪Reklamsız¦No ads⟫<i></i></span><span>[[g:lock]]⟪Hesapsız¦No account⟫<i></i></span><span>[[g:mobile]]⟪İnternetsiz¦Offline⟫<i></i></span></div></div>
+  <div class="ah-vine" id="ahVine">
+    <svg class="ah-lines" id="ahLines" aria-hidden="true"></svg>
+    <div class="ah-me" id="ahMe"><span class="ah-bub">[[c:gardener]]</span><b>⟪Sen¦You⟫</b></div>
+    <nav class="ah-bcs" aria-label="⟪Dallar¦Branches⟫">
+      <a class="ah-bc" href="#nasil" style="--cb:#A8E6C8"><span class="ah-ic">[[g:sprout]]</span><span class="ah-bt"><b>⟪Nasıl çalışır¦How it works⟫</b><span class="ah-chip">⟪3 fikir, dene¦3 ideas to try⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#ozellikler" style="--cb:#EE96BA"><span class="ah-ic">[[g:sparkles]]</span><span class="ah-bt"><b>⟪Özellikler¦Features⟫</b><span class="ah-chip"><span data-count="#ozellikler .feat"></span>⟪ özellik¦ features⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#hikaye" style="--cb:#F0D8A8"><span class="ah-ic">[[g:mail]]</span><span class="ah-bt"><b>⟪Hikâye¦The story⟫</b><span class="ah-chip">⟪bir mektup¦a letter⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#oyuncaklar" style="--cb:#BEA8EE"><span class="ah-ic">[[g:wheel]]</span><span class="ah-bt"><b>⟪Çark¦The wheel⟫</b><span class="ah-chip">⟪çevir, başla¦spin, start⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#yenilikler" style="--cb:#96BEE8"><span class="ah-ic">[[g:newBadge]]</span><span class="ah-bt"><b>⟪Yenilikler¦What's new⟫</b><span class="ah-chip">1.4.0 · <span data-count=".log > .ver li"></span>⟪ yenilik¦ changes⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#sozler" style="--cb:#EEE096"><span class="ah-ic">[[g:shield]]</span><span class="ah-bt"><b>⟪Sözlerim¦Promises⟫</b><span class="ah-chip"><span data-count="#sozler .vow"></span>⟪ söz¦ promises⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#sorular" style="--cb:#F2C4A6"><span class="ah-ic">[[g:question]]</span><span class="ah-bt"><b>⟪Sorular¦Questions⟫</b><span class="ah-chip"><span data-count="#sorular details"></span>⟪ soru¦ questions⟫</span></span><span class="ah-go">›</span></a>
+      <a class="ah-bc" href="#indir" style="--cb:#6E9468"><span class="ah-ic">[[g:mobile]]</span><span class="ah-bt"><b>⟪İndir¦Download⟫</b><span class="ah-chip">⟪ücretsiz¦free⟫</span></span><span class="ah-go">›</span></a>
+    </nav>
+  </div>
+  <p class="ah-foot"><button type="button" id="toPage">⟪Sayfa görünümüne dön¦Back to the page view⟫</button></p>
+</section>
+<div class="apppath" id="appPath" hidden>
+  <div class="ap-row"><a class="ap-back" href="#sarmasik" aria-label="⟪Sarmaşığa dön¦Back to the vine⟫">‹</a><span class="ap-ic" id="apIc"></span><span class="ap-crumb"><a href="#sarmasik">⟪sen¦you⟫</a><span aria-hidden="true"> › </span><b id="apName"></b></span></div>
+  <div class="ap-subs" id="apSubs"></div>
+</div>
+{{/appview}}
 
 <!-- ============ GİRİŞ ============ -->
 <section class="hero" id="giris">
@@ -55,6 +87,7 @@
       <p class="store-note">⟪Android sürümü şu an Google Play incelemesinde; onaylanınca bu düğme açılacak.¦The Android version is in Google Play review right now; this button goes live once it's approved.⟫</p>{{/android}}
     </div>
     <p class="sign">⟪tek başıma yaptım, ailem ve arkadaşlarım için · Hasan¦made by just me, for my family and friends · Hasan⟫</p>
+    {{#appview}}<button class="to-app" id="toApp" type="button">[[g:tree]]<span>⟪Siteyi uygulamaya çevir¦Turn this site into the app⟫</span><i aria-hidden="true">→</i></button>{{/appview}}
     <div class="return-card" id="returnCard" hidden>
       <b>[[g:sprig]] ⟪Tekrar hoş geldin¦Welcome back⟫</b>
       <span class="muted">⟪Yetişmen gereken bir şey yok. Son geldiğinden beri değişenler <a href="#yenilikler">Yenilikler</a> bölümünde.¦Nothing to catch up on. What changed since your last visit is under <a href="#yenilikler">What's new</a>.⟫</span>
