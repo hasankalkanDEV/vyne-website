@@ -8,23 +8,61 @@
 <link rel="icon" href="/vyne-website/favicon.svg" type="image/svg+xml">
 <style>
 @font-face{font-family:'Nunito';font-weight:200 1000;font-display:swap;src:url(/vyne-website/fonts/nunito-latin.woff2) format('woff2')}
-:root{--bg:#F8F6F0; --ink:#2C2A26; --slate:#6C6860; --green:#6E9468; --btn:#4A6E45; --btn-ink:#fff}
-@media (prefers-color-scheme:dark){ :root{ color-scheme:dark; --bg:#1E1C18; --ink:#F0EDE8; --slate:#A19E9A; --green:#A6CB9E; --btn:#A6CB9E; --btn-ink:#16200F } }
+@font-face{font-family:'Nunito';font-weight:200 1000;font-display:swap;src:url(/vyne-website/fonts/nunito-latin-ext.woff2) format('woff2');unicode-range:U+0100-02AF,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{--bg:#F8F6F0; --ink:#2C2A26; --slate:#6C6860; --green:#6E9468; --btn:#4A6E45; --btn-ink:#fff; --card:#EFEBE2}
+@media (prefers-color-scheme:dark){ :root{ color-scheme:dark; --bg:#1E1C18; --ink:#F0EDE8; --slate:#A19E9A; --green:#A6CB9E; --btn:#A6CB9E; --btn-ink:#16200F; --card:#2A2823 } }
+[hidden]{display:none!important}
 body{margin:0; min-height:100vh; display:grid; place-items:center; background:var(--bg); color:var(--ink); font-family:'Nunito',system-ui,sans-serif; font-weight:600; padding-inline:20px; text-align:center}
-main{display:grid; gap:14px; justify-items:center}
+main{display:grid; gap:14px; justify-items:center; max-width:440px; padding-block:32px}
 h1{font-weight:900; letter-spacing:-.02em; margin:0; font-size:clamp(28px,5vw,44px)}
 p{margin:0; color:var(--slate)}
 .row{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:8px}
 a{background:var(--btn); color:var(--btn-ink); text-decoration:none; font-weight:800; padding:11px 20px; border-radius:999px}
 a.alt{background:transparent; color:var(--ink); border:1.5px solid var(--slate)}
+.icon{width:72px; height:72px; border-radius:16px}
+.code{display:grid; gap:4px; background:var(--card); border-radius:14px; padding:12px 20px; margin-top:4px}
+.code span{font-size:14px; color:var(--slate)}
+.code strong{font-size:24px; font-weight:900; letter-spacing:.06em; word-break:break-all; user-select:all}
+.small{font-size:14px}
 </style>
 </head>
 <body>
-<main>
+<main id="lost">
   <svg viewBox="0 0 220 120" width="220" aria-hidden="true"><circle cx="24" cy="60" r="16" fill="#6E9468"/><path d="M40 60 C 90 60, 100 30, 150 30" fill="none" stroke="#6E9468" stroke-width="4" stroke-linecap="round"/><path d="M150 30 l 14 -8 M150 30 l 12 10" stroke="#C9716F" stroke-width="3" stroke-linecap="round"/></svg>
   <h1>This branch hasn't grown yet</h1>
   <p>The page you're looking for isn't here. · Bu dal henüz büyümedi.</p>
   <div class="row"><a href="/vyne-website/">Home</a><a class="alt" href="/vyne-website/tr/" lang="tr">Türkçe</a></div>
 </main>
+<main id="invite" hidden>
+  <img class="icon" src="/vyne-website/app-icon.png" width="72" height="72" alt="">
+  <h1 data-en="Open this invite in Vyne" data-tr="Bu daveti Vyne’da aç">Open this invite in Vyne</h1>
+  <p data-en="If Vyne is on this phone, open this link from your messages and it opens in the app. If not, get Vyne first, then open the link again." data-tr="Vyne bu telefonda yüklüyse bağlantıyı mesajlarından aç, uygulamada açılır. Yüklü değilse önce Vyne’ı indir, sonra bağlantıyı yeniden aç.">If Vyne is on this phone, open this link from your messages and it opens in the app. If not, get Vyne first, then open the link again.</p>
+  <div class="row">
+    <a id="ios" href="https://apps.apple.com/app/id6790837181">App Store</a>
+    <a id="play" class="alt" href="https://play.google.com/store/apps/details?id=com.hasankalkan.vyne">Google Play</a>
+  </div>
+  <div class="code"><span data-en="Invite code" data-tr="Davet kodu">Invite code</span><strong id="code"></strong></div>
+  <p class="small" data-en="Keep this code in case the link does not open Vyne." data-tr="Bağlantı Vyne’ı açmazsa diye bu kodu sakla.">Keep this code in case the link does not open Vyne.</p>
+  <div class="row"><a class="alt" href="/vyne-website/" data-en="About Vyne" data-tr="Vyne hakkında">About Vyne</a></div>
+</main>
+<script>
+(function () {
+  var m = /^\/vyne-website\/join\/([A-Za-z0-9_-]{1,64})\/?$/.exec(location.pathname);
+  if (!m) return;
+  var tr = /^tr\b/i.test(navigator.language || '');
+  document.documentElement.lang = tr ? 'tr' : 'en';
+  document.title = (tr ? 'Bu daveti Vyne’da aç' : 'Open this invite in Vyne') + ' · Vyne';
+  var els = document.querySelectorAll('#invite [data-en]');
+  for (var i = 0; i < els.length; i++) els[i].textContent = els[i].getAttribute(tr ? 'data-tr' : 'data-en');
+  document.getElementById('code').textContent = m[1];
+  if (/android/i.test(navigator.userAgent || '')) {
+    var ios = document.getElementById('ios'), play = document.getElementById('play');
+    ios.className = 'alt'; play.className = '';
+    play.parentNode.insertBefore(play, ios);
+  }
+  document.getElementById('lost').hidden = true;
+  document.getElementById('invite').hidden = false;
+})();
+</script>
 </body>
 </html>
