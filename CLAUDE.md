@@ -79,8 +79,8 @@ uygulamanın çizimleriyle dilimler, seçince 2 dakikalık sayaç.
 
 - **Android Google Play'de yayında** (Hasan, 2026-09-30): `"android": true`. Rozet, QR, alt çubuk
   ve SSS Play'e bağlı; Android cihazda Play önce, alt çubuk doğrudan Play'e gider.
-- iOS 1.4.0 hâlâ `"v140": false` (Hasan "yayında" demedi). Bu durumda metinler:
-  "Android'de yayında, iPhone sürümü App Store incelemesinde".
+- iOS da yayında: `"v140": true` (2026-10-21; 1.5.0 iki mağazada 2026-10-19/20'den beri).
+  Yenilikler'in en üstünde "1.4.1 – 1.5.0" girdisi var; uygulama görünümündeki çip ilk sürümü sayar.
 
 ### ⏭️ MAĞAZA DEĞİŞİNCE (Hasan haber verince)
 
@@ -105,8 +105,13 @@ Türkçe ek: "Vyne'ı / Vyne'da" (okunuşu "vayn").
 - **Bildirimler:** "günde en fazla bir" YANLIŞ, yazma. Doğrusu: günlük hatırlatma
   kişinin SEÇTİĞİ saatte (akşam değil), alışkanlığa özel saat, hatırlatıcılar,
   doğum günleri. Suçluluk kelimesi yok, istemeyen kapatır.
-- **Bulut yedeği:** uçtan uca şifreli değil; "okumak kolay değil ama zorlarsam okuyabilirim,
-  okumuyorum". Şifreleme planından bahsetme.
+- **Bulut yedeği (2026-10-21):** isteğe bağlı. Uçtan uca şifreleme her girişli hesaba açık ama
+  isteğe bağlı (varsayılan değil): açıkken bütün yedek telefonda, yalnızca kullanıcının cihazlarındaki
+  anahtarla şifrelenir; kapalıyken aktarımda ve depoda şifreli, erişim kurallarıyla korunur, uçtan uca
+  değil. "Herkes için uçtan uca şifreli" YAZMA. "Teknik olarak okuyabilirim / görebilirim" gibi
+  cümleler YOK (Hasan). Döngü verisi buluta yalnızca uçtan uca şifreli gider. Kelimeler için
+  doğru kaynak: `../vyne-legal/tools/content.json`.
+- **Döngü takibi:** "güvenli gün", "doğurgan", "yumurtlama", "doğum kontrolü" ve tıbbi iddia YOK.
 - **Ücret:** söz verme ("değişirse söyleriz" yok). Amaç: ücretsiz, sade, Hasan'ın da
   ömür boyu kullanacağı uygulama; ancak bulut masrafı zorlarsa düşünülür.
 - **Gerçek hikâye:** hayatının farklı dalları vardı, bazılarını unuttukça geride kalmış
@@ -144,8 +149,8 @@ sürükleyerek açılan site `5fafe7f`'te, ondan önceki site `8e9df97`'de.
   Metinle anmak serbest ("burada küçük bir sürpriz var").
 - **Eşi:** sitede eşinden hiç bahsedilmez (Hasan, 2026-09-28). Ses "tek başıma
   yaptım, ailem ve arkadaşlarım için".
-- **Henüz olmayan özellik vaat edilmez:** ortak alan (eşle paylaşım), imza
-  işaretleme, dal başına emoji/çizim 1.4.0'dan sonra.
+- **Henüz olmayan özellik vaat edilmez:** imza işaretleme, dal başına emoji/çizim.
+  Ortak profil (bir profili bir kişiyle paylaşmak) 2026-10-20'den beri yayında; eşten yine bahsedilmez.
 - Sahte kullanıcı yorumu yok. Eşinin beğenisi de paylaşılmaz (eşi anılmaz).
 
 ## 📌 Açık işler

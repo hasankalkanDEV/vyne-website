@@ -1,6 +1,6 @@
 {
   "android": true,
-  "v140": false,
+  "v140": true,
   "leafEvery": 7,
   "leafCap": 2,
   "iosUrl": "https://apps.apple.com/app/id6790837181",
