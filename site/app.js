@@ -26,6 +26,7 @@
   function fillToday(root){
     var d = new Date();
     [].forEach.call(root.querySelectorAll('[data-today="d"]'), function(e){ e.textContent = d.getDate(); });
+    [].forEach.call(root.querySelectorAll('[data-today="short"]'), function(e){ try{ e.textContent = d.toLocaleDateString('⟪tr-TR¦en-US⟫', {weekday:'short', month:'short', day:'numeric'}); }catch(x){} });
     [].forEach.call(root.querySelectorAll('[data-today="label"]'), function(e){ e.textContent = ['⟪Pazar¦Sunday⟫','⟪Pazartesi¦Monday⟫','⟪Salı¦Tuesday⟫','⟪Çarşamba¦Wednesday⟫','⟪Perşembe¦Thursday⟫','⟪Cuma¦Friday⟫','⟪Cumartesi¦Saturday⟫'][d.getDay()] + ' · ' + ['⟪Ocak¦January⟫','⟪Şubat¦February⟫','⟪Mart¦March⟫','⟪Nisan¦April⟫','⟪Mayıs¦May⟫','⟪Haziran¦June⟫','⟪Temmuz¦July⟫','⟪Ağustos¦August⟫','⟪Eylül¦September⟫','⟪Ekim¦October⟫','⟪Kasım¦November⟫','⟪Aralık¦December⟫'][d.getMonth()]; });
   }
   [].forEach.call(document.querySelectorAll('.mock[data-mock]'), function(m){ mountMock(m); });

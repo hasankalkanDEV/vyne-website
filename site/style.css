@@ -755,6 +755,79 @@ footer a{color:var(--slate)}
 .mk-welcome .t{font-size:18px}
 .mk-welcome .dots{display:flex; gap:5px} .mk-welcome .dots i{width:7px; height:7px; border-radius:4px; background:#C9C4B8} .mk-welcome .dots i.on{width:20px; background:#4A6E45}
 
+/* 1.5 çizimleri: Bugün kartı, takvim yılı, mesai saati, yaprak yaprak yıl, su, ortak profil */
+.mk-ins{display:flex; gap:9px; align-items:flex-start; padding:10px 12px; background:#FBF6E8; border-color:#F0E2BC; font-size:12.5px} .mk-ins svg.g{font-size:22px; flex:none} .mk-ins b{display:block; font-size:14px; margin-bottom:2px}
+.mk-tdy{display:grid; gap:10px}
+.mk-tc{padding:4px 12px 12px; display:grid; gap:8px; border-radius:20px}
+.mk-tc .h{display:flex; align-items:center; gap:6px; min-height:34px} .mk-tc .h b{font-size:18px} .mk-tc .h span{flex:1; font-size:12px; color:#6C6860; font-weight:700; white-space:nowrap}
+.mk-tc .h i{font-style:normal; width:24px; text-align:center; color:#6C6860; font-size:15px}
+.mk-tc .ev{display:flex; align-items:center; gap:10px; background:#FFF3E0; color:#A15E00; border-radius:12px; padding:8px 10px}
+.mk-tc .tm{display:grid; justify-items:center; min-width:38px; line-height:1} .mk-tc .tm b{font-size:18px; font-weight:900} .mk-tc .tm small{font-size:10.5px; font-weight:800}
+.mk-tc .bar{width:3px; align-self:stretch; border-radius:2px; background:#7C6333}
+.mk-tc .tx{flex:1; min-width:0; display:grid; gap:2px} .mk-tc .tx b{font-size:14px} .mk-tc .tx small{font-size:11px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.mk-tc .ev em{font-style:normal; font-size:16px}
+.mk-tc .tiles{display:flex; gap:7px} .mk-tc .tiles span{flex:1 1 0; min-width:0; display:grid; justify-items:start; gap:2px; background:#F2EFE8; border-radius:12px; padding:8px}
+.mk-tc .tiles svg.g{font-size:20px} .mk-tc .tiles b{font-size:13.5px; white-space:nowrap} .mk-tc .tiles small{font-size:10.5px; color:#6C6860; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%}
+.mk-tc.mini{padding:0 10px 9px; gap:6px; margin-bottom:4px} .mk-tc.mini .h{min-height:28px} .mk-tc.mini .h b{font-size:15px}
+.mk-tc.mini .ev{padding:6px 9px} .mk-tc.mini .tm b{font-size:15px} .mk-tc.mini .tiles span{padding:6px 8px; grid-template-columns:auto 1fr; column-gap:6px; align-items:center} .mk-tc.mini .tiles svg.g{grid-row:span 2; font-size:18px}
+.mk-full .mk-vine{height:226px} .mk-full .mk-bcs{gap:6px}
+.mk-hint{font-size:11.5px; color:#6C6860; text-align:center}
+
+.mk-cy{display:grid; gap:9px}
+.mk-seg.sm span{font-size:11px; padding:5px 2px}
+.mk-cy .ms{display:grid; grid-template-columns:repeat(3,1fr); gap:10px 12px}
+.mk-cy .mo b{display:block; font-size:12px; margin-bottom:3px}
+.mk-cy .dd{display:grid; grid-template-columns:repeat(7,1fr); gap:2px}
+.mk-cy i{display:block; aspect-ratio:1; border-radius:3px}
+.mk-cy i.h0{background:#fff; box-shadow:inset 0 0 0 1px #E8E4DC} .mk-cy i.h1{background:#E4F4E0} .mk-cy i.h2{background:#C9DEC4} .mk-cy i.h3{background:#8FB788} .mk-cy i.h4{background:#4A6E45}
+.mk-cy i.f{background:#F2EFE8} .mk-cy i.p{background:#fff; box-shadow:inset 0 0 0 1.5px #6C6860} .mk-cy i.t{box-shadow:0 0 0 2px #2C2A26}
+.mk-cy .lg{display:flex; align-items:center; gap:4px; padding:7px 10px; font-size:11.5px; font-weight:700; justify-self:start} .mk-cy .lg i{width:13px} .mk-cy .lg span:first-child{margin-right:3px} .mk-cy .lg span:last-child{margin-left:3px}
+.mk-cy .nt{font-size:11.5px; color:#6C6860}
+
+.mk-clk{display:grid; gap:9px; background:linear-gradient(180deg,#EAF2E6,#F4F7F0); border-radius:22px; padding:14px 12px}
+.mk-clk .hd{display:flex; align-items:flex-start} .mk-clk .hd span{flex:1; display:grid} .mk-clk .hd b{font-size:30px; font-weight:600; line-height:1} .mk-clk .hd small{font-size:10.5px; letter-spacing:.06em; margin-top:3px} .mk-clk .hd em{font-style:normal; font-weight:900; color:#4A6E45; font-size:13px}
+.mk-clk .st{font-size:16px}
+.mk-clk .sl{display:flex; align-items:center; border:1.5px solid #6C6860; border-radius:999px; padding:3px} .mk-clk .sl span{background:#6E9468; color:#fff; font-weight:900; font-size:13px; border-radius:999px; padding:7px 12px; white-space:nowrap} .mk-clk .sl b{flex:1; text-align:center; font-size:12.5px}
+.mk-clk .tc{padding:6px 10px 2px; display:grid}
+.mk-clk .th{display:flex; justify-content:space-between; padding:4px 0 6px; border-bottom:1px solid #F0EDE8} .mk-clk .th b{font-size:11px; letter-spacing:.08em} .mk-clk .th small{font-size:10.5px; font-weight:800; letter-spacing:.06em}
+.mk-clk .r{display:flex; align-items:center; gap:8px; padding:6px 0; font-size:12px; font-weight:800} .mk-clk .r + .r{border-top:1px solid #F0EDE8}
+.mk-clk .r > b{display:grid; width:34px; font-size:10.5px; line-height:1.1} .mk-clk .r > b i{font-style:normal; font-size:13px}
+.mk-clk .r span{flex:1; white-space:nowrap} .mk-clk .r small{font-size:9.5px; color:#6C6860} .mk-clk .r em{display:block; font-style:italic; font-weight:600; font-size:10.5px; color:#6C6860}
+.mk-clk .r u{text-decoration:none; font-family:var(--hand); font-size:19px; font-weight:700}
+.mk-clk .r.tot > b{width:auto; flex:1; font-size:11px; letter-spacing:.08em} .mk-clk .r.tot u{font-size:22px}
+
+.mk-yl{display:grid; gap:6px}
+.mk-yl .hd{display:grid} .mk-yl .hd small{font-size:12px; font-weight:800; color:#4A6E45} .mk-yl .hd b{font-size:24px; line-height:1.1} .mk-yl .hd span{font-size:12px; color:#6C6860}
+.mk-yl .vn{position:relative; height:230px} .mk-yl .vn svg{position:absolute; left:24px; right:0; top:0; width:calc(100% - 24px); height:100%}
+.mk-yl .vn span{position:absolute; left:4px; font-size:11px; font-weight:800; color:#6C6860}
+.mk-yl .gr{padding:10px 12px; display:grid; gap:6px} .mk-yl .gr small{font-size:10.5px; letter-spacing:.1em; font-weight:900; color:#6C6860}
+.mk-yl .gr div{display:flex; justify-content:space-between; text-align:center} .mk-yl .gr span{display:grid; font-size:10.5px; color:#6C6860} .mk-yl .gr span b{font-size:20px; color:#4A6E45}
+
+.mk-wtr{display:grid; gap:10px; background:#FBF8F1; border-radius:22px; padding:14px 12px}
+.mk-wtr .hd{display:flex; align-items:center} .mk-wtr .hd span{flex:1; display:grid} .mk-wtr .hd b{font-size:19px} .mk-wtr .hd small{font-size:12px; color:#6C6860}
+.mk-wtr .hd em{font-style:normal; font-weight:900; font-size:12.5px; color:#4A6E45; border:1.5px solid #6E9468; border-radius:999px; padding:6px 12px}
+.mk-wtr .pr{padding:10px 12px; display:grid; gap:6px} .mk-wtr .pr b{font-size:16px} .mk-wtr .pr small{font-size:11.5px; color:#6C6860}
+.mk-wtr .bar{height:8px; border-radius:6px; background:#E8E4DC; overflow:hidden} .mk-wtr .bar i{display:block; height:100%; background:#1A66A8; border-radius:6px}
+.mk-wtr .pt{display:flex; gap:7px} .mk-wtr .pt span{flex:1; text-align:center; border:1.5px solid #8FB488; background:#EEF7EB; color:#3D6B3D; font-weight:900; font-size:14px; border-radius:12px; padding:12px 0}
+.mk-wtr .tst{display:flex; justify-content:space-between; align-items:center; background:#fff; border:1px solid #E8E4DC; border-radius:12px; padding:10px 12px; font-size:12.5px} .mk-wtr .tst b{color:#4A6E45}
+
+.mk-shr{display:grid; gap:8px}
+.mk-shr .hd{display:flex; align-items:center; gap:12px} .mk-shr .hd .mk-bub{width:46px; height:46px; font-size:38px} .mk-shr .hd span:last-child{display:grid} .mk-shr .hd b{font-size:19px} .mk-shr .hd small{font-size:12px; color:#6C6860}
+.mk-shr .lbl{font-size:10.5px; letter-spacing:.1em; font-weight:900; margin-top:2px}
+.mk-shr .mm{display:grid; padding:2px 10px} .mk-shr .mm span{display:flex; align-items:center; gap:10px; padding:7px 0} .mk-shr .mm span + span{border-top:1px solid #F0EDE8}
+.mk-shr .mm i{width:32px; height:32px; border-radius:50%; background:color-mix(in srgb,var(--cb) 40%,#fff); border:1.5px solid var(--cb); display:grid; place-items:center; flex:none; overflow:hidden; font-size:28px}
+.mk-shr .mm b,.mk-shr .dn b{display:grid; font-size:13.5px; flex:1} .mk-shr small{font-size:11.5px}
+.mk-shr .dn{display:flex; align-items:center; gap:10px; padding:8px 10px} .mk-shr .dn > i{font-style:normal; width:24px; height:24px; border-radius:50%; background:#4A6E45; color:#fff; display:grid; place-items:center; font-size:13px; font-weight:900}
+.mk-shr .nt{color:#6C6860}
+
+/* "Uygulamanın kendisi": gerçek ekranlar (shots/*.webp, scripts/make-shots.mjs) */
+.feats.shots{grid-auto-columns:calc((100% - 56px) / 5)}
+.shotc{margin:0; display:grid; gap:10px; justify-items:center; scroll-snap-align:start; text-align:center}
+.shotc img{width:100%; height:auto; aspect-ratio:1/2; object-fit:cover; border-radius:26px; border:6px solid #2C2A26; background:#F8F6F0; box-shadow:0 10px 26px rgba(44,42,38,.14); box-sizing:border-box}
+.shotc figcaption{font-size:14.5px; font-weight:800; line-height:1.3; color:var(--ink)}
+@media (max-width:980px){ .feats.shots{grid-auto-columns:calc((100% - 28px) / 3)} }
+@media (max-width:620px){ .feats.shots{grid-auto-columns:44%} }
+
 /* Çizimlerin yerleştiği kutular */
 .scene.mockscene{padding:0; background:var(--sc,#F2EFE8)}
 .scene .mock{position:absolute; inset:14px}

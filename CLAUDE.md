@@ -46,8 +46,8 @@ kaydırarak okunuyor.** Sürükleme sadece süs: girişteki "tomurcuğu sağa ç
 
 Sıra ve adresler (TR ve EN'de aynı, dil düğmesi aynı yerde kalır):
 `#giris` · `#nasil` (düz liste↔sarmaşık, kendi sarmaşığın, `#yaprak` deneme +
-yüz güne iniş, `#gun` örnek bir gün) · `#ozellikler` (24 kart, `#sablon`,
-`#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
+yüz güne iniş, `#gun` örnek bir gün) · `#ozellikler` (33 kart, dört grup: Harita, Takvim ve mesai,
+Defterler, Senin; sonra `#ekranlar` gerçek ekran şeridi, `#sablon`, `#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
 `#yenilikler` · `#sozler` · `#sorular` · `#indir`. (`#oyuncaklar` = çark bölümü.)
 Özellik kartları ve "Neden böyle?" her yerde yana kayan sıra: telefonda 1, tablette 2, bilgisayarda 3 kart; sayaç ve ‹ › okları.
 "Örnek bir gün" telefonda tek ekran (saat+başlık, çizim, dert, açıklama); yana kaydırınca durak değişir.
@@ -80,7 +80,8 @@ uygulamanın çizimleriyle dilimler, seçince 2 dakikalık sayaç.
 - **Android Google Play'de yayında** (Hasan, 2026-09-30): `"android": true`. Rozet, QR, alt çubuk
   ve SSS Play'e bağlı; Android cihazda Play önce, alt çubuk doğrudan Play'e gider.
 - iOS da yayında: `"v140": true` (2026-10-21; 1.5.0 iki mağazada 2026-10-19/20'den beri).
-  Yenilikler'in en üstünde "1.4.1 – 1.5.0" girdisi var; uygulama görünümündeki çip ilk sürümü sayar.
+  Yenilikler'in en üstünde "1.5 güncellemeleri" (Ekim sonu OTA'ları), altında "1.4.1 – 1.5.0"; uygulama
+  görünümündeki çip ilk girdiyi sayar. Özellik kartlarındaki "yeni" işaretleri artık 1.5 ile gelenlerde.
 
 ### ⏭️ MAĞAZA DEĞİŞİNCE (Hasan haber verince)
 
@@ -125,12 +126,20 @@ Türkçe ek: "Vyne'ı / Vyne'da" (okunuşu "vayn").
 - "Sıradan bir gün" = **örnek bir gün**, "sen" diliyle; Hasan'ın kendi anısı değil.
 - **EN metin Amerikan yazımı** (traveling, color, gray, behavior, vacation).
 
-## Görseller: ekran görüntüsü YOK, çizim var (Hasan, 2026-09-30)
+## Görseller: çizim var; tek istisna `#ekranlar` şeridi (Hasan, 2026-09-30 / 2026-10-27)
+
+- **2026-10-27 (Hasan):** "Aynı tasarım + yenilik" seçildi: tasarım ve animasyonlar kaldı, 1.5 özellikleri
+  çizimle eklendi, Özellikler'in sonuna 7 gerçek ekranlık bir şerit (`#ekranlar`, "Uygulamanın kendisi") kondu.
+  Kareler `press/demo-2026-10-26/`'dan (Alex örnek profili; brif: `BRIEF.md`), `node scripts/make-shots.mjs`
+  (NODE_PATH ile) `shots/*.webp` üretir, 600x1200, durum çubuğu kesik. Seçim kuralı: brifte "good" ve "current",
+  ekranda isim yok (örnek isimler sadece Hasan/Hannah), Mood ve döngü YOK. Değişen ekranlar (Bugün kartı, takvim,
+  istatistik) yeniden çekilmeyecek, çizimle (Hasan). **Mood ve döngü sitede görselle gösterilmez**, sadece metinle anılır.
 
 - Hasan: "birebir ss kullanmak yerine kendin görsel oluştur, sadece anahtar kısmı göster."
   Sitedeki bütün uygulama görselleri `site/mocks.html`'deki çizimler: homefull (giriş
-  telefonu), home, vine, branch, stats, notes, wheel, pick, cloud, journal, people,
-  templates, search, welcome. Uygulamanın renkleri (`CAT`), çizimleri (glyph) ve metinleri.
+  telefonu, Bugün kartı ve 5 sekmeyle), home, vine, branch, stats (Öne çıkanlar kartıyla), notes, wheel, pick,
+  cloud, journal, people, templates, search, welcome; 1.5 ile: today, calyear (ısı haritası), clock (mesai),
+  leaves (yaprak yaprak yıl), water, shared (ortak profil). `data-today="short"` bugünün kısa tarihini yazar. Uygulamanın renkleri (`CAT`), çizimleri (glyph) ve metinleri.
 - Kullanım: `<div class="mock" data-mock="branch"></div>`; JS'te `mountMock(el, 'branch')`.
   Her çizim 300 px genişlikte; kutuya göre ölçeklenir. Kartlarda `.mk-top` (uygulama çubuğu)
   ve bazı ayrıntılar gizli (style.css sonu), sahne yüksekliği 270 px.
