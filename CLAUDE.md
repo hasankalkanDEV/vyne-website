@@ -164,6 +164,9 @@ sürükleyerek açılan site `5fafe7f`'te, ondan önceki site `8e9df97`'de.
 
 ## 📌 Açık işler
 
+- **Notlar çizimi uygulamaya (Hasan, 2026-10-29: "iyimiş, gerçek app'e ekleyebiliriz"):** `data-mock="notes"`
+  çiziminin tam tarifi, renkleri ve uygulamayla farkı `../vyne/docs/plans/notes-hub-site-look.md`'de. Çizimi
+  değiştirirsen o notu da güncelle.
 - Hasan istersen sahneleri kendisi çizebileceğini söyledi; şimdilik uygulamanın çizimleri kullanılıyor.
 - Gerçek kullanıcı yorumu gelirse (izinle) bir "ne dediler" bölümü. Uydurma yorum YOK.
 
