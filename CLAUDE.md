@@ -46,7 +46,7 @@ kaydırarak okunuyor.** Sürükleme sadece süs: girişteki "tomurcuğu sağa ç
 
 Sıra ve adresler (TR ve EN'de aynı, dil düğmesi aynı yerde kalır):
 `#giris` · `#nasil` (düz liste↔sarmaşık, kendi sarmaşığın, `#yaprak` deneme +
-yüz güne iniş, `#gun` örnek bir gün) · `#ozellikler` (33 kart, dört grup: Harita, Takvim ve mesai,
+yüz güne iniş, `#gun` örnek bir gün) · `#ozellikler` (41 kart, beş grup: Harita, Özel alışkanlıklar, Takvim ve mesai,
 Defterler, Senin; sonra `#ekranlar` gerçek ekran şeridi, `#sablon`, `#kagitlar` beş kâğıt) · `#hikaye` (mektup masası, `#neden`) · `#oyuncaklar` ·
 `#yenilikler` · `#sozler` · `#sorular` · `#indir`. (`#oyuncaklar` = çark bölümü.)
 Özellik kartları ve "Neden böyle?" her yerde yana kayan sıra: telefonda 1, tablette 2, bilgisayarda 3 kart; sayaç ve ‹ › okları.
@@ -134,12 +134,19 @@ Türkçe ek: "Vyne'ı / Vyne'da" (okunuşu "vayn").
   (NODE_PATH ile) `shots/*.webp` üretir, 600x1200, durum çubuğu kesik. Seçim kuralı: brifte "good" ve "current",
   ekranda isim yok (örnek isimler sadece Hasan/Hannah), Mood ve döngü YOK. Değişen ekranlar (Bugün kartı, takvim,
   istatistik) yeniden çekilmeyecek, çizimle (Hasan). **Mood ve döngü sitede görselle gösterilmez**, sadece metinle anılır.
+- **2026-10-29:** özel alışkanlıklar (uyku, okuma, su, nefes, dışarıda zaman, dil, telefonsuz zaman, bitki, kuvvet) yeni
+  "Özel alışkanlıklar" grubunda, çizimle; şeride `press/demo-2026-10-29/`'dan 6 kare eklendi (13 kare). Seçim:
+  `../vyne/company/reports/2026-10-29-alex-review/REVIEW.md`. Okuma kareleri KULLANILMADI (gerçek kitap ve yazar adları),
+  bitki karesi de (üstte Mood çipi). Adım sayısı / Sağlık (1.5.2, kasım) ve harcamasız günler henüz yayında DEĞİL, yazma.
+  Rakip uygulama adı yok (okumanın içe aktarma kaynakları da sitede anılmaz).
 
 - Hasan: "birebir ss kullanmak yerine kendin görsel oluştur, sadece anahtar kısmı göster."
   Sitedeki bütün uygulama görselleri `site/mocks.html`'deki çizimler: homefull (giriş
   telefonu, Bugün kartı ve 5 sekmeyle), home, vine, branch, stats (Öne çıkanlar kartıyla), notes, wheel, pick,
   cloud, journal, people, templates, search, welcome; 1.5 ile: today, calyear (ısı haritası), clock (mesai),
-  leaves (yaprak yaprak yıl), water, shared (ortak profil). `data-today="short"` bugünün kısa tarihini yazar. Uygulamanın renkleri (`CAT`), çizimleri (glyph) ve metinleri.
+  leaves (yaprak yaprak yıl), water, shared (ortak profil); özel alışkanlıklar: sleep, reading, breathe,
+  outdoor, language (halka `.mk-rg`, `--rc` rengi), phonefree, plants, strength. Sitede `.pg` kâğıt sayfası sınıfı;
+  çizimlerde bu adı KULLANMA (çakışıp sayfa gibi görünür). `data-today="short"` bugünün kısa tarihini yazar. Uygulamanın renkleri (`CAT`), çizimleri (glyph) ve metinleri.
 - Kullanım: `<div class="mock" data-mock="branch"></div>`; JS'te `mountMock(el, 'branch')`.
   Her çizim 300 px genişlikte; kutuya göre ölçeklenir. Kartlarda `.mk-top` (uygulama çubuğu)
   ve bazı ayrıntılar gizli (style.css sonu), sahne yüksekliği 270 px.

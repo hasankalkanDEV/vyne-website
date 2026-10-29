@@ -1,8 +1,9 @@
 // "Uygulamanın kendisi" şeridinin görselleri:  NODE_PATH=$(npm root -g) node scripts/make-shots.mjs
 //
-// press/demo-2026-10-26/ içindeki tam boy ekran görüntülerinden siteye konacak küçük WebP'leri üretir
+// press/demo-*/ içindeki tam boy ekran görüntülerinden siteye konacak küçük WebP'leri üretir
 // (shots/*.webp, 600 x 1200). Üstteki durum çubuğu ve alttaki çizgi kesilir, hepsi aynı 1:2 oranda.
-// Hangi kare neden seçildi: press/demo-2026-10-26/BRIEF.md ("good" + "current", isim yok, Mood/döngü yok).
+// Hangi kare neden seçildi: press/demo-2026-10-26/BRIEF.md ve vyne/company/reports/2026-10-29-alex-review/REVIEW.md
+// ("good" + "current", hata yok, isim yok, Mood/döngü yok, gerçek kitap/yazar adı yok).
 // Şeride kare eklemek ya da çıkarmak için aşağıdaki listeyi ve site/body.html'deki #ekranlar'ı birlikte değiştir.
 import { createRequire } from 'node:module';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -11,16 +12,22 @@ import { dirname, join } from 'node:path';
 
 const { chromium } = createRequire(import.meta.url)('playwright'); // NODE_PATH ile bulunur (check-site.js gibi)
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SRC = join(root, 'press/demo-2026-10-26');
+const SRC = join(root, 'press');
 // [çıktı adı, kaynak, üstten kesilen piksel]
 const SHOTS = [
-  ['wheel', 'android/Screenshot_20261026_101948_vyne.jpg', 140],
-  ['pick', 'android/Screenshot_20261026_101954_vyne.jpg', 140],
-  ['habit', 'ios/IMG_0229.PNG', 150],
-  ['water', 'android/Screenshot_20261026_102009_vyne.jpg', 140],
-  ['list', 'android/Screenshot_20261026_102156_vyne.jpg', 140],
-  ['note', 'ios/IMG_0249.PNG', 150],
-  ['journal', 'android/Screenshot_20261026_102055_vyne.jpg', 140],
+  ['wheel', 'demo-2026-10-26/android/Screenshot_20261026_101948_vyne.jpg', 140],
+  ['pick', 'demo-2026-10-26/android/Screenshot_20261026_101954_vyne.jpg', 140],
+  ['habit', 'demo-2026-10-26/ios/IMG_0229.PNG', 150],
+  ['water', 'demo-2026-10-26/android/Screenshot_20261026_102009_vyne.jpg', 140],
+  ['list', 'demo-2026-10-26/android/Screenshot_20261026_102156_vyne.jpg', 140],
+  ['note', 'demo-2026-10-26/ios/IMG_0249.PNG', 150],
+  ['journal', 'demo-2026-10-26/android/Screenshot_20261026_102055_vyne.jpg', 140],
+  ['sleep', 'demo-2026-10-29/android/Screenshot_20261029_124339_vyne.jpg', 140],
+  ['outdoor', 'demo-2026-10-29/ios/IMG_0283.PNG', 150],
+  ['language', 'demo-2026-10-29/ios/IMG_0286.PNG', 150],
+  ['breathe', 'demo-2026-10-29/ios/IMG_0278.PNG', 150],
+  ['phonefree', 'demo-2026-10-29/ios/IMG_0290.PNG', 150],
+  ['strength', 'demo-2026-10-29/ios/IMG_0281.PNG', 150],
 ];
 const W = 600, H = 1200;
 
